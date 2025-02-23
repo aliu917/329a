@@ -47,9 +47,13 @@ class MathDataset(Dataset):
 
 if __name__ == '__main__':
     # data = prepare_data(debug_mode=True)
-    dataset = MathDataset(mode="debug")
+    dataset = MathDataset()
     dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
-    for data, label in dataloader:
-        print(data[0][0])
+    for i, (data, label) in enumerate(dataloader):
+        print(data["problem"][0])
+        print(label[0])
+        break
+    for i, (data, label) in enumerate(dataloader):
+        print(data["problem"][0])
         print(label[0])
         break

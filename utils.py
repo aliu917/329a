@@ -119,7 +119,7 @@ def pprint(text):
         for x in text:
             if isinstance(x, dict):
                 for k,v in x.items():
-                    print(f"{k}: {v}")
+                    print(f"{k}: {v}"[:100])
                 print()
             else:
                 print(x)
