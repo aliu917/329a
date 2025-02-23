@@ -39,7 +39,7 @@ def cmp_runs(run_name1, run_name2, result_name1="results", result_name2="results
     print(f"Number of examples worsened:", len(worse_df))
     print('-' * 50)
 
-    wrong_df = df[(~df['correct_1']) & (df['correct_1'] == df['correct_1'])][select_cols]
+    wrong_df = df[(~df['correct_1']) & (df['correct_1'] == df['correct_2'])][select_cols]
 
     print('-' * 50)
     print(f"Number of examples both wrong:", len(wrong_df))

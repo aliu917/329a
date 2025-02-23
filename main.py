@@ -18,7 +18,7 @@ def run(run_name, limit=10):
     run_dir = f"runs/{run_name}"
     os.makedirs(run_dir, exist_ok=True)
 
-    # Test log run
+    # Test run single iteration and log prompts
     test_run_dir = f"runs/{run_name}/test"
     os.makedirs(test_run_dir, exist_ok=True)
     student = StudentLMAgent(log_dir=test_run_dir)
@@ -52,8 +52,8 @@ def run_all(run_dir, student, teacher, limit=10):
         with open(f"{run_dir}/base_results.json", "w") as f:
             json.dump(base_results, f)
         initial_correct_count += result["correct"]
-
         feedback = result["feedback"] if not result["correct"] else ""
+
         result = run_single(x, y, student, teacher, feedback)
         results.append(result)
         with open(f"{run_dir}/results.json", "w") as f:

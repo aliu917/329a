@@ -96,6 +96,10 @@ def generate_openai(model, messages, max_tokens=2048, temperature=0.7, **kwargs)
     return output
 
 
+def clean_text(text):
+    return text.strip().replace(' ', '').lower()
+
+
 def extract_text_within_box(text):
     text = text.split("boxed{")[-1]
     stack = []  # To handle nested curly braces
@@ -109,7 +113,7 @@ def extract_text_within_box(text):
             if stack:  # If the stack is not empty, it's a nested brace, so pop from the stack
                 stack.pop()
             else:
-                return ''.join(result)
+                return clean_text(''.join(result))
 
         result.append(char)
 
