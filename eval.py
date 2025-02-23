@@ -33,8 +33,8 @@ def cmp_runs(run_name1, run_name2, result_name1="results", result_name2="results
     print(f"Number of examples improved:", len(improved_df))
     print('-' * 50)
     print_df(improved_df)
-    worse_df = df[(df['correct_1']) & (df['correct_1'] != df['correct_2'])][select_cols]
 
+    worse_df = df[(df['correct_1']) & (df['correct_1'] != df['correct_2'])][select_cols]
     print('-'*50)
     print(f"Number of examples worsened:", len(worse_df))
     print('-' * 50)
