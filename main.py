@@ -18,21 +18,22 @@ def run(run_name, limit=10):
     run_dir = f"runs/{run_name}"
     os.makedirs(run_dir, exist_ok=True)
 
-    # Test run single iteration and log prompts
+    # Test run single correct/incorrect iteration and log prompts
     test_run_dir = f"runs/{run_name}/test"
     os.makedirs(test_run_dir, exist_ok=True)
     student = StudentLMAgent(log_dir=test_run_dir)
     teacher = TeacherLMAgent(log_dir=test_run_dir)
-    run_all(test_run_dir, student, teacher, limit=1)
+    test_dataset = MathDataset(dir="MATH_debug", mode="debug")
+    run_all(test_dataset, test_run_dir, student, teacher, limit=2)
 
     # Actual run
     student = StudentLMAgent()
     teacher = TeacherLMAgent()
-    run_all(run_dir, student, teacher, limit)
-
-def run_all(run_dir, student, teacher, limit=10):
-
     dataset = MathDataset()
+    run_all(dataset, run_dir, student, teacher, limit)
+
+def run_all(dataset, run_dir, student, teacher, limit=10):
+
     torch.manual_seed(2809)
     dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
 
@@ -85,4 +86,4 @@ def run_single(x, y, student, teacher, prev_feedback):
 
 
 if __name__ == '__main__':
-    run("baseline", limit=100)
+    run("baseline_test", limit=10)
