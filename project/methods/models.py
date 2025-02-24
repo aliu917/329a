@@ -1,5 +1,8 @@
-from utils import *
-import prompts
+from . import prompts
+from . import verifiers
+from project.utils import generate_openai, generate_together, extract_text_within_box
+
+verifier = verifiers.MATH500Verifier()
 
 class StudentLMAgent:
     def __init__(
@@ -27,8 +30,9 @@ class StudentLMAgent:
             self.log_idx += 1
         return response
 
-    def generate(self, problem, prompt_func=prompts.default_prompt, history=""):
-        return self._generate(problem + "\n" + prompt_func(history))
+    def generate(self, problem, prompt_func=prompts.default_prompt, feedback=""):
+        feedback = prompts.feedback_prompt(feedback)
+        return self._generate(problem + "\n" + prompt_func(feedback))
 
 class TeacherLMAgent():
     def __init__(
@@ -67,3 +71,17 @@ class TeacherLMAgent():
             # TODO: confirm that feedback does not give away the solution, else empty.
 
         return correct, feedback
+    
+    def evaluate(self, x, pred, label):
+        is_correct = verifier(pred, label)
+        pred_answer = extract_text_within_box(pred)
+        label_answer = extract_text_within_box(label)
+        _, feedback = self.generate(x, pred, label)
+        return is_correct, pred_answer, label_answer, feedback
+    
+    def evaluate_old(self, x, pred, label):
+        #TODO: better evaluation method (need to fix whitespace)
+        pred_answer = extract_text_within_box(pred)
+        label_answer = extract_text_within_box(label)
+        teacher_eval_correct, feedback = self.generate(x, pred, label)
+        return pred_answer == label_answer or teacher_eval_correct, pred_answer, label_answer, feedback

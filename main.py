@@ -1,18 +1,9 @@
 from load_data import *
-from models import *
-from utils import *
+from project.utils import *
 from tqdm import tqdm
 import json
-import prompts
-
-
-def evaluate(teacher, x, pred, label):
-    #TODO: better evaluation method (need to fix whitespace)
-    pred_answer = extract_text_within_box(pred)
-    label_answer = extract_text_within_box(label)
-    teacher_eval_correct, feedback = teacher.generate(x, pred, label)
-    return pred_answer == label_answer or teacher_eval_correct, pred_answer, label_answer, feedback
-
+import project.methods.prompts as prompts
+from project.methods.models import *
 
 def run(run_name, limit=10):
     run_dir = f"runs/{run_name}"
@@ -67,11 +58,10 @@ def run_all(run_dir, student, teacher, limit=10):
 def run_single(x, y, student, teacher, prev_feedback):
         # TODO: teacher learning
         feedback = prev_feedback # update with teacher learning process
-        feedback_format = prompts.feedback_prompt(feedback)
 
         # Student generation and evaluation
-        response = student.generate(x, history=feedback_format)
-        correct, pred, answer, feedback = evaluate(teacher, x, response, y)
+        response = student.generate(x, feedback=feedback)
+        correct, pred, answer, feedback = teacher.evaluate(x, response, y)
         result = {
             "question": x,
             "answer": answer,
@@ -82,7 +72,6 @@ def run_single(x, y, student, teacher, prev_feedback):
             "feedback" : feedback,
         }
         return result
-
 
 if __name__ == '__main__':
     run("baseline", limit=100)
