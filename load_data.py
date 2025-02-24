@@ -22,10 +22,10 @@ def prepare_data(max_rows=None, debug_mode=False):
 
 
 class MathDataset(Dataset):
-    def __init__(self, mode="train", subset=""):
-        self.dir = Path(f"MATH/{mode}")
+    def __init__(self, dir="MATH", mode="train", subset=""):
+        self.dir = Path(f"{dir}/{mode}")
         if subset:
-            self.dir = Path(f"MATH/{mode}/{subset}")
+            self.dir = Path(f"{dir}/{mode}/{subset}")
 
         self.file_paths = []
         for file in self.dir.rglob('*'):
