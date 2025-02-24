@@ -11,13 +11,18 @@ import random
 from litellm import completion
 from openai import OpenAI
 from transformers import AutoModelForCausalLM, AutoTokenizer
+from dotenv import load_dotenv
+
 import torch
+
+load_dotenv()
+
 
 def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwargs):
     output = None
     request_id = random.randint(1000, 9999)  # Generate unique request ID for tracking
 
-    key = os.environ.get("TOGETHER_API_KEY")
+    key = os.getenv("TOGETHER_API_KEY")
 
     logger.info(f"[Together-{request_id}] Starting request for model: {model}")
 

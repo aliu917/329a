@@ -13,6 +13,7 @@ class StudentLMAgent:
         self.log_dir = log_dir
         self.log_idx = 0
 
+    
     def _generate(self, prompt):
         messages = [
             {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},

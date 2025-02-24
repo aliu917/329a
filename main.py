@@ -10,7 +10,7 @@ def evaluate(teacher, x, pred, label):
     #TODO: better evaluation method (need to fix whitespace)
     pred_answer = extract_text_within_box(pred)
     label_answer = extract_text_within_box(label)
-    teacher_eval_correct, feedback = teacher.generate(x, pred, label)
+    teacher_eval_correct, feedback = teacher.generate(x, pred, label, prompt_func=prompts.teacher_best_feedback_prompt)
     return pred_answer == label_answer or teacher_eval_correct, pred_answer, label_answer, feedback
 
 
@@ -19,12 +19,12 @@ def run(run_name, limit=10):
     os.makedirs(run_dir, exist_ok=True)
 
     # Test run single correct/incorrect iteration and log prompts
-    test_run_dir = f"runs/{run_name}/test"
-    os.makedirs(test_run_dir, exist_ok=True)
-    student = StudentLMAgent(log_dir=test_run_dir)
-    teacher = TeacherLMAgent(log_dir=test_run_dir)
-    test_dataset = MathDataset(dir="MATH_debug", mode="debug")
-    run_all(test_dataset, test_run_dir, student, teacher, limit=2)
+    #test_run_dir = f"runs/{run_name}/test"
+    #os.makedirs(test_run_dir, exist_ok=True)
+    #student = StudentLMAgent(log_dir=test_run_dir)
+    #teacher = TeacherLMAgent(log_dir=test_run_dir)
+    #test_dataset = MathDataset(dir="MATH_debug", mode="debug")
+    #run_all(test_dataset, test_run_dir, student, teacher, limit=2)
 
     # Actual run
     student = StudentLMAgent()
@@ -35,7 +35,12 @@ def run(run_name, limit=10):
 def run_all(dataset, run_dir, student, teacher, limit=10):
 
     torch.manual_seed(2809)
-    dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
+
+    last_500_dataset = torch.utils.data.Subset(dataset, range(len(dataset) - 500, len(dataset)))
+    #dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
+
+    dataloader = DataLoader(last_500_dataset, batch_size=1, shuffle=True)
+
 
     initial_correct_count = 0
     after_correct_count = 0
@@ -48,12 +53,14 @@ def run_all(dataset, run_dir, student, teacher, limit=10):
         y = labels[0]
 
         # TODO: rm this chunk (baseline)
+        
         result = run_single(x, y, student, teacher, "")
         base_results.append(result)
         with open(f"{run_dir}/base_results.json", "w") as f:
             json.dump(base_results, f)
         initial_correct_count += result["correct"]
         feedback = result["feedback"] if not result["correct"] else ""
+        
 
         result = run_single(x, y, student, teacher, feedback)
         results.append(result)
@@ -86,4 +93,4 @@ def run_single(x, y, student, teacher, prev_feedback):
 
 
 if __name__ == '__main__':
-    run("baseline_test", limit=10)
+    run("improved_feedback", limit=50)
