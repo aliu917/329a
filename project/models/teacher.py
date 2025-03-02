@@ -1,38 +1,16 @@
-from . import prompts
-from . import verifiers
 from project.utils import generate_openai, generate_together, extract_text_within_box
-
+from . import verifiers
 verifier = verifiers.MATH500Verifier()
 
-class StudentLMAgent:
-    def __init__(
-            self,
-            model: str = "Qwen/Qwen2.5-7B-Instruct-Turbo",
-            generation_temp: float = 0.7,
-            log_dir: str = "",
-    ):
-        self.model = model
-        self.generation_temp = generation_temp
-        self.log_dir = log_dir
-        self.log_idx = 0
+def teacher_default_prompt(question, student, label, history=None):
+    return f"""You are given a reasoning attempt for answering the following question: {question}
 
-    def _generate(self, prompt):
-        messages = [
-            {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
-            {"role": "user", "content": prompt}
-        ]
-        response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
-        if self.log_dir:
-            with open(f"{self.log_dir}/student_prompt{str(self.log_idx)}.txt", "w") as f:
-                f.write(prompt)
-            with open(f"{self.log_dir}/student_response{str(self.log_idx)}.txt", "w") as f:
-                f.write(response)
-            self.log_idx += 1
-        return response
+Attempt: {student}
 
-    def generate(self, problem, prompt_func=prompts.default_prompt, feedback=""):
-        feedback = prompts.feedback_prompt(feedback)
-        return self._generate(problem + "\n" + prompt_func(feedback))
+Correct solution: {label}
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically."""
 
 class TeacherLMAgent():
     def __init__(
@@ -60,10 +38,12 @@ class TeacherLMAgent():
             self.log_idx += 1
         return response
 
-    def generate(self, question, student_steps, answer_steps, history=None, prompt_func = prompts.teacher_default_prompt):
+    def generate(self, question, student_steps, answer_steps, history=None, prompt_func=teacher_default_prompt):
         # TODO: remove predicting correct, we don't use it now
         correct = False
         feedback = ""
+        if prompt_func is None:
+            prompt_func = teacher_default_prompt
         while not correct and not feedback:
             prompt = prompt_func(question, student_steps, answer_steps, history)
             result = self._generate(prompt)

@@ -1,4 +1,4 @@
-from project.tasks.math_utils import (
+from project.math_utils import (
     strip_string,
     extract_answer,
     math_equal,

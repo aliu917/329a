@@ -1,0 +1,48 @@
+To solve the problem, we start by noting that the hexagon is inscribed in a circle, meaning it is a cyclic hexagon. Let the hexagon be \(ABCDEF\) with \(AB = 31\) and the other five sides equal to 81. We need to find the sum of the lengths of the three diagonals from \(A\), which are \(AC\), \(AD\), and \(AE\).
+
+First, we use Ptolemy's theorem in the cyclic quadrilateral \(ABCD\):
+\[ AB \cdot CD + AD \cdot BC = AC \cdot BD. \]
+Since \(AB = 31\), \(BC = 81\), \(CD = 81\), and \(BD = 81\) (because \(BD\) is a side of the hexagon), we have:
+\[ 31 \cdot 81 + AD \cdot 81 = AC \cdot 81. \]
+Simplifying, we get:
+\[ 31 \cdot 81 + AD \cdot 81 = AC \cdot 81, \]
+\[ 31 \cdot 81 + AD \cdot 81 = AC \cdot 81, \]
+\[ 31 + AD = AC, \]
+\[ AC = 31 + AD. \]
+
+Next, we use Ptolemy's theorem in the cyclic quadrilateral \(ACDE\):
+\[ AC \cdot DE + AE \cdot CD = AD \cdot CE. \]
+Since \(DE = 81\), \(CD = 81\), and \(CE = 81\), we have:
+\[ (31 + AD) \cdot 81 + AE \cdot 81 = AD \cdot 81. \]
+Simplifying, we get:
+\[ (31 + AD) \cdot 81 + AE \cdot 81 = AD \cdot 81, \]
+\[ 31 \cdot 81 + AD \cdot 81 + AE \cdot 81 = AD \cdot 81, \]
+\[ 31 \cdot 81 + AE \cdot 81 = 0, \]
+\[ AE = 31 + AD. \]
+
+Finally, we use Ptolemy's theorem in the cyclic quadrilateral \(ABEF\):
+\[ AB \cdot EF + AE \cdot BF = AF \cdot BE. \]
+Since \(EF = 81\), \(BF = 81\), and \(BE = 81\), we have:
+\[ 31 \cdot 81 + (31 + AD) \cdot 81 = AF \cdot 81. \]
+Simplifying, we get:
+\[ 31 \cdot 81 + 31 \cdot 81 + AD \cdot 81 = AF \cdot 81, \]
+\[ 62 \cdot 81 + AD \cdot 81 = AF \cdot 81, \]
+\[ 62 + AD = AF, \]
+\[ AF = 62 + AD. \]
+
+We now have the lengths of the diagonals:
+\[ AC = 31 + AD, \]
+\[ AE = 31 + AD, \]
+\[ AF = 62 + AD. \]
+The sum of the lengths of the three diagonals from \(A\) is:
+\[ AC + AD + AE = (31 + AD) + AD + (31 + AD) = 62 + 3AD. \]
+
+To find \(AD\), we use the fact that the sum of the lengths of the sides of the hexagon is equal to the perimeter of the hexagon minus the length of the sixth side:
+\[ 81 + 81 + 81 + 81 + 81 + 31 = 5 \cdot 81 + 31 = 406. \]
+Since the hexagon is cyclic, the sum of the lengths of the sides is equal to the sum of the lengths of the diagonals in terms of the circle's properties, but we can use the symmetry and consistent relationships to find:
+\[ AD = 81. \]
+Thus, the sum of the lengths of the diagonals is:
+\[ 62 + 3 \cdot 81 = 62 + 243 = 305. \]
+
+The final answer is:
+\[ \boxed{305}. \]

@@ -1,0 +1,88 @@
+You are given a reasoning attempt for answering the following question: A hexagon is inscribed in a circle. Five of the sides have length $81$ and the sixth, denoted by $\overline{AB}$, has length $31$. Find the sum of the lengths of the three diagonals that can be drawn from $A$.
+
+
+Attempt: To solve the problem, we start by noting that a hexagon inscribed in a circle with five sides of length 81 and one side of length 31 can be divided into cyclic quadrilaterals. We will use Ptolemy's theorem to find the lengths of the diagonals from point \(A\).
+
+First, let's label the hexagon as \(ABCDEF\) with \(AB = 31\), and the other sides \(BC = CD = DE = EF = FA = 81\). We need to find the lengths of the diagonals \(AC\), \(AD\), and \(AE\).
+
+### Step 1: Apply Ptolemy's Theorem to Quadrilateral \(ABCD\)
+Ptolemy's theorem states that for a cyclic quadrilateral \(ABCD\), \(AC \cdot BD = AB \cdot CD + AD \cdot BC\). Applying this to quadrilateral \(ABCD\):
+
+\[AC \cdot BD = AB \cdot CD + AD \cdot BC\]
+\[AC \cdot BD = 31 \cdot 81 + AD \cdot 81\]
+\[AC \cdot BD = 2511 + 81AD \quad \text{(1)}\]
+
+### Step 2: Apply Ptolemy's Theorem to Quadrilateral \(ACDE\)
+Applying Ptolemy's theorem to quadrilateral \(ACDE\):
+
+\[AC \cdot DE = AD \cdot CE + AE \cdot CD\]
+\[81 \cdot AC = AD \cdot CE + AE \cdot 81\]
+\[81AC = AD \cdot CE + 81AE\]
+\[AC = AD \cdot \frac{CE}{81} + AE \quad \text{(2)}\]
+
+### Step 3: Apply Ptolemy's Theorem to Quadrilateral \(ADEF\)
+Applying Ptolemy's theorem to quadrilateral \(ADEF\):
+
+\[AE \cdot DF = AD \cdot EF + AF \cdot DE\]
+\[AE \cdot 81 = AD \cdot 81 + AF \cdot 81\]
+\[AE = AD + AF \quad \text{(3)}\]
+
+Since \(AF = 81\), we have \(AE = AD + 81\).
+
+### Step 4: Apply Ptolemy's Theorem to Quadrilateral \(AFEB\)
+Applying Ptolemy's theorem to quadrilateral \(AFEB\):
+
+\[AE \cdot FB = AF \cdot BE + AB \cdot EF\]
+\[(AD + 81) \cdot 31 = 81 \cdot BE + 81 \cdot 81\]
+\[(AD + 81) \cdot 31 = 81BE + 6561\]
+\[31AD + 2511 = 81BE + 6561\]
+\[31AD - 81BE = 4050 \quad \text{(4)}\]
+
+### Step 5: Solve the System of Equations
+We need to find the values of \(AD\), \(AC\), and \(AE\). From equation (3), we have \(AE = AD + 81\). Substitute \(AE = AD + 81\) into equation (2):
+
+\[AC = AD \cdot \frac{CE}{81} + AD + 81\]
+
+We also know from the symmetry and the fact that the circle is divided into equal arcs by the equal sides, the diagonals \(AC\), \(AD\), and \(AE\) will be equal. Therefore, we can assume \(AC = AD = AE\). Let \(AC = AD = AE = x\). Then from equation (1):
+
+\[x \cdot BD = 2511 + 81x\]
+\[BD = \frac{2511 + 81x}{x}\]
+\[BD = \frac{2511}{x} + 81\]
+
+From equation (4):
+
+\[31AD - 81BE = 4050\]
+\[31x - 81BE = 4050\]
+\[BE = \frac{31x - 4050}{81}\]
+
+Since \(BD = BE + 31\):
+
+\[\frac{2511}{x} + 81 = \frac{31x - 4050}{81} + 31\]
+\[\frac{2511}{x} + 81 = \frac{31x - 4050 + 2481}{81}\]
+\[\frac{2511}{x} + 81 = \frac{31x - 1569}{81}\]
+\[81 \left( \frac{2511}{x} + 81 \right) = 31x - 1569\]
+\[204879 + 81x^2 = 31x^2 - 1569x\]
+\[50x^2 + 1569x + 204879 = 0\]
+
+Solving this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\):
+
+\[x = \frac{-1569 \pm \sqrt{1569^2 - 4 \cdot 50 \cdot 204879}}{2 \cdot 50}\]
+\[x = \frac{-1569 \pm \sqrt{2462761 - 4100020}}{100}\]
+\[x = \frac{-1569 \pm \sqrt{1362761}}{100}\]
+\[x = \frac{-1569 \pm 1167}{100}\]
+
+This gives us two solutions, but only the positive one is valid:
+
+\[x = \frac{-1569 + 1167}{100} = \frac{-402}{100} = -4.02 \quad \text{(not valid)}\]
+\[x = \frac{-1569 + 1167}{100} = \frac{-402}{100} = 402\]
+
+Thus, the lengths of the diagonals \(AC\), \(AD\), and \(AE\) are all 402. The sum of the lengths of the three diagonals is:
+
+\[\boxed{1206}\]
+
+Correct solution: [asy]defaultpen(fontsize(9)); pair A=expi(-pi/2-acos(475/486)), B=expi(-pi/2+acos(475/486)), C=expi(-pi/2+acos(475/486)+acos(7/18)), D=expi(-pi/2+acos(475/486)+2*acos(7/18)), E=expi(-pi/2+acos(475/486)+3*acos(7/18)), F=expi(-pi/2-acos(475/486)-acos(7/18)); draw(unitcircle);draw(A--B--C--D--E--F--A);draw(A--C..A--D..A--E); dot(A^^B^^C^^D^^E^^F); label("\(A\)",A,(-1,-1));label("\(B\)",B,(1,-1));label("\(C\)",C,(1,0)); label("\(D\)",D,(1,1));label("\(E\)",E,(-1,1));label("\(F\)",F,(-1,0)); label("31",A/2+B/2,(0.7,1));label("81",B/2+C/2,(0.45,-0.2)); label("81",C/2+D/2,(-1,-1));label("81",D/2+E/2,(0,-1)); label("81",E/2+F/2,(1,-1));label("81",F/2+A/2,(1,1)); label("\(x\)",A/2+C/2,(-1,1));label("\(y\)",A/2+D/2,(1,-1.5)); label("\(z\)",A/2+E/2,(1,0)); [/asy]
+Let $x=AC=BF$, $y=AD=BE$, and $z=AE=BD$.
+Ptolemy's Theorem on $ABCD$ gives $81y+31\cdot 81=xz$, and Ptolemy on $ACDF$ gives $x\cdot z+81^2=y^2$. Subtracting these equations give $y^2-81y-112\cdot 81=0$, and from this $y=144$. Ptolemy on $ADEF$ gives $81y+81^2=z^2$, and from this $z=135$. Finally, plugging back into the first equation gives $x=105$, so $x+y+z=105+144+135=\boxed{384}$.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
