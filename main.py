@@ -14,7 +14,7 @@ def evaluate(teacher, x, pred, label):
     return pred_answer == label_answer or teacher_eval_correct, pred_answer, label_answer, feedback
 
 
-def run(run_name, limit=10):
+def run(run_name, limit=10, min_level=0):
     run_dir = f"runs/{run_name}"
     os.makedirs(run_dir, exist_ok=True)
 
@@ -29,7 +29,7 @@ def run(run_name, limit=10):
     # Actual run
     student = StudentLMAgent()
     teacher = TeacherLMAgent()
-    dataset = MathDataset()
+    dataset = MathDataset(min_level=min_level)
     run_all(dataset, run_dir, student, teacher, limit)
 
 def run_all(dataset, run_dir, student, teacher, limit=10):
@@ -86,4 +86,4 @@ def run_single(x, y, student, teacher, prev_feedback):
 
 
 if __name__ == '__main__':
-    run("baseline_test", limit=10)
+    run("baseline_5", limit=100, min_level=5)
