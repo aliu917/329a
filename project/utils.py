@@ -13,22 +13,6 @@ from openai import OpenAI
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 
-class QuestionHistory:
-    def __init__(self, question, ground_truth_steps):
-        self.question = question
-        self.ground_truth_steps = ground_truth_steps
-
-        self.prediction_steps_history = []
-        self.is_correct_history = []
-        self.feedback_history = []
-    
-    def add_prediction(self, prediction_steps, is_correct):
-        self.prediction_steps_history.append(prediction_steps)
-        self.is_correct_history.append(is_correct)
-    
-    def add_feedback(self, feedback):
-        self.feedback_history.append(feedback)
-
 def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwargs):
     output = None
     request_id = random.randint(1000, 9999)  # Generate unique request ID for tracking

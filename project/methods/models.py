@@ -60,11 +60,13 @@ class TeacherLMAgent():
             self.log_idx += 1
         return response
 
-    def generate(self, question, student_steps, answer_steps, prompt_func = prompts.teacher_default_prompt):
+    def generate(self, question, student_steps, answer_steps, history=None, prompt_func = prompts.teacher_default_prompt):
+        # TODO: remove predicting correct, we don't use it now
         correct = False
         feedback = ""
         while not correct and not feedback:
-            result = self._generate(prompt_func(question, student_steps, answer_steps))
+            prompt = prompt_func(question, student_steps, answer_steps, history)
+            result = self._generate(prompt)
             correct, feedback = result.split("Feedback:")
             correct = "yes" in correct.lower()
             feedback = feedback.strip()
@@ -72,11 +74,21 @@ class TeacherLMAgent():
 
         return correct, feedback
     
-    def evaluate(self, x, pred, label):
+    def evaluate(self, x, pred, label, history=None, prompt_func=None):
         is_correct = verifier(pred, label)
         pred_answer = extract_text_within_box(pred)
         label_answer = extract_text_within_box(label)
-        _, feedback = self.generate(x, pred, label)
+        if history:
+            current_round = {
+                "round": history[-1]["round"] + 1,
+                "prev_feedback": history[-1]["feedback"],
+                "pred_steps": pred,
+                "correct": is_correct,
+            }
+            history = history + [current_round]
+            _, feedback = self.generate(x, pred, label, history, prompt_func=prompt_func)
+        else:
+            _, feedback = self.generate(x, pred, label, prompt_func=prompt_func)
         return is_correct, pred_answer, label_answer, feedback
     
     def evaluate_old(self, x, pred, label):

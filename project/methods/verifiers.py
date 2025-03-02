@@ -11,13 +11,10 @@ class MATH500Verifier:
         pass
 
     def verify(
-        self, solution: str, ground_truth: str, normalize_prediction=True
+        self, solution: str, ground_truth: str
     ) -> int:
-        if normalize_prediction:
-            extracted_answer = strip_string(extract_answer(solution, "math"))
-        else:
-            extracted_answer = solution
-        extracted_gt_answer = ground_truth
+        extracted_answer = strip_string(extract_answer(solution, "math"))
+        extracted_gt_answer = strip_string(extract_answer(ground_truth, "math"))
         time_out_math_equal = timeout_decorator.timeout(2)(math_equal)
         try:
             return int(time_out_math_equal(extracted_answer, extracted_gt_answer))
