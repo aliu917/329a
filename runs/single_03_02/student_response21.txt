@@ -1,0 +1,34 @@
+To find the maximum value of \((x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2)\) given that \(x + y + z = 2\) and \(x, y, z \geq 0\), we start by examining the expression and considering possible values for \(x, y, z\).
+
+First, we note that the expression \(x^2 - xy + y^2\) can be rewritten using the identity:
+\[x^2 - xy + y^2 = \frac{1}{2}((x-y)^2 + x^2 + y^2).\]
+This form is always nonnegative and reaches its minimum value of 0 when \(x = y = 0\).
+
+### Case 1: Symmetry and Equal Values
+We start by checking the case where \(x = y = z\). Since \(x + y + z = 2\), we have \(x = y = z = \frac{2}{3}\). Substituting these values into the expression, we get:
+\[
+x^2 - xy + y^2 = \left(\frac{2}{3}\right)^2 - \left(\frac{2}{3}\right)\left(\frac{2}{3}\right) + \left(\frac{2}{3}\right)^2 = \frac{4}{9} - \frac{4}{9} + \frac{4}{9} = \frac{4}{9}.
+\]
+Thus, the expression becomes:
+\[
+\left(\frac{4}{9}\right) \left(\frac{4}{9}\right) \left(\frac{4}{9}\right) = \left(\frac{4}{9}\right)^3 = \frac{64}{729}.
+\]
+
+### Case 2: Other Configurations
+Next, we consider other possible configurations. Suppose \(x = 2\) and \(y = z = 0\). Then the expression becomes:
+\[
+(x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2) = (2^2 - 2 \cdot 0 + 0^2)(2^2 - 2 \cdot 0 + 0^2)(0^2 - 0 \cdot 0 + 0^2) = 4 \cdot 4 \cdot 0 = 0.
+\]
+This value is less than \(\frac{64}{729}\).
+
+Similarly, if we set \(x = 1\), \(y = 1\), and \(z = 0\), we get:
+\[
+(x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2) = (1^2 - 1 \cdot 1 + 1^2)(1^2 - 1 \cdot 0 + 0^2)(1^2 - 1 \cdot 0 + 0^2) = (1)(1)(1) = 1.
+\]
+This value is greater than \(\frac{64}{729}\).
+
+### Conclusion
+From the above cases, we see that the maximum value of the expression \((x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2)\) is achieved when \(x = 1\), \(y = 1\), and \(z = 0\), or any permutation thereof. Therefore, the maximum value is:
+\[
+\boxed{1}.
+\]

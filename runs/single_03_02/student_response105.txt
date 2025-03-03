@@ -1,0 +1,23 @@
+To maximize the expression \(wx + xy + yz\) given that \(w + x + y + z = 100\), we will follow a step-by-step approach.
+
+1. **Identify the structure of the expression**: The expression \(wx + xy + yz\) involves products of adjacent terms in the sequence \(w, x, y, z\).
+
+2. **Set one of the variables to zero**: To maximize the expression, we should try to concentrate as much of the sum \(w + x + y + z = 100\) into two adjacent terms. Suppose we set \(w = 0\) and \(z = 0\). This simplifies our expression to \(xy\).
+
+3. **Maximize \(xy\) under the constraint \(x + y = 100\)**: By the AM-GM inequality, we know that for nonnegative numbers \(x\) and \(y\),
+   \[
+   \frac{x + y}{2} \geq \sqrt{xy}.
+   \]
+   Substituting \(x + y = 100\), we get
+   \[
+   \frac{100}{2} \geq \sqrt{xy} \implies 50 \geq \sqrt{xy} \implies 2500 \geq xy.
+   \]
+   The equality holds when \(x = y = 50\). Therefore, the maximum value of \(xy\) is 2500 when \(x = 50\) and \(y = 50\).
+
+4. **Verify the solution**: If \(w = 0\), \(x = 50\), \(y = 50\), and \(z = 0\), then the expression \(wx + xy + yz\) becomes
+   \[
+   wx + xy + yz = 0 \cdot 50 + 50 \cdot 50 + 50 \cdot 0 = 2500.
+   \]
+   This confirms that the maximum value of \(wx + xy + yz\) is indeed 2500.
+
+Therefore, the largest possible value of \(wx + xy + yz\) is \(\boxed{2500}\).

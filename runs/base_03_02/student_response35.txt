@@ -1,0 +1,35 @@
+Given the conditions \(a + b + c = 0\) and \(a^3 + b^3 + c^3 = a^5 + b^5 + c^5\), we need to find the value of \(a^2 + b^2 + c^2\).
+
+First, recall the identity for the sum of cubes when the sum of the variables is zero:
+\[a^3 + b^3 + c^3 - 3abc = (a+b+c)(a^2 + b^2 + c^2 - ab - bc - ca).\]
+Since \(a + b + c = 0\), the identity simplifies to:
+\[a^3 + b^3 + c^3 = 3abc.\]
+Thus, we have:
+\[a^3 + b^3 + c^3 = 3abc.\]
+
+Given that \(a^3 + b^3 + c^3 = a^5 + b^5 + c^5\), we can substitute to get:
+\[3abc = a^5 + b^5 + c^5.\]
+
+Next, we need to express \(a^5 + b^5 + c^5\) in a useful form. Since \(a + b + c = 0\), we can use the symmetric polynomial identities. However, a simpler approach is to consider the polynomial whose roots are \(a, b, c\). Let the polynomial be \(P(x) = (x-a)(x-b)(x-c) = x^3 + px + q\), where \(p = -(ab + bc + ca)\) and \(q = -abc\). From the identity \(a^3 + b^3 + c^3 = 3abc\), we have:
+\[a^3 + b^3 + c^3 = -3q.\]
+So, we have:
+\[a^5 + b^5 + c^5 = (a^3 + b^3 + c^3)(a^2 + b^2 + c^2 - ab - bc - ca) + 3abc(a + b + c) = -3q(a^2 + b^2 + c^2 - p).\]
+Since \(a + b + c = 0\), this simplifies to:
+\[a^5 + b^5 + c^5 = -3q(a^2 + b^2 + c^2 - p) = 3q(a^2 + b^2 + c^2 - p).\]
+We know \(3abc = 3q\), so:
+\[a^5 + b^5 + c^5 = q(a^2 + b^2 + c^2 - p).\]
+Given \(3abc = a^5 + b^5 + c^5\), we have:
+\[3q = q(a^2 + b^2 + c^2 - p).\]
+If \(q \neq 0\), we can divide both sides by \(q\):
+\[3 = a^2 + b^2 + c^2 - p.\]
+Since \(p = -(ab + bc + ca)\), we have:
+\[a^2 + b^2 + c^2 = 3 + p.\]
+We also know that:
+\[a^2 + b^2 + c^2 = (a+b+c)^2 - 2(ab + bc + ca) = -2p.\]
+So, we have:
+\[3 + p = -2p.\]
+Solving for \(p\), we get:
+\[3 = -3p \implies p = -1.\]
+Thus:
+\[a^2 + b^2 + c^2 = 3 + (-1) = 2.\]
+Therefore, the value of \(a^2 + b^2 + c^2\) is \(\boxed{2}\).

@@ -1,0 +1,101 @@
+We are given the expression \(\sqrt{53 + 20\sqrt{7}}\) and need to express it in the form \(a + b\sqrt{c}\), where \(a\), \(b\), and \(c\) are integers, and \(c\) has no perfect square factors other than 1. We need to find \(a + b + c\).
+
+Let's assume:
+\[
+\sqrt{53 + 20\sqrt{7}} = a + b\sqrt{7}
+\]
+where \(a\) and \(b\) are integers. Squaring both sides, we get:
+\[
+53 + 20\sqrt{7} = (a + b\sqrt{7})^2
+\]
+
+Expanding the right-hand side:
+\[
+(a + b\sqrt{7})^2 = a^2 + 2ab\sqrt{7} + 7b^2
+\]
+So, we have:
+\[
+53 + 20\sqrt{7} = a^2 + 7b^2 + 2ab\sqrt{7}
+\]
+
+For the equation to hold, the rational and irrational parts must be equal separately. Therefore, we equate the rational parts and the irrational parts:
+\[
+a^2 + 7b^2 = 53
+\]
+\[
+2ab = 20
+\]
+
+From the second equation:
+\[
+2ab = 20 \implies ab = 10
+\]
+
+We now have a system of equations:
+1. \(a^2 + 7b^2 = 53\)
+2. \(ab = 10\)
+
+We solve for \(a\) and \(b\) by substituting \(b = \frac{10}{a}\) into the first equation:
+\[
+a^2 + 7\left(\frac{10}{a}\right)^2 = 53
+\]
+\[
+a^2 + 7 \cdot \frac{100}{a^2} = 53
+\]
+Multiplying through by \(a^2\) to clear the fraction:
+\[
+a^4 + 700 = 53a^2
+\]
+Rearranging terms:
+\[
+a^4 - 53a^2 + 700 = 0
+\]
+
+Let \(x = a^2\). Then the equation becomes:
+\[
+x^2 - 53x + 700 = 0
+\]
+
+We solve this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\):
+\[
+x = \frac{53 \pm \sqrt{53^2 - 4 \cdot 700}}{2}
+\]
+\[
+x = \frac{53 \pm \sqrt{2809 - 2800}}{2}
+\]
+\[
+x = \frac{53 \pm \sqrt{9}}{2}
+\]
+\[
+x = \frac{53 \pm 3}{2}
+\]
+
+This gives us two solutions for \(x\):
+\[
+x = \frac{56}{2} = 28 \quad \text{and} \quad x = \frac{50}{2} = 25
+\]
+
+Thus, \(a^2 = 28\) or \(a^2 = 25\). Since \(a\) must be an integer, we have:
+\[
+a = 5 \quad \text{or} \quad a = -5
+\]
+
+Correspondingly:
+\[
+b = \frac{10}{a} = 2 \quad \text{or} \quad b = -2
+\]
+
+We choose \(a = 5\) and \(b = 2\) (the other choices will yield the same form with signs reversed):
+\[
+a + b\sqrt{7} = 5 + 2\sqrt{7}
+\]
+
+Thus, \(a = 5\), \(b = 2\), and \(c = 7\). Therefore:
+\[
+a + b + c = 5 + 2 + 7 = 14
+\]
+
+The final answer is:
+\[
+\boxed{14}
+\]

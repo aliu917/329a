@@ -1,0 +1,58 @@
+To find the multiplicative inverse of \(201\) modulo \(299\), we need to find an integer \(x\) such that:
+
+\[201x \equiv 1 \pmod{299}\]
+
+This means that we need to find \(x\) such that:
+
+\[201x - 299k = 1\]
+
+for some integer \(k\). This is a linear Diophantine equation, and we can solve it using the Extended Euclidean Algorithm.
+
+First, we apply the Euclidean Algorithm to find the greatest common divisor (gcd) of \(201\) and \(299\):
+
+1. \(299 = 1 \cdot 201 + 98\)
+2. \(201 = 2 \cdot 98 + 5\)
+3. \(98 = 19 \cdot 5 + 3\)
+4. \(5 = 1 \cdot 3 + 2\)
+5. \(3 = 1 \cdot 2 + 1\)
+6. \(2 = 2 \cdot 1 + 0\)
+
+The gcd is the last non-zero remainder, which is \(1\). Since the gcd is \(1\), \(201\) and \(299\) are coprime, and an inverse exists.
+
+Next, we use the Extended Euclidean Algorithm to express \(1\) as a combination of \(201\) and \(299\):
+
+Starting from the second last equation:
+
+\[1 = 3 - 1 \cdot 2\]
+
+Substitute \(2\) from the previous equation \(2 = 5 - 1 \cdot 3\):
+
+\[1 = 3 - 1 \cdot (5 - 1 \cdot 3) = 2 \cdot 3 - 1 \cdot 5\]
+
+Substitute \(3\) from the equation \(3 = 98 - 19 \cdot 5\):
+
+\[1 = 2 \cdot (98 - 19 \cdot 5) - 1 \cdot 5 = 2 \cdot 98 - 39 \cdot 5\]
+
+Substitute \(5\) from the equation \(5 = 201 - 2 \cdot 98\):
+
+\[1 = 2 \cdot 98 - 39 \cdot (201 - 2 \cdot 98) = 80 \cdot 98 - 39 \cdot 201\]
+
+Substitute \(98\) from the equation \(98 = 299 - 1 \cdot 201\):
+
+\[1 = 80 \cdot (299 - 1 \cdot 201) - 39 \cdot 201 = 80 \cdot 299 - 119 \cdot 201\]
+
+Thus, we have:
+
+\[1 = -119 \cdot 201 + 80 \cdot 299\]
+
+This shows that:
+
+\[-119 \cdot 201 \equiv 1 \pmod{299}\]
+
+Therefore, the multiplicative inverse of \(201\) modulo \(299\) is \(-119\). To express this as a positive integer between \(0\) and \(298\), we add \(299\) to \(-119\):
+
+\[-119 + 299 = 180\]
+
+Thus, the multiplicative inverse of \(201\) modulo \(299\) is:
+
+\[\boxed{180}\]

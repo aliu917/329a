@@ -1,0 +1,40 @@
+To determine the probability of drawing one card from each suit in a four-card draw with replacement from a standard 52-card deck, we can follow these steps:
+
+1. **Determine the total number of possible outcomes:**
+   Since we are drawing with replacement, each draw is independent, and there are 52 possible outcomes for each draw. Therefore, the total number of possible outcomes for drawing four cards is:
+   \[
+   52^4
+   \]
+
+2. **Determine the number of favorable outcomes:**
+   We need to draw one card from each suit. There are 4 suits (hearts, diamonds, clubs, spades), and we need to draw one card from each suit in any order. The number of ways to assign the suits to the four draws is the number of permutations of 4 suits, which is:
+   \[
+   4! = 24
+   \]
+   For each specific order of suits, the probability of drawing the first card from the first suit, the second card from the second suit, the third card from the third suit, and the fourth card from the fourth suit is:
+   \[
+   \left(\frac{13}{52}\right) \left(\frac{13}{52}\right) \left(\frac{13}{52}\right) \left(\frac{13}{52}\right) = \left(\frac{1}{4}\right)^4 = \frac{1}{256}
+   \]
+   Therefore, the total number of favorable outcomes is:
+   \[
+   24 \times \frac{1}{256} = \frac{24}{256} = \frac{3}{32}
+   \]
+
+3. **Calculate the probability:**
+   The probability is the number of favorable outcomes divided by the total number of possible outcomes:
+   \[
+   \frac{\frac{3}{32}}{52^4} = \frac{3}{32 \times 52^4}
+   \]
+   Simplifying the denominator:
+   \[
+   52^4 = (4 \times 13)^4 = 4^4 \times 13^4 = 256 \times 28561 = 7311616
+   \]
+   So the probability is:
+   \[
+   \frac{3}{32 \times 7311616} = \frac{3}{233971712}
+   \]
+
+Thus, the probability that we will end up with one card from each suit is:
+\[
+\boxed{\frac{3}{233971712}}
+\]

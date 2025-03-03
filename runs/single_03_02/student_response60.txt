@@ -1,0 +1,143 @@
+To solve the expression \(\sqrt{53 + 20\sqrt{7}}\) in the form \(a + b\sqrt{c}\), we start by assuming that:
+
+\[
+\sqrt{53 + 20\sqrt{7}} = a + b\sqrt{7}
+\]
+
+Next, we square both sides of the equation to eliminate the square root:
+
+\[
+53 + 20\sqrt{7} = (a + b\sqrt{7})^2
+\]
+
+Expanding the right-hand side, we get:
+
+\[
+(a + b\sqrt{7})^2 = a^2 + 2ab\sqrt{7} + (b\sqrt{7})^2 = a^2 + 2ab\sqrt{7} + 7b^2
+\]
+
+We can separate the rational and irrational parts:
+
+\[
+a^2 + 7b^2 + 2ab\sqrt{7}
+\]
+
+For the equation to hold, the rational parts must be equal, and the coefficients of \(\sqrt{7}\) must be equal. Therefore, we have two equations:
+
+1. \(a^2 + 7b^2 = 53\)
+2. \(2ab = 20\)
+
+From the second equation, we solve for \(ab\):
+
+\[
+2ab = 20 \implies ab = 10
+\]
+
+We now have a system of equations:
+
+\[
+a^2 + 7b^2 = 53
+\]
+\[
+ab = 10
+\]
+
+We solve for \(a\) in terms of \(b\) from the second equation:
+
+\[
+a = \frac{10}{b}
+\]
+
+Substitute \(a = \frac{10}{b}\) into the first equation:
+
+\[
+\left(\frac{10}{b}\right)^2 + 7b^2 = 53
+\]
+
+Simplify and solve for \(b^2\):
+
+\[
+\frac{100}{b^2} + 7b^2 = 53
+\]
+
+Multiply through by \(b^2\) to clear the fraction:
+
+\[
+100 + 7b^4 = 53b^2
+\]
+
+Rearrange into a standard polynomial form:
+
+\[
+7b^4 - 53b^2 + 100 = 0
+\]
+
+Let \(x = b^2\). Then the equation becomes:
+
+\[
+7x^2 - 53x + 100 = 0
+\]
+
+We solve this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\), where \(a = 7\), \(b = -53\), and \(c = 100\):
+
+\[
+x = \frac{53 \pm \sqrt{(-53)^2 - 4 \cdot 7 \cdot 100}}{2 \cdot 7}
+\]
+
+Calculate the discriminant:
+
+\[
+(-53)^2 - 4 \cdot 7 \cdot 100 = 2809 - 2800 = 9
+\]
+
+So,
+
+\[
+x = \frac{53 \pm \sqrt{9}}{14} = \frac{53 \pm 3}{14}
+\]
+
+This gives us two solutions for \(x\):
+
+\[
+x = \frac{56}{14} = 4 \quad \text{and} \quad x = \frac{50}{14} = \frac{25}{7}
+\]
+
+Since \(x = b^2\) and \(b^2\) must be an integer, we have:
+
+\[
+b^2 = 4 \implies b = 2 \text{ or } b = -2
+\]
+
+Substitute \(b = 2\) or \(b = -2\) back into \(a = \frac{10}{b}\):
+
+If \(b = 2\):
+
+\[
+a = \frac{10}{2} = 5
+\]
+
+If \(b = -2\):
+
+\[
+a = \frac{10}{-2} = -5
+\]
+
+Thus, the solutions are \((a, b) = (5, 2)\) or \((a, b) = (-5, -2)\). Both pairs give the same form \(a + b\sqrt{7}\).
+
+Using \((a, b) = (5, 2)\):
+
+\[
+\sqrt{53 + 20\sqrt{7}} = 5 + 2\sqrt{7}
+\]
+
+Therefore, \(a = 5\), \(b = 2\), and \(c = 7\). We find \(a + b + c\):
+
+\[
+a + b + c = 5 + 2 + 7 = 14
+\]
+
+The final answer is:
+
+\[
+\boxed{14}
+\]

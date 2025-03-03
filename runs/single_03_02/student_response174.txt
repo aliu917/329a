@@ -1,0 +1,93 @@
+To determine how many positive divisors of 3240 are multiples of 3, we will follow these steps:
+
+1. **Find the prime factorization of 3240.**
+2. **Determine the total number of divisors of 3240.**
+3. **Find the number of divisors of 3240 that are not multiples of 3.**
+4. **Subtract the number of non-multiples of 3 from the total number of divisors to get the number of divisors that are multiples of 3.**
+
+**Step 1: Prime factorization of 3240**
+
+First, we divide 3240 by the smallest prime numbers:
+
+\[
+3240 \div 2 = 1620
+\]
+\[
+1620 \div 2 = 810
+\]
+\[
+810 \div 2 = 405
+\]
+
+405 is not divisible by 2, so we move to the next smallest prime number, which is 3:
+
+\[
+405 \div 3 = 135
+\]
+\[
+135 \div 3 = 45
+\]
+\[
+45 \div 3 = 15
+\]
+\[
+15 \div 3 = 5
+\]
+
+5 is a prime number. Therefore, the prime factorization of 3240 is:
+
+\[
+3240 = 2^3 \times 3^4 \times 5
+\]
+
+**Step 2: Total number of divisors of 3240**
+
+The total number of divisors of a number \( n = p_1^{e_1} \times p_2^{e_2} \times \cdots \times p_k^{e_k} \) is given by:
+
+\[
+(e_1 + 1)(e_2 + 1) \cdots (e_k + 1)
+\]
+
+For \( 3240 = 2^3 \times 3^4 \times 5^1 \):
+
+\[
+(3 + 1)(4 + 1)(1 + 1) = 4 \times 5 \times 2 = 40
+\]
+
+So, 3240 has 40 divisors in total.
+
+**Step 3: Number of divisors of 3240 that are not multiples of 3**
+
+To find the number of divisors that are not multiples of 3, we consider the prime factorization without the factor of 3:
+
+\[
+3240 = 2^3 \times 3^4 \times 5
+\]
+
+Without the factor of 3, the remaining factorization is:
+
+\[
+2^3 \times 5
+\]
+
+The number of divisors of \( 2^3 \times 5 \) is:
+
+\[
+(3 + 1)(1 + 1) = 4 \times 2 = 8
+\]
+
+So, there are 8 divisors of 3240 that are not multiples of 3.
+
+**Step 4: Number of divisors of 3240 that are multiples of 3**
+
+Subtract the number of non-multiples of 3 from the total number of divisors:
+
+\[
+40 - 8 = 32
+\]
+
+Therefore, the number of positive divisors of 3240 that are multiples of 3 is:
+
+\[
+\boxed{32}
+\]

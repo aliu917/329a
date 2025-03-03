@@ -1,0 +1,44 @@
+Let's denote the number of wrens on June 1, 2004 as \( N_0 \). Each year, the number of wrens decreases by 40%, which means it retains 60% of its previous year's count. Therefore, the number of wrens \( N_t \) after \( t \) years can be expressed as:
+\[
+N_t = N_0 \cdot (0.6)^t
+\]
+We need to find the smallest integer \( t \) such that \( N_t < 0.1 N_0 \). Substituting the expression for \( N_t \), we get:
+\[
+N_0 \cdot (0.6)^t < 0.1 N_0
+\]
+By dividing both sides by \( N_0 \) (assuming \( N_0 \neq 0 \)), we obtain:
+\[
+(0.6)^t < 0.1
+\]
+To solve for \( t \), we take the natural logarithm of both sides:
+\[
+\ln((0.6)^t) < \ln(0.1)
+\]
+Using the power rule of logarithms, we have:
+\[
+t \ln(0.6) < \ln(0.1)
+\]
+Since \( \ln(0.6) \) is negative, we divide both sides by \( \ln(0.6) \) and reverse the inequality:
+\[
+t > \frac{\ln(0.1)}{\ln(0.6)}
+\]
+Calculating the values of the logarithms:
+\[
+\ln(0.1) \approx -2.302585 \quad \text{and} \quad \ln(0.6) \approx -0.510826
+\]
+Thus:
+\[
+t > \frac{-2.302585}{-0.510826} \approx 4.506
+\]
+Since \( t \) must be an integer, we round up to the next whole number:
+\[
+t = 5
+\]
+Therefore, the number of wrens will be less than 10% of the original number in 5 years from June 1, 2004. This means the year will be:
+\[
+2004 + 5 = 2009
+\]
+So, the final answer is:
+\[
+\boxed{2009}
+\]

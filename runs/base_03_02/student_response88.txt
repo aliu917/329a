@@ -1,0 +1,36 @@
+Given a right triangle \( \triangle ABC \) with \( \angle B = 90^\circ \), a circle with diameter \( BC \) intersects side \( AC \) at \( D \). We know \( AD = 1 \) and \( BD = 4 \). We need to find the length of \( CD \).
+
+First, let's denote the lengths of the sides of the triangle as follows:
+- \( AB = c \)
+- \( BC = a \)
+- \( CA = b \)
+
+Since \( \angle B = 90^\circ \), by the Pythagorean theorem, we have:
+\[ b = \sqrt{a^2 + c^2} \]
+
+The circle with diameter \( BC \) has its center at the midpoint of \( BC \), which means the radius of the circle is \( \frac{a}{2} \). Since \( D \) lies on the circle, \( BD \) is a radius of the circle, so:
+\[ BD = \frac{a}{2} = 4 \implies a = 8 \]
+
+Now, we use the power of a point theorem at point \( A \) with respect to the circle. The power of point \( A \) is given by:
+\[ AD \cdot AC = AB \cdot BD \]
+Substituting the known values:
+\[ 1 \cdot b = c \cdot 4 \implies b = 4c \]
+
+We also know from the Pythagorean theorem that:
+\[ b = \sqrt{a^2 + c^2} \]
+Substituting \( b = 4c \) and \( a = 8 \):
+\[ 4c = \sqrt{8^2 + c^2} \implies 4c = \sqrt{64 + c^2} \]
+Squaring both sides:
+\[ 16c^2 = 64 + c^2 \implies 15c^2 = 64 \implies c^2 = \frac{64}{15} \implies c = \frac{8}{\sqrt{15}} = \frac{8\sqrt{15}}{15} \]
+
+Now, we can find \( b \):
+\[ b = 4c = 4 \cdot \frac{8\sqrt{15}}{15} = \frac{32\sqrt{15}}{15} \]
+
+Since \( AC = b \) and \( AD = 1 \), we have:
+\[ CD = AC - AD = b - 1 = \frac{32\sqrt{15}}{15} - 1 = \frac{32\sqrt{15} - 15}{15} \]
+
+However, we can also use the fact that \( \triangle ABD \sim \triangle CAD \) (by AA similarity, since both are right triangles and share the angle at \( A \)). The ratio of the corresponding sides is:
+\[ \frac{AD}{BD} = \frac{CD}{AD} \implies \frac{1}{4} = \frac{CD}{1} \implies CD = \frac{1}{4} \cdot 1 = \frac{3}{4} \]
+
+Thus, the length of \( CD \) is:
+\[ \boxed{3} \]

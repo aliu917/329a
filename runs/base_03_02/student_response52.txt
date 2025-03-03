@@ -1,0 +1,16 @@
+To find the largest possible value of \( wx + xy + yz \) given that \( w + x + y + z = 100 \) and \( w, x, y, z \) are nonnegative numbers, we will analyze the expression and use some strategic choices for the values of \( w, x, y, \) and \( z \).
+
+First, let's rewrite the expression \( wx + xy + yz \) in a form that might help us maximize it. Notice that if we set \( w = 0 \) or \( z = 0 \), the expression simplifies but does not necessarily maximize it. Instead, we should consider setting one of the variables to a specific value to see if we can find a pattern or a maximum.
+
+Let's set \( w = 0 \) and \( z = 0 \). Then the expression simplifies to \( xy \) and the constraint becomes \( x + y = 100 \). The maximum value of \( xy \) when \( x + y = 100 \) occurs when \( x = y = 50 \). Therefore, the maximum value of \( xy \) is:
+\[
+50 \cdot 50 = 2500.
+\]
+So, if we set \( w = 0 \) and \( z = 0 \), and \( x = 50 \) and \( y = 50 \), the value of \( wx + xy + yz \) is:
+\[
+0 \cdot 50 + 50 \cdot 50 + 50 \cdot 0 = 2500.
+\]
+
+Now, let's check if we can get a larger value by not setting any of the variables to zero. Suppose we set \( w = a \), \( x = b \), \( y = c \), and \( z = d \) such that \( a + b + c + d = 100 \). We need to maximize \( ab + bc + cd \). By the AM-GM inequality, we know that the product is maximized when the terms are as close to each other as possible. However, setting all variables to be close to each other and non-zero does not seem to yield a value larger than 2500 when we check the boundary conditions (i.e., setting one or two variables to zero).
+
+Therefore, the largest possible value of \( wx + xy + yz \) is \(\boxed{2500}\).

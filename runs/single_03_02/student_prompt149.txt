@@ -1,0 +1,11 @@
+Define a regular $n$-pointed star to be the union of $n$ line segments $P_1P_2, P_2P_3,\ldots, P_nP_1$ such that
+the points $P_1, P_2,\ldots, P_n$ are coplanar and no three of them are collinear,
+each of the $n$ line segments intersects at least one of the other line segments at a point other than an endpoint,
+all of the angles at $P_1, P_2,\ldots, P_n$ are congruent,
+all of the $n$ line segments $P_2P_3,\ldots, P_nP_1$ are congruent, and
+the path $P_1P_2, P_2P_3,\ldots, P_nP_1$ turns counterclockwise at an angle of less than 180 degrees at each vertex.
+There are no regular 3-pointed, 4-pointed, or 6-pointed stars. All regular 5-pointed stars are similar, but there are two non-similar regular 7-pointed stars. How many non-similar regular 1000-pointed stars are there?
+
+Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'
+Consider the following hints and feedback when reasoning about the response:
+To accurately determine the number of non-similar regular \( n \)-pointed stars, it is essential to properly apply the concept of coprimality and account for the symmetries of the problem. Specifically, one should first identify the total candidates for \( m \) in the range of \( 1 \) to \( n-1 \) that are coprime to \( n \), then exclude those that lead to degeneracies, and finally consider the equivalence of stars formed by \( k \) and \( n-k \) to avoid overcounting. Applying the principle of inclusion-exclusion correctly to count the integers that are not coprime to \( n \) is vital for an accurate solution.

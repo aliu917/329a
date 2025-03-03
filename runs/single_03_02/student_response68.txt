@@ -1,0 +1,18 @@
+To determine how many elements of the set \( S = \{5^k \mid k \in \mathbb{Z}, 0 \le k \le 2004\} \) begin with the digit 1, we need to analyze the leading digit of \( 5^k \). The leading digit of a number \( n \) can be determined by looking at the fractional part of \( \log_{10} n \). Specifically, if \( \log_{10} n = a + f \) where \( a \) is an integer and \( 0 \le f < 1 \), then the leading digit of \( n \) is \( 10^f \) rounded down to the nearest integer.
+
+For \( 5^k \), we have:
+\[ \log_{10} (5^k) = k \log_{10} 5. \]
+Let \( \log_{10} 5 \approx 0.69897 \). Then:
+\[ k \log_{10} 5 = k \cdot 0.69897 = a + f, \]
+where \( a \) is an integer and \( 0 \le f < 1 \). The leading digit of \( 5^k \) is 1 if and only if:
+\[ 0 \le \log_{10} (5^k) - \lfloor \log_{10} (5^k) \rfloor < \log_{10} 2, \]
+which is equivalent to:
+\[ 0 \le f - \lfloor f \rfloor < \log_{10} 2. \]
+Since \( \log_{10} 2 \approx 0.3010 \), we need to find the proportion of the interval \([0, 1)\) that lies in \([0, 0.3010)\). This proportion is \( 0.3010 \).
+
+Since \( k \log_{10} 5 \) is uniformly distributed modulo 1 (a property of irrational rotations on the unit circle), the fraction of the time that the fractional part \( f \) lies in the interval \([0, 0.3010)\) is \( 0.3010 \). Therefore, the number of \( k \) such that \( 5^k \) begins with the digit 1 is:
+\[ 0.3010 \times 2005 \approx 604.505. \]
+Rounding to the nearest integer, we get 605.
+
+Thus, the number of elements of \( S \) that begin with the digit 1 is:
+\[ \boxed{605}. \]

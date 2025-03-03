@@ -1,0 +1,94 @@
+You are given a reasoning attempt for answering the following question: Triangle $ABC$ is inscribed in circle $\omega$ with $AB=5$, $BC=7$, and $AC=3$. The bisector of angle $A$ meets side $\overline{BC}$ at $D$ and circle $\omega$ at a second point $E$. Let $\gamma$ be the circle with diameter $\overline{DE}$. Circles $\omega$ and $\gamma$ meet at $E$ and a second point $F$. Then $AF^2 = \frac mn$, where $m$ and $n$ are relatively prime positive integers. Find $m+n$.
+
+
+Attempt: To solve the problem, we start by finding the length of \(AD\) using the Angle Bisector Theorem. According to the theorem, the angle bisector of \(\angle BAC\) divides the opposite side \(BC\) into segments proportional to the adjacent sides. Thus, we have:
+\[
+\frac{BD}{DC} = \frac{AB}{AC} = \frac{5}{3}
+\]
+Let \(BD = 5x\) and \(DC = 3x\). Since \(BD + DC = BC = 7\), we have:
+\[
+5x + 3x = 7 \implies 8x = 7 \implies x = \frac{7}{8}
+\]
+Therefore, \(BD = 5x = \frac{35}{8}\) and \(DC = 3x = \frac{21}{8}\).
+
+Next, we use Stewart's Theorem to find \(AD\). Stewart's Theorem states:
+\[
+AB^2 \cdot DC + AC^2 \cdot BD = AD^2 \cdot BC + BD \cdot DC \cdot BC
+\]
+Substituting the known values:
+\[
+5^2 \cdot \frac{21}{8} + 3^2 \cdot \frac{35}{8} = AD^2 \cdot 7 + \frac{35}{8} \cdot \frac{21}{8} \cdot 7
+\]
+Simplifying each term:
+\[
+25 \cdot \frac{21}{8} + 9 \cdot \frac{35}{8} = AD^2 \cdot 7 + \frac{35 \cdot 21 \cdot 7}{8^2}
+\]
+\[
+\frac{525}{8} + \frac{315}{8} = AD^2 \cdot 7 + \frac{5390}{64}
+\]
+\[
+\frac{840}{8} = AD^2 \cdot 7 + \frac{5390}{64}
+\]
+\[
+105 = AD^2 \cdot 7 + \frac{5390}{64}
+\]
+Multiplying through by 64 to clear the fraction:
+\[
+6720 = 448AD^2 + 5390
+\]
+\[
+330 = 448AD^2
+\]
+\[
+AD^2 = \frac{330}{448} = \frac{165}{224}
+\]
+
+Now, we need to find the length \(DE\). Since \(E\) is the second intersection of the angle bisector with the circumcircle, \(E\) is the midpoint of the arc \(BC\) not containing \(A\). By the properties of cyclic quadrilaterals and the fact that \(DE\) is the diameter of circle \(\gamma\), we use the Power of a Point theorem at \(D\):
+\[
+DE \cdot DA = DB \cdot DC
+\]
+\[
+DE \cdot \sqrt{\frac{165}{224}} = \frac{35}{8} \cdot \frac{21}{8}
+\]
+\[
+DE \cdot \sqrt{\frac{165}{224}} = \frac{735}{64}
+\]
+\[
+DE = \frac{735}{64} \cdot \frac{224}{165\sqrt{224}}
+\]
+Simplifying:
+\[
+DE = \frac{735 \cdot 224}{64 \cdot 165 \sqrt{224}}
+\]
+\[
+DE = \frac{735 \cdot 7}{165 \sqrt{224}}
+\]
+\[
+DE = \frac{5145}{165 \sqrt{224}}
+\]
+\[
+DE = \frac{35}{\sqrt{224}}
+\]
+
+Finally, we use the fact that \(F\) is the intersection of \(\omega\) and \(\gamma\) other than \(E\). By the properties of the radical axis and the power of a point, we find:
+\[
+AF^2 = AB \cdot AC = 5 \cdot 3 = 15
+\]
+
+Thus, \(AF^2 = \frac{15}{1}\), and \(m+n = 15+1 = \boxed{16}\).
+
+Correct solution: Use the angle bisector theorem to find $CD=\frac{21}{8}$, $BD=\frac{35}{8}$, and use Stewart's Theorem to find $AD=\frac{15}{8}$. Use Power of the Point to find $DE=\frac{49}{8}$, and so $AE=8$. Use law of cosines to find $\angle CAD = \frac{\pi} {3}$, hence $\angle BAD = \frac{\pi}{3}$ as well, and $\triangle BCE$ is equilateral, so $BC=CE=BE=7$.
+I'm sure there is a more elegant solution from here, but instead we'll do some hairy law of cosines:
+$AE^2 = AF^2 + EF^2 - 2 \cdot AF \cdot EF \cdot \cos \angle AFE.$ (1)
+$AF^2 = AE^2 + EF^2 - 2 \cdot AE \cdot EF \cdot \cos \angle AEF.$ Adding these two and simplifying we get:
+$EF = AF \cdot \cos \angle AFE + AE \cdot \cos \angle AEF$ (2). Ah, but $\angle AFE = \angle ACE$ (since $F$ lies on $\omega$), and we can find $cos \angle ACE$ using the law of cosines:
+$AE^2 = AC^2 + CE^2 - 2 \cdot AC \cdot CE \cdot \cos \angle ACE$, and plugging in $AE = 8, AC = 3, BE = BC = 7,$ we get $\cos \angle ACE = -1/7 = \cos \angle AFE$.
+Also, $\angle AEF = \angle DEF$, and $\angle DFE = \pi/2$ (since $F$ is on the circle $\gamma$ with diameter $DE$), so $\cos \angle AEF = EF/DE = 8 \cdot EF/49$.
+Plugging in all our values into equation (2), we get:
+$EF = -\frac{AF}{7} + 8 \cdot \frac{8EF}{49}$, or $EF = \frac{7}{15} \cdot AF$.
+Finally, we plug this into equation (1), yielding:
+$8^2 = AF^2 + \frac{49}{225} \cdot AF^2 - 2 \cdot AF \cdot \frac{7AF}{15} \cdot \frac{-1}{7}$. Thus,
+$64 = \frac{AF^2}{225} \cdot (225+49+30),$ or $AF^2 = \frac{900}{19}.$ The answer is $\boxed{919}$.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

@@ -1,0 +1,98 @@
+Let's denote the initial number of candies Tracy had as \( x \).
+
+1. Tracy ate \(\frac{1}{3}\) of the candies:
+   \[
+   \text{Candies eaten by Tracy} = \frac{x}{3}
+   \]
+   \[
+   \text{Candies left} = x - \frac{x}{3} = \frac{2x}{3}
+   \]
+
+2. Tracy then gave \(\frac{1}{4}\) of the remaining candies to her friend Rachel:
+   \[
+   \text{Candies given to Rachel} = \frac{1}{4} \cdot \frac{2x}{3} = \frac{x}{6}
+   \]
+   \[
+   \text{Candies left} = \frac{2x}{3} - \frac{x}{6} = \frac{4x}{6} - \frac{x}{6} = \frac{3x}{6} = \frac{x}{2}
+   \]
+
+3. Tracy and her mom each ate 15 candies:
+   \[
+   \text{Candies left after Tracy and her mom ate} = \frac{x}{2} - 15 - 15 = \frac{x}{2} - 30
+   \]
+
+4. Tracy's brother took somewhere from 1 to 5 candies:
+   \[
+   \text{Candies left} = \frac{x}{2} - 30 - k \quad \text{where } k \in \{1, 2, 3, 4, 5\}
+   \]
+   \[
+   \text{Candies left} = \frac{x}{2} - 30 - k = 3
+   \]
+   \[
+   \frac{x}{2} - 30 - k = 3
+   \]
+   \[
+   \frac{x}{2} - 30 = 3 + k
+   \]
+   \[
+   \frac{x}{2} = 33 + k
+   \]
+   \[
+   x = 2(33 + k) = 66 + 2k
+   \]
+
+Since \( k \) can be any integer from 1 to 5, we need to find the possible values of \( x \):
+
+- If \( k = 1 \):
+  \[
+  x = 66 + 2(1) = 68
+  \]
+- If \( k = 2 \):
+  \[
+  x = 66 + 2(2) = 70
+  \]
+- If \( k = 3 \):
+  \[
+  x = 66 + 2(3) = 72
+  \]
+- If \( k = 4 \):
+  \[
+  x = 66 + 2(4) = 74
+  \]
+- If \( k = 5 \):
+  \[
+  x = 66 + 2(5) = 76
+  \]
+
+We need to check which of these values of \( x \) satisfy all the conditions of the problem. We start with the smallest possible value, \( x = 68 \):
+
+1. Tracy ate \(\frac{68}{3} \approx 22.67\), which is not an integer, so \( x = 68 \) is not valid.
+
+2. Next, we try \( x = 70 \):
+   \[
+   \text{Candies eaten by Tracy} = \frac{70}{3} \approx 23.33 \quad \text{(not an integer, so not valid)}
+   \]
+
+3. Next, we try \( x = 72 \):
+   \[
+   \text{Candies eaten by Tracy} = \frac{72}{3} = 24
+   \]
+   \[
+   \text{Candies left} = 72 - 24 = 48
+   \]
+   \[
+   \text{Candies given to Rachel} = \frac{48}{4} = 12
+   \]
+   \[
+   \text{Candies left} = 48 - 12 = 36
+   \]
+   \[
+   \text{Candies left after Tracy and her mom ate} = 36 - 15 - 15 = 6
+   \]
+   \[
+   \text{Candies left after Tracy's brother took} = 6 - 3 = 3
+   \]
+
+Thus, \( x = 72 \) satisfies all the conditions.
+
+Therefore, the number of candies Tracy had at the start is \(\boxed{72}\).

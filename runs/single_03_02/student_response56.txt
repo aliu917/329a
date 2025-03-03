@@ -1,0 +1,27 @@
+To solve for \( m \) in the given sequence, we start by analyzing the recurrence relation:
+\[ a_{k+1} = a_{k-1} - \frac{3}{a_k} \]
+for \( k = 1, 2, \dots, m-1 \).
+
+First, we multiply both sides of the recurrence relation by \( a_k \):
+\[ a_k a_{k+1} = a_k a_{k-1} - 3. \]
+This can be rewritten as:
+\[ a_k a_{k+1} - a_k a_{k-1} = -3. \]
+We can sum this equation from \( k = 1 \) to \( k = m-1 \):
+\[ \sum_{k=1}^{m-1} (a_k a_{k+1} - a_k a_{k-1}) = \sum_{k=1}^{m-1} -3. \]
+The left side of the equation is a telescoping series:
+\[ a_1 a_2 - a_1 a_0 + a_2 a_3 - a_2 a_1 + a_3 a_4 - a_3 a_2 + \cdots + a_{m-1} a_m - a_{m-1} a_{m-2} = a_{m-1} a_m - a_1 a_0. \]
+Since \( a_m = 0 \), the left side simplifies to:
+\[ -a_1 a_0. \]
+The right side is:
+\[ \sum_{k=1}^{m-1} -3 = -3(m-1). \]
+Thus, we have:
+\[ -a_1 a_0 = -3(m-1). \]
+Substituting the given values \( a_0 = 37 \) and \( a_1 = 72 \), we get:
+\[ -72 \cdot 37 = -3(m-1). \]
+Simplifying the left side, we have:
+\[ -2664 = -3(m-1). \]
+Dividing both sides by \(-3\), we get:
+\[ 888 = m-1. \]
+Adding 1 to both sides, we find:
+\[ m = 889. \]
+Thus, the value of \( m \) is \(\boxed{889}\).

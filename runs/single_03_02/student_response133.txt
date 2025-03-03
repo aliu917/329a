@@ -1,0 +1,39 @@
+To solve this problem, we need to determine the value of \( m \) such that the probability that the two mathematicians meet is 40%. We will use geometric probability to find this value.
+
+1. **Define the problem in a coordinate system:**
+   Let \( X \) and \( Y \) be the times (in minutes past 9 a.m.) that the two mathematicians arrive at the cafeteria. Both \( X \) and \( Y \) are uniformly distributed between 0 and 60. The condition that they meet is \( |X - Y| \leq m \).
+
+2. **Visualize the problem:**
+   We can represent the possible arrival times of the two mathematicians on a 60 by 60 square in the coordinate plane. The area of this square is \( 60 \times 60 = 3600 \).
+
+3. **Determine the area where they do not meet:**
+   The area where they do not meet is given by the two regions where \( X - Y > m \) and \( Y - X > m \). These regions are two right triangles, each with legs of length \( 60 - m \). The area of each triangle is \( \frac{1}{2} (60 - m)^2 \). Therefore, the total area where they do not meet is \( (60 - m)^2 \).
+
+4. **Calculate the area where they meet:**
+   The area where they meet is the total area of the square minus the area where they do not meet:
+   \[
+   3600 - (60 - m)^2
+   \]
+   The probability that they meet is the ratio of the area where they meet to the total area of the square:
+   \[
+   \frac{3600 - (60 - m)^2}{3600} = 0.40
+   \]
+   Simplify the equation:
+   \[
+   3600 - (60 - m)^2 = 1440
+   \]
+   \[
+   (60 - m)^2 = 2160
+   \]
+   \[
+   60 - m = \sqrt{2160} = 12\sqrt{15}
+   \]
+   \[
+   m = 60 - 12\sqrt{15}
+   \]
+   Here, \( a = 60 \), \( b = 12 \), and \( c = 15 \). Therefore, \( a + b + c = 60 + 12 + 15 = 87 \).
+
+The final answer is:
+\[
+\boxed{87}
+\]

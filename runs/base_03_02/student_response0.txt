@@ -1,0 +1,47 @@
+To solve the problem, we need to analyze the energy stored in the system of charges before and after the movement of one charge.
+
+### Step 1: Determine the Initial Energy Configuration
+We start with three identical point charges \( q \) at the vertices of an equilateral triangle with side length \( a \).
+
+The energy stored by any pair of charges is given by:
+\[ U = k \frac{q_1 q_2}{r} \]
+where \( k \) is Coulomb's constant, \( q_1 \) and \( q_2 \) are the charges, and \( r \) is the distance between them.
+
+Since the charges are identical (\( q_1 = q_2 = q \)) and the distance between each pair of charges is \( a \), the energy stored between each pair of charges is:
+\[ U_{\text{pair}} = k \frac{q^2}{a} \]
+
+There are three pairs of charges in an equilateral triangle, so the total initial energy \( U_{\text{initial}} \) is:
+\[ U_{\text{initial}} = 3 \times k \frac{q^2}{a} = 15 \text{ Joules} \]
+
+Thus,
+\[ 3k \frac{q^2}{a} = 15 \]
+\[ k \frac{q^2}{a} = 5 \text{ Joules} \]
+
+### Step 2: Determine the New Energy Configuration
+Now, move one charge to the midpoint of the opposite side. Let's denote the side length of the equilateral triangle as \( a \), and the new position of the moved charge is at the midpoint of the side opposite to it.
+
+The new distances are:
+- Distance between the moved charge and each of the other two charges: \( \frac{a}{2} \)
+- Distance between the two remaining charges: \( a \)
+
+The energy stored between the moved charge and each of the other two charges is:
+\[ U_{\text{new, pair}} = k \frac{q^2}{\frac{a}{2}} = 2k \frac{q^2}{a} \]
+
+There are two such pairs, so the total energy from these pairs is:
+\[ 2 \times 2k \frac{q^2}{a} = 4k \frac{q^2}{a} \]
+
+The energy stored between the two remaining charges remains the same:
+\[ U_{\text{remaining pair}} = k \frac{q^2}{a} \]
+
+Thus, the total new energy \( U_{\text{new}} \) is:
+\[ U_{\text{new}} = 4k \frac{q^2}{a} + k \frac{q^2}{a} = 5k \frac{q^2}{a} \]
+
+Using the earlier result that \( k \frac{q^2}{a} = 5 \text{ Joules} \):
+\[ U_{\text{new}} = 5 \times 5 = 25 \text{ Joules} \]
+
+### Step 3: Calculate the Increase in Energy
+The increase in energy is:
+\[ \Delta U = U_{\text{new}} - U_{\text{initial}} = 25 - 15 = 10 \text{ Joules} \]
+
+Thus, the additional energy stored is:
+\[ \boxed{10} \]

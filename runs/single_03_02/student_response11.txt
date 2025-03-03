@@ -1,0 +1,82 @@
+To solve the expression \((2x^2+3x+7)(x+1)-(x+1)(x^2+4x-63)+(3x-14)(x+1)(x+5)\), we will follow these steps:
+
+1. **Expand each term:**
+   - Expand \((2x^2+3x+7)(x+1)\):
+     \[
+     (2x^2+3x+7)(x+1) = 2x^2(x+1) + 3x(x+1) + 7(x+1)
+     \]
+     \[
+     = 2x^3 + 2x^2 + 3x^2 + 3x + 7x + 7
+     \]
+     \[
+     = 2x^3 + 5x^2 + 10x + 7
+     \]
+
+   - Expand \((x+1)(x^2+4x-63)\):
+     \[
+     (x+1)(x^2+4x-63) = x(x^2+4x-63) + 1(x^2+4x-63)
+     \]
+     \[
+     = x^3 + 4x^2 - 63x + x^2 + 4x - 63
+     \]
+     \[
+     = x^3 + 5x^2 - 59x - 63
+     \]
+
+   - Expand \((3x-14)(x+1)(x+5)\):
+     - First, expand \((x+1)(x+5)\):
+       \[
+       (x+1)(x+5) = x(x+5) + 1(x+5)
+       \]
+       \[
+       = x^2 + 5x + x + 5
+       \]
+       \[
+       = x^2 + 6x + 5
+       \]
+     - Then, expand \((3x-14)(x^2+6x+5)\):
+       \[
+       (3x-14)(x^2+6x+5) = 3x(x^2+6x+5) - 14(x^2+6x+5)
+       \]
+       \[
+       = 3x^3 + 18x^2 + 15x - 14x^2 - 84x - 70
+       \]
+       \[
+       = 3x^3 + 4x^2 - 69x - 70
+       \]
+
+2. **Substitute the expanded forms back into the original expression:**
+   \[
+   (2x^3 + 5x^2 + 10x + 7) - (x^3 + 5x^2 - 59x - 63) + (3x^3 + 4x^2 - 69x - 70)
+   \]
+
+3. **Combine like terms:**
+   - Combine the \(x^3\) terms:
+     \[
+     2x^3 - x^3 + 3x^3 = 4x^3
+     \]
+
+   - Combine the \(x^2\) terms:
+     \[
+     5x^2 - 5x^2 + 4x^2 = 4x^2
+     \]
+
+   - Combine the \(x\) terms:
+     \[
+     10x + 59x - 69x = 0x = 0
+     \]
+
+   - Combine the constant terms:
+     \[
+     7 + 63 - 70 = 0
+     \]
+
+4. **Write the final polynomial:**
+   \[
+   4x^3 + 4x^2 + 0x + 0 = 4x^3 + 4x^2
+   \]
+
+Thus, the final answer is:
+\[
+\boxed{4x^3 + 4x^2}
+\]

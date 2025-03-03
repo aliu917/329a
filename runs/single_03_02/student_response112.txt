@@ -1,0 +1,77 @@
+To find the distance from the center \(O\) of the sphere to the plane of triangle \(ABC\), we need to follow these steps:
+
+1. **Calculate the area of triangle \(ABC\):**
+
+   Using Heron's formula, we first find the semi-perimeter \(s\) of triangle \(ABC\):
+   \[
+   s = \frac{AB + BC + CA}{2} = \frac{13 + 14 + 15}{2} = 21
+   \]
+
+   Next, we use Heron's formula to find the area \(K\) of triangle \(ABC\):
+   \[
+   K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{21(21-13)(21-14)(21-15)} = \sqrt{21 \cdot 8 \cdot 7 \cdot 6}
+   \]
+   \[
+   K = \sqrt{21 \cdot 336} = \sqrt{7056} = 84
+   \]
+
+2. **Calculate the circumradius \(R\) of triangle \(ABC\):**
+
+   The formula for the circumradius \(R\) of a triangle is:
+   \[
+   R = \frac{abc}{4K}
+   \]
+   where \(a = 13\), \(b = 14\), \(c = 15\), and \(K = 84\):
+   \[
+   R = \frac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \frac{2730}{336} = \frac{65}{8}
+   \]
+
+3. **Determine the distance from the center \(O\) of the sphere to the plane of triangle \(ABC\):**
+
+   Let \(d\) be the distance from \(O\) to the plane of triangle \(ABC\). The relationship between the radius \(R_s\) of the sphere, the circumradius \(R\) of triangle \(ABC\), and the distance \(d\) is given by:
+   \[
+   R_s^2 = R^2 + d^2
+   \]
+   where \(R_s = 20\) and \(R = \frac{65}{8}\):
+   \[
+   20^2 = \left(\frac{65}{8}\right)^2 + d^2
+   \]
+   \[
+   400 = \frac{4225}{64} + d^2
+   \]
+   \[
+   400 = \frac{4225}{64} + d^2
+   \]
+   \[
+   400 \cdot 64 = 4225 + 64d^2
+   \]
+   \[
+   25600 = 4225 + 64d^2
+   \]
+   \[
+   25600 - 4225 = 64d^2
+   \]
+   \[
+   21375 = 64d^2
+   \]
+   \[
+   d^2 = \frac{21375}{64}
+   \]
+   \[
+   d = \sqrt{\frac{21375}{64}} = \frac{\sqrt{21375}}{8} = \frac{5\sqrt{855}}{8}
+   \]
+
+4. **Express \(d\) in the form \(\frac{m\sqrt{n}}{k}\):**
+
+   Here, \(m = 5\), \(n = 855\), and \(k = 8\). Since \(855\) is not divisible by the square of any prime, the condition is satisfied.
+
+5. **Calculate \(m + n + k\):**
+
+   \[
+   m + n + k = 5 + 855 + 8 = 868
+   \]
+
+Thus, the final answer is:
+\[
+\boxed{868}
+\]

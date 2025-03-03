@@ -1,0 +1,35 @@
+To find the sum \(\sum_{n=1}^\infty \frac{a_n}{4^{n+1}}\), we start by defining the sum as \(S\):
+\[
+S = \sum_{n=1}^\infty \frac{a_n}{4^{n+1}}.
+\]
+We can rewrite this as:
+\[
+S = \frac{a_1}{4^2} + \frac{a_2}{4^3} + \frac{a_3}{4^4} + \frac{a_4}{4^5} + \cdots.
+\]
+Using the recurrence relation \(a_{n+2} = a_{n+1} + a_n\), we can express the sum in a different form. Consider the sum \(4S\) and \(16S\):
+\[
+4S = \frac{a_1}{4} + \frac{a_2}{4^2} + \frac{a_3}{4^3} + \frac{a_4}{4^4} + \cdots,
+\]
+\[
+16S = a_1 + \frac{a_2}{4} + \frac{a_3}{4^2} + \frac{a_4}{4^3} + \cdots.
+\]
+Now, we can use the recurrence relation to express \(16S - 4S - S\):
+\[
+16S - 4S - S = \left(a_1 + \frac{a_2}{4} + \frac{a_3}{4^2} + \frac{a_4}{4^3} + \cdots \right) - \left(\frac{a_1}{4} + \frac{a_2}{4^2} + \frac{a_3}{4^3} + \frac{a_4}{4^4} + \cdots \right) - \left(\frac{a_1}{4^2} + \frac{a_2}{4^3} + \frac{a_3}{4^4} + \cdots \right).
+\]
+Simplifying the right-hand side, we get:
+\[
+11S = a_1 + \left(\frac{a_2}{4} - \frac{a_1}{4}\right) + \left(\frac{a_3}{4^2} - \frac{a_2}{4^2} - \frac{a_1}{4^2}\right) + \left(\frac{a_4}{4^3} - \frac{a_3}{4^3} - \frac{a_2}{4^3}\right) + \cdots.
+\]
+Since \(a_1 = 1\) and \(a_2 = 1\), the terms simplify to:
+\[
+11S = 1 + \left(\frac{1}{4} - \frac{1}{4}\right) + \left(\frac{1}{4^2} - \frac{1}{4^2} - \frac{1}{4^2}\right) + \left(\frac{2}{4^3} - \frac{1}{4^3} - \frac{1}{4^3}\right) + \cdots = 1.
+\]
+Thus, we have:
+\[
+11S = 1 \implies S = \frac{1}{11}.
+\]
+Therefore, the sum is:
+\[
+\boxed{\frac{1}{11}}.
+\]

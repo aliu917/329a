@@ -1,0 +1,28 @@
+To solve the problem, we need to use the Power of a Point theorem, which states that for a point \(P\) outside a circle, the power of the point \(P\) with respect to the circle is the same for any secant and tangent drawn from that point. Specifically, if \(PT\) is the tangent from \(P\) to the circle and \(PA\) and \(PB\) are segments of a secant from \(P\) intersecting the circle at points \(A\) and \(B\) respectively, then \(PT^2 = PA \cdot PB\).
+
+Given:
+- \(PA = 3\)
+- \(PT = AB - PA\)
+- Let \(PB = x\), so \(AB = PB - PA = x - 3\)
+
+From the Power of a Point theorem, we have:
+\[PT^2 = PA \cdot PB\]
+Substituting the given values:
+\[PT^2 = 3 \cdot x\]
+We also know:
+\[PT = AB - PA = (x - 3) - 3 = x - 6\]
+So, we substitute \(PT = x - 6\) into the Power of a Point equation:
+\[(x - 6)^2 = 3x\]
+Expanding and simplifying the equation:
+\[x^2 - 12x + 36 = 3x\]
+\[x^2 - 15x + 36 = 0\]
+We solve this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\), where \(a = 1\), \(b = -15\), and \(c = 36\):
+\[x = \frac{15 \pm \sqrt{225 - 144}}{2}\]
+\[x = \frac{15 \pm \sqrt{81}}{2}\]
+\[x = \frac{15 \pm 9}{2}\]
+This gives us two solutions:
+\[x = \frac{15 + 9}{2} = 12\]
+\[x = \frac{15 - 9}{2} = 3\]
+Since \(PA < PB\), we have \(PB = 12\).
+
+Thus, the value of \(PB\) is \(\boxed{12}\).

@@ -1,0 +1,89 @@
+To solve this problem, we need to determine the value of \( m \) such that the probability that the two mathematicians meet is 40%. We will use a geometric probability approach to solve this problem.
+
+1. **Define the Problem in a Coordinate System:**
+   - Let \( X \) and \( Y \) be the times (in minutes past 9 a.m.) that the first and second mathematician arrive, respectively.
+   - Both \( X \) and \( Y \) are uniformly distributed between 0 and 60 minutes.
+   - The condition for them to meet is \( |X - Y| \leq m \).
+
+2. **Visualize the Problem:**
+   - Consider the square \([0, 60] \times [0, 60]\) in the \(XY\)-plane.
+   - The region where \( |X - Y| \leq m \) consists of two triangular regions: one above the line \( Y = X + m \) and one below the line \( Y = X - m \).
+
+3. **Calculate the Area of the Non-Meeting Region:**
+   - The lines \( Y = X + m \) and \( Y = X - m \) intersect the boundaries of the square at points:
+     - \( (0, m) \) and \( (60, 60 - m) \) for \( Y = X + m \)
+     - \( (m, 0) \) and \( (60 - m, 60) \) for \( Y = X - m \)
+   - These lines form two right triangles in the corners of the square.
+   - The area of each triangle is:
+     \[
+     \text{Area of one triangle} = \frac{1}{2} \times m \times (60 - m)
+     \]
+   - Since there are two such triangles, the total area of the non-meeting region is:
+     \[
+     2 \times \frac{1}{2} \times m \times (60 - m) = m(60 - m)
+     \]
+
+4. **Calculate the Total Area of the Square:**
+   - The total area of the square is:
+     \[
+     60 \times 60 = 3600
+     \]
+
+5. **Determine the Area of the Meeting Region:**
+   - The area where they meet is the total area minus the area of the non-meeting region:
+     \[
+     3600 - m(60 - m)
+     \]
+
+6. **Set Up the Probability Equation:**
+   - The probability that they meet is given by the ratio of the area where they meet to the total area:
+     \[
+     \frac{3600 - m(60 - m)}{3600} = 0.4
+     \]
+
+7. **Solve for \( m \):**
+   - Simplify the equation:
+     \[
+     3600 - m(60 - m) = 1440
+     \]
+     \[
+     3600 - 60m + m^2 = 1440
+     \]
+     \[
+     m^2 - 60m + 2160 = 0
+     \]
+   - Solve the quadratic equation using the quadratic formula \( m = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \):
+     \[
+     m = \frac{60 \pm \sqrt{60^2 - 4 \cdot 1 \cdot 2160}}{2 \cdot 1}
+     \]
+     \[
+     m = \frac{60 \pm \sqrt{3600 - 8640}}{2}
+     \]
+     \[
+     m = \frac{60 \pm \sqrt{1440}}{2}
+     \]
+     \[
+     m = \frac{60 \pm 12\sqrt{10}}{2}
+     \]
+     \[
+     m = 30 \pm 6\sqrt{10}
+     \]
+
+8. **Select the Valid Solution:**
+   - Since \( m \) must be less than 60 minutes, we choose:
+     \[
+     m = 30 - 6\sqrt{10}
+     \]
+
+9. **Identify \( a \), \( b \), and \( c \):**
+   - From \( m = 30 - 6\sqrt{10} \), we have \( a = 30 \), \( b = 6 \), and \( c = 10 \).
+
+10. **Calculate \( a + b + c \):**
+    \[
+    a + b + c = 30 + 6 + 10 = 46
+    \]
+
+Thus, the final answer is:
+\[
+\boxed{46}
+\]

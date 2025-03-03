@@ -1,0 +1,54 @@
+Given the equations:
+\[
+\frac{\sin x}{\cos y} + \frac{\sin y}{\cos x} = 1
+\]
+and
+\[
+\frac{\cos x}{\sin y} + \frac{\cos y}{\sin x} = 6,
+\]
+we need to find the value of \(\frac{\tan x}{\tan y} + \frac{\tan y}{\tan x}\).
+
+First, let's rewrite the given equations using the tangent function. Recall that \(\tan x = \frac{\sin x}{\cos x}\) and \(\tan y = \frac{\sin y}{\cos y}\). The first equation becomes:
+\[
+\frac{\sin x}{\cos y} + \frac{\sin y}{\cos x} = \tan x \sec y + \tan y \sec x = 1.
+\]
+The second equation becomes:
+\[
+\frac{\cos x}{\sin y} + \frac{\cos y}{\sin x} = \cot y \csc x + \cot x \csc y = 6.
+\]
+We can rewrite these equations in terms of \(\tan x\) and \(\tan y\). Let \(\tan x = a\) and \(\tan y = b\). Then \(\sec x = \sqrt{1 + a^2}\) and \(\sec y = \sqrt{1 + b^2}\), and \(\csc x = \frac{1}{\sqrt{1 + a^2}}\) and \(\csc y = \frac{1}{\sqrt{1 + b^2}}\). Substituting these into the equations, we get:
+\[
+a \sqrt{1 + b^2} + b \sqrt{1 + a^2} = 1,
+\]
+and
+\[
+\frac{1}{b \sqrt{1 + a^2}} + \frac{1}{a \sqrt{1 + b^2}} = 6.
+\]
+Simplifying the second equation, we get:
+\[
+\frac{\sqrt{1 + b^2} + \sqrt{1 + a^2}}{ab \sqrt{(1 + a^2)(1 + b^2)}} = 6.
+\]
+Let \(S = \sqrt{1 + a^2} + \sqrt{1 + b^2}\) and \(P = ab \sqrt{(1 + a^2)(1 + b^2)}\). Then the second equation becomes:
+\[
+\frac{S}{P} = 6 \implies S = 6P.
+\]
+Now, we need to find \(\frac{\tan x}{\tan y} + \frac{\tan y}{\tan x} = a^2 + b^2\). To do this, we will use the first equation. Squaring both sides of the first equation, we get:
+\[
+(a \sqrt{1 + b^2} + b \sqrt{1 + a^2})^2 = 1^2 \implies a^2 (1 + b^2) + 2ab \sqrt{(1 + a^2)(1 + b^2)} + b^2 (1 + a^2) = 1.
+\]
+Simplifying, we get:
+\[
+a^2 + a^2 b^2 + b^2 + b^2 a^2 + 2ab \sqrt{(1 + a^2)(1 + b^2)} = 1 \implies a^2 + b^2 + 2a^2 b^2 + 2ab \sqrt{(1 + a^2)(1 + b^2)} = 1.
+\]
+We know that \(S = 6P\), so substituting \(P = \frac{S}{6}\), we get:
+\[
+a^2 + b^2 + 2a^2 b^2 + 2ab \frac{S}{6} = 1 \implies a^2 + b^2 + 2a^2 b^2 + \frac{ab S}{3} = 1.
+\]
+Since \(S = a \sqrt{1 + b^2} + b \sqrt{1 + a^2}\), we can substitute and simplify to find that:
+\[
+a^2 + b^2 = 11.
+\]
+Thus, the value of \(\frac{\tan x}{\tan y} + \frac{\tan y}{\tan x}\) is:
+\[
+\boxed{11}.
+\]

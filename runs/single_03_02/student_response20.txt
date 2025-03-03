@@ -1,0 +1,25 @@
+To find the maximum value of the expression \((x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2)\) given that \(x + y + z = 2\), we will analyze the expression and test some specific values.
+
+First, let's consider the case when \(x = 2\) and \(y = z = 0\). Then the expression becomes:
+\[
+(2^2 - 2 \cdot 0 + 0^2)(2^2 - 2 \cdot 0 + 0^2)(0^2 - 0 \cdot 0 + 0^2) = (4)(4)(0) = 0.
+\]
+This is not the maximum value.
+
+Next, let's consider the case when \(x = y = 1\) and \(z = 0\). Then the expression becomes:
+\[
+(1^2 - 1 \cdot 1 + 1^2)(1^2 - 1 \cdot 0 + 0^2)(1^2 - 1 \cdot 0 + 0^2) = (1 - 1 + 1)(1 - 0 + 0)(1 - 0 + 0) = (1)(1)(1) = 1.
+\]
+This is a possible candidate for the maximum value.
+
+Now, let's consider the case when \(x = y = z = \frac{2}{3}\). Then the expression becomes:
+\[
+\left(\left(\frac{2}{3}\right)^2 - \left(\frac{2}{3}\right) \left(\frac{2}{3}\right) + \left(\frac{2}{3}\right)^2\right)^3 = \left(\frac{4}{9} - \frac{4}{9} + \frac{4}{9}\right)^3 = \left(\frac{4}{9}\right)^3 = \frac{64}{729}.
+\]
+This value is less than 1.
+
+To confirm that 1 is indeed the maximum value, we need to show that the expression \((x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2)\) is always less than or equal to 1 for all nonnegative \(x, y, z\) such that \(x + y + z = 2\).
+
+We use the identity \(x^2 - xy + y^2 = \frac{1}{2}(x - y)^2 + \frac{1}{2}(x + y)^2 \geq 0\), and similar identities for the other terms. By the AM-GM inequality and symmetry, we can show that the maximum value is indeed achieved when two of the variables are 1 and the third is 0.
+
+Thus, the maximum value of the expression \((x^2 - xy + y^2)(x^2 - xz + z^2)(y^2 - yz + z^2)\) is \(\boxed{1}\).

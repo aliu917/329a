@@ -1,0 +1,24 @@
+To solve for the coordinates of point \(P\) in terms of \(\overrightarrow{A}\), \(\overrightarrow{B}\), and \(\overrightarrow{C}\), we will use mass points and vector geometry.
+
+First, assign mass points to the vertices of the triangle based on the given ratios. Since \(AE:EC = 2:1\), we assign a mass of 1 to \(C\) and a mass of 2 to \(A\), making the mass of \(E\) equal to \(1+2=3\). Similarly, since \(AF:FB = 1:4\), we assign a mass of 4 to \(A\) and a mass of 1 to \(B\), making the mass of \(F\) equal to \(4+1=5\).
+
+To find a consistent mass system, we need to find a common mass for \(A\). The mass of \(A\) is 2 from the first ratio and 4 from the second ratio. The least common multiple of 2 and 4 is 4, so we scale the masses accordingly. We assign a mass of 4 to \(A\), a mass of 2 to \(C\) (since \(2 \times 2 = 4\)), and a mass of 1 to \(B\) (since \(1 \times 4 = 4\)). This makes the mass of \(E\) equal to \(4+2=6\) and the mass of \(F\) equal to \(4+1=5\).
+
+Now, we can find the coordinates of \(P\) by considering the weighted average of the points \(B\) and \(C\) along the lines \(BE\) and \(CF\).
+
+The coordinates of \(P\) can be expressed as a weighted average of the coordinates of \(B\) and \(C\) using the mass points. The mass of \(B\) is 4 and the mass of \(C\) is 2, so the mass of \(P\) is \(4+2=6\). The coordinates of \(P\) are given by:
+\[
+\overrightarrow{P} = \frac{4\overrightarrow{C} + 2\overrightarrow{B}}{6} = \frac{2}{3}\overrightarrow{B} + \frac{1}{3}\overrightarrow{C}
+\]
+To include \(\overrightarrow{A}\), we note that the mass of \(A\) is 4, so the coordinates of \(P\) can be written as:
+\[
+\overrightarrow{P} = \frac{4}{9}\overrightarrow{A} + \frac{2}{9}\overrightarrow{B} + \frac{1}{9}\overrightarrow{C}
+\]
+This is because the total mass is 9 (the sum of the masses 4, 2, and 3 from the consistent mass system).
+
+Thus, the ordered triple \((x, y, z)\) is \(\left( \frac{4}{9}, \frac{2}{9}, \frac{1}{9} \right)\).
+
+The final answer is:
+\[
+\boxed{\left( \frac{4}{9}, \frac{2}{9}, \frac{1}{9} \right)}
+\]

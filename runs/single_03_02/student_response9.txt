@@ -1,0 +1,39 @@
+To find the sum \(\sum_{n=1}^\infty \frac{a_n}{4^{n+1}}\), we start by defining the sum \(S\) as follows:
+\[
+S = \sum_{n=1}^\infty \frac{a_n}{4^{n+1}}.
+\]
+We can express the series in a more convenient form by shifting the index:
+\[
+S = \frac{a_1}{4^2} + \frac{a_2}{4^3} + \sum_{n=3}^\infty \frac{a_n}{4^{n+1}}.
+\]
+Using the recurrence relation \(a_{n+2} = a_{n+1} + a_n\), we can rewrite the sum starting from \(n=3\):
+\[
+\sum_{n=3}^\infty \frac{a_n}{4^{n+1}} = \sum_{n=3}^\infty \frac{a_{n-1} + a_{n-2}}{4^{n+1}} = \sum_{n=3}^\infty \frac{a_{n-1}}{4^{n+1}} + \sum_{n=3}^\infty \frac{a_{n-2}}{4^{n+1}}.
+\]
+Shifting the indices in the sums, we get:
+\[
+\sum_{n=3}^\infty \frac{a_{n-1}}{4^{n+1}} = \sum_{n=2}^\infty \frac{a_n}{4^{n+2}} = \frac{1}{4} \sum_{n=2}^\infty \frac{a_n}{4^{n+1}} = \frac{1}{4} \left( \frac{a_2}{4^3} + \sum_{n=3}^\infty \frac{a_n}{4^{n+1}} \right) = \frac{1}{4} S - \frac{a_2}{4^3},
+\]
+and
+\[
+\sum_{n=3}^\infty \frac{a_{n-2}}{4^{n+1}} = \sum_{n=1}^\infty \frac{a_n}{4^{n+3}} = \frac{1}{16} \sum_{n=1}^\infty \frac{a_n}{4^{n+1}} = \frac{1}{16} S.
+\]
+Therefore, we have:
+\[
+\sum_{n=3}^\infty \frac{a_n}{4^{n+1}} = \frac{1}{4} S - \frac{1}{4^3} + \frac{1}{16} S = \frac{5}{16} S - \frac{1}{64}.
+\]
+Substituting this back into the expression for \(S\), we get:
+\[
+S = \frac{a_1}{4^2} + \frac{a_2}{4^3} + \left( \frac{5}{16} S - \frac{1}{64} \right) = \frac{1}{16} + \frac{1}{64} + \frac{5}{16} S - \frac{1}{64} = \frac{1}{16} + \frac{5}{16} S.
+\]
+Rearranging terms to isolate \(S\), we get:
+\[
+S - \frac{5}{16} S = \frac{1}{16},
+\]
+\[
+\frac{11}{16} S = \frac{1}{16},
+\]
+\[
+S = \frac{1}{11}.
+\]
+Thus, the value of the sum is \(\boxed{\frac{1}{11}}\).

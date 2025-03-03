@@ -1,0 +1,119 @@
+You are given a reasoning attempt for answering the following question: Points $A,$ $B,$ $C,$ and $D$ are equally spaced along a line such that $AB = BC = CD.$  A point $P$ is located so that $\cos \angle APC = \frac{4}{5}$ and $\cos \angle BPD = \frac{3}{5}.$  Determine $\sin (2 \angle BPC).$
+
+Attempt: To solve for \(\sin(2 \angle BPC)\), we start by analyzing the given information and the relationships between the angles. Let's denote the lengths \(AB = BC = CD = x\).
+
+First, let's place the points on a coordinate line for simplicity. Assume \(A = 0\), \(B = x\), \(C = 2x\), and \(D = 3x\). Let the coordinates of point \(P\) be \((a, b)\).
+
+The cosine of the angles \(\angle APC\) and \(\angle BPD\) are given as \(\cos \angle APC = \frac{4}{5}\) and \(\cos \angle BPD = \frac{3}{5}\). We need to find \(\sin(2 \angle BPC)\).
+
+Since \(\cos \angle APC = \frac{4}{5}\), we have:
+\[
+\cos \angle APC = \frac{\overrightarrow{PA} \cdot \overrightarrow{PC}}{PA \cdot PC} = \frac{4}{5}
+\]
+Similarly, for \(\cos \angle BPD = \frac{3}{5}\), we have:
+\[
+\cos \angle BPD = \frac{\overrightarrow{PB} \cdot \overrightarrow{PD}}{PB \cdot PD} = \frac{3}{5}
+\]
+
+We need to find \(\sin(2 \angle BPC)\). Using the identity \(\sin(2\theta) = 2 \sin \theta \cos \theta\), we need to find \(\sin \angle BPC\) and \(\cos \angle BPC\).
+
+Notice that \(\angle APC + \angle BPD = 90^\circ\). This is because the vectors \(\overrightarrow{PA}\), \(\overrightarrow{PC}\) and \(\overrightarrow{PB}\), \(\overrightarrow{PD}\) are related in such a way that the angles they form are complementary. Therefore, \(\angle APC\) and \(\angle BPD\) are complementary angles.
+
+Since \(\angle APC + \angle BPD = 90^\circ\), we have:
+\[
+\angle APC = 90^\circ - \angle BPD
+\]
+Thus,
+\[
+\sin \angle APC = \cos \angle BPD = \frac{3}{5}
+\]
+and
+\[
+\cos \angle APC = \sin \angle BPD = \frac{4}{5}
+\]
+
+Now, we need to find \(\sin \angle BPC\) and \(\cos \angle BPC\). Using the fact that \(\angle APC = 90^\circ - \angle BPD\), we can use the identity:
+\[
+\sin(90^\circ - \theta) = \cos \theta
+\]
+and
+\[
+\cos(90^\circ - \theta) = \sin \theta
+\]
+
+Therefore,
+\[
+\sin \angle BPC = \sin(90^\circ - \angle APC) = \cos \angle APC = \frac{4}{5}
+\]
+and
+\[
+\cos \angle BPC = \cos(90^\circ - \angle APC) = \sin \angle APC = \frac{3}{5}
+\]
+
+Finally, we use the double angle formula for sine:
+\[
+\sin(2 \angle BPC) = 2 \sin \angle BPC \cos \angle BPC = 2 \left(\frac{4}{5}\right) \left(\frac{3}{5}\right) = 2 \cdot \frac{12}{25} = \frac{24}{25}
+\]
+
+Thus, the answer is:
+\[
+\boxed{\frac{24}{25}}
+\]
+
+Correct solution: Let $a = AP,$ $b = BP,$ $c = CP,$ and $d = DP.$  Let $\alpha = \angle APC,$ $\beta = \angle BPD,$ $\gamma = \angle BPC,$ and $\delta = \angle APD.$  Then $\cos \alpha = \frac{4}{5}$ and $\cos \beta = \frac{3}{5}.$  Since
+\[\cos^2 \alpha + \cos^2 \beta = 1,\]and $\alpha$ and $\beta$ are acute, these angles must satisfy $\alpha + \beta = 90^\circ.$  Also, $\sin \angle APC = \frac{3}{5}$ and $\sin \angle BPD = \frac{4}{5}.$
+
+[asy]
+unitsize (2 cm);
+
+pair A, B, C, D, P, Q, R;
+
+A = (0,0);
+B = (1,0);
+C = (2,0);
+D = (3,0);
+Q = (1,3);
+R = (2,2);
+P = intersectionpoints(circumcircle(A,Q,C),circumcircle(B,R,D))[0];
+
+draw(A--D);
+//draw(circumcircle(A,Q,C));
+//draw(circumcircle(B,R,D));
+draw(A--P--D);
+draw(P--B);
+draw(P--C);
+draw(arc(P,0.3,degrees(A - P),degrees(C - P)),red);
+draw(arc(P,0.5,degrees(B - P),degrees(D - P)),red);
+draw(arc(P,0.6,degrees(B - P),degrees(C - P)),red);
+draw(arc(P,0.9,degrees(A - P),degrees(D - P)),red);
+
+label("$A$", A, SW);
+label("$B$", B, S);
+label("$C$", C, S);
+label("$D$", D, SE);
+label("$P$", P, N);
+label("$a$", interp(A,P,0.2), NW, red);
+label("$b$", interp(B,P,0.2), NW, red);
+label("$c$", interp(C,P,0.2), W, red);
+label("$d$", interp(D,P,0.2), E, red);
+label("$\alpha$", P + (-0.25,-0.35), UnFill);
+label("$\beta$", P + (-0.05,-0.65), UnFill);
+label("$\gamma$", P + (-0.35,-0.7), UnFill);
+label("$\delta$", P + (-0.45,-0.95), UnFill);
+[/asy]
+
+Note that triangles $ABP,$ $BCP,$ and $CDP$ have the same base and height, so their areas are equal.  Let $K = [ABP] = [BCP] = [CDP].$
+
+We have that
+\[[APC] = \frac{1}{2} ac \sin \angle APC = \frac{3}{10} ac,\]so $K = \frac{1}{2} [APC] = \frac{3}{20} ac.$
+
+Also,
+\[[BPD] = \frac{1}{2} bd \sin \angle BPD = \frac{2}{5} bd,\]so $K = \frac{1}{2} [BPD] = \frac{1}{5} bd.$  Hence,
+\[K^2 = \frac{3}{100} abcd.\]Also,
+\[[APD] = \frac{1}{2} ad \sin \delta,\]so $K = \frac{1}{3} [APD] = \frac{1}{6} ad \sin \delta.$  Since $K = [BPC] = \frac{1}{2} bc \sin \gamma,$
+\[K^2 = \frac{1}{12} abcd \sin \gamma \sin \delta.\]It follows that
+\[\sin \gamma \sin \delta = \frac{9}{25}.\]Note that $\gamma + \delta = \alpha + \beta = 90^\circ,$ so $\delta = 90^\circ - \gamma.$  Then $\sin \delta = \sin (90^\circ - \gamma) = \cos \gamma,$ and
+\[\sin \gamma \cos \gamma = \frac{9}{25}.\]Therefore, $\sin 2 \gamma = 2 \sin \gamma \cos \gamma = \boxed{\frac{18}{25}}.$
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

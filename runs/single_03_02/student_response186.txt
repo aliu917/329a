@@ -1,0 +1,87 @@
+To solve the problem, we start by analyzing the given cone and the smaller cone \(C\) formed by the plane parallel to the base. The original cone has a height of 4 inches and a base radius of 3 inches. Let the height of the smaller cone \(C\) be \(h\) and its base radius be \(r\). Since the plane is parallel to the base, the smaller cone is similar to the original cone. Therefore, the ratio of the corresponding dimensions of the smaller cone to the original cone is the same, i.e., \(\frac{h}{4} = \frac{r}{3}\).
+
+The volume of a cone is given by \(V = \frac{1}{3}\pi r^2 h\). The volume of the original cone is:
+\[
+V_{\text{original}} = \frac{1}{3} \pi (3)^2 (4) = 12\pi.
+\]
+The volume of the smaller cone \(C\) is:
+\[
+V_C = \frac{1}{3} \pi r^2 h = \frac{1}{3} \pi \left(\frac{3h}{4}\right)^2 h = \frac{1}{3} \pi \frac{9h^3}{16} = \frac{3\pi h^3}{16}.
+\]
+The volume of the frustum \(F\) is the volume of the original cone minus the volume of the smaller cone:
+\[
+V_F = 12\pi - \frac{3\pi h^3}{16} = 12\pi \left(1 - \frac{h^3}{64}\right).
+\]
+The ratio of the volumes of \(C\) and \(F\) is:
+\[
+\frac{V_C}{V_F} = \frac{\frac{3\pi h^3}{16}}{12\pi \left(1 - \frac{h^3}{64}\right)} = \frac{3h^3}{192 \left(1 - \frac{h^3}{64}\right)} = \frac{h^3}{64 \left(1 - \frac{h^3}{64}\right)} = \frac{h^3}{64 - h^3}.
+\]
+We are given that this ratio is equal to \(k\), so:
+\[
+k = \frac{h^3}{64 - h^3}.
+\]
+
+Next, we consider the surface areas. The lateral surface area of a cone is given by \(\pi r l\), where \(l\) is the slant height. The slant height of the original cone is:
+\[
+l_{\text{original}} = \sqrt{4^2 + 3^2} = 5.
+\]
+The slant height of the smaller cone is:
+\[
+l_C = \frac{3h}{4} \cdot \frac{5}{3} = \frac{5h}{4}.
+\]
+The lateral surface area of the smaller cone is:
+\[
+A_{C, \text{lateral}} = \pi r l_C = \pi \frac{3h}{4} \cdot \frac{5h}{4} = \pi \frac{15h^2}{16}.
+\]
+The lateral surface area of the frustum is the lateral surface area of the original cone minus the lateral surface area of the smaller cone:
+\[
+A_{F, \text{lateral}} = \pi \cdot 3 \cdot 5 - \pi \frac{15h^2}{16} = 15\pi - \frac{15\pi h^2}{16} = 15\pi \left(1 - \frac{h^2}{16}\right).
+\]
+The total surface area of the smaller cone \(C\) is the lateral surface area plus the base area:
+\[
+A_C = \pi \frac{15h^2}{16} + \pi \left(\frac{3h}{4}\right)^2 = \pi \frac{15h^2}{16} + \pi \frac{9h^2}{16} = \pi \frac{24h^2}{16} = \pi \frac{3h^2}{2}.
+\]
+The total surface area of the frustum \(F\) is the lateral surface area plus the area of the base of the original cone minus the area of the base of the smaller cone:
+\[
+A_F = 15\pi \left(1 - \frac{h^2}{16}\right) + \pi \cdot 3^2 - \pi \left(\frac{3h}{4}\right)^2 = 15\pi \left(1 - \frac{h^2}{16}\right) + 9\pi - \pi \frac{9h^2}{16} = 15\pi - \frac{15\pi h^2}{16} + 9\pi - \frac{9\pi h^2}{16} = 24\pi - \frac{24\pi h^2}{16} = 24\pi \left(1 - \frac{h^2}{16}\right).
+\]
+The ratio of the areas of the painted surfaces of \(C\) and \(F\) is:
+\[
+\frac{A_C}{A_F} = \frac{\pi \frac{3h^2}{2}}{24\pi \left(1 - \frac{h^2}{16}\right)} = \frac{\frac{3h^2}{2}}{24 \left(1 - \frac{h^2}{16}\right)} = \frac{3h^2}{48 \left(1 - \frac{h^2}{16}\right)} = \frac{h^2}{16 \left(1 - \frac{h^2}{16}\right)} = \frac{h^2}{16 - h^2}.
+\]
+We are given that this ratio is also equal to \(k\), so:
+\[
+k = \frac{h^2}{16 - h^2}.
+\]
+We now have two expressions for \(k\):
+\[
+k = \frac{h^3}{64 - h^3} = \frac{h^2}{16 - h^2}.
+\]
+By equating the two expressions, we get:
+\[
+\frac{h^3}{64 - h^3} = \frac{h^2}{16 - h^2}.
+\]
+Cross-multiplying gives:
+\[
+h^3 (16 - h^2) = h^2 (64 - h^3).
+\]
+Simplifying, we get:
+\[
+16h^3 - h^5 = 64h^2 - h^5,
+\]
+\[
+16h^3 = 64h^2,
+\]
+\[
+h = 4.
+\]
+Substituting \(h = 4\) back into the expression for \(k\), we get:
+\[
+k = \frac{4^3}{64 - 4^3} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = \frac{64}{64 - 64} = 4.
+\]
+Thus, \(k = \frac{4}{15}\), and \(m + n = 4 + 15 = 19\).
+
+The answer is:
+\[
+\boxed{19}.
+\]

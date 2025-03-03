@@ -1,0 +1,17 @@
+To determine the number of non-similar regular \( n \)-pointed stars, we need to understand the construction of such stars. A regular \( n \)-pointed star is formed by connecting every \( k \)-th point in a sequence of \( n \) points placed in a circular manner, where \( k \) and \( n \) are coprime (i.e., \(\gcd(k, n) = 1\)) and \( 1 < k < \frac{n}{2} \). This ensures that the star is regular and does not repeat before completing the full circle.
+
+Given \( n = 1000 \), we need to find all integers \( k \) such that \( 1 < k < 500 \) and \(\gcd(k, 1000) = 1\). The number of such \( k \) is given by the Euler's totient function \( \phi(1000) \) divided by 2, because \( k \) and \( 1000 - k \) will both be coprime to 1000, but they will count the same star.
+
+First, we calculate \( \phi(1000) \):
+\[
+1000 = 2^3 \times 5^3
+\]
+\[
+\phi(1000) = 1000 \left(1 - \frac{1}{2}\right) \left(1 - \frac{1}{5}\right) = 1000 \times \frac{1}{2} \times \frac{4}{5} = 400
+\]
+Since we only consider \( k \) in the range \( 1 < k < 500 \), we divide \( \phi(1000) \) by 2:
+\[
+\frac{400}{2} = 200
+\]
+
+Thus, the number of non-similar regular 1000-pointed stars is \(\boxed{200}\).

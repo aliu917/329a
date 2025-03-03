@@ -1,0 +1,30 @@
+To solve the problem, let's denote the two integers by \(a\) and \(b\). Let \(d\) be their greatest common divisor (gcd), so we can write \(a = dx\) and \(b = dy\) where \(x\) and \(y\) are coprime integers (i.e., \(\gcd(x, y) = 1\)). The least common multiple (lcm) of \(a\) and \(b\) is given by the formula:
+\[
+\text{lcm}(a, b) = \frac{ab}{\gcd(a, b)} = \frac{dx \cdot dy}{d} = dxy
+\]
+According to the problem, the product of the gcd and the lcm of \(a\) and \(b\) is 180. Therefore, we have:
+\[
+d \cdot dxy = 180 \implies d^2 xy = 180
+\]
+Since \(x\) and \(y\) are coprime, \(d^2\) must be a divisor of 180. We need to find all possible values of \(d\) such that \(d^2\) divides 180. First, we find the prime factorization of 180:
+\[
+180 = 2^2 \cdot 3^2 \cdot 5
+\]
+The possible values for \(d^2\) are the perfect squares that divide 180. These are:
+\[
+1, 4, 9, 36
+\]
+Thus, the possible values for \(d\) are:
+\[
+1, 2, 3, 6
+\]
+We will verify each case:
+- If \(d = 1\), then \(1^2 \cdot xy = 180 \implies xy = 180\). Since \(x\) and \(y\) are coprime, this is possible.
+- If \(d = 2\), then \(2^2 \cdot xy = 180 \implies 4 \cdot xy = 180 \implies xy = 45\). Since 45 can be factored as \(5 \cdot 9\) or \(1 \cdot 45\) (and 5 and 9 are coprime, and 1 and 45 are coprime), this is possible.
+- If \(d = 3\), then \(3^2 \cdot xy = 180 \implies 9 \cdot xy = 180 \implies xy = 20\). Since 20 can be factored as \(4 \cdot 5\) or \(1 \cdot 20\) (and 4 and 5 are coprime, and 1 and 20 are coprime), this is possible.
+- If \(d = 6\), then \(6^2 \cdot xy = 180 \implies 36 \cdot xy = 180 \implies xy = 5\). Since 5 can only be factored as \(1 \cdot 5\) (and 1 and 5 are coprime), this is possible.
+
+Thus, the possible values for the gcd are 1, 2, 3, and 6. Therefore, there are 4 different values that could be the greatest common divisor of the two integers. The final answer is:
+\[
+\boxed{4}
+\]

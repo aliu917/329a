@@ -1,0 +1,77 @@
+You are given a reasoning attempt for answering the following question: $\sqrt{53+20\sqrt{7}}$ can be written in the form $a+b\sqrt{c}$, where $a,$ $b,$ and $c$ are integers and $c$ has no factors which is a perfect square of any positive integer other than 1. Find $a+b+c$.
+
+Attempt: To solve the expression \(\sqrt{53 + 20\sqrt{7}}\) in the form \(a + b\sqrt{c}\), we start by assuming that \(\sqrt{53 + 20\sqrt{7}} = a + b\sqrt{7}\). Squaring both sides, we get:
+
+\[
+53 + 20\sqrt{7} = (a + b\sqrt{7})^2
+\]
+
+Expanding the right side, we have:
+
+\[
+53 + 20\sqrt{7} = a^2 + 2ab\sqrt{7} + 7b^2
+\]
+
+For the equation to hold true, the rational parts must be equal and the irrational parts must be equal. Therefore, we can separate the equation into two parts:
+
+\[
+a^2 + 7b^2 = 53 \quad \text{(1)}
+\]
+\[
+2ab = 20 \quad \text{(2)}
+\]
+
+From equation (2), we can solve for \(ab\):
+
+\[
+ab = 10
+\]
+
+Now we need to find integer solutions for \(a\) and \(b\) that satisfy both \(ab = 10\) and \(a^2 + 7b^2 = 53\). We will test the possible integer pairs \((a, b)\):
+
+1. If \(a = 1\), then \(b = 10\). Substituting into the first equation, we get:
+   \[
+   1^2 + 7 \cdot 10^2 = 1 + 700 = 701 \neq 53
+   \]
+   This does not work.
+
+2. If \(a = 2\), then \(b = 5\). Substituting into the first equation, we get:
+   \[
+   2^2 + 7 \cdot 5^2 = 4 + 175 = 179 \neq 53
+   \]
+   This does not work.
+
+3. If \(a = 5\), then \(b = 2\). Substituting into the first equation, we get:
+   \[
+   5^2 + 7 \cdot 2^2 = 25 + 28 = 53
+   \]
+   This works.
+
+4. If \(a = 10\), then \(b = 1\). Substituting into the first equation, we get:
+   \[
+   10^2 + 7 \cdot 1^2 = 100 + 7 = 107 \neq 53
+   \]
+   This does not work.
+
+The only solution that works is \(a = 5\) and \(b = 2\). Therefore, we have:
+
+\[
+\sqrt{53 + 20\sqrt{7}} = 5 + 2\sqrt{7}
+\]
+
+In the form \(a + b\sqrt{c}\), we have \(a = 5\), \(b = 2\), and \(c = 7\). Thus, \(a + b + c = 5 + 2 + 7 = 14\).
+
+The final answer is:
+
+\[
+\boxed{14}
+\]
+
+Correct solution: We make $a+\sqrt{d}=\sqrt{53+20\sqrt{7}}$. Squaring both sides, we get: \begin{align*}
+a^2+2a\sqrt{d}+d=(a^2+d)+\sqrt{4a^2 \cdot d}=53+20\sqrt{7}=53+\sqrt{2800}\\
+\end{align*}We set the terms with radicals equal to each other, and ones without radicals equal.  From this, we get that $a^2+d=53$ and $\sqrt{4a^2 \cdot d}=\sqrt{2800}$, so $4a^2 \cdot d =2800$. Solving, we get that $a=5$, and $d=28$.
+
+Therefore, $\sqrt{53+20\sqrt{7}}=5+\sqrt{28}=5+2\sqrt{7}$. $a=5$, $b=2$, and $c=7$. $a+b+c=5+2+7=\boxed{14}$.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

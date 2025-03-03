@@ -1,0 +1,27 @@
+Given that the product of the greatest common divisor (GCD) and the least common multiple (LCM) of two integers is 180, we need to determine the possible values of the GCD.
+
+Let's denote the two integers by \(a\) and \(b\). Let \(d = \gcd(a, b)\). Then we can write \(a = dx\) and \(b = dy\) where \(x\) and \(y\) are coprime (i.e., \(\gcd(x, y) = 1\)). The LCM of \(a\) and \(b\) is given by \( \text{lcm}(a, b) = d \cdot \text{lcm}(x, y) = dxy \).
+
+The product of the GCD and the LCM is:
+\[ d \cdot (dxy) = d^2xy = 180. \]
+
+Since \(x\) and \(y\) are coprime, \(d^2\) must be a divisor of 180. First, we find the prime factorization of 180:
+\[ 180 = 2^2 \cdot 3^2 \cdot 5. \]
+
+The possible values for \(d^2\) are the perfect squares that are divisors of 180. These are:
+\[ 1^2 = 1, \quad 2^2 = 4, \quad 3^2 = 9, \quad 2^2 \cdot 3^2 = 36. \]
+
+Thus, the possible values for \(d\) are the square roots of these numbers:
+\[ d = 1, 2, 3, 6. \]
+
+We need to verify that each of these values is possible. 
+
+1. If \(d = 1\), then \(1^2 \cdot xy = 180 \implies xy = 180\). Since 180 can be factored into coprime pairs, this is possible (e.g., \(x = 4, y = 45\)).
+2. If \(d = 2\), then \(2^2 \cdot xy = 180 \implies 4xy = 180 \implies xy = 45\). Since 45 can be factored into coprime pairs, this is possible (e.g., \(x = 5, y = 9\)).
+3. If \(d = 3\), then \(3^2 \cdot xy = 180 \implies 9xy = 180 \implies xy = 20\). Since 20 can be factored into coprime pairs, this is possible (e.g., \(x = 4, y = 5\)).
+4. If \(d = 6\), then \(6^2 \cdot xy = 180 \implies 36xy = 180 \implies xy = 5\). Since 5 can be factored into coprime pairs, this is possible (e.g., \(x = 1, y = 5\)).
+
+Therefore, the possible values for the GCD are 1, 2, 3, and 6. The number of different values that the GCD could be is:
+\[
+\boxed{4}
+\]

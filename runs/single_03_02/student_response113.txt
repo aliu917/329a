@@ -1,0 +1,63 @@
+To solve the problem, we need to find the distance from the center \(O\) of the sphere to the plane containing \(\triangle ABC\). Let's proceed step by step.
+
+1. **Calculate the area of \(\triangle ABC\):**
+
+   We use Heron's formula to find the area of \(\triangle ABC\). The semi-perimeter \(s\) is:
+   \[
+   s = \frac{AB + BC + CA}{2} = \frac{13 + 14 + 15}{2} = 21
+   \]
+   The area \(K\) of \(\triangle ABC\) is given by:
+   \[
+   K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{21(21-15)(21-14)(21-13)} = \sqrt{21 \cdot 6 \cdot 7 \cdot 8} = \sqrt{7056} = 84
+   \]
+
+2. **Find the circumradius \(R\) of \(\triangle ABC\):**
+
+   The circumradius \(R\) of a triangle with sides \(a\), \(b\), and \(c\) and area \(K\) is given by:
+   \[
+   R = \frac{abc}{4K} = \frac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \frac{2730}{336} = \frac{65}{8}
+   \]
+
+3. **Use the Pythagorean theorem in the right triangle formed by the radius of the sphere, the distance from the center of the sphere to the plane of the triangle, and the circumradius of the triangle:**
+
+   Let \(d\) be the distance from the center \(O\) of the sphere to the plane of \(\triangle ABC\). The relationship between the radius \(R_s\) of the sphere, the distance \(d\), and the circumradius \(R\) of \(\triangle ABC\) is given by:
+   \[
+   R_s^2 = d^2 + R^2
+   \]
+   Substituting the known values \(R_s = 20\) and \(R = \frac{65}{8}\):
+   \[
+   20^2 = d^2 + \left(\frac{65}{8}\right)^2
+   \]
+   \[
+   400 = d^2 + \frac{4225}{64}
+   \]
+   \[
+   400 = d^2 + \frac{4225}{64}
+   \]
+   \[
+   400 \cdot \frac{64}{64} = d^2 + \frac{4225}{64}
+   \]
+   \[
+   \frac{25600}{64} = d^2 + \frac{4225}{64}
+   \]
+   \[
+   \frac{25600 - 4225}{64} = d^2
+   \]
+   \[
+   \frac{21375}{64} = d^2
+   \]
+   \[
+   d = \sqrt{\frac{21375}{64}} = \frac{\sqrt{21375}}{8} = \frac{5\sqrt{855}}{8}
+   \]
+
+4. **Express \(d\) in the form \(\frac{m\sqrt{n}}{k}\):**
+
+   Here, \(m = 5\), \(n = 855\), and \(k = 8\). The values of \(m\), \(n\), and \(k\) are relatively prime, and \(n\) is not divisible by the square of any prime. Therefore, we have:
+   \[
+   m + n + k = 5 + 855 + 8 = 868
+   \]
+
+The final answer is:
+\[
+\boxed{868}
+\]

@@ -1,0 +1,68 @@
+Given the quadratic equations \(x^2 - 10ax - 11b = 0\) and \(x^2 - 10cx - 11d = 0\), we know that the roots of the first equation are \(c\) and \(d\), and the roots of the second equation are \(a\) and \(b\). By Vieta's formulas, we can write the following relationships for the roots of the first equation:
+
+\[c + d = 10a\]
+\[cd = -11b\]
+
+Similarly, for the second equation:
+
+\[a + b = 10c\]
+\[ab = -11d\]
+
+We now have four equations:
+1. \(c + d = 10a\)
+2. \(cd = -11b\)
+3. \(a + b = 10c\)
+4. \(ab = -11d\)
+
+We will solve these equations step by step. First, let's express \(d\) and \(b\) in terms of \(a\) and \(c\):
+
+From the first equation:
+\[d = 10a - c\]
+
+From the third equation:
+\[b = 10c - a\]
+
+Next, substitute \(d = 10a - c\) into the second equation:
+\[c(10a - c) = -11b\]
+\[10ac - c^2 = -11b\]
+
+Now substitute \(b = 10c - a\) into the equation above:
+\[10ac - c^2 = -11(10c - a)\]
+\[10ac - c^2 = -110c + 11a\]
+\[10ac - c^2 + 110c - 11a = 0\]
+\[c^2 - 10ac - 110c + 11a = 0\]
+
+Similarly, substitute \(b = 10c - a\) into the fourth equation:
+\[a(10c - a) = -11d\]
+\[10ac - a^2 = -11d\]
+
+Now substitute \(d = 10a - c\) into the equation above:
+\[10ac - a^2 = -11(10a - c)\]
+\[10ac - a^2 = -110a + 11c\]
+\[a^2 - 10ac + 110a - 11c = 0\]
+
+We now have two quadratic equations in terms of \(a\) and \(c\):
+1. \(c^2 - 10ac - 110c + 11a = 0\)
+2. \(a^2 - 10ac + 110a - 11c = 0\)
+
+To find a solution, we can solve these equations simultaneously. Notice that if we assume \(a = c\), then \(d = 10a - a = 9a\) and \(b = 10a - a = 9a\), but this would imply \(a = b = c = d\), which contradicts the condition that \(a, b, c, d\) are distinct. Therefore, we need to find another approach.
+
+Instead, let's assume a specific value for one of the variables and check the consistency. Suppose \(a = 1\), then from \(a + b = 10c\), we have \(1 + b = 10c\). From \(ab = -11d\), we have \(1 \cdot b = -11d\) or \(b = -11d\). Substitute \(b = -11d\) into \(1 + b = 10c\):
+\[1 - 11d = 10c\]
+\[c = \frac{1 - 11d}{10}\]
+
+Now substitute \(c = \frac{1 - 11d}{10}\) into \(c + d = 10a\):
+\[\frac{1 - 11d}{10} + d = 10\]
+\[1 - 11d + 10d = 100\]
+\[-d + 1 = 100\]
+\[-d = 99\]
+\[d = -99\]
+
+Then \(b = -11d = -11(-99) = 1089\). Now substitute \(d = -99\) and \(b = 1089\) back to find \(c\):
+\[c = \frac{1 - 11(-99)}{10} = \frac{1 + 1089}{10} = 109\]
+
+So the values are \(a = 1\), \(b = 1089\), \(c = 109\), and \(d = -99\). Therefore, the sum \(a + b + c + d\) is:
+\[1 + 1089 + 109 - 99 = 1090\]
+
+The final answer is:
+\[\boxed{1090}\]

@@ -1,0 +1,80 @@
+You are given a reasoning attempt for answering the following question: The points $A$, $B$ and $C$ lie on the surface of a sphere with center $O$ and radius $20$. It is given that $AB=13$, $BC=14$, $CA=15$, and that the distance from $O$ to $\triangle ABC$ is $\frac{m\sqrt{n}}k$, where $m$, $n$, and $k$ are positive integers, $m$ and $k$ are relatively prime, and $n$ is not divisible by the square of any prime. Find $m+n+k$.
+
+
+Attempt: To solve the problem, we need to find the distance from the center \(O\) of the sphere to the plane containing \(\triangle ABC\). Let's proceed step by step.
+
+1. **Calculate the area of \(\triangle ABC\):**
+
+   We use Heron's formula to find the area of \(\triangle ABC\). The semi-perimeter \(s\) is:
+   \[
+   s = \frac{AB + BC + CA}{2} = \frac{13 + 14 + 15}{2} = 21
+   \]
+   The area \(K\) of \(\triangle ABC\) is given by:
+   \[
+   K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{21(21-15)(21-14)(21-13)} = \sqrt{21 \cdot 6 \cdot 7 \cdot 8} = \sqrt{7056} = 84
+   \]
+
+2. **Find the circumradius \(R\) of \(\triangle ABC\):**
+
+   The circumradius \(R\) of a triangle with sides \(a\), \(b\), and \(c\) and area \(K\) is given by:
+   \[
+   R = \frac{abc}{4K} = \frac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \frac{2730}{336} = \frac{65}{8}
+   \]
+
+3. **Use the Pythagorean theorem in the right triangle formed by the radius of the sphere, the distance from the center of the sphere to the plane of the triangle, and the circumradius of the triangle:**
+
+   Let \(d\) be the distance from the center \(O\) of the sphere to the plane of \(\triangle ABC\). The relationship between the radius \(R_s\) of the sphere, the distance \(d\), and the circumradius \(R\) of \(\triangle ABC\) is given by:
+   \[
+   R_s^2 = d^2 + R^2
+   \]
+   Substituting the known values \(R_s = 20\) and \(R = \frac{65}{8}\):
+   \[
+   20^2 = d^2 + \left(\frac{65}{8}\right)^2
+   \]
+   \[
+   400 = d^2 + \frac{4225}{64}
+   \]
+   \[
+   400 = d^2 + \frac{4225}{64}
+   \]
+   \[
+   400 \cdot \frac{64}{64} = d^2 + \frac{4225}{64}
+   \]
+   \[
+   \frac{25600}{64} = d^2 + \frac{4225}{64}
+   \]
+   \[
+   \frac{25600 - 4225}{64} = d^2
+   \]
+   \[
+   \frac{21375}{64} = d^2
+   \]
+   \[
+   d = \sqrt{\frac{21375}{64}} = \frac{\sqrt{21375}}{8} = \frac{5\sqrt{855}}{8}
+   \]
+
+4. **Express \(d\) in the form \(\frac{m\sqrt{n}}{k}\):**
+
+   Here, \(m = 5\), \(n = 855\), and \(k = 8\). The values of \(m\), \(n\), and \(k\) are relatively prime, and \(n\) is not divisible by the square of any prime. Therefore, we have:
+   \[
+   m + n + k = 5 + 855 + 8 = 868
+   \]
+
+The final answer is:
+\[
+\boxed{868}
+\]
+
+Correct solution: Let $D$ be the foot of the perpendicular from $O$ to the plane of $ABC$. By the Pythagorean Theorem on triangles $\triangle OAD$, $\triangle OBD$ and $\triangle OCD$ we get:
+\[DA^2=DB^2=DC^2=20^2-OD^2\]
+It follows that $DA=DB=DC$, so $D$ is the circumcenter of $\triangle ABC$.
+By Heron's Formula the area of $\triangle ABC$ is (alternatively, a $13-14-15$ triangle may be split into $9-12-15$ and $5-12-13$ right triangles):
+\[K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{21(21-15)(21-14)(21-13)} = 84\]
+From $R = \frac{abc}{4K}$, we know that the circumradius of $\triangle ABC$ is:
+\[R = \frac{abc}{4K} = \frac{(13)(14)(15)}{4(84)} = \frac{65}{8}\]
+Thus by the Pythagorean Theorem again,
+\[OD = \sqrt{20^2-R^2} = \sqrt{20^2-\frac{65^2}{8^2}} = \frac{15\sqrt{95}}{8}.\]
+So the final answer is $15+95+8=\boxed{118}$.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

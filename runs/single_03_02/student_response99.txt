@@ -1,0 +1,33 @@
+To solve the problem, we need to determine the probability that after a suitable rotation, a brick of dimensions \(a_1 \times a_2 \times a_3\) can be enclosed in a box of dimensions \(b_1 \times b_2 \times b_3\), with the sides of the brick parallel to the sides of the box. This means that for some permutation \((a_{i_1}, a_{i_2}, a_{i_3})\) of \((a_1, a_2, a_3)\), we must have \(a_{i_1} \leq b_1\), \(a_{i_2} \leq b_2\), and \(a_{i_3} \leq b_3\).
+
+First, let's consider the total number of ways to choose the six numbers from the set \(\{1, 2, \ldots, 1000\}\). This is given by the combination:
+\[
+\binom{1000}{6} \times 6! = \frac{1000!}{994! \cdot 6!} \times 720
+\]
+
+Next, we need to count the number of favorable outcomes. For any chosen set of six numbers \(\{a_1, a_2, a_3, b_1, b_2, b_3\}\), there are \(6!\) ways to assign these numbers to \(\{a_1, a_2, a_3, b_1, b_2, b_3\}\). Out of these, exactly one assignment will satisfy the condition that after a suitable rotation, the brick can fit into the box. This is because, for any given set of six numbers, there is exactly one way to assign them such that the brick can fit into the box.
+
+Therefore, the number of favorable outcomes is:
+\[
+\binom{1000}{6} \times 1 = \frac{1000!}{994! \cdot 6!}
+\]
+
+The probability \(p\) is then the ratio of the number of favorable outcomes to the total number of outcomes:
+\[
+p = \frac{\frac{1000!}{994! \cdot 6!}}{\frac{1000!}{994! \cdot 6!} \times 720} = \frac{1}{720}
+\]
+
+To express this probability as a fraction in lowest terms, we have:
+\[
+p = \frac{1}{720}
+\]
+
+The sum of the numerator and the denominator is:
+\[
+1 + 720 = 721
+\]
+
+Thus, the final answer is:
+\[
+\boxed{721}
+\]

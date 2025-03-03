@@ -1,0 +1,22 @@
+You are given a reasoning attempt for answering the following question: Let $w,$ $x,$ $y,$ and $z$ be nonnegative numbers whose sum is 100.  Find the largest possible value of
+\[wx + xy + yz.\]
+
+Attempt: To find the maximum value of \(wx + xy + yz\) given that \(w + x + y + z = 100\) and \(w, x, y, z \geq 0\), we start by expressing the function we want to maximize in terms of the variables. We will use the method of setting some variables to zero to simplify the expression.
+
+First, let's set \(w = 0\) and \(z = 0\). This simplifies our expression to \(wx + xy + yz = 0 \cdot x + x \cdot y + y \cdot 0 = xy\). Since \(w + x + y + z = 100\) becomes \(x + y = 100\), we need to maximize \(xy\) under the constraint \(x + y = 100\).
+
+Using the AM-GM inequality, we know that for nonnegative numbers \(x\) and \(y\), the product \(xy\) is maximized when \(x = y\). Setting \(x = y = 50\), we get:
+\[
+xy = 50 \cdot 50 = 2500.
+\]
+
+To confirm that this is indeed the maximum, we can consider the general case where \(w, x, y, z\) are not necessarily zero. If we set \(w = a\) and \(z = b\), then \(x + y = 100 - (a + b)\). The expression \(wx + xy + yz\) becomes \(aw + xy + yb = a(100 - (a + b)) + xy + yb = 100a - a^2 - ab + xy + yb = 100a - a^2 - ab + y(100 - a - b)\). To maximize \(wx + xy + yz\), we can set \(a = 0\) or \(b = 0\) and maximize \(xy\) under the constraint \(x + y = 100\), which we have already shown to be 2500 when \(x = 50\) and \(y = 50\).
+
+Thus, the largest possible value of \(wx + xy + yz\) is \(\boxed{2500}\).
+
+Correct solution: We have that
+\[wx + xy + yz \le wx + xy + yz + zw = (w + y)(x + z).\]By AM-GM,
+\[(w + y)(x + z) \le \left( \frac{(w + y) + (x + z)}{2} \right)^2 = 2500.\]Equality occurs when $w = x = 50$ and $y = z = 0,$ so the largest possible value is $\boxed{2500}.$
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

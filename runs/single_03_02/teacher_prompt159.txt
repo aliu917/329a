@@ -1,0 +1,104 @@
+You are given a reasoning attempt for answering the following question: Let $a,$ $b,$ $c,$ $d$ be distinct real numbers such that the roots of $x^2 - 10ax - 11b = 0$ are $c$ and $d,$ and the roots of $x^2 - 10cx - 11d = 0$ are $a$ and $b.$  Find the value of $a + b + c + d.$
+
+Attempt: Given the quadratic equations \(x^2 - 10ax - 11b = 0\) with roots \(c\) and \(d\), and \(x^2 - 10cx - 11d = 0\) with roots \(a\) and \(b\), we can use Vieta's formulas to establish relationships among the coefficients and roots of these equations.
+
+From the first equation, Vieta's formulas give us:
+\[ c + d = 10a \]
+\[ cd = -11b \]
+
+From the second equation, Vieta's formulas give us:
+\[ a + b = 10c \]
+\[ ab = -11d \]
+
+We now have the system of equations:
+1. \( c + d = 10a \)
+2. \( cd = -11b \)
+3. \( a + b = 10c \)
+4. \( ab = -11d \)
+
+We will use these equations to find the values of \(a, b, c,\) and \(d\). First, we express \(d\) from the first equation:
+\[ d = 10a - c \]
+
+Substitute \(d = 10a - c\) into the second equation:
+\[ c(10a - c) = -11b \]
+\[ 10ac - c^2 = -11b \]
+\[ 11b = c^2 - 10ac \]
+\[ b = \frac{c^2 - 10ac}{11} \]
+
+Next, express \(b\) from the third equation:
+\[ b = 10c - a \]
+
+Equate the two expressions for \(b\):
+\[ \frac{c^2 - 10ac}{11} = 10c - a \]
+Multiply both sides by 11:
+\[ c^2 - 10ac = 110c - 11a \]
+Rearrange the equation:
+\[ c^2 - 10ac + 11a - 110c = 0 \]
+\[ c^2 - (10a + 110)c + 11a = 0 \]
+
+This is a quadratic equation in \(c\). We solve it using the quadratic formula \(c = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A}\), where \(A = 1\), \(B = -(10a + 110)\), and \(C = 11a\):
+\[ c = \frac{10a + 110 \pm \sqrt{(10a + 110)^2 - 4 \cdot 1 \cdot 11a}}{2 \cdot 1} \]
+\[ c = \frac{10a + 110 \pm \sqrt{100a^2 + 2200a + 12100 - 44a}}{2} \]
+\[ c = \frac{10a + 110 \pm \sqrt{100a^2 + 2156a + 12100}}{2} \]
+\[ c = \frac{10a + 110 \pm \sqrt{(10a + 107)^2}}{2} \]
+\[ c = \frac{10a + 110 \pm (10a + 107)}{2} \]
+
+This gives us two solutions:
+\[ c = \frac{10a + 110 + 10a + 107}{2} = \frac{20a + 217}{2} \]
+\[ c = \frac{10a + 110 - 10a - 107}{2} = \frac{3}{2} \]
+
+We discard \(c = \frac{10a + 110 + 10a + 107}{2}\) because it leads to non-distinct values. So, we have:
+\[ c = \frac{3}{2} \]
+
+Substitute \(c = \frac{3}{2}\) into \(b = 10c - a\):
+\[ b = 10 \left(\frac{3}{2}\right) - a = 15 - a \]
+
+Substitute \(c = \frac{3}{2}\) into \(d = 10a - c\):
+\[ d = 10a - \frac{3}{2} = \frac{20a - 3}{2} \]
+
+Substitute \(b = 15 - a\) and \(d = \frac{20a - 3}{2}\) into the product equation \(ab = -11d\):
+\[ a(15 - a) = -11 \left(\frac{20a - 3}{2}\right) \]
+\[ 15a - a^2 = -\frac{220a - 33}{2} \]
+Multiply both sides by 2:
+\[ 30a - 2a^2 = -220a + 33 \]
+Rearrange the equation:
+\[ 2a^2 - 250a + 33 = 0 \]
+
+Solve this quadratic equation using the quadratic formula \(a = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A}\), where \(A = 2\), \(B = -250\), and \(C = 33\):
+\[ a = \frac{250 \pm \sqrt{250^2 - 4 \cdot 2 \cdot 33}}{2 \cdot 2} \]
+\[ a = \frac{250 \pm \sqrt{62500 - 264}}{4} \]
+\[ a = \frac{250 \pm \sqrt{62236}}{4} \]
+\[ a = \frac{250 \pm 249.47}{4} \]
+\[ a = \frac{499.47}{4} \approx 124.87 \quad \text{(not an integer, discard)} \]
+\[ a = \frac{0.53}{4} \approx 0.13 \quad \text{(not an integer, discard)} \]
+
+We need to recheck the integer solutions, and we find:
+\[ a = 11, b = 4, c = \frac{3}{2}, d = 55 - \frac{3}{2} = \frac{107}{2} \]
+
+Finally, we find:
+\[ a + b + c + d = 11 + 4 + \frac{3}{2} + \frac{107}{2} = 15 + \frac{110}{2} = 15 + 55 = 70 \]
+
+Thus, the value of \(a + b + c + d\) is \(\boxed{70}\).
+
+Correct solution: By Vieta's formulas,
+\begin{align*}
+c + d &= 10a, \\
+cd &= -11b, \\
+a + b &= 10c, \\
+ab &= -11d.
+\end{align*}From the first equation,
+\[d = 10a - c.\]From the third equation,
+\[b = 10c - a.\]Substituting into the second and fourth equations, we get
+\begin{align*}
+c(10a - c) &= -11(10c - a), \\
+a(10c - a) &= -11(10a - c).
+\end{align*}Expanding, we get
+\begin{align*}
+10ac - c^2 &= -110c + 11a, \\
+10ac - a^2 &= -110a + 11c.
+\end{align*}Subtracting these equations, we get
+\[a^2 - c^2 = 121a - 121c,\]so $(a + c)(a - c) = 121(a - c).$  Since $a$ and $c$ are distinct, we can divide both sides by $a - c,$ to get
+\[a + c = 121.\]Hence, $a + b + c + d = 10c + 10a = 10(a + c) = \boxed{1210}.$
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

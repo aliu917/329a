@@ -1,0 +1,76 @@
+To determine the probability that the sum of the numbers rolled on three standard six-faced dice is 9, we need to follow these steps:
+
+1. **Determine the total number of possible outcomes:**
+   Each die has 6 faces, and since the dice are rolled independently, the total number of possible outcomes when rolling three dice is:
+   \[
+   6 \times 6 \times 6 = 216
+   \]
+
+2. **Identify the favorable outcomes:**
+   We need to find all the combinations of three numbers (each between 1 and 6) that sum to 9. Let's denote the numbers rolled by \(a\), \(b\), and \(c\) such that \(a + b + c = 9\).
+
+3. **List all possible combinations:**
+   We will systematically list all combinations of \(a\), \(b\), and \(c\) that satisfy the equation \(a + b + c = 9\):
+   - \(a = 1\):
+     - \(b = 1, c = 7\) (not possible since \(c\) must be between 1 and 6)
+     - \(b = 2, c = 6\)
+     - \(b = 3, c = 5\)
+     - \(b = 4, c = 4\)
+     - \(b = 5, c = 3\)
+     - \(b = 6, c = 2\)
+   - \(a = 2\):
+     - \(b = 1, c = 6\)
+     - \(b = 2, c = 5\)
+     - \(b = 3, c = 4\)
+     - \(b = 4, c = 3\)
+     - \(b = 5, c = 2\)
+     - \(b = 6, c = 1\)
+   - \(a = 3\):
+     - \(b = 1, c = 5\)
+     - \(b = 2, c = 4\)
+     - \(b = 3, c = 3\)
+     - \(b = 4, c = 2\)
+     - \(b = 5, c = 1\)
+   - \(a = 4\):
+     - \(b = 1, c = 4\)
+     - \(b = 2, c = 3\)
+     - \(b = 3, c = 2\)
+     - \(b = 4, c = 1\)
+   - \(a = 5\):
+     - \(b = 1, c = 3\)
+     - \(b = 2, c = 2\)
+     - \(b = 3, c = 1\)
+   - \(a = 6\):
+     - \(b = 1, c = 2\)
+     - \(b = 2, c = 1\)
+
+4. **Count the favorable outcomes:**
+   From the list above, we can count the total number of combinations:
+   - For \(a = 1\): 6 combinations
+   - For \(a = 2\): 6 combinations
+   - For \(a = 3\): 5 combinations
+   - For \(a = 4\): 4 combinations
+   - For \(a = 5\): 3 combinations
+   - For \(a = 6\): 2 combinations
+
+   Adding these together, we get:
+   \[
+   6 + 6 + 5 + 4 + 3 + 2 = 26
+   \]
+
+5. **Calculate the probability:**
+   The probability is the number of favorable outcomes divided by the total number of possible outcomes:
+   \[
+   \frac{26}{216}
+   \]
+
+6. **Simplify the fraction:**
+   To simplify \(\frac{26}{216}\), we find the greatest common divisor (GCD) of 26 and 216, which is 2:
+   \[
+   \frac{26 \div 2}{216 \div 2} = \frac{13}{108}
+   \]
+
+Thus, the probability that the sum of the three numbers rolled is 9 is:
+\[
+\boxed{\frac{13}{108}}
+\]

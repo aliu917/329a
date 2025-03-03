@@ -1,0 +1,32 @@
+To find the probability of drawing one card from each suit when four cards are drawn with replacement from a standard 52-card deck, we need to follow these steps:
+
+1. **Determine the total number of possible outcomes:**
+   Since we are drawing four cards with replacement, each draw is independent and there are 52 possible outcomes for each draw. Therefore, the total number of possible outcomes is:
+   \[
+   52^4
+   \]
+
+2. **Determine the number of favorable outcomes:**
+   For the favorable outcomes, we need to ensure that we draw one card from each suit in any order. There are 4 suits (hearts, diamonds, clubs, spades), and we need to draw one card from each suit. The number of ways to arrange 4 cards such that each suit is represented exactly once is the number of permutations of 4 distinct items, which is:
+   \[
+   4!
+   \]
+   This is because we can choose any of the 13 cards of the first suit, any of the 13 cards of the second suit, any of the 13 cards of the third suit, and any of the 13 cards of the fourth suit. Therefore, the number of favorable outcomes is:
+   \[
+   13^4 \times 4!
+   \]
+
+3. **Calculate the probability:**
+   The probability is the number of favorable outcomes divided by the total number of possible outcomes. Thus, the probability \(P\) is:
+   \[
+   P = \frac{13^4 \times 4!}{52^4}
+   \]
+   Simplifying the expression, we get:
+   \[
+   P = \frac{13^4 \times 24}{(13 \times 4)^4} = \frac{13^4 \times 24}{13^4 \times 4^4} = \frac{24}{4^4} = \frac{24}{256} = \frac{3}{32}
+   \]
+
+Therefore, the probability that we will end up with one card from each suit is:
+\[
+\boxed{\frac{3}{32}}
+\]

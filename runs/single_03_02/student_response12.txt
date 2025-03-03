@@ -1,0 +1,52 @@
+To determine the probability that the sum of the numbers rolled on three standard six-faced dice is 9, we need to follow these steps:
+
+1. **Calculate the total number of possible outcomes:**
+   Each die has 6 faces, and since the dice are rolled independently, the total number of possible outcomes when rolling three dice is:
+   \[
+   6 \times 6 \times 6 = 216
+   \]
+
+2. **Identify the number of favorable outcomes:**
+   We need to count the number of ways to get a sum of 9 when rolling three dice. Let's denote the numbers on the three dice as \(a\), \(b\), and \(c\). We need to find all solutions to the equation:
+   \[
+   a + b + c = 9 \quad \text{where} \quad 1 \leq a, b, c \leq 6
+   \]
+
+3. **Transform the variables:**
+   To simplify the problem, let \(a' = a - 1\), \(b' = b - 1\), and \(c' = c - 1\). This transforms the equation to:
+   \[
+   (a' + 1) + (b' + 1) + (c' + 1) = 9 \implies a' + b' + c' = 6 \quad \text{where} \quad 0 \leq a', b', c' \leq 5
+   \]
+
+4. **Count the non-negative integer solutions:**
+   We use the stars and bars method to count the number of non-negative integer solutions to \(a' + b' + c' = 6\). The number of solutions is given by:
+   \[
+   \binom{6 + 3 - 1}{3 - 1} = \binom{8}{2} = 28
+   \]
+
+5. **Subtract invalid solutions:**
+   We need to subtract the cases where any of \(a'\), \(b'\), or \(c'\) are greater than 5. If \(a' \geq 6\), let \(a'' = a' - 6\), then \(a'' + b' + c' = 0\). The number of solutions to this equation is:
+   \[
+   \binom{0 + 3 - 1}{3 - 1} = \binom{2}{2} = 1
+   \]
+   Since any one of the three variables could be the one that is at least 6, we multiply by 3:
+   \[
+   3 \times 1 = 3
+   \]
+
+6. **Calculate the number of valid solutions:**
+   The number of valid solutions is:
+   \[
+   28 - 3 = 25
+   \]
+
+7. **Calculate the probability:**
+   The probability is the number of favorable outcomes divided by the total number of possible outcomes:
+   \[
+   \frac{25}{216}
+   \]
+
+Thus, the probability that the sum of the numbers rolled on three dice is 9 is:
+\[
+\boxed{\frac{25}{216}}
+\]

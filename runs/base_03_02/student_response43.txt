@@ -1,0 +1,142 @@
+To solve the given system of congruences, we will address each congruence step by step and then combine the results using the Chinese Remainder Theorem (CRT) or other methods as necessary.
+
+The system of congruences is:
+\[
+\begin{align*}
+7x &\equiv 21 \pmod{14} \\
+2x + 13 &\equiv 16 \pmod{9} \\
+-2x + 1 &\equiv x \pmod{25}
+\end{align*}
+\]
+
+### Step 1: Simplify the first congruence
+\[
+7x \equiv 21 \pmod{14}
+\]
+We can divide both sides by 7:
+\[
+x \equiv 3 \pmod{2}
+\]
+This simplifies to:
+\[
+x \equiv 1 \pmod{2}
+\]
+
+### Step 2: Simplify the second congruence
+\[
+2x + 13 \equiv 16 \pmod{9}
+\]
+Subtract 13 from both sides:
+\[
+2x \equiv 3 \pmod{9}
+\]
+We need the multiplicative inverse of 2 modulo 9. The inverse \( y \) satisfies:
+\[
+2y \equiv 1 \pmod{9}
+\]
+By trial, we find:
+\[
+2 \cdot 5 = 10 \equiv 1 \pmod{9}
+\]
+Thus, the inverse is 5. Multiply both sides of \( 2x \equiv 3 \pmod{9} \) by 5:
+\[
+x \equiv 15 \pmod{9}
+\]
+Simplify:
+\[
+x \equiv 6 \pmod{9}
+\]
+
+### Step 3: Simplify the third congruence
+\[
+-2x + 1 \equiv x \pmod{25}
+\]
+Add \( 2x \) to both sides:
+\[
+1 \equiv 3x \pmod{25}
+\]
+We need the multiplicative inverse of 3 modulo 25. The inverse \( y \) satisfies:
+\[
+3y \equiv 1 \pmod{25}
+\]
+By trial, we find:
+\[
+3 \cdot 17 = 51 \equiv 1 \pmod{25}
+\]
+Thus, the inverse is 17. Multiply both sides of \( 3x \equiv 1 \pmod{25} \) by 17:
+\[
+x \equiv 17 \pmod{25}
+\]
+
+### Step 4: Combine the congruences
+We now have:
+\[
+x \equiv 1 \pmod{2}
+\]
+\[
+x \equiv 6 \pmod{9}
+\]
+\[
+x \equiv 17 \pmod{25}
+\]
+
+We will use the Chinese Remainder Theorem (CRT) to find a common solution. First, express \( x \) in terms of the second and third congruences:
+\[
+x = 25k + 17
+\]
+Substitute into the second congruence:
+\[
+25k + 17 \equiv 6 \pmod{9}
+\]
+Simplify:
+\[
+25 \equiv 7 \pmod{9} \quad \text{and} \quad 17 \equiv -1 \pmod{9}
+\]
+Thus:
+\[
+7k - 1 \equiv 6 \pmod{9}
+\]
+Add 1 to both sides:
+\[
+7k \equiv 7 \pmod{9}
+\]
+Divide by 7:
+\[
+k \equiv 1 \pmod{9}
+\]
+So:
+\[
+k = 9m + 1
+\]
+Substitute back:
+\[
+x = 25(9m + 1) + 17 = 225m + 42
+\]
+Thus:
+\[
+x \equiv 42 \pmod{225}
+\]
+
+Finally, we need the least positive four-digit solution:
+\[
+x = 225n + 42
+\]
+We need \( x \geq 1000 \):
+\[
+225n + 42 \geq 1000
+\]
+\[
+225n \geq 958
+\]
+\[
+n \geq \frac{958}{225} \approx 4.25
+\]
+So, the smallest integer \( n \) is 5:
+\[
+x = 225 \cdot 5 + 42 = 1125 + 42 = 1167
+\]
+
+Thus, the least positive four-digit solution is:
+\[
+\boxed{1167}
+\]

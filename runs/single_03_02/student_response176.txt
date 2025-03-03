@@ -1,0 +1,34 @@
+Given that \(\triangle ABC\) is a right triangle with \(\angle B = 90^\circ\), and a circle with diameter \(BC\) intersects side \(AC\) at point \(D\), we know that \(\angle BDC = 90^\circ\). This is because any angle inscribed in a semicircle is a right angle.
+
+We are given \(AD = 1\) and \(BD = 4\). We need to find the length of \(CD\).
+
+First, let's denote the lengths \(AB = c\), \(BC = a\), and \(CA = b\). Since \(\angle B = 90^\circ\), by the Pythagorean theorem, we have:
+\[ b^2 = a^2 + c^2. \]
+
+Since \(D\) is on the circle with diameter \(BC\), \(\angle BDC = 90^\circ\). Therefore, \(\triangle BDC\) is a right triangle with \(\angle BDC = 90^\circ\). Using the Pythagorean theorem in \(\triangle BDC\), we get:
+\[ b^2 = a^2 + CD^2. \]
+
+Since \(D\) is on \(AC\), we can express \(b\) as \(AD + CD = 1 + CD\). Therefore, we have:
+\[ (1 + CD)^2 = a^2 + CD^2. \]
+
+Expanding and simplifying, we get:
+\[ 1 + 2CD + CD^2 = a^2 + CD^2, \]
+\[ 1 + 2CD = a^2. \]
+Thus,
+\[ a^2 = 1 + 2CD. \]
+
+Now, using the Pythagorean theorem in \(\triangle ABD\), we have:
+\[ AB^2 + AD^2 = BD^2, \]
+\[ c^2 + 1^2 = 4^2, \]
+\[ c^2 + 1 = 16, \]
+\[ c^2 = 15. \]
+
+Since \(a^2 = c^2\), we have:
+\[ a^2 = 15. \]
+
+Substituting \(a^2 = 15\) into the equation \(a^2 = 1 + 2CD\), we get:
+\[ 15 = 1 + 2CD, \]
+\[ 14 = 2CD, \]
+\[ CD = 7. \]
+
+Thus, the length of \(CD\) is \(\boxed{7}\).

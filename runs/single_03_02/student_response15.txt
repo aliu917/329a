@@ -1,0 +1,117 @@
+Let's denote the number of members in the band as \( n \).
+
+1. **Square Formation Condition:**
+   - When arranged in a square formation, there are 5 members left over. This means \( n \) can be expressed as:
+   \[
+   n = k^2 + 5
+   \]
+   where \( k \) is an integer.
+
+2. **Formation with 7 More Rows than Columns:**
+   - When arranged in a formation with 7 more rows than columns, there are no members left over. Let the number of columns be \( c \). Then the number of rows is \( c + 7 \). Therefore, \( n \) can also be expressed as:
+   \[
+   n = c(c + 7)
+   \]
+   This gives us:
+   \[
+   n = c^2 + 7c
+   \]
+
+3. **Equating the Two Expressions for \( n \):**
+   - We now have two expressions for \( n \):
+   \[
+   k^2 + 5 = c^2 + 7c
+   \]
+   Rearrange to form a quadratic equation in terms of \( c \):
+   \[
+   c^2 + 7c - k^2 - 5 = 0
+   \]
+
+4. **Solving the Quadratic Equation:**
+   - The quadratic equation \( c^2 + 7c - k^2 - 5 = 0 \) can be solved using the quadratic formula \( c = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 1 \), \( b = 7 \), and \( c = -k^2 - 5 \):
+   \[
+   c = \frac{-7 \pm \sqrt{49 + 4(k^2 + 5)}}{2}
+   \]
+   Simplify under the square root:
+   \[
+   c = \frac{-7 \pm \sqrt{49 + 4k^2 + 20}}{2}
+   \]
+   \[
+   c = \frac{-7 \pm \sqrt{4k^2 + 69}}{2}
+   \]
+   For \( c \) to be an integer, \( \sqrt{4k^2 + 69} \) must be an integer. Let \( \sqrt{4k^2 + 69} = m \), where \( m \) is an integer. Then:
+   \[
+   4k^2 + 69 = m^2
+   \]
+   Rearrange to form a difference of squares:
+   \[
+   m^2 - 4k^2 = 69
+   \]
+   This can be factored as:
+   \[
+   (m - 2k)(m + 2k) = 69
+   \]
+
+5. **Finding Integer Solutions:**
+   - We need to find pairs \((m - 2k, m + 2k)\) that multiply to 69. The factor pairs of 69 are \((1, 69)\), \((3, 23)\), \((-1, -69)\), and \((-3, -23)\).
+
+   - Solving for each pair:
+     - For \((1, 69)\):
+       \[
+       m - 2k = 1 \quad \text{and} \quad m + 2k = 69
+       \]
+       Adding these equations:
+       \[
+       2m = 70 \implies m = 35
+       \]
+       Subtracting these equations:
+       \[
+       4k = 68 \implies k = 17
+       \]
+     - For \((3, 23)\):
+       \[
+       m - 2k = 3 \quad \text{and} \quad m + 2k = 23
+       \]
+       Adding these equations:
+       \[
+       2m = 26 \implies m = 13
+       \]
+       Subtracting these equations:
+       \[
+       4k = 20 \implies k = 5
+       \]
+
+6. **Calculating \( n \) for Each \( k \):**
+   - For \( k = 17 \):
+     \[
+     n = 17^2 + 5 = 289 + 5 = 294
+     \]
+   - For \( k = 5 \):
+     \[
+     n = 5^2 + 5 = 25 + 5 = 30
+     \]
+
+7. **Verification:**
+   - For \( n = 294 \):
+     - \( 294 = c^2 + 7c \)
+     - Solving \( c^2 + 7c - 294 = 0 \):
+       \[
+       c = \frac{-7 \pm \sqrt{196 + 1176}}{2} = \frac{-7 \pm \sqrt{1372}}{2} = \frac{-7 \pm 37}{2}
+       \]
+       \[
+       c = 15 \quad \text{or} \quad c = -22
+       \]
+     - Valid \( c = 15 \), so \( n = 15 \times 22 = 294 \).
+
+   - For \( n = 30 \):
+     - \( 30 = c^2 + 7c \)
+     - Solving \( c^2 + 7c - 30 = 0 \):
+       \[
+       c = \frac{-7 \pm \sqrt{49 + 120}}{2} = \frac{-7 \pm \sqrt{169}}{2} = \frac{-7 \pm 13}{2}
+       \]
+       \[
+       c = 3 \quad \text{or} \quad c = -10
+       \]
+     - Valid \( c = 3 \), so \( n = 3 \times 10 = 30 \).
+
+The maximum number of members is \(\boxed{294}\).

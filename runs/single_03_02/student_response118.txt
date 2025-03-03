@@ -1,0 +1,91 @@
+To determine the other point of intersection of the ellipse with the \(x\)-axis, we start by recalling that the sum of the distances from any point on the ellipse to the two foci is constant. Let's denote the foci as \(F_1 = (0,2)\) and \(F_2 = (3,0)\), and let the point of intersection on the \(x\)-axis be \(P = (x,0)\).
+
+First, we calculate the distance from \(P\) to \(F_1\):
+\[
+PF_1 = \sqrt{(x-0)^2 + (0-2)^2} = \sqrt{x^2 + 4}
+\]
+
+Next, we calculate the distance from \(P\) to \(F_2\):
+\[
+PF_2 = \sqrt{(x-3)^2 + (0-0)^2} = \sqrt{(x-3)^2} = |x-3|
+\]
+
+Since the point \(P\) lies on the ellipse, the sum of these distances is equal to the constant \(2a\), where \(a\) is the semi-major axis length. We know that the ellipse intersects the origin, so the origin \((0,0)\) is also a point on the ellipse. We can calculate the sum of the distances from the origin to the foci:
+\[
+OF_1 = \sqrt{(0-0)^2 + (0-2)^2} = 2
+\]
+\[
+OF_2 = \sqrt{(0-3)^2 + (0-0)^2} = 3
+\]
+\[
+OF_1 + OF_2 = 2 + 3 = 5
+\]
+Thus, the constant sum of the distances is \(2a = 5\), so \(a = \frac{5}{2}\).
+
+Now, we know that for any point \(P = (x,0)\) on the ellipse:
+\[
+PF_1 + PF_2 = 5
+\]
+Substituting the expressions for \(PF_1\) and \(PF_2\):
+\[
+\sqrt{x^2 + 4} + |x-3| = 5
+\]
+
+We need to consider two cases for \(|x-3|\):
+
+**Case 1: \(x \geq 3\)**
+
+\[
+\sqrt{x^2 + 4} + (x - 3) = 5
+\]
+\[
+\sqrt{x^2 + 4} = 8 - x
+\]
+Square both sides:
+\[
+x^2 + 4 = (8 - x)^2
+\]
+\[
+x^2 + 4 = 64 - 16x + x^2
+\]
+\[
+4 = 64 - 16x
+\]
+\[
+16x = 60
+\]
+\[
+x = \frac{60}{16} = \frac{15}{4}
+\]
+
+Since \(x = \frac{15}{4} \geq 3\), this solution is valid.
+
+**Case 2: \(x < 3\)**
+
+\[
+\sqrt{x^2 + 4} + (3 - x) = 5
+\]
+\[
+\sqrt{x^2 + 4} = 2 + x
+\]
+Square both sides:
+\[
+x^2 + 4 = (2 + x)^2
+\]
+\[
+x^2 + 4 = 4 + 4x + x^2
+\]
+\[
+4 = 4 + 4x
+\]
+\[
+0 = 4x
+\]
+\[
+x = 0
+\]
+
+This solution is the origin, which we already know. Therefore, the other point of intersection is:
+\[
+\boxed{\left(\frac{15}{4}, 0\right)}
+\]

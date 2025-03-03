@@ -1,0 +1,22 @@
+To determine the number of ways to choose a president and a 2-person committee from a group of 8 people, where the president cannot be on the committee, we can break down the problem into two independent steps:
+
+1. **Choosing the President:**
+   - There are 8 people available to choose from for the president position.
+   - Therefore, there are \(8\) ways to choose the president.
+
+2. **Choosing the 2-person Committee:**
+   - After choosing the president, we need to select 2 people from the remaining 7 people (since the president cannot be on the committee).
+   - The number of ways to choose 2 people from 7 is given by the combination formula \( \binom{n}{k} = \frac{n!}{k!(n-k)!} \), where \( n = 7 \) and \( k = 2 \).
+
+   \[
+   \binom{7}{2} = \frac{7!}{2!(7-2)!} = \frac{7!}{2! \cdot 5!} = \frac{7 \times 6 \times 5!}{2 \times 1 \times 5!} = \frac{7 \times 6}{2 \times 1} = 21
+   \]
+
+3. **Combining the Choices:**
+   - Since the choice of the president and the choice of the committee members are independent, we multiply the number of ways to choose the president by the number of ways to choose the committee.
+
+   \[
+   8 \times 21 = 168
+   \]
+
+Thus, the total number of ways to choose a president and a 2-person committee from a group of 8 people, where the president cannot be on the committee, is \(\boxed{168}\).

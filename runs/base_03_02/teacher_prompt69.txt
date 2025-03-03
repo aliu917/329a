@@ -1,0 +1,80 @@
+You are given a reasoning attempt for answering the following question: A rectangular picture frame is made from one-inch-wide pieces of wood.  The area of just the frame is $18$ square inches, and one of the outer edges of the frame is $5$ inches long.  What is the sum of the lengths of the four interior edges of the frame?
+
+[asy]
+
+size(5cm,5cm);
+
+draw((0,0)--(5,0)--(5,7)--(0,7)--(0,0));
+
+draw((1,1)--(4,1)--(4,6)--(1,6)--(1,1));
+
+fill(((1,1)--(4,1)--(4,6)--(1,6)--cycle),darkblue);
+
+draw (shift(0, 0.5)*((0,7)--(5,7)), Bars);
+
+label("$5''$",(2.5,7.5),N);
+
+draw (shift(0, -0.5)*((4,0)--(5,0)), Bars);
+
+label("$1''$",(4.5,-0.5),S);
+
+draw (shift(0.5,0)*((5,0)--(5,1)), Bars);
+
+label("$1''$",(5.5,0.5),E);
+
+[/asy]
+
+Attempt: To solve the problem, we need to determine the dimensions of the rectangular picture frame and then find the sum of the lengths of the four interior edges.
+
+1. **Identify the outer dimensions:**
+   - One of the outer edges is given as 5 inches.
+   - Let the other outer dimension be \( y \) inches.
+   - The frame is made from one-inch-wide pieces of wood, so the inner dimensions will be \( (5-2) = 3 \) inches and \( (y-2) \) inches.
+
+2. **Calculate the area of the outer rectangle:**
+   - The area of the outer rectangle is \( 5 \times y \).
+
+3. **Calculate the area of the inner rectangle:**
+   - The area of the inner rectangle is \( 3 \times (y-2) \).
+
+4. **Determine the area of the frame:**
+   - The area of the frame is the difference between the area of the outer rectangle and the area of the inner rectangle.
+   \[
+   \text{Area of the frame} = 5y - 3(y-2)
+   \]
+   - Simplify the expression:
+   \[
+   5y - 3y + 6 = 2y + 6
+   \]
+   - We know the area of the frame is 18 square inches:
+   \[
+   2y + 6 = 18
+   \]
+
+5. **Solve for \( y \):**
+   \[
+   2y + 6 = 18
+   \]
+   \[
+   2y = 12
+   \]
+   \[
+   y = 6
+   \]
+
+6. **Determine the inner dimensions:**
+   - One inner dimension is \( 3 \) inches.
+   - The other inner dimension is \( 6 - 2 = 4 \) inches.
+
+7. **Calculate the sum of the lengths of the four interior edges:**
+   - The interior rectangle has two lengths of 3 inches and two widths of 4 inches.
+   \[
+   2 \times 3 + 2 \times 4 = 6 + 8 = 14
+   \]
+
+Thus, the sum of the lengths of the four interior edges of the frame is \(\boxed{14}\).
+
+Correct solution: The lengths of the top/bottom interior edges are $5-2=3$ inches (since there is 1 inch of frame to either side of the interior rectangular hole). Let the lengths of the left/right interior edges be $x$ inches. Then, the lengths of the left/right exterior edges are $x+2$ inches. The area of the frame is equal to the area of the frame rectangle minus the area of the hole. This is equal to $5\cdot(x+2)-3x=2x+10$. Since we are given that this area is 18 square inches, we have the equation $2x+10=18\Rightarrow x=4$. So the dimensions of the interior hole are $3\times4$. Thus, the sum of the four interior edges is $3+4+3+4=\boxed{14}$ inches.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

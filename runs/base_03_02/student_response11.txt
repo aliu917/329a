@@ -1,0 +1,134 @@
+To solve the problem, we need to interpret the given base-5 addition problem and find the values of \( S \), \( H \), and \( E \) that satisfy it. The problem is as follows:
+
+\[
+\begin{array}{c@{}c@{}c@{}c}
+&S&H&E_5\\
+&+&H&E_5\\
+\cline{2-4}
+&S&E&S_5\\
+\end{array}
+\]
+
+First, let's convert the base-5 numbers to base-10 for easier manipulation. The base-5 number \( SHE_5 \) can be expressed in base-10 as:
+\[
+S \cdot 5^2 + H \cdot 5^1 + E \cdot 5^0 = 25S + 5H + E
+\]
+
+Similarly, the base-5 number \( HE_5 \) can be expressed in base-10 as:
+\[
+H \cdot 5^1 + E \cdot 5^0 = 5H + E
+\]
+
+The sum in base-10 is:
+\[
+25S + 5H + E + 5H + E = 25S + 10H + 2E
+\]
+
+The result in base-5, \( SE S_5 \), can be expressed in base-10 as:
+\[
+S \cdot 5^2 + E \cdot 5^1 + S \cdot 5^0 = 25S + 5E + S = 26S + 5E
+\]
+
+Equating the two expressions, we get:
+\[
+25S + 10H + 2E = 26S + 5E
+\]
+
+Simplifying this equation:
+\[
+10H + 2E - 5E = 26S - 25S
+\]
+\[
+10H - 3E = S
+\]
+
+Since \( S \), \( H \), and \( E \) are distinct non-zero digits less than 5, we need to find values that satisfy this equation. Let's test possible values for \( H \) and \( E \):
+
+1. If \( H = 1 \):
+   \[
+   10(1) - 3E = S \implies 10 - 3E = S
+   \]
+   Testing \( E = 1 \) (not possible since \( S \) and \( E \) must be distinct).
+   Testing \( E = 2 \):
+   \[
+   10 - 3(2) = 4 \implies S = 4 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 3 \):
+   \[
+   10 - 3(3) = 1 \implies S = 1 \quad (\text{not possible since } S \neq H)
+   \]
+   Testing \( E = 4 \):
+   \[
+   10 - 3(4) = -2 \quad (\text{not possible})
+   \]
+
+2. If \( H = 2 \):
+   \[
+   10(2) - 3E = S \implies 20 - 3E = S
+   \]
+   Testing \( E = 1 \):
+   \[
+   20 - 3(1) = 17 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 2 \) (not possible since \( S \) and \( E \) must be distinct).
+   Testing \( E = 3 \):
+   \[
+   20 - 3(3) = 11 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 4 \):
+   \[
+   20 - 3(4) = 8 \quad (\text{not possible since } S < 5)
+   \]
+
+3. If \( H = 3 \):
+   \[
+   10(3) - 3E = S \implies 30 - 3E = S
+   \]
+   Testing \( E = 1 \):
+   \[
+   30 - 3(1) = 27 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 2 \):
+   \[
+   30 - 3(2) = 24 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 3 \) (not possible since \( S \) and \( E \) must be distinct).
+   Testing \( E = 4 \):
+   \[
+   30 - 3(4) = 18 \quad (\text{not possible since } S < 5)
+   \]
+
+4. If \( H = 4 \):
+   \[
+   10(4) - 3E = S \implies 40 - 3E = S
+   \]
+   Testing \( E = 1 \):
+   \[
+   40 - 3(1) = 37 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 2 \):
+   \[
+   40 - 3(2) = 34 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 3 \):
+   \[
+   40 - 3(3) = 31 \quad (\text{not possible since } S < 5)
+   \]
+   Testing \( E = 4 \) (not possible since \( S \) and \( E \) must be distinct).
+
+Finally, we find that the only valid solution is:
+\[
+H = 1, E = 2, S = 4
+\]
+
+Thus, the sum \( S + H + E = 4 + 1 + 2 = 7 \).
+
+Converting 7 to base-5:
+\[
+7_{10} = 12_5
+\]
+
+Therefore, the final answer is:
+\[
+\boxed{12}
+\]

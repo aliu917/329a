@@ -1,0 +1,29 @@
+To compute the double sum \(\sum_{n=2}^\infty \sum_{k=1}^{n-1} \frac{k}{2^{n+k}}\), we start by changing the order of summation. Notice that the summand \(\frac{k}{2^{n+k}}\) can be rewritten as \(\frac{k}{2^n \cdot 2^k}\). The inner sum is from \(k=1\) to \(k=n-1\), so we can rewrite the double sum as follows:
+
+\[
+\sum_{n=2}^\infty \sum_{k=1}^{n-1} \frac{k}{2^{n+k}} = \sum_{k=1}^\infty \sum_{n=k+1}^\infty \frac{k}{2^n \cdot 2^k} = \sum_{k=1}^\infty \frac{k}{2^k} \sum_{n=k+1}^\infty \frac{1}{2^n}
+\]
+
+Next, we need to evaluate the inner sum \(\sum_{n=k+1}^\infty \frac{1}{2^n}\). This is a geometric series with the first term \(\frac{1}{2^{k+1}}\) and common ratio \(\frac{1}{2}\):
+
+\[
+\sum_{n=k+1}^\infty \frac{1}{2^n} = \frac{\frac{1}{2^{k+1}}}{1 - \frac{1}{2}} = \frac{\frac{1}{2^{k+1}}}{\frac{1}{2}} = \frac{1}{2^k}
+\]
+
+Substituting this back into our expression, we get:
+
+\[
+\sum_{k=1}^\infty \frac{k}{2^k} \cdot \frac{1}{2^k} = \sum_{k=1}^\infty \frac{k}{4^k}
+\]
+
+Now, we need to find the sum \(\sum_{k=1}^\infty \frac{k}{4^k}\). Let \(S = \sum_{k=1}^\infty \frac{k}{4^k}\). We can find \(S\) by manipulating the series. Consider the series \(T = \sum_{k=0}^\infty \frac{k}{4^k}\). We know that \(T = \sum_{k=1}^\infty \frac{k}{4^k}\) because the \(k=0\) term is zero. We can find \(T\) by differentiating the geometric series sum formula. The sum of the geometric series \(\sum_{k=0}^\infty x^k = \frac{1}{1-x}\) for \(|x| < 1\) can be differentiated term by term to get \(\sum_{k=1}^\infty kx^{k-1} = \frac{1}{(1-x)^2}\). Multiplying both sides by \(x\) gives \(\sum_{k=1}^\infty kx^k = \frac{x}{(1-x)^2}\). Setting \(x = \frac{1}{4}\), we get:
+
+\[
+T = \sum_{k=1}^\infty \frac{k}{4^k} = \frac{\frac{1}{4}}{\left(1 - \frac{1}{4}\right)^2} = \frac{\frac{1}{4}}{\left(\frac{3}{4}\right)^2} = \frac{\frac{1}{4}}{\frac{9}{16}} = \frac{1}{4} \cdot \frac{16}{9} = \frac{4}{9}
+\]
+
+Therefore, the value of the original sum is:
+
+\[
+\boxed{\frac{4}{9}}
+\]

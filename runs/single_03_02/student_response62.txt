@@ -1,0 +1,23 @@
+To find the smallest positive integer \( n \) for which \( S_n \) is an integer, we need to calculate the sum of the reciprocals of the non-zero digits of the integers from 1 to \( 10^n \) inclusive. The non-zero digits are 1 through 9, and their reciprocals are \( \frac{1}{1}, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, \frac{1}{6}, \frac{1}{7}, \frac{1}{8}, \frac{1}{9} \).
+
+First, we calculate the sum of these reciprocals:
+\[
+S = \frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} + \frac{1}{9} = \frac{2520 + 1260 + 840 + 630 + 504 + 420 + 360 + 315 + 280}{2520} = \frac{6720}{2520} = \frac{8}{3}.
+\]
+
+This sum, \( S \), is the contribution of each digit position in the numbers from 1 to 9. For numbers from 1 to \( 10^n \), each digit position (units, tens, hundreds, etc.) will contain each of the digits 1 through 9 equally often. Specifically, in the range from 1 to \( 10^n \), each digit position will contain each of the digits 1 through 9 exactly \( 10^{n-1} \) times.
+
+Thus, the sum \( S_n \) is:
+\[
+S_n = n \cdot 10^{n-1} \cdot S = n \cdot 10^{n-1} \cdot \frac{8}{3} = \frac{8n \cdot 10^{n-1}}{3}.
+\]
+
+For \( S_n \) to be an integer, \( \frac{8n \cdot 10^{n-1}}{3} \) must be an integer. This means that the numerator \( 8n \cdot 10^{n-1} \) must be divisible by 3. Since 8 and \( 10^{n-1} \) are not divisible by 3, \( n \) must be divisible by 3. The smallest positive integer \( n \) that satisfies this condition is \( n = 3 \).
+
+To verify, we calculate \( S_3 \):
+\[
+S_3 = \frac{8 \cdot 3 \cdot 10^2}{3} = 8 \cdot 100 = 800,
+\]
+which is an integer.
+
+Therefore, the smallest positive integer \( n \) for which \( S_n \) is an integer is \(\boxed{3}\).

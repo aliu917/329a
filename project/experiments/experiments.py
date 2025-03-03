@@ -26,8 +26,9 @@ def run_single(x, y, student, teacher, input_feedback, prompt_func=None):
     return result
 
 class Experiment:
-    def __init__(self, dataset, log_dir=None, num_examples=100, seed=2809):
+    def __init__(self, dataset, log_dir=None, num_examples=10, seed=2809):
         self.dataset = dataset
+        self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
         self.student = StudentLMAgent(log_dir=log_dir)
         self.teacher = TeacherLMAgent(log_dir=log_dir)
         self.num_examples = num_examples
@@ -40,33 +41,32 @@ class Experiment:
             self.results_path = None
     
     def run(self):
-        self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
         torch.manual_seed(self.seed)
-        results = self.get_results(self.dataset, self.student, self.teacher)
+        results = self.get_results()
         print("Accuracy:", np.mean([r["correct"] for r in results]))
         if self.results_path:
             with open(self.results_path, "w") as f:
                 json.dump(results, f)
 
 class Base(Experiment):
-    def get_results(self, dataset, student, teacher):
+    def get_results(self):
         results = []
-        for i, (data, labels) in tqdm(zip(range(self.num_examples), dataset)):
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
             x = data["problem"][0]
             y = labels[0]
-            result = run_single(x, y, student, teacher, "")
+            result = run_single(x, y, self.student, self.teacher, "")
             results.append(result)
         return results
 
 class SingleRound(Experiment):
-    def get_results(self, dataset, student, teacher):
+    def get_results(self):
         results = []
-        for i, (data, labels) in tqdm(zip(range(self.num_examples), dataset)):
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
             x = data["problem"][0]
             y = labels[0]
-            result = run_single(x, y, student, teacher, "")
+            result = run_single(x, y, self.student, self.teacher, "")
             feedback = result["output_feedback"]
-            result = run_single(x, y, student, teacher, feedback)
+            result = run_single(x, y, self.student, self.teacher, feedback)
             results.append(result)
         return results
 

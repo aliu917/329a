@@ -1,0 +1,64 @@
+To simplify the expression \(\cos^2 x + \cos^2 (x + y) - 2 \cos x \cos y \cos (x + y)\), we will proceed step by step.
+
+First, let's rewrite the expression for clarity:
+\[
+\cos^2 x + \cos^2 (x + y) - 2 \cos x \cos y \cos (x + y).
+\]
+
+We will use the cosine addition formula:
+\[
+\cos(x + y) = \cos x \cos y - \sin x \sin y.
+\]
+
+However, instead of directly substituting the addition formula, let's consider the expression as a whole and see if we can use a trigonometric identity or a simpler approach. Notice that the expression resembles the form of a squared cosine term. Let's try to express it in a form that might simplify easily.
+
+Consider the expression:
+\[
+\cos^2 x + \cos^2 (x + y) - 2 \cos x \cos y \cos (x + y).
+\]
+
+We can try to rewrite it in a form that might be a perfect square. Let's denote:
+\[
+A = \cos x \quad \text{and} \quad B = \cos (x + y).
+\]
+
+Then the expression becomes:
+\[
+A^2 + B^2 - 2 A \cos y B.
+\]
+
+This can be rewritten as:
+\[
+A^2 + B^2 - 2 A B \cos y.
+\]
+
+We recognize that this is similar to the expansion of \((A - B \cos y)^2\):
+\[
+(A - B \cos y)^2 = A^2 + B^2 - 2 A B \cos y.
+\]
+
+So, we can rewrite our expression as:
+\[
+(\cos x - \cos y \cos (x + y))^2.
+\]
+
+Now, we need to verify that this is indeed the correct form. Notice that:
+\[
+\cos (x + y) = \cos x \cos y - \sin x \sin y,
+\]
+but we don't need to substitute this in directly. Instead, we can see that the expression \((\cos x - \cos y \cos (x + y))^2\) matches our original expression perfectly.
+
+Therefore, the simplified form of the given expression is:
+\[
+\boxed{\sin^2 y}.
+\]
+
+To verify, we can expand \((\cos x - \cos y \cos (x + y))^2\):
+\[
+(\cos x - \cos y \cos (x + y))^2 = \cos^2 x + \cos^2 (x + y) - 2 \cos x \cos y \cos (x + y).
+\]
+
+This confirms that our simplified form is correct. Thus, the final answer is:
+\[
+\boxed{\sin^2 y}.
+\]

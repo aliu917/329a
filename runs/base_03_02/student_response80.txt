@@ -1,0 +1,18 @@
+To find the greatest common divisor (gcd) of \(3a^3 + a^2 + 4a + 57\) and \(a\), we denote the polynomials as follows:
+\[ f(a) = 3a^3 + a^2 + 4a + 57 \]
+\[ g(a) = a \]
+
+We need to find \(\gcd(f(a), g(a))\). Since \(g(a) = a\), we can use the Euclidean algorithm for polynomials. The Euclidean algorithm tells us that \(\gcd(f(a), a) = \gcd(a, f(0))\), because for any polynomial \(f(a)\), we can write:
+\[ f(a) = aq(a) + r \]
+where \(r\) is the remainder when \(f(a)\) is divided by \(a\). Since \(a\) is a linear polynomial, the remainder \(r\) is a constant, which is \(f(0)\).
+
+Let's evaluate \(f(0)\):
+\[ f(0) = 3(0)^3 + (0)^2 + 4(0) + 57 = 57 \]
+
+Thus, \(\gcd(f(a), a) = \gcd(a, 57)\). Since \(a\) is a multiple of 456, we can write \(a = 456k\) for some integer \(k\). The gcd of \(456k\) and 57 is the same as the gcd of 456 and 57, because 57 divides \(456k\) and the gcd of two numbers is the same as the gcd of one of the numbers and the other number divided by their common factor.
+
+Now we need to find \(\gcd(456, 57)\). We use the Euclidean algorithm:
+\[ 456 = 57 \cdot 8 + 0 \]
+This shows that 57 divides 456 exactly, so the gcd is 57.
+
+Therefore, the greatest common divisor of \(3a^3 + a^2 + 4a + 57\) and \(a\) is \(\boxed{57}\).

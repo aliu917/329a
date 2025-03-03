@@ -1,0 +1,83 @@
+To find the other point of intersection of the ellipse with the \(x\)-axis, we start by using the properties of ellipses. The sum of the distances from any point on the ellipse to the two foci is constant. The foci are given as \(F_1 = (0,2)\) and \(F_2 = (3,0)\).
+
+First, we note that the ellipse intersects the \(x\)-axis at the origin \((0,0)\). Let the other intersection point be \((x,0)\). The sum of the distances from \((x,0)\) to the foci must equal the sum of the distances from \((0,0)\) to the foci. We calculate these distances:
+
+The distance from \((0,0)\) to \(F_1\) is:
+\[
+\sqrt{(0-0)^2 + (0-2)^2} = 2
+\]
+The distance from \((0,0)\) to \(F_2\) is:
+\[
+\sqrt{(0-3)^2 + (0-0)^2} = 3
+\]
+So, the constant sum is \(2 + 3 = 5\). Therefore, for any point \((x,0)\) on the ellipse, the sum of the distances to the foci is also 5:
+\[
+\sqrt{x^2 + 2^2} + \sqrt{(x-3)^2 + 0^2} = 5
+\]
+This simplifies to:
+\[
+\sqrt{x^2 + 4} + \sqrt{(x-3)^2} = 5
+\]
+Since \(\sqrt{(x-3)^2} = |x-3|\), we have two cases to consider: \(x \geq 3\) and \(x < 3\).
+
+**Case 1: \(x \geq 3\)**
+\[
+\sqrt{x^2 + 4} + (x - 3) = 5
+\]
+Subtract \((x - 3)\) from both sides:
+\[
+\sqrt{x^2 + 4} = 8 - x
+\]
+Square both sides:
+\[
+x^2 + 4 = (8 - x)^2
+\]
+Expand the right side:
+\[
+x^2 + 4 = 64 - 16x + x^2
+\]
+Subtract \(x^2\) from both sides:
+\[
+4 = 64 - 16x
+\]
+Subtract 64 from both sides:
+\[
+-60 = -16x
+\]
+Divide by -16:
+\[
+x = \frac{60}{16} = \frac{15}{4}
+\]
+Since \(\frac{15}{4} = 3.75 \geq 3\), \(x = \frac{15}{4}\) is a valid solution in this case.
+
+**Case 2: \(x < 3\)**
+\[
+\sqrt{x^2 + 4} + (3 - x) = 5
+\]
+Subtract \((3 - x)\) from both sides:
+\[
+\sqrt{x^2 + 4} = 2 + x
+\]
+Square both sides:
+\[
+x^2 + 4 = (2 + x)^2
+\]
+Expand the right side:
+\[
+x^2 + 4 = 4 + 4x + x^2
+\]
+Subtract \(x^2\) from both sides:
+\[
+4 = 4 + 4x
+\]
+Subtract 4 from both sides:
+\[
+0 = 4x
+\]
+Divide by 4:
+\[
+x = 0
+\]
+Since \(x = 0\) is already known to be one of the intersection points, it is not a new solution.
+
+Therefore, the other point of intersection is \(\boxed{\left(\frac{15}{4}, 0\right)}\).

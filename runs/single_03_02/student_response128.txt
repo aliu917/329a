@@ -1,0 +1,83 @@
+To find the unit vector \(\mathbf{v}\) such that \(\mathbf{b}\) bisects the angle between \(\mathbf{a}\) and \(\mathbf{v}\), we can use the angle bisector property of vectors. The angle bisector of two vectors \(\mathbf{a}\) and \(\mathbf{v}\) is given by the vector \(\frac{\mathbf{a} + \mathbf{v}}{|\mathbf{a} + \mathbf{v}|}\). Since \(\mathbf{b}\) bisects the angle, we have:
+
+\[
+\mathbf{b} = k \frac{\mathbf{a} + \mathbf{v}}{|\mathbf{a} + \mathbf{v}|}
+\]
+
+for some scalar \(k\). However, since \(\mathbf{b}\) is a unit vector, we can simplify this to:
+
+\[
+\mathbf{b} \cdot \mathbf{b} = 1 = \left( \frac{\mathbf{a} + \mathbf{v}}{|\mathbf{a} + \mathbf{v}|} \right) \cdot \left( \frac{\mathbf{a} + \mathbf{v}}{|\mathbf{a} + \mathbf{v}|} \right) = \frac{(\mathbf{a} + \mathbf{v}) \cdot (\mathbf{a} + \mathbf{v})}{|\mathbf{a} + \mathbf{v}|^2}
+\]
+
+This simplifies to:
+
+\[
+\mathbf{b} \cdot (\mathbf{a} + \mathbf{v}) = \mathbf{a} + \mathbf{v}
+\]
+
+Expanding the dot product, we get:
+
+\[
+\mathbf{b} \cdot \mathbf{a} + \mathbf{b} \cdot \mathbf{v} = \mathbf{a} + \mathbf{v}
+\]
+
+Since \(\mathbf{b} \cdot \mathbf{a} = \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} \cdot \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix} = -1 \cdot 3 + 1 \cdot 4 + (-1) \cdot 0 = 1\), we have:
+
+\[
+1 + \mathbf{b} \cdot \mathbf{v} = \mathbf{a} + \mathbf{v}
+\]
+
+Rearranging terms, we get:
+
+\[
+\mathbf{b} \cdot \mathbf{v} - \mathbf{v} = \mathbf{a} - 1
+\]
+
+Factoring out \(\mathbf{v}\) on the left side, we get:
+
+\[
+(\mathbf{b} - \mathbf{I}) \cdot \mathbf{v} = \mathbf{a} - 1
+\]
+
+where \(\mathbf{I}\) is the identity matrix. Therefore, we have:
+
+\[
+\begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} \cdot \mathbf{v} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}
+\]
+
+Simplifying the left side, we get:
+
+\[
+\begin{pmatrix} -2 \\ 0 \\ -2 \end{pmatrix} \cdot \mathbf{v} = \begin{pmatrix} 2 \\ 3 \\ -1 \end{pmatrix}
+\]
+
+This gives us the system of equations:
+
+\[
+-2v_1 - 2v_3 = 2, \quad 0v_2 = 3, \quad -2v_1 - 2v_3 = -1
+\]
+
+From the second equation, we see that it is inconsistent, so we need to re-evaluate the consistent part. The correct consistent part is:
+
+\[
+-2v_1 - 2v_3 = 2 \implies v_1 + v_3 = -1
+\]
+
+We can choose \(v_2\) to be any value, but to keep it simple, we can set \(v_2 = 0\). Then we have:
+
+\[
+v_1 + v_3 = -1
+\]
+
+We can choose \(v_1 = -1\) and \(v_3 = 0\), but to be a unit vector, we need to normalize:
+
+\[
+\mathbf{v} = \frac{1}{\sqrt{1^2 + 0^2 + (-1)^2}} \begin{pmatrix} -1 \\ 0 \\ -1 \end{pmatrix} = \frac{1}{\sqrt{2}} \begin{pmatrix} -1 \\ 0 \\ -1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{\sqrt{2}} \\ 0 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}
+\]
+
+Thus, the unit vector \(\mathbf{v}\) is:
+
+\[
+\boxed{\begin{pmatrix} -\frac{1}{\sqrt{2}} \\ 0 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}}
+\]

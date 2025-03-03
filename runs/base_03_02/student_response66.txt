@@ -1,0 +1,40 @@
+To solve the problem, we need to determine the value of \( m \) such that the probability that either mathematician arrives while the other is in the cafeteria is 40%. We will use geometric probability to find this value.
+
+First, let's define the time intervals. Let \( X \) and \( Y \) be the times (in minutes after 9 a.m.) that the first and second mathematician arrive, respectively. Both \( X \) and \( Y \) are uniformly distributed between 0 and 60. We need to find the probability that the absolute difference between \( X \) and \( Y \) is less than \( m \), i.e., \( |X - Y| < m \).
+
+This can be visualized in a 60 by 60 square where the x-axis represents the time \( X \) and the y-axis represents the time \( Y \). The condition \( |X - Y| < m \) describes the region between the lines \( Y = X + m \) and \( Y = X - m \). However, since \( X \) and \( Y \) are both between 0 and 60, we need to consider the boundaries of the square.
+
+The area of the region where \( |X - Y| < m \) consists of two right triangles in the corners of the square, each with legs of length \( 60 - m \). The area of each triangle is \( \frac{(60 - m)^2}{2} \), so the total area of the two triangles is \( (60 - m)^2 \). The area of the square is \( 60^2 = 3600 \). The area of the region where \( |X - Y| < m \) is therefore \( 3600 - 2 \cdot \frac{(60 - m)^2}{2} = 3600 - (60 - m)^2 \).
+
+The probability that \( |X - Y| < m \) is the ratio of this area to the area of the square:
+\[
+\frac{3600 - (60 - m)^2}{3600} = \frac{3600 - (3600 - 120m + m^2)}{3600} = \frac{120m - m^2}{3600} = \frac{m(120 - m)}{3600}.
+\]
+We are given that this probability is 40%, or 0.4, so we set up the equation:
+\[
+\frac{m(120 - m)}{3600} = 0.4.
+\]
+Multiplying both sides by 3600 gives:
+\[
+m(120 - m) = 1440.
+\]
+Rearranging terms gives a quadratic equation:
+\[
+m^2 - 120m + 1440 = 0.
+\]
+We solve this quadratic equation using the quadratic formula \( m = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \), where \( a = 1 \), \( b = -120 \), and \( c = 1440 \):
+\[
+m = \frac{120 \pm \sqrt{120^2 - 4 \cdot 1 \cdot 1440}}{2 \cdot 1} = \frac{120 \pm \sqrt{14400 - 5760}}{2} = \frac{120 \pm \sqrt{8640}}{2} = \frac{120 \pm 24\sqrt{15}}{2} = 60 \pm 12\sqrt{15}.
+\]
+Since \( m \) must be less than 60, we take the smaller root:
+\[
+m = 60 - 12\sqrt{15}.
+\]
+Thus, \( a = 60 \), \( b = 12 \), and \( c = 15 \), and the sum \( a + b + c \) is:
+\[
+a + b + c = 60 + 12 + 15 = 87.
+\]
+The final answer is:
+\[
+\boxed{87}.
+\]

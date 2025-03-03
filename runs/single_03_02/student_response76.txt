@@ -1,0 +1,63 @@
+To determine in which year the number of wrens will be less than 10% of what it was on June 1, 2004, we need to model the population decline using the given annual decrease rate of 40%.
+
+1. **Define the initial population and the decay factor:**
+   - Let \( P_0 \) be the initial population of wrens on June 1, 2004.
+   - The population decreases by 40% each year, which means it retains 60% of its value each year.
+   - Therefore, the decay factor is \( 0.60 \).
+
+2. **Formulate the population after \( n \) years:**
+   - The population after \( n \) years can be expressed as:
+     \[
+     P_n = P_0 \times (0.60)^n
+     \]
+
+3. **Set up the inequality to find when the population is less than 10% of the initial population:**
+   - We want \( P_n < 0.10 \times P_0 \).
+   - Substituting the expression for \( P_n \):
+     \[
+     P_0 \times (0.60)^n < 0.10 \times P_0
+     \]
+
+4. **Simplify the inequality:**
+   - Divide both sides by \( P_0 \) (assuming \( P_0 \neq 0 \)):
+     \[
+     (0.60)^n < 0.10
+     \]
+
+5. **Solve for \( n \) using logarithms:**
+   - Take the natural logarithm of both sides:
+     \[
+     \ln((0.60)^n) < \ln(0.10)
+     \]
+   - Use the property of logarithms \( \ln(a^b) = b \ln(a) \):
+     \[
+     n \ln(0.60) < \ln(0.10)
+     \]
+   - Since \( \ln(0.60) \) is negative, divide both sides by \( \ln(0.60) \) and reverse the inequality:
+     \[
+     n > \frac{\ln(0.10)}{\ln(0.60)}
+     \]
+
+6. **Calculate the value:**
+   - Compute \( \ln(0.10) \) and \( \ln(0.60) \):
+     \[
+     \ln(0.10) \approx -2.302585
+     \]
+     \[
+     \ln(0.60) \approx -0.510826
+     \]
+   - Divide to find \( n \):
+     \[
+     n > \frac{-2.302585}{-0.510826} \approx 4.506
+     \]
+
+7. **Determine the smallest integer \( n \) greater than 4.506:**
+   - The smallest integer greater than 4.506 is 5.
+
+8. **Find the corresponding year:**
+   - Since \( n = 5 \) represents the number of years after 2004, the year is:
+     \[
+     2004 + 5 = 2009
+     \]
+
+Therefore, the census will show that the number of wrens is less than 10% of what it was on June 1, 2004, in the year \(\boxed{2009}\).

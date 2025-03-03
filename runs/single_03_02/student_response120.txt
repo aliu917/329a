@@ -1,0 +1,40 @@
+To solve the problem, we need to use the relationship between the greatest common divisor (GCD) and the least common multiple (LCM) of two integers. Let's denote the two integers by \(a\) and \(b\), their GCD by \(d\), and their LCM by \(m\). The relationship between GCD and LCM is given by:
+
+\[ \text{GCD}(a, b) \times \text{LCM}(a, b) = a \times b \]
+
+Given that the product of the GCD and LCM of the two integers is 180, we can write:
+
+\[ d \times m = 180 \]
+
+Since \(d\) is the GCD of \(a\) and \(b\), we can express \(a\) and \(b\) as \(a = dk\) and \(b = dl\), where \(k\) and \(l\) are coprime integers (i.e., \(\text{GCD}(k, l) = 1\)). The LCM of \(a\) and \(b\) can be written as:
+
+\[ m = \frac{a \times b}{d} = \frac{dk \times dl}{d} = dkl \]
+
+Substituting \(m = dkl\) into the equation \(d \times m = 180\), we get:
+
+\[ d \times dkl = 180 \]
+\[ d^2 kl = 180 \]
+
+Since \(k\) and \(l\) are coprime, \(d^2\) must be a divisor of 180. We need to find all possible values of \(d\) such that \(d^2\) is a divisor of 180. First, we find the prime factorization of 180:
+
+\[ 180 = 2^2 \times 3^2 \times 5 \]
+
+The possible values for \(d^2\) are the perfect squares that are divisors of \(180\). These are:
+
+\[ 1^2 = 1, \quad 2^2 = 4, \quad 3^2 = 9 \]
+
+So, the possible values for \(d\) are the square roots of these perfect squares:
+
+\[ d = 1, 2, 3 \]
+
+We need to verify that each of these values of \(d\) can indeed be the GCD of two integers whose product of GCD and LCM is 180. For each \(d\):
+
+1. If \(d = 1\), then \(1^2 = 1\) is a divisor of 180, so \(d = 1\) is possible.
+2. If \(d = 2\), then \(2^2 = 4\) is a divisor of 180, so \(d = 2\) is possible.
+3. If \(d = 3\), then \(3^2 = 9\) is a divisor of 180, so \(d = 3\) is possible.
+
+Thus, the possible values for the GCD are 1, 2, and 3. Therefore, the number of different values that could be the greatest common divisor of the two integers is:
+
+\[
+\boxed{3}
+\]

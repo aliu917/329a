@@ -1,0 +1,26 @@
+To determine the smallest integer \( n \), greater than 1, such that \( n^{-1} \pmod{1050} \) is defined, we need to find the smallest integer \( n > 1 \) that is coprime to 1050. This means \( \gcd(n, 1050) = 1 \).
+
+First, we find the prime factorization of 1050:
+\[
+1050 = 2 \times 3 \times 5^2 \times 7
+\]
+An integer \( n \) is coprime to 1050 if it does not share any prime factors with 1050. Therefore, \( n \) should not be divisible by 2, 3, 5, or 7.
+
+We start checking the smallest integers greater than 1 to find the smallest \( n \) that satisfies this condition:
+- \( n = 2 \): \( \gcd(2, 1050) = 2 \) (not coprime)
+- \( n = 3 \): \( \gcd(3, 1050) = 3 \) (not coprime)
+- \( n = 4 \): \( \gcd(4, 1050) = 2 \) (not coprime)
+- \( n = 5 \): \( \gcd(5, 1050) = 5 \) (not coprime)
+- \( n = 6 \): \( \gcd(6, 1050) = 6 \) (not coprime)
+- \( n = 7 \): \( \gcd(7, 1050) = 7 \) (not coprime)
+- \( n = 8 \): \( \gcd(8, 1050) = 2 \) (not coprime)
+- \( n = 9 \): \( \gcd(9, 1050) = 3 \) (not coprime)
+- \( n = 10 \): \( \gcd(10, 1050) = 10 \) (not coprime)
+- \( n = 11 \): \( \gcd(11, 1050) = 1 \) (coprime)
+
+Since 11 is the smallest integer greater than 1 that does not share any prime factors with 1050, it is the smallest integer \( n \) such that \( n^{-1} \pmod{1050} \) is defined.
+
+Thus, the final answer is:
+\[
+\boxed{11}
+\]

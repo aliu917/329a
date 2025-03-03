@@ -1,0 +1,34 @@
+To solve the problem, we will use the Power of a Point theorem. The theorem states that for a point \(P\) outside a circle, the power of the point is the same whether we consider a tangent or a secant. Specifically, if \(PT\) is a tangent and \(PA\) and \(PB\) are segments of a secant, then \(PT^2 = PA \cdot PB\).
+
+Given:
+- \(PA = 3\)
+- \(PT = AB - PA\)
+- Let \(PB = x\)
+
+First, we need to express \(AB\) in terms of \(PA\) and \(PB\):
+\[AB = PA + PB - PA = PB - PA = x - 3\]
+
+Since \(PT = AB - PA\), we substitute \(AB\) and \(PA\):
+\[PT = (x - 3) - 3 = x - 6\]
+
+Now, we apply the Power of a Point theorem:
+\[PT^2 = PA \cdot PB\]
+\[(x - 6)^2 = 3 \cdot x\]
+
+Expanding and simplifying the equation:
+\[x^2 - 12x + 36 = 3x\]
+\[x^2 - 15x + 36 = 0\]
+
+We solve this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\), where \(a = 1\), \(b = -15\), and \(c = 36\):
+\[x = \frac{15 \pm \sqrt{15^2 - 4 \cdot 1 \cdot 36}}{2 \cdot 1}\]
+\[x = \frac{15 \pm \sqrt{225 - 144}}{2}\]
+\[x = \frac{15 \pm \sqrt{81}}{2}\]
+\[x = \frac{15 \pm 9}{2}\]
+
+This gives us two potential solutions:
+\[x = \frac{15 + 9}{2} = 12\]
+\[x = \frac{15 - 9}{2} = 3\]
+
+Since \(PA < PB\), we discard \(x = 3\) and keep \(x = 12\).
+
+Thus, the value of \(PB\) is \(\boxed{12}\).

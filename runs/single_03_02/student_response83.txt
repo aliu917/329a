@@ -1,0 +1,70 @@
+To find the remainder of \(19^{1999}\) divided by 25, we can use Euler's theorem. Euler's theorem states that if \(a\) and \(n\) are coprime, then \(a^{\phi(n)} \equiv 1 \pmod{n}\), where \(\phi\) is the Euler's totient function.
+
+First, we calculate \(\phi(25)\):
+\[
+\phi(25) = 25 \left(1 - \frac{1}{5}\right) = 25 \cdot \frac{4}{5} = 20
+\]
+Since 19 and 25 are coprime, Euler's theorem tells us that:
+\[
+19^{20} \equiv 1 \pmod{25}
+\]
+We need to express \(19^{1999}\) in terms of \(19^{20}\). We can write:
+\[
+1999 = 20 \cdot 99 + 19
+\]
+Thus,
+\[
+19^{1999} = 19^{20 \cdot 99 + 19} = (19^{20})^{99} \cdot 19^{19}
+\]
+Using Euler's theorem, we know \(19^{20} \equiv 1 \pmod{25}\), so:
+\[
+(19^{20})^{99} \equiv 1^{99} \equiv 1 \pmod{25}
+\]
+Therefore,
+\[
+19^{1999} \equiv 19^{19} \pmod{25}
+\]
+Now, we need to find \(19^{19} \mod 25\). We can simplify this by breaking it down using properties of exponents and modular arithmetic:
+\[
+19 \equiv -6 \pmod{25}
+\]
+So,
+\[
+19^{19} \equiv (-6)^{19} \pmod{25}
+\]
+Since \((-6)^{19}\) is an odd power, it is equivalent to \(-6^{19}\) modulo 25. We can use successive squaring to find \(6^{19} \mod 25\):
+\[
+6^2 = 36 \equiv 11 \pmod{25}
+\]
+\[
+6^4 = (6^2)^2 = 11^2 = 121 \equiv 21 \pmod{25}
+\]
+\[
+6^8 = (6^4)^2 = 21^2 = 441 \equiv 16 \pmod{25}
+\]
+\[
+6^{16} = (6^8)^2 = 16^2 = 256 \equiv 6 \pmod{25}
+\]
+Now, we can express \(6^{19}\) in terms of these results:
+\[
+6^{19} = 6^{16} \cdot 6^2 \cdot 6^1 \equiv 6 \cdot 11 \cdot 6 \pmod{25}
+\]
+\[
+6 \cdot 11 = 66 \equiv 16 \pmod{25}
+\]
+\[
+16 \cdot 6 = 96 \equiv 21 \pmod{25}
+\]
+Thus,
+\[
+6^{19} \equiv 21 \pmod{25}
+\]
+Therefore,
+\[
+19^{19} \equiv -21 \pmod{25}
+\]
+Since \(-21 \equiv 4 \pmod{25}\), we have:
+\[
+19^{1999} \equiv 4 \pmod{25}
+\]
+The remainder of \(19^{1999}\) divided by 25 is \(\boxed{4}\).

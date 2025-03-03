@@ -1,0 +1,35 @@
+To determine the probability that a randomly generated sequence of ten 0s and/or 1s does not contain two consecutive 1s, we first need to count the number of valid sequences and then divide by the total number of possible sequences.
+
+1. **Total number of sequences**: Each position in the sequence can be either a 0 or a 1, so there are \(2^{10} = 1024\) possible sequences.
+
+2. **Counting valid sequences**: Let \(a_n\) be the number of valid sequences of length \(n\) that do not contain two consecutive 1s. We can derive a recurrence relation for \(a_n\). A valid sequence of length \(n\) can end in either 0 or 1. If it ends in 0, the preceding \(n-1\) digits form a valid sequence of length \(n-1\). If it ends in 1, the digit before it must be 0, and the preceding \(n-2\) digits form a valid sequence of length \(n-2\). Therefore, we have:
+   \[
+   a_n = a_{n-1} + a_{n-2}
+   \]
+   with initial conditions \(a_1 = 2\) (the sequences are 0 and 1) and \(a_2 = 3\) (the sequences are 00, 01, and 10).
+
+   We can now compute \(a_n\) for \(n = 3\) to \(n = 10\):
+   \[
+   \begin{aligned}
+   a_3 &= a_2 + a_1 = 3 + 2 = 5, \\
+   a_4 &= a_3 + a_2 = 5 + 3 = 8, \\
+   a_5 &= a_4 + a_3 = 8 + 5 = 13, \\
+   a_6 &= a_5 + a_4 = 13 + 8 = 21, \\
+   a_7 &= a_6 + a_5 = 21 + 13 = 34, \\
+   a_8 &= a_7 + a_6 = 34 + 21 = 55, \\
+   a_9 &= a_8 + a_7 = 55 + 34 = 89, \\
+   a_{10} &= a_9 + a_8 = 89 + 55 = 144.
+   \end{aligned}
+   \]
+   So, there are 144 valid sequences of length 10.
+
+3. **Probability calculation**: The probability that a randomly generated sequence of ten 0s and/or 1s does not contain two consecutive 1s is the number of valid sequences divided by the total number of sequences:
+   \[
+   \frac{a_{10}}{2^{10}} = \frac{144}{1024} = \frac{9}{64}.
+   \]
+   Since 9 and 64 are relatively prime, the fraction is in its simplest form. Therefore, \(m = 9\) and \(n = 64\), and the sum \(m + n = 9 + 64 = 73\).
+
+The final answer is:
+\[
+\boxed{73}
+\]

@@ -1,0 +1,52 @@
+To find the volume of the solid \( S \) defined by the inequalities \( |x| + |y| \le 1 \), \( |x| + |z| \le 1 \), and \( |y| + |z| \le 1 \), we will first analyze the regions described by these inequalities.
+
+### Step 1: Understanding the Inequalities
+The inequalities \( |x| + |y| \le 1 \), \( |x| + |z| \le 1 \), and \( |y| + |z| \le 1 \) describe a region in 3D space where the sum of the absolute values of the coordinates is less than or equal to 1. This region is symmetric about the coordinate planes.
+
+### Step 2: Symmetry and Simplification
+Due to the symmetry of the inequalities, we can focus on the first octant where \( x \ge 0 \), \( y \ge 0 \), and \( z \ge 0 \). In this octant, the inequalities simplify to:
+\[ x + y \le 1, \]
+\[ x + z \le 1, \]
+\[ y + z \le 1. \]
+
+### Step 3: Finding the Volume in the First Octant
+We need to find the volume of the region in the first octant and then multiply by 8 (since the region is symmetric in all 8 octants).
+
+To find the volume in the first octant, we set up the following integral:
+\[ V_{\text{octant}} = \int_0^1 \int_0^{1-x} \int_0^{1-\max(x, y)} dz \, dy \, dx. \]
+
+### Step 4: Evaluating the Integral
+First, we integrate with respect to \( z \):
+\[ \int_0^{1-\max(x, y)} dz = 1 - \max(x, y). \]
+
+Next, we integrate with respect to \( y \):
+\[ \int_0^{1-x} (1 - \max(x, y)) \, dy. \]
+We split this into two cases:
+1. When \( y \le x \), \( \max(x, y) = x \):
+\[ \int_0^x (1 - x) \, dy = (1 - x)x = x - x^2. \]
+2. When \( y > x \), \( \max(x, y) = y \):
+\[ \int_x^{1-x} (1 - y) \, dy = \left[ y - \frac{y^2}{2} \right]_x^{1-x} = \left( (1-x) - \frac{(1-x)^2}{2} \right) - \left( x - \frac{x^2}{2} \right). \]
+Simplifying the second part:
+\[ (1-x) - \frac{(1-x)^2}{2} = 1 - x - \frac{1 - 2x + x^2}{2} = 1 - x - \frac{1}{2} + x - \frac{x^2}{2} = \frac{1}{2} - \frac{x^2}{2}, \]
+\[ x - \frac{x^2}{2} = x - \frac{x^2}{2}. \]
+Combining these:
+\[ \left( \frac{1}{2} - \frac{x^2}{2} \right) - \left( x - \frac{x^2}{2} \right) = \frac{1}{2} - x. \]
+
+Thus, the integral becomes:
+\[ \int_0^x (1 - x) \, dy + \int_x^{1-x} \left( \frac{1}{2} - x - \frac{y^2}{2} \right) \, dy. \]
+
+### Step 5: Final Integration
+Combining the results:
+\[ \int_0^1 \left( x - x^2 + \frac{1}{2} - x - \frac{(1-x)^2}{2} \right) \, dx = \int_0^1 \left( \frac{1}{2} - x^2 + \frac{x^2}{2} - x + \frac{1}{2} \right) \, dx. \]
+
+Simplify and integrate:
+\[ \int_0^1 \left( 1 - \frac{x^2}{2} - x \right) \, dx = \left[ x - \frac{x^3}{6} - \frac{x^2}{2} \right]_0^1 = 1 - \frac{1}{6} - \frac{1}{2} = \frac{1}{3}. \]
+
+### Step 6: Total Volume
+Since the region is symmetric in all 8 octants, the total volume is:
+\[ V = 8 \times \frac{1}{3} = \frac{8}{3}. \]
+
+Thus, the volume of \( S \) is:
+\[
+\boxed{\frac{8}{3}}
+\]

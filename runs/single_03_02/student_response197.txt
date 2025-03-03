@@ -1,0 +1,55 @@
+Given that \(a\), \(b\), and \(c\) form a geometric sequence, we can express \(b\) and \(c\) in terms of \(a\) and a common ratio \(r\). Thus, we have:
+\[b = ar \quad \text{and} \quad c = ar^2.\]
+
+We are also given that \(\log_c a\), \(\log_b c\), and \(\log_a b\) form an arithmetic sequence. Let's denote the common difference of this arithmetic sequence by \(d\). Therefore, we have:
+\[\log_b c - \log_c a = \log_a b - \log_b c.\]
+
+First, we express each logarithm in terms of \(a\) and \(r\):
+\[\log_c a = \frac{\log a}{\log ar^2} = \frac{\log a}{\log a + 2\log r},\]
+\[\log_b c = \frac{\log c}{\log b} = \frac{\log ar^2}{\log ar} = \frac{\log a + 2\log r}{\log a + \log r},\]
+\[\log_a b = \frac{\log b}{\log a} = \frac{\log ar}{\log a} = \frac{\log a + \log r}{\log a}.\]
+
+Now, we need to find \(\log_b c - \log_c a\) and \(\log_a b - \log_b c\):
+\[\log_b c - \log_c a = \frac{\log a + 2\log r}{\log a + \log r} - \frac{\log a}{\log a + 2\log r}.\]
+
+To simplify this, we find a common denominator:
+\[\log_b c - \log_c a = \frac{(\log a + 2\log r)^2 - (\log a + \log r)(\log a)}{(\log a + \log r)(\log a + 2\log r)} = \frac{\log^2 a + 4\log a \log r + 4\log^2 r - \log^2 a - \log a \log r}{(\log a + \log r)(\log a + 2\log r)} = \frac{3\log a \log r + 4\log^2 r}{(\log a + \log r)(\log a + 2\log r)}.\]
+
+Similarly, we find \(\log_a b - \log_b c\):
+\[\log_a b - \log_b c = \frac{\log a + \log r}{\log a} - \frac{\log a + 2\log r}{\log a + \log r}.\]
+
+To simplify this, we find a common denominator:
+\[\log_a b - \log_b c = \frac{(\log a + \log r)(\log a + \log r) - (\log a + 2\log r)\log a}{\log a (\log a + \log r)} = \frac{\log^2 a + 2\log a \log r + \log^2 r - \log^2 a - 2\log a \log r}{\log a (\log a + \log r)} = \frac{\log^2 r}{\log a (\log a + \log r)}.\]
+
+Since \(\log_b c - \log_c a = \log_a b - \log_b c\), we equate the two expressions:
+\[\frac{3\log a \log r + 4\log^2 r}{(\log a + \log r)(\log a + 2\log r)} = \frac{\log^2 r}{\log a (\log a + \log r)}.\]
+
+We can cancel \(\log r\) from both sides (assuming \(\log r \neq 0\)):
+\[\frac{3\log a + 4\log r}{(\log a + \log r)(\log a + 2\log r)} = \frac{\log r}{\log a (\log a + \log r)}.\]
+
+Multiplying both sides by \(\log a (\log a + \log r)(\log a + 2\log r)\), we get:
+\[3\log a (\log a + \log r) + 4\log r (\log a + \log r) = \log r (\log a + 2\log r).\]
+
+Expanding and simplifying:
+\[3\log^2 a + 3\log a \log r + 4\log a \log r + 4\log^2 r = \log a \log r + 2\log^2 r,\]
+\[3\log^2 a + 7\log a \log r + 4\log^2 r = \log a \log r + 2\log^2 r,\]
+\[3\log^2 a + 6\log a \log r + 2\log^2 r = 0.\]
+
+Factoring out \(2\log r\):
+\[2\log r (2\log a + 3\log r) = 0.\]
+
+Since \(\log r \neq 0\) (because \(r \neq 1\)), we have:
+\[2\log a + 3\log r = 0,\]
+\[\log a = -\frac{3}{2}\log r,\]
+\[\log a = \log r^{-\frac{3}{2}},\]
+\[a = r^{-\frac{3}{2}}.\]
+
+Now, we can find the common difference \(d\):
+\[\log_b c = \frac{\log ar^2}{\log ar} = \frac{\log r^{-\frac{3}{2}} \cdot r^2}{\log r^{-\frac{3}{2}}} = \frac{\log r^{\frac{1}{2}}}{\log r^{-\frac{3}{2}}} = \frac{\frac{1}{2}}{-\frac{3}{2}} = -\frac{1}{3},\]
+\[\log_c a = \frac{\log r^{-\frac{3}{2}}}{\log r^{\frac{3}{2}}} = \frac{-\frac{3}{2}}{\frac{3}{2}} = -1,\]
+\[\log_a b = \frac{\log r^{\frac{5}{2}}}{\log r^{-\frac{3}{2}}} = \frac{\frac{5}{2}}{-\frac{3}{2}} = -\frac{5}{3}.\]
+
+The common difference \(d\) is:
+\[d = \log_b c - \log_c a = -\frac{1}{3} - (-1) = -\frac{1}{3} + 1 = \frac{2}{3}.\]
+
+Thus, the common difference of the arithmetic sequence is \(\boxed{\frac{2}{3}}\).

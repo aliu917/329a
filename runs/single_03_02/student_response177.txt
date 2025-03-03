@@ -1,0 +1,20 @@
+Given that \(\triangle ABC\) is a right triangle with \(\angle B = 90^\circ\), and a circle with diameter \(BC\) meets side \(AC\) at \(D\), we need to find the length of \(CD\). We know \(AD = 1\) and \(BD = 4\).
+
+First, note that since \(BC\) is the diameter of the circle, \(\angle BDC = 90^\circ\) (by the inscribed angle theorem). This means \(\triangle BDC\) is a right triangle with \(\angle BDC = 90^\circ\).
+
+Since \(\angle B = 90^\circ\) in \(\triangle ABC\) and \(\angle BDC = 90^\circ\) in \(\triangle BDC\), \(\angle ABD = \angle BDC = 90^\circ\). Therefore, \(\triangle ABD \sim \triangle BCD\) by AA similarity (both share \(\angle B\) and both have a right angle).
+
+From the similarity of \(\triangle ABD\) and \(\triangle BCD\), we have the ratio:
+\[
+\frac{AD}{BD} = \frac{BD}{CD}
+\]
+Substituting the known values \(AD = 1\) and \(BD = 4\), we get:
+\[
+\frac{1}{4} = \frac{4}{CD}
+\]
+Solving for \(CD\), we cross-multiply:
+\[
+1 \cdot CD = 4 \cdot 4 \implies CD = 16
+\]
+
+Thus, the length of \(CD\) is \(\boxed{16}\).

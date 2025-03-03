@@ -1,0 +1,68 @@
+To solve for \(xyz\), we start by manipulating the given equations. We have:
+\[a = \frac{b + c}{x - 2}, \quad b = \frac{a + c}{y - 2}, \quad c = \frac{a + b}{z - 2}.\]
+We can rewrite these equations as:
+\[a(x - 2) = b + c, \quad b(y - 2) = a + c, \quad c(z - 2) = a + b.\]
+Rearranging these, we get:
+\[ax - 2a = b + c, \quad by - 2b = a + c, \quad cz - 2c = a + b.\]
+We can express these in matrix form as:
+\[
+\begin{pmatrix}
+x-2 & -1 & -1 \\
+-1 & y-2 & -1 \\
+-1 & -1 & z-2
+\end{pmatrix}
+\begin{pmatrix}
+a \\
+b \\
+c
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0 \\
+0
+\end{pmatrix}.
+\]
+For nontrivial solutions, the determinant of the coefficient matrix must be zero. The determinant of the matrix is:
+\[
+\begin{vmatrix}
+x-2 & -1 & -1 \\
+-1 & y-2 & -1 \\
+-1 & -1 & z-2
+\end{vmatrix}.
+\]
+We can expand this determinant along the first row:
+\[
+(x-2) \begin{vmatrix}
+y-2 & -1 \\
+-1 & z-2
+\end{vmatrix}
+- (-1) \begin{vmatrix}
+-1 & -1 \\
+-1 & z-2
+\end{vmatrix}
++ (-1) \begin{vmatrix}
+-1 & y-2 \\
+-1 & -1
+\end{vmatrix}.
+\]
+Calculating the 2x2 determinants, we get:
+\[
+(x-2)((y-2)(z-2) - 1) + (-(z-2) - 1) - (1 - (y-2)).
+\]
+Simplifying further, we have:
+\[
+(x-2)(yz - 2y - 2z + 4 - 1) + (-z + 2 - 1) - (1 - y + 2) = (x-2)(yz - 2y - 2z + 3) - z + 1 - 3 + y = (x-2)(yz - 2y - 2z + 3) + y - z - 2.
+\]
+Setting the determinant equal to zero, we get:
+\[
+(x-2)(yz - 2y - 2z + 3) + y - z - 2 = 0.
+\]
+We know from the problem statement that \(xy + xz + yz = 5\) and \(x + y + z = 3\). Let's substitute \(x + y + z = 3\) into the polynomial \(t^3 - (x+y+z)t^2 + (xy + xz + yz)t - xyz = 0\). This gives:
+\[
+t^3 - 3t^2 + 5t - xyz = 0.
+\]
+The product of the roots of this polynomial is \(xyz\). To find \(xyz\), we can use the identity for the product of the roots of a cubic polynomial. From the polynomial \(t^3 - 3t^2 + 5t - xyz = 0\), we can see that the product of the roots is the constant term with a sign change, which is \(xyz\). Therefore, we have:
+\[
+xyz = \boxed{2}.
+\]

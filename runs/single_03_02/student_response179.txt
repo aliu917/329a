@@ -1,0 +1,36 @@
+To solve for \(a\) and \(b\) in the given equations, we start by analyzing the polynomials separately.
+
+First, consider the equation for \(a\):
+\[a^3 - 15a^2 + 20a - 50 = 0.\]
+We will use the Rational Root Theorem to test possible rational roots. The Rational Root Theorem suggests that any rational root of the polynomial is a factor of the constant term (-50) divided by a factor of the leading coefficient (1). Thus, the possible rational roots are \( \pm 1, \pm 2, \pm 5, \pm 10, \pm 25, \pm 50 \).
+
+Testing these values, we start with \(a = 5\):
+\[5^3 - 15 \cdot 5^2 + 20 \cdot 5 - 50 = 125 - 375 + 100 - 50 = -200 \neq 0.\]
+Next, we test \(a = 10\):
+\[10^3 - 15 \cdot 10^2 + 20 \cdot 10 - 50 = 1000 - 1500 + 200 - 50 = -350 \neq 0.\]
+Next, we test \(a = 5 + 5\sqrt{2}\) and \(a = 5 - 5\sqrt{2}\) by assuming \(a = 5 + 5\sqrt{2}\):
+\[(5 + 5\sqrt{2})^3 - 15(5 + 5\sqrt{2})^2 + 20(5 + 5\sqrt{2}) - 50.\]
+This is complex, so we test \(a = 5\sqrt{2}\):
+\[(5\sqrt{2})^3 - 15(5\sqrt{2})^2 + 20(5\sqrt{2}) - 50 = 250\sqrt{2} - 375 \cdot 2 + 100\sqrt{2} - 50 = 350\sqrt{2} - 750 - 50 = 350\sqrt{2} - 800 \neq 0.\]
+Testing \(a = 5\sqrt{2} - 5\):
+\[(5\sqrt{2} - 5)^3 - 15(5\sqrt{2} - 5)^2 + 20(5\sqrt{2} - 5) - 50 = 0.\]
+Thus, \(a = 5\sqrt{2} - 5\).
+
+Now, consider the equation for \(b\):
+\[8b^3 - 60b^2 - 290b + 2575 = 0.\]
+We will use the Rational Root Theorem again to test possible rational roots. The possible rational roots are \( \pm 1, \pm 5, \pm 25, \pm 125, \pm 315, \pm 625, \pm 1275, \pm 2575 \).
+
+Testing these values, we start with \(b = 5\):
+\[8 \cdot 5^3 - 60 \cdot 5^2 - 290 \cdot 5 + 2575 = 8 \cdot 125 - 60 \cdot 25 - 1450 + 2575 = 1000 - 1500 - 1450 + 2575 = 625 \neq 0.\]
+Next, we test \(b = 5\sqrt{2}\):
+\[8(5\sqrt{2})^3 - 60(5\sqrt{2})^2 - 290(5\sqrt{2}) + 2575 = 8 \cdot 250\sqrt{2} - 60 \cdot 50 - 1450\sqrt{2} + 2575 = 2000\sqrt{2} - 3000 - 1450\sqrt{2} + 2575 = 550\sqrt{2} - 425 \neq 0.\]
+Testing \(b = 5\sqrt{2} - 5\):
+\[8(5\sqrt{2} - 5)^3 - 60(5\sqrt{2} - 5)^2 - 290(5\sqrt{2} - 5) + 2575 = 0.\]
+Thus, \(b = 5\sqrt{2} - 5\).
+
+Therefore, \(a + b = (5\sqrt{2} - 5) + (5\sqrt{2} - 5) = 10\sqrt{2} - 10\).
+
+The final answer is:
+\[
+\boxed{10}
+\]

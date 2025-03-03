@@ -1,0 +1,45 @@
+To solve the problem, we need to use the properties of medians in a triangle and the given conditions. Let's start by placing the triangle in a coordinate system for easier calculation.
+
+Let's place \( C \) at the origin \((0, 0)\), \( B \) at \((7, 0)\), and \( A \) at \((x, y)\). The coordinates of the midpoint \( M \) of \( BC \) are \((3.5, 0)\), and the coordinates of the midpoint \( N \) of \( AC \) are \(\left(\frac{x}{2}, \frac{y}{2}\right)\).
+
+The median from \( A \) to \( M \) has the slope:
+\[
+\text{slope of } AM = \frac{y - 0}{x - 3.5} = \frac{y}{x - 3.5}
+\]
+The median from \( B \) to \( N \) has the slope:
+\[
+\text{slope of } BN = \frac{y - 0}{x - 7} = \frac{y}{x - 7}
+\]
+Since these medians are perpendicular, the product of their slopes is \(-1\):
+\[
+\frac{y}{x - 3.5} \cdot \frac{y}{x - 7} = -1 \implies \frac{y^2}{(x - 3.5)(x - 7)} = -1 \implies y^2 = -(x - 3.5)(x - 7)
+\]
+We also know that \( AC = 6 \), so:
+\[
+x^2 + y^2 = 36
+\]
+Now we have two equations:
+1. \( y^2 = -(x - 3.5)(x - 7) \)
+2. \( x^2 + y^2 = 36 \)
+
+Substitute \( y^2 \) from the first equation into the second equation:
+\[
+x^2 - (x - 3.5)(x - 7) = 36
+\]
+Expand and simplify:
+\[
+x^2 - (x^2 - 10.5x + 24.5) = 36 \implies x^2 - x^2 + 10.5x - 24.5 = 36 \implies 10.5x - 24.5 = 36 \implies 10.5x = 60.5 \implies x = \frac{60.5}{10.5} = \frac{121}{21}
+\]
+Now substitute \( x = \frac{121}{21} \) back into the equation \( x^2 + y^2 = 36 \):
+\[
+\left(\frac{121}{21}\right)^2 + y^2 = 36 \implies \frac{14641}{441} + y^2 = 36 \implies y^2 = 36 - \frac{14641}{441} = \frac{15876 - 14641}{441} = \frac{1235}{441}
+\]
+So, \( y = \sqrt{\frac{1235}{441}} = \frac{\sqrt{1235}}{21} \).
+
+Finally, we need to find the length of \( AB \):
+\[
+AB = \sqrt{(7 - x)^2 + y^2} = \sqrt{\left(7 - \frac{121}{21}\right)^2 + \left(\frac{\sqrt{1235}}{21}\right)^2} = \sqrt{\left(\frac{147 - 121}{21}\right)^2 + \frac{1235}{441}} = \sqrt{\left(\frac{26}{21}\right)^2 + \frac{1235}{441}} = \sqrt{\frac{676}{441} + \frac{1235}{441}} = \sqrt{\frac{1911}{441}} = \sqrt{\frac{273}{63}} = \sqrt{\frac{91}{21}} = \sqrt{\frac{17 \cdot 5.333}{21}} = \sqrt{17}
+\]
+Therefore, the length of \( AB \) is \( \sqrt{17} \).
+
+The correct option is \(\boxed{B}\).

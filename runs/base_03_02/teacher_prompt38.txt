@@ -1,0 +1,46 @@
+You are given a reasoning attempt for answering the following question: Every June 1, an ecologist takes a census of the number of wrens in a state park. She noticed that the number is decreasing by $40\%$ each year. If this trend continues, in what year will the census show that the number of wrens is less than $10\%$ of what it was on June 1, 2004?
+
+Attempt: To determine the year when the number of wrens is less than 10% of what it was on June 1, 2004, we need to model the population decrease over time. Let's denote the initial number of wrens on June 1, 2004 as \( P \). The population decreases by 40% each year, which means it retains 60% of its previous value each year. Therefore, the population after \( n \) years can be expressed as:
+
+\[ P_n = P \cdot (0.6)^n \]
+
+We want to find the smallest integer \( n \) such that the population is less than 10% of the initial population \( P \). This can be written as:
+
+\[ P \cdot (0.6)^n < 0.1 \cdot P \]
+
+We can cancel \( P \) from both sides of the inequality (assuming \( P \neq 0 \)):
+
+\[ (0.6)^n < 0.1 \]
+
+To solve for \( n \), we take the natural logarithm of both sides:
+
+\[ \ln((0.6)^n) < \ln(0.1) \]
+
+Using the property of logarithms that \(\ln(a^b) = b \ln(a)\), we get:
+
+\[ n \ln(0.6) < \ln(0.1) \]
+
+Since \(\ln(0.6)\) is a negative number, we divide both sides by \(\ln(0.6)\) and reverse the inequality:
+
+\[ n > \frac{\ln(0.1)}{\ln(0.6)} \]
+
+Now we calculate the numerical value:
+
+\[ \ln(0.1) \approx -2.302585 \]
+\[ \ln(0.6) \approx -0.510826 \]
+\[ n > \frac{-2.302585}{-0.510826} \approx 4.506 \]
+
+Since \( n \) must be an integer, we round up to the next whole number:
+
+\[ n = 5 \]
+
+This means that after 5 years, the population will be less than 10% of the initial population. Since the initial census was taken on June 1, 2004, 5 years later would be June 1, 2009. Therefore, the year when the number of wrens will be less than 10% of what it was on June 1, 2004 is:
+
+\[ \boxed{2009} \]
+
+Correct solution: After one year, there will be $60\%$ left. After two years, there will be $36\%$ left. After three years, there will be $21.6\%$ left.
+
+As we can see, these are just increasing powers of $60\%$, the next year will not dip below $10\%$, because $60\% > 50\%$, and $21.6 > 20$.  However, without calculating it exactly, you know that it will be less than $16.6\%$, and thus, it will take 5 years - meaning that in $\boxed{2009}$, the total number of wrens will drop below $10\%$ of what it originally was.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

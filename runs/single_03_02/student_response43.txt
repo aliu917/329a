@@ -1,0 +1,29 @@
+To determine the length \( l \) of the longest line segment that may be drawn in one of the sector-shaped pieces of the pie, we start by noting that the pie is a circle with a diameter of \( 12 \) cm, so the radius \( r \) is \( 6 \) cm. The pie is cut into three equal sector-shaped pieces, each with a central angle of \( 120^\circ \).
+
+The longest line segment in one of these pieces is the chord that connects the two endpoints of the arc. This chord is the side of an isosceles triangle with two sides equal to the radius of the circle (6 cm) and the included angle of \( 120^\circ \).
+
+We can use the Law of Cosines to find the length of this chord. Let \( l \) be the length of the chord. The Law of Cosines states:
+\[
+l^2 = r^2 + r^2 - 2r^2 \cos(120^\circ)
+\]
+Since \( r = 6 \) cm and \( \cos(120^\circ) = -\frac{1}{2} \), we substitute these values into the formula:
+\[
+l^2 = 6^2 + 6^2 - 2 \cdot 6^2 \cdot \left(-\frac{1}{2}\right)
+\]
+\[
+l^2 = 36 + 36 + 36
+\]
+\[
+l^2 = 108
+\]
+
+To confirm, we can use the properties of a 30-60-90 triangle. The triangle formed by the radius, the radius, and the chord can be split into two 30-60-90 triangles. The length of the chord is twice the length of the side opposite the 60-degree angle in one of these triangles. In a 30-60-90 triangle, the side opposite the 60-degree angle is \( \sqrt{3} \) times the length of the side opposite the 30-degree angle. Here, the side opposite the 30-degree angle is 3 cm (half the radius), so the side opposite the 60-degree angle is \( 3\sqrt{3} \) cm. Therefore, the length of the chord is:
+\[
+2 \times 3\sqrt{3} = 6\sqrt{3}
+\]
+Squaring this length gives:
+\[
+(6\sqrt{3})^2 = 36 \times 3 = 108
+\]
+
+Thus, the value of \( l^2 \) is \(\boxed{108}\).

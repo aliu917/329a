@@ -1,0 +1,56 @@
+You are given a reasoning attempt for answering the following question: Suppose $a<0$ and $a<b<c$. Which of the following must be true?
+
+$ab < bc$
+$ac<bc$
+$ab< ac$
+$a+b<b+c$
+$c/a <1$
+
+Enter your answer as a list of those options that are always true. For instance, if you think only the first and third are true, enter A, C.
+
+Attempt: To determine which of the given statements must be true given the conditions \(a < 0\) and \(a < b < c\), we will analyze each statement step by step.
+
+1. **Statement: \(ab < bc\)**
+
+   Since \(a < 0\) and \(a < b\), we know that \(a\) is negative and \(b\) is positive. Therefore, \(ab\) is negative because the product of a negative and a positive number is negative. On the other hand, \(bc\) is positive because the product of two positive numbers is positive. Hence, \(ab < bc\) is true.
+
+2. **Statement: \(ac < bc\)**
+
+   Given \(a < 0\) and \(a < c\), \(a\) is negative and \(c\) is positive. Therefore, \(ac\) is negative because the product of a negative and a positive number is negative. Similarly, \(bc\) is positive because the product of a positive and a positive number is positive. Hence, \(ac < bc\) is true.
+
+3. **Statement: \(ab < ac\)**
+
+   Since \(a < 0\) and \(a < c\), \(a\) is negative and \(c\) is positive. The product \(ab\) is negative, and the product \(ac\) is negative. However, because \(c > b\), and both \(a\) and \(c\) are negative, the magnitude of \(ac\) is greater than the magnitude of \(ab\). Therefore, \(ab > ac\), which means \(ab < ac\) is false.
+
+4. **Statement: \(a + b < b + c\)**
+
+   Given \(a < b < c\), we can add \(b\) to both sides of the inequality \(a < b\), resulting in \(a + b < b + b\). Since \(b < c\), we have \(b + b < b + c\). Combining these, we get \(a + b < b + c\). Hence, this statement is true.
+
+5. **Statement: \(\frac{c}{a} < 1\)**
+
+   Given \(a < 0\) and \(c > 0\), \(\frac{c}{a}\) is negative because the quotient of a positive and a negative number is negative. Since any negative number is less than 1, \(\frac{c}{a} < 1\) is true.
+
+Summarizing the results:
+- \(ab < bc\) is true.
+- \(ac < bc\) is true.
+- \(ab < ac\) is false.
+- \(a + b < b + c\) is true.
+- \(\frac{c}{a} < 1\) is true.
+
+Therefore, the statements that must be true are \(ab < bc\), \(ac < bc\), \(a + b < b + c\), and \(\frac{c}{a} < 1\).
+
+The final answer is:
+\[
+\boxed{A, B, D, E}
+\]
+
+Correct solution: Consider a negative $b$ and a positive $c$. Then $ab$ is positive and $bc$ is negative, and hence this is not true.
+If we consider negative numbers for all three variables, $ac>bc$, and hence this is not true.
+Consider a negative $b$ and a positive $c$. Then $ab$ is positive and $ac$ is negative, hence this is not true.
+Subtracting $b$ from both sides gives us $a<c$ which we know is true.
+If $c$ is positive then $c/a$ is negative and $c/a < 1$. If $c$ is negative, then $a<c<0$ which means $c/a < 1$.
+
+Thus, $\boxed{D, E}$ are always true.
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

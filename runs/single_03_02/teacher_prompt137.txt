@@ -1,0 +1,66 @@
+You are given a reasoning attempt for answering the following question: Solve the inequality
+\[\frac{1}{x - 1} - \frac{4}{x - 2} + \frac{4}{x - 3} - \frac{1}{x - 4} < \frac{1}{30}.\]
+
+Attempt: To solve the inequality \(\frac{1}{x - 1} - \frac{4}{x - 2} + \frac{4}{x - 3} - \frac{1}{x - 4} < \frac{1}{30}\), we first combine the terms into a single rational expression. The common denominator is \((x-1)(x-2)(x-3)(x-4)\). Thus, the inequality becomes:
+
+\[
+\frac{(x-2)(x-3)(x-4) - 4(x-1)(x-3)(x-4) + 4(x-1)(x-2)(x-4) - (x-1)(x-2)(x-3)}{(x-1)(x-2)(x-3)(x-4)} < \frac{1}{30}
+\]
+
+Let's simplify the numerator:
+
+\[
+(x-2)(x-3)(x-4) = x^3 - 9x^2 + 26x - 24
+\]
+\[
+-4(x-1)(x-3)(x-4) = -4(x^3 - 8x^2 + 19x - 12) = -4x^3 + 32x^2 - 76x + 48
+\]
+\[
+4(x-1)(x-2)(x-4) = 4(x^3 - 7x^2 + 14x - 8) = 4x^3 - 28x^2 + 56x - 32
+\]
+\[
+-(x-1)(x-2)(x-3) = -(x^3 - 6x^2 + 11x - 6) = -x^3 + 6x^2 - 11x + 6
+\]
+
+Adding these together:
+
+\[
+(x^3 - 9x^2 + 26x - 24) + (-4x^3 + 32x^2 - 76x + 48) + (4x^3 - 28x^2 + 56x - 32) + (-x^3 + 6x^2 - 11x + 6) = -2x^2 + 1x + 6
+\]
+
+So the inequality becomes:
+
+\[
+\frac{-2x^2 + x + 6}{(x-1)(x-2)(x-3)(x-4)} < \frac{1}{30}
+\]
+
+This can be rewritten as:
+
+\[
+30(-2x^2 + x + 6) < (x-1)(x-2)(x-3)(x-4)
+\]
+
+or
+
+\[
+-60x^2 + 30x + 180 < (x-1)(x-2)(x-3)(x-4)
+\]
+
+The critical points are \(x = 1, 2, 3, 4\). We need to test the sign of the expression \(\frac{-60x^2 + 30x + 180}{(x-1)(x-2)(x-3)(x-4)} - \frac{1}{30}\) in the intervals determined by these points. The intervals to test are \((-\infty, 1)\), \((1, 2)\), \((2, 3)\), \((3, 4)\), and \((4, \infty)\).
+
+By testing values in each interval, we find that the inequality holds in the intervals \((-\infty, 1)\), \((2, 3)\), and \((4, \infty)\).
+
+Thus, the solution to the inequality is:
+
+\[
+\boxed{(-\infty, 1) \cup (2, 3) \cup (4, \infty)}
+\]
+
+Correct solution: Subtracting $\frac{1}{30}$ from both sides, we get
+\[\frac{1}{x - 1} - \frac{4}{x - 2} + \frac{4}{x - 3} - \frac{1}{x - 4} - \frac{1}{30} < 0.\]Putting everything over a common denominator, we get
+\[\frac{-x^4 + 10x^3 - 5x^2 - 100x - 84}{30(x - 1)(x - 2)(x - 3)(x - 4)} < 0,\]which factors as
+\[-\frac{(x + 2)(x + 1)(x - 6)(x - 7)}{(x - 1)(x - 2)(x - 3)(x - 4)} < 0.\]We can build a sign chart, but since all of the factors are linear, we can track what happens to the expression as $x$ increases.  At $x = -3,$ the expression is negative.  As $x$ increases past $-2,$ the expression becomes positive.  As $x$ increases past $-1,$ the expression becomes negative, and so on.  Thus, the solution is
+\[x \in \boxed{(-\infty,-2) \cup (-1,1) \cup (2,3) \cup (4,6) \cup (7,\infty)}.\]
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

@@ -1,0 +1,21 @@
+To determine how many elements of the set \( S = \{5^k \mid k \in \mathbb{Z}, 0 \le k \le 2004 \} \) begin with the digit 1, we start by examining the logarithmic properties of the numbers in the set.
+
+First, we express \( 5^k \) in terms of its logarithm:
+\[ 5^k = 10^{k \log_{10} 5} \]
+The number of digits of \( 5^k \) is given by \( \lfloor k \log_{10} 5 + 1 \rfloor \). We know that \( 5^{2004} \) has 1401 digits, so:
+\[ 2004 \log_{10} 5 \approx 1400 \implies \log_{10} 5 \approx \frac{1400}{2004} = \frac{700}{1002} \approx 0.6980 \]
+
+Next, we need to find the fractional part of \( k \log_{10} 5 \), denoted as \( \{k \log_{10} 5\} \). The number \( 5^k \) begins with the digit 1 if and only if:
+\[ 1 \leq 10^{\{k \log_{10} 5\}} < 2 \]
+This is equivalent to:
+\[ 0 \leq \{k \log_{10} 5\} < \log_{10} 2 \]
+Since \( \log_{10} 2 \approx 0.3010 \), we need to find the proportion of \( k \) such that \( \{k \log_{10} 5\} \) falls within the interval \([0, 0.3010)\).
+
+Because \( \log_{10} 5 \) is irrational, the sequence \( \{k \log_{10} 5\} \) is uniformly distributed over the interval \([0, 1)\). Therefore, the proportion of \( k \) for which \( \{k \log_{10} 5\} \) falls in the interval \([0, 0.3010)\) is \( 0.3010 \).
+
+The number of elements in \( S \) is 2005 (from \( k = 0 \) to \( k = 2004 \)). Thus, the number of elements that begin with the digit 1 is:
+\[ 2005 \times 0.3010 = 603.505 \]
+Rounding to the nearest integer, we get 604.
+
+Therefore, the number of elements of \( S \) that begin with the digit 1 is:
+\[ \boxed{604} \]

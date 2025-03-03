@@ -1,0 +1,43 @@
+You are given a reasoning attempt for answering the following question: Let $a,$ $b,$ $c,$ $x,$ $y,$ $z$ be nonzero complex numbers such that
+\[a = \frac{b + c}{x - 2}, \quad b = \frac{a + c}{y - 2}, \quad c = \frac{a + b}{z - 2},\]and $xy + xz + yz = 5$ and $x + y + z = 3,$ find $xyz.$
+
+Attempt: To solve for \(xyz\), we start by manipulating the given equations. The equations are:
+\[a = \frac{b + c}{x - 2}, \quad b = \frac{a + c}{y - 2}, \quad c = \frac{a + b}{z - 2}.\]
+
+First, we rewrite these equations in a more convenient form:
+\[a(x-2) = b + c, \quad b(y-2) = a + c, \quad c(z-2) = a + b.\]
+
+Next, we add all three equations together:
+\[a(x-2) + b(y-2) + c(z-2) = (b + c) + (a + c) + (a + b) = 2(a + b + c).\]
+
+This simplifies to:
+\[a(x-2) + b(y-2) + c(z-2) = 2(a + b + c).\]
+
+Rearranging terms, we get:
+\[a(x-2 - 2) + b(y-2 - 2) + c(z-2 - 2) = 0,\]
+\[a(x-4) + b(y-4) + c(z-4) = 0.\]
+
+We can interpret this as a linear combination of \(a\), \(b\), and \(c\) that sums to zero. For this to hold for all nonzero complex numbers \(a\), \(b\), and \(c\), the coefficients must satisfy a specific condition. This suggests that \(x-4\), \(y-4\), and \(z-4\) are proportional to the coefficients of \(a\), \(b\), and \(c\) respectively. However, a simpler approach is to consider the polynomial whose roots are \(x\), \(y\), and \(z\). The polynomial can be written as:
+\[t^3 - (x+y+z)t^2 + (xy + xz + yz)t - xyz = 0.\]
+
+Given that \(x + y + z = 3\) and \(xy + xz + yz = 5\), we substitute these values into the polynomial:
+\[t^3 - 3t^2 + 5t - xyz = 0.\]
+
+To find \(xyz\), we need to determine the constant term of the polynomial. Since the polynomial is derived from the condition that \(a(x-4) + b(y-4) + c(z-4) = 0\) must hold for all \(a\), \(b\), and \(c\), and given the specific form of the equations, the constant term must be such that the polynomial is consistent with the given conditions. By Vieta's formulas, the product of the roots \(x\), \(y\), and \(z\) of the polynomial is the constant term with the appropriate sign, which is \(xyz\).
+
+Thus, we have:
+\[xyz = 4.\]
+
+Therefore, the value of \(xyz\) is \(\boxed{4}\).
+
+Correct solution: We have that
+\[x - 2 = \frac{b + c}{a}, \quad y - 2 = \frac{a + c}{b}, \quad z - 2 = \frac{a + b}{c},\]so
+\[x - 1 = \frac{a + b + c}{a}, \quad y - 1 = \frac{a + b + c}{b}, \quad z - 1 = \frac{a + b + c}{c}.\]Then
+\[\frac{1}{x - 1} = \frac{a}{a + b + c}, \quad \frac{1}{y - 1} = \frac{b}{a + b + c}, \quad \frac{1}{z - 1} = \frac{c}{a + b + c},\]so
+\[\frac{1}{x - 1} + \frac{1}{y - 1} + \frac{1}{z - 1} = \frac{a + b + c}{a + b + c} = 1.\]Multiplying both sides by $(x - 1)(y - 1)(z - 1),$ we get
+\[(y - 1)(z - 1) + (x - 1)(z - 1) + (x - 1)(y - 1) = (x - 1)(y - 1)(z - 1).\]Expanding, we get
+\[xy + xz + yz - 2(x + y + z) + 3 = xyz - (xy + xz + yz) + (x + y + z) - 1,\]so
+\[xyz = 2(xy + xz + yz) - 3(x + y + z) + 4 = 2 \cdot 5 - 3 \cdot 3 + 4 = \boxed{5}.\]
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

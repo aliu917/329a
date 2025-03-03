@@ -1,0 +1,26 @@
+To find the distance from the center \(O\) of the sphere to the plane containing the triangle \(ABC\), we first need to determine the circumradius \(R\) of \(\triangle ABC\) and then use it to find the distance from the center of the sphere to the plane of the triangle.
+
+First, we calculate the area \(K\) of \(\triangle ABC\) using Heron's formula. The sides of the triangle are \(AB = 13\), \(BC = 14\), and \(CA = 15\). The semi-perimeter \(s\) is:
+\[
+s = \frac{13 + 14 + 15}{2} = 21
+\]
+The area \(K\) is given by:
+\[
+K = \sqrt{s(s-a)(s-b)(s-c)} = \sqrt{21(21-15)(21-14)(21-13)} = \sqrt{21 \cdot 6 \cdot 7 \cdot 8} = \sqrt{7056} = 84
+\]
+The circumradius \(R\) of \(\triangle ABC\) is given by the formula:
+\[
+R = \frac{abc}{4K} = \frac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \frac{2730}{336} = \frac{65}{8}
+\]
+The distance \(d\) from the center \(O\) of the sphere to the plane of \(\triangle ABC\) can be found using the Pythagorean theorem in the right triangle formed by the radius of the sphere, the circumradius of the triangle, and the distance from the center of the sphere to the plane of the triangle. The relationship is:
+\[
+R_{\text{sphere}}^2 = R^2 + d^2 \implies 20^2 = \left(\frac{65}{8}\right)^2 + d^2 \implies 400 = \frac{4225}{64} + d^2 \implies d^2 = 400 - \frac{4225}{64} = \frac{25600 - 4225}{64} = \frac{21375}{64}
+\]
+Thus,
+\[
+d = \sqrt{\frac{21375}{64}} = \frac{\sqrt{21375}}{8} = \frac{5\sqrt{855}}{8}
+\]
+The distance from the center \(O\) to the plane of \(\triangle ABC\) is \(\frac{5\sqrt{855}}{8}\). Therefore, \(m = 5\), \(n = 855\), and \(k = 8\), and the sum \(m + n + k\) is:
+\[
+\boxed{868}
+\]

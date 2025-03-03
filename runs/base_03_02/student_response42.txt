@@ -1,0 +1,67 @@
+To determine the probability that Greg rolls more 1's than 6's when rolling four fair six-sided dice, we need to consider all possible outcomes and count the favorable ones. Here's a step-by-step approach:
+
+1. **Identify the total number of outcomes:**
+   Each die has 6 faces, and there are 4 dice. Therefore, the total number of possible outcomes is:
+   \[
+   6^4 = 1296
+   \]
+
+2. **Define the favorable outcomes:**
+   We need to count the outcomes where the number of 1's is greater than the number of 6's.
+
+3. **Consider the possible counts of 1's and 6's:**
+   Let \(X\) be the number of 1's and \(Y\) be the number of 6's. We need \(X > Y\). Possible values for \(X\) and \(Y\) are 0, 1, 2, 3, and 4. We need to count the cases where \(X > Y\).
+
+4. **Calculate the number of favorable outcomes:**
+   We will count the number of outcomes for each possible value of \(X\) and \(Y\) such that \(X > Y\).
+
+   - **Case 1: \(X = 1\), \(Y = 0\):**
+     \[
+     \binom{4}{1} \binom{3}{0} \binom{3}{4-1-0} = 4 \times 1 \times 3 = 12
+     \]
+
+   - **Case 2: \(X = 2\), \(Y = 0\):**
+     \[
+     \binom{4}{2} \binom{2}{0} \binom{2}{4-2-0} = 6 \times 1 \times 2 = 12
+     \]
+
+   - **Case 3: \(X = 2\), \(Y = 1\):**
+     \[
+     \binom{4}{2} \binom{2}{1} \binom{2}{4-2-1} = 6 \times 2 \times 1 = 12
+     \]
+
+   - **Case 4: \(X = 3\), \(Y = 0\):**
+     \[
+     \binom{4}{3} \binom{1}{0} \binom{1}{4-3-0} = 4 \times 1 \times 1 = 4
+     \]
+
+   - **Case 5: \(X = 3\), \(Y = 1\):**
+     \[
+     \binom{4}{3} \binom{1}{1} \binom{1}{4-3-1} = 4 \times 1 \times 0 = 0
+     \]
+
+   - **Case 6: \(X = 4\), \(Y = 0\):**
+     \[
+     \binom{4}{4} \binom{0}{0} \binom{0}{4-4-0} = 1 \times 1 \times 1 = 1
+     \]
+
+   - **Case 7: \(X = 4\), \(Y = 1\):**
+     \[
+     \binom{4}{4} \binom{0}{1} \binom{0}{4-4-1} = 1 \times 0 \times 0 = 0
+     \]
+
+5. **Sum the number of favorable outcomes:**
+   \[
+   12 + 12 + 12 + 4 + 0 + 1 + 0 = 41
+   \]
+
+6. **Calculate the probability:**
+   The probability is the number of favorable outcomes divided by the total number of outcomes:
+   \[
+   \frac{41}{1296}
+   \]
+
+Therefore, the probability that Greg rolls more 1's than 6's is:
+\[
+\boxed{\frac{41}{1296}}
+\]

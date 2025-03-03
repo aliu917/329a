@@ -1,0 +1,58 @@
+To determine how many of the positive divisors of 3240 are multiples of 3, we will follow these steps:
+
+1. **Find the prime factorization of 3240.**
+2. **Determine the total number of divisors of 3240.**
+3. **Find the number of divisors of 3240 that are multiples of 3.**
+
+### Step 1: Prime Factorization of 3240
+
+First, we factorize 3240 into its prime factors:
+\[
+3240 \div 2 = 1620 \\
+1620 \div 2 = 810 \\
+810 \div 2 = 405 \\
+405 \div 3 = 135 \\
+135 \div 3 = 45 \\
+45 \div 3 = 15 \\
+15 \div 3 = 5 \\
+5 \div 5 = 1
+\]
+Thus, the prime factorization of 3240 is:
+\[
+3240 = 2^3 \times 3^4 \times 5^1
+\]
+
+### Step 2: Total Number of Divisors of 3240
+
+The formula to find the total number of divisors of a number \( n = p_1^{e_1} \times p_2^{e_2} \times \cdots \times p_k^{e_k} \) is:
+\[
+(e_1 + 1)(e_2 + 1) \cdots (e_k + 1)
+\]
+For \( 3240 = 2^3 \times 3^4 \times 5^1 \):
+\[
+(3 + 1)(4 + 1)(1 + 1) = 4 \times 5 \times 2 = 40
+\]
+So, 3240 has 40 divisors in total.
+
+### Step 3: Number of Divisors of 3240 that are Multiples of 3
+
+To find the number of divisors of 3240 that are multiples of 3, we can use the fact that a divisor of 3240 that is a multiple of 3 must include at least one factor of 3 in its prime factorization.
+
+We can rewrite the prime factorization of 3240 as:
+\[
+3240 = 3 \times 1080
+\]
+Now, consider the number \( 1080 \):
+\[
+1080 = 2^3 \times 3^3 \times 5^1
+\]
+The total number of divisors of 1080 is:
+\[
+(3 + 1)(3 + 1)(1 + 1) = 4 \times 4 \times 2 = 32
+\]
+Thus, 1080 has 32 divisors. Each of these divisors, when multiplied by 3, gives a divisor of 3240 that is a multiple of 3.
+
+Therefore, the number of divisors of 3240 that are multiples of 3 is:
+\[
+\boxed{32}
+\]

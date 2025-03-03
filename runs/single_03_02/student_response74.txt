@@ -1,0 +1,64 @@
+To determine the smallest integer \( n \), greater than 1, such that \( n^{-1} \pmod{1050} \) is defined, we need to find the smallest \( n > 1 \) that is coprime to 1050. This means \( \gcd(n, 1050) = 1 \).
+
+First, we factorize 1050:
+\[
+1050 = 2 \times 3 \times 5^2 \times 7
+\]
+For \( n \) to be coprime to 1050, \( n \) must not share any prime factors with 1050. Therefore, \( n \) should not be divisible by 2, 3, 5, or 7.
+
+We start checking the smallest integers greater than 1 to find one that is coprime to 1050:
+
+1. \( n = 2 \):
+   \[
+   \gcd(2, 1050) = 2 \quad (\text{not coprime})
+   \]
+
+2. \( n = 3 \):
+   \[
+   \gcd(3, 1050) = 3 \quad (\text{not coprime})
+   \]
+
+3. \( n = 4 \):
+   \[
+   \gcd(4, 1050) = 2 \quad (\text{not coprime})
+   \]
+
+4. \( n = 5 \):
+   \[
+   \gcd(5, 1050) = 5 \quad (\text{not coprime})
+   \]
+
+5. \( n = 6 \):
+   \[
+   \gcd(6, 1050) = 6 \quad (\text{not coprime})
+   \]
+
+6. \( n = 7 \):
+   \[
+   \gcd(7, 1050) = 7 \quad (\text{not coprime})
+   \]
+
+7. \( n = 8 \):
+   \[
+   \gcd(8, 1050) = 2 \quad (\text{not coprime})
+   \]
+
+8. \( n = 9 \):
+   \[
+   \gcd(9, 1050) = 3 \quad (\text{not coprime})
+   \]
+
+9. \( n = 10 \):
+   \[
+   \gcd(10, 1050) = 10 \quad (\text{not coprime})
+   \]
+
+10. \( n = 11 \):
+    \[
+    \gcd(11, 1050) = 1 \quad (\text{coprime})
+    \]
+
+Since \( \gcd(11, 1050) = 1 \), 11 is coprime to 1050. Therefore, the smallest integer \( n \) greater than 1 such that \( n^{-1} \pmod{1050} \) is defined is:
+\[
+\boxed{11}
+\]

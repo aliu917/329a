@@ -1,0 +1,66 @@
+To solve the functional equation \( f(a + b) + f(ab) = f(a) f(b) + 1 \) for all integers \( a \) and \( b \), we will follow a step-by-step approach.
+
+### Step 1: Analyze the functional equation with specific values
+
+First, let's substitute \( a = 0 \) and \( b = 0 \):
+\[
+f(0 + 0) + f(0 \cdot 0) = f(0) f(0) + 1 \implies 2f(0) = f(0)^2 + 1
+\]
+Rearrange this equation:
+\[
+f(0)^2 - 2f(0) + 1 = 0 \implies (f(0) - 1)^2 = 0 \implies f(0) = 1
+\]
+
+### Step 2: Substitute \( b = 1 \)
+
+Next, let \( b = 1 \):
+\[
+f(a + 1) + f(a) = f(a) f(1) + 1
+\]
+Rearrange this equation:
+\[
+f(a + 1) = f(a) f(1) + 1 - f(a) \implies f(a + 1) = f(a)(f(1) - 1) + 1
+\]
+
+### Step 3: Determine \( f(1) \)
+
+To find \( f(1) \), substitute \( a = 1 \) and \( b = -1 \) into the original equation:
+\[
+f(1 - 1) + f(1 \cdot -1) = f(1) f(-1) + 1 \implies f(0) + f(-1) = f(1) f(-1) + 1
+\]
+Since \( f(0) = 1 \):
+\[
+1 + f(-1) = f(1) f(-1) + 1 \implies f(-1) = f(1) f(-1)
+\]
+If \( f(-1) \neq 0 \), we can divide both sides by \( f(-1) \):
+\[
+1 = f(1)
+\]
+Thus, \( f(1) = 1 \).
+
+### Step 4: Generalize the function
+
+With \( f(1) = 1 \), substitute back into the recurrence relation:
+\[
+f(a + 1) = f(a)(1 - 1) + 1 \implies f(a + 1) = 1
+\]
+This implies that \( f(a) = 1 \) for all \( a \).
+
+### Step 5: Verify the solution
+
+Finally, verify that \( f(n) = 1 \) for all integers \( n \) satisfies the original equation:
+\[
+f(a + b) + f(ab) = 1 + 1 = 2
+\]
+\[
+f(a) f(b) + 1 = 1 \cdot 1 + 1 = 2
+\]
+Both sides are equal, confirming that \( f(n) = 1 \) is indeed a solution.
+
+### Conclusion
+
+The only function that satisfies the given functional equation is \( f(n) = 1 \) for all integers \( n \). Therefore, there is exactly one such function.
+
+\[
+\boxed{1}
+\]

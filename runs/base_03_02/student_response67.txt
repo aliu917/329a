@@ -1,0 +1,36 @@
+To compute the double sum \(\sum_{n=2}^\infty \sum_{k=1}^{n-1} \frac{k}{2^{n+k}}\), we will first interchange the order of summation. Let's start by understanding the region of summation. The inner sum \(\sum_{k=1}^{n-1} \frac{k}{2^{n+k}}\) is over \(k\) from 1 to \(n-1\) for each \(n \geq 2\). We can rewrite the double sum by expressing it in terms of \(k\) first and then summing over \(n\).
+
+Consider the term \(\frac{k}{2^{n+k}}\). For a fixed \(k\), \(n\) ranges from \(k+1\) to \(\infty\). Therefore, we can rewrite the double sum as:
+\[
+\sum_{k=1}^\infty \sum_{n=k+1}^\infty \frac{k}{2^{n+k}}.
+\]
+
+Now, let's focus on the inner sum \(\sum_{n=k+1}^\infty \frac{k}{2^{n+k}}\). We can factor out the \(k\) and rewrite the sum as:
+\[
+\sum_{n=k+1}^\infty \frac{k}{2^{n+k}} = k \sum_{n=k+1}^\infty \frac{1}{2^{n+k}} = k \sum_{n=k+1}^\infty \frac{1}{2^n 2^k} = \frac{k}{2^k} \sum_{n=k+1}^\infty \frac{1}{2^n}.
+\]
+
+The sum \(\sum_{n=k+1}^\infty \frac{1}{2^n}\) is a geometric series with the first term \(\frac{1}{2^{k+1}}\) and common ratio \(\frac{1}{2}\). The sum of this geometric series is:
+\[
+\sum_{n=k+1}^\infty \frac{1}{2^n} = \frac{\frac{1}{2^{k+1}}}{1 - \frac{1}{2}} = \frac{\frac{1}{2^{k+1}}}{\frac{1}{2}} = \frac{1}{2^k}.
+\]
+
+Substituting this back, we get:
+\[
+\sum_{n=k+1}^\infty \frac{k}{2^{n+k}} = \frac{k}{2^k} \cdot \frac{1}{2^k} = \frac{k}{2^{2k}}.
+\]
+
+Now, we need to sum this expression over \(k\) from 1 to \(\infty\):
+\[
+\sum_{k=1}^\infty \frac{k}{2^{2k}}.
+\]
+
+To find this sum, we use the formula for the sum of a series of the form \(\sum_{k=1}^\infty kx^k\) where \(x = \frac{1}{4}\). The sum \(\sum_{k=1}^\infty kx^k = \frac{x}{(1-x)^2}\) for \(|x| < 1\). Here, \(x = \frac{1}{4}\), so we have:
+\[
+\sum_{k=1}^\infty \frac{k}{4^k} = \frac{\frac{1}{4}}{\left(1 - \frac{1}{4}\right)^2} = \frac{\frac{1}{4}}{\left(\frac{3}{4}\right)^2} = \frac{\frac{1}{4}}{\frac{9}{16}} = \frac{1}{4} \cdot \frac{16}{9} = \frac{4}{9}.
+\]
+
+Thus, the value of the original double sum is:
+\[
+\boxed{\frac{4}{9}}.
+\]

@@ -21,39 +21,61 @@ def prepare_data(max_rows=None, debug_mode=False):
     return dataset
 
 
+def extract_level(text):
+    match = re.search(r'\d+', text)
+    if match:
+        return int(match.group(0))
+    else:
+        return 0
+
+
 class MathDataset(Dataset):
-    def __init__(self, dir="MATH", mode="train", subset=""):
+    def __init__(self, dir="MATH", mode="train", subset="", min_level=5):
         self.dir = Path(f"{dir}/{mode}")
         if subset:
             self.dir = Path(f"{dir}/{mode}/{subset}")
 
-        self.file_paths = []
+        self.problems = []
         for file in self.dir.rglob('*'):
             if file.is_file():  # Only consider files
-                self.file_paths.append(file)
+                with open(file, 'r') as f:
+                    raw_data = json.load(f)
+                    if extract_level(raw_data["level"]) >= min_level:
+                        content = {"problem" : raw_data["problem"], "level": raw_data["level"], "type": raw_data["type"]}, raw_data["solution"]
+                        self.problems.append(content)
 
     def __len__(self):
-        return len(self.file_paths)
+        return len(self.problems)
 
     def __getitem__(self, idx):
-        path = self.file_paths[idx]
-        with open(path, 'r') as f:
-            raw_data = json.load(f)
-            # answer = re.findall(r'boxed\{(.*?)\}', raw_data["solution"])[0]
-            # answer = extract_text_within_box(raw_data["solution"])
-            #TODO: decompose steps??
-            return {"problem" : raw_data["problem"], "level": raw_data["level"], "type": raw_data["type"]}, raw_data["solution"]
-
+        return self.problems[idx]
 
 if __name__ == '__main__':
     # data = prepare_data(debug_mode=True)
-    dataset = MathDataset()
-    dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
-    for i, (data, label) in enumerate(dataloader):
-        print(data["problem"][0])
-        print(label[0])
-        break
-    for i, (data, label) in enumerate(dataloader):
-        print(data["problem"][0])
-        print(label[0])
-        break
+
+    # dataset = MathDataset()
+    # dataloader = DataLoader(dataset, batch_size=32, shuffle=True)
+    # for i, (data, label) in enumerate(dataloader):
+    #     print(data["problem"][0])
+    #     print(label[0])
+    #     break
+    # for i, (data, label) in enumerate(dataloader):
+    #     print(data["problem"][0])
+    #     print(label[0])
+    #     break
+
+    for i in range(10):
+        print("min level: ", i)
+        dataset = MathDataset(min_level=i)
+        print(len(dataset))
+        print()
+
+
+"""
+min level: 0; length 7500
+min level: 1; length 7498
+min level: 2; length 6934
+min level: 3; length 5586
+min level: 4; length 3994
+min level: 5; length 2304
+"""

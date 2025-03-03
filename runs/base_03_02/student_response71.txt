@@ -1,0 +1,71 @@
+To solve the problem, we start by recalling the formula for the interior angle of a regular polygon. The interior angle of a regular \(n\)-gon is given by:
+
+\[
+\frac{(n-2) \cdot 180^\circ}{n}
+\]
+
+Let the interior angle of the regular \(s\)-gon be denoted by \(\theta_s\) and the interior angle of the regular \(r\)-gon be denoted by \(\theta_r\). According to the problem, each interior angle of \(P_1\) (the \(r\)-gon) is \(\frac{59}{58}\) times as large as each interior angle of \(P_2\) (the \(s\)-gon). Therefore, we have:
+
+\[
+\theta_r = \frac{59}{58} \theta_s
+\]
+
+Substituting the formula for the interior angles, we get:
+
+\[
+\frac{(r-2) \cdot 180^\circ}{r} = \frac{59}{58} \cdot \frac{(s-2) \cdot 180^\circ}{s}
+\]
+
+We can cancel the \(180^\circ\) from both sides and simplify the equation:
+
+\[
+\frac{r-2}{r} = \frac{59(s-2)}{58s}
+\]
+
+Cross-multiplying to clear the fractions gives:
+
+\[
+58s(r-2) = 59r(s-2)
+\]
+
+Expanding both sides, we get:
+
+\[
+58rs - 116s = 59rs - 118r
+\]
+
+Rearranging terms to isolate \(r\) and \(s\):
+
+\[
+118r - 116s = rs
+\]
+
+Rearranging further, we get:
+
+\[
+rs - 118r + 116s = 0
+\]
+
+To solve this, we add 118 \(\times\) 116 to both sides to factorize:
+
+\[
+rs - 118r + 116s + 118 \times 116 = 118 \times 116
+\]
+
+This can be factored as:
+
+\[
+(r + 116)(s - 118) = 118 \times 116 = 13788
+\]
+
+We need to find pairs \((r+116, s-118)\) that are factors of 13788. The largest possible value of \(s\) corresponds to the smallest possible value of \(r\). We start by finding the factor pairs of 13788 and checking the smallest \(r\).
+
+The factor pairs of 13788 are: \((1, 13788)\), \((2, 6894)\), \((3, 4596)\), \((4, 3447)\), \((6, 2298)\), \((9, 1532)\), \((12, 1149)\), \((18, 766)\), \((36, 383)\).
+
+The smallest \(r\) is obtained when \(r+116 = 36\), so \(r = 20\). Then \(s-118 = 383\), so \(s = 501\).
+
+Therefore, the largest possible value of \(s\) is:
+
+\[
+\boxed{501}
+\]

@@ -1,0 +1,33 @@
+To solve the problem, we need to determine the least positive value of \( t \) such that the sequence \(\arcsin (\sin \alpha), \ \arcsin (\sin 2 \alpha), \ \arcsin (\sin 7 \alpha), \ \arcsin (\sin t \alpha)\) forms a geometric progression for some \(\alpha\) with \(0 < \alpha < \frac{\pi}{2}\).
+
+First, recall that for \(0 < \alpha < \frac{\pi}{2}\), \(\arcsin (\sin \alpha) = \alpha\). So, the sequence simplifies to \(\alpha, \ \arcsin (\sin 2 \alpha), \ \arcsin (\sin 7 \alpha), \ \arcsin (\sin t \alpha)\).
+
+Since \(\alpha, \ \arcsin (\sin 2 \alpha), \ \arcsin (\sin 7 \alpha)\) form a geometric progression, let the common ratio be \(r\). Then we have:
+\[
+\arcsin (\sin 2 \alpha) = r \alpha \quad \text{and} \quad \arcsin (\sin 7 \alpha) = r \arcsin (\sin 2 \alpha) = r^2 \alpha.
+\]
+
+Next, we need to analyze \(\arcsin (\sin 2 \alpha)\). Since \(0 < \alpha < \frac{\pi}{2}\), we have \(0 < 2 \alpha < \pi\). The function \(\arcsin (\sin x)\) for \(0 < x < \pi\) is simply \(x\) if \(0 < x \leq \frac{\pi}{2}\) and \(\pi - x\) if \(\frac{\pi}{2} < x < \pi\). Therefore, \(\arcsin (\sin 2 \alpha) = 2 \alpha\) if \(0 < 2 \alpha \leq \frac{\pi}{2}\) or \(\arcsin (\sin 2 \alpha) = \pi - 2 \alpha\) if \(\frac{\pi}{2} < 2 \alpha < \pi\).
+
+Since the sequence is a geometric progression, we need to consider the simplest case where \(0 < 2 \alpha \leq \frac{\pi}{2}\), which gives us:
+\[
+\arcsin (\sin 2 \alpha) = 2 \alpha.
+\]
+Thus, the common ratio \(r\) is:
+\[
+r = \frac{2 \alpha}{\alpha} = 2.
+\]
+So, the next term in the geometric progression is:
+\[
+\arcsin (\sin 7 \alpha) = r^2 \alpha = 4 \alpha.
+\]
+We need to find \(t\) such that:
+\[
+\arcsin (\sin t \alpha) = r^3 \alpha = 8 \alpha.
+\]
+Again, since \(0 < \alpha < \frac{\pi}{2}\), we have \(0 < t \alpha < \pi\). The function \(\arcsin (\sin x)\) for \(0 < x < \pi\) is simply \(x\) if \(0 < x \leq \frac{\pi}{2}\) and \(\pi - x\) if \(\frac{\pi}{2} < x < \pi\). Therefore, \(\arcsin (\sin 8 \alpha) = 8 \alpha\) if \(0 < 8 \alpha \leq \frac{\pi}{2}\) or \(\arcsin (\sin 8 \alpha) = \pi - 8 \alpha\) if \(\frac{\pi}{2} < 8 \alpha < \pi\).
+
+The smallest \(t\) such that \(0 < t \alpha \leq \frac{\pi}{2}\) is \(t = 8\). Therefore, the least positive value of \(t\) is:
+\[
+\boxed{8}.
+\]

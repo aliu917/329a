@@ -1,0 +1,27 @@
+To solve the problem, we need to understand the geometric properties of the right triangle and the slopes of the medians. Let's denote the vertices of the right triangle as \(A = (0, 0)\), \(B = (a, 0)\), and \(C = (0, b)\). The midpoints of the legs \(AB\) and \(AC\) are \(M = \left(\frac{a}{2}, 0\right)\) and \(N = \left(0, \frac{b}{2}\right)\), respectively.
+
+The medians from \(C\) to \(M\) and from \(B\) to \(N\) are the lines connecting \(C\) to \(M\) and \(B\) to \(N\). The slope of the median from \(C\) to \(M\) is:
+\[
+\text{slope of } CM = \frac{\frac{b}{2} - b}{0 - \frac{a}{2}} = \frac{-\frac{b}{2}}{-\frac{a}{2}} = \frac{b}{a}
+\]
+The slope of the median from \(B\) to \(N\) is:
+\[
+\text{slope of } BN = \frac{\frac{b}{2} - 0}{0 - a} = \frac{\frac{b}{2}}{-a} = -\frac{b}{2a}
+\]
+We know that the medians lie on the lines \(y = 3x + 1\) and \(y = mx + 2\). Therefore, we can equate the slopes of these lines to the slopes of the medians:
+\[
+\frac{b}{a} = 3 \quad \text{and} \quad -\frac{b}{2a} = m
+\]
+From \(\frac{b}{a} = 3\), we get \(b = 3a\). Substituting \(b = 3a\) into the second equation, we get:
+\[
+-\frac{3a}{2a} = m \implies -\frac{3}{2} = m
+\]
+This gives us one value for \(m\). However, we need to check if there are any other possible values for \(m\). Notice that the slopes of the medians to the midpoints of the legs are related by a fixed ratio, and the problem does not restrict the orientation of the triangle. Therefore, we can also consider the case where the median from \(B\) to \(N\) lies on \(y = 3x + 1\) and the median from \(C\) to \(M\) lies on \(y = mx + 2\). In this case, we would have:
+\[
+\frac{b}{a} = m \quad \text{and} \quad -\frac{b}{2a} = 3
+\]
+From \(-\frac{b}{2a} = 3\), we get \(b = -6a\). Substituting \(b = -6a\) into the first equation, we get:
+\[
+\frac{-6a}{a} = m \implies -6 = m
+\]
+This gives us another value for \(m\). Therefore, there are two different constants \(m\) for which such a triangle exists. The number of different constants \(m\) is \(\boxed{2}\).

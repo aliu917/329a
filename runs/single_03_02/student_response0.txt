@@ -1,0 +1,95 @@
+To solve this problem, we need to calculate the energy stored in the initial configuration and the new configuration, and then find the difference between these two energies.
+
+### Step 1: Initial Configuration
+Given:
+- The charges are identical.
+- They form an equilateral triangle.
+- The energy stored in this configuration is 15 Joules.
+
+Let each charge be \( q \) and the side length of the equilateral triangle be \( d \).
+
+For an equilateral triangle, there are three pairs of charges:
+- Each pair of charges experiences an energy given by the formula:
+  \[
+  U = k \frac{q_1 q_2}{r}
+  \]
+  where \( k \) is Coulomb's constant, \( q_1 \) and \( q_2 \) are the charges, and \( r \) is the distance between them.
+
+Since the charges are identical and the distance between each pair is \( d \):
+\[
+U_{\text{pair}} = k \frac{q^2}{d}
+\]
+
+There are three such pairs in the triangle:
+\[
+U_{\text{total}} = 3 \times k \frac{q^2}{d}
+\]
+
+Given that the total energy is 15 Joules:
+\[
+3 \times k \frac{q^2}{d} = 15
+\]
+\[
+k \frac{q^2}{d} = 5 \quad \text{(Equation 1)}
+\]
+
+### Step 2: New Configuration
+Now, one of the charges is moved to the midpoint of the opposite side. Let’s denote the new positions as follows:
+- \( q \) at \( A \)
+- \( q \) at \( B \)
+- \( q \) at \( M \) (midpoint of side \( BC \))
+
+#### Energy Calculation for New Configuration
+1. **Pair \( (A, B) \)**:
+   - Distance \( AB = d \)
+   \[
+   U_{AB} = k \frac{q^2}{d}
+   \]
+
+2. **Pair \( (A, M) \)**:
+   - Distance \( AM \) is half the side length of the triangle:
+   \[
+   AM = \frac{d}{2}
+   \]
+   \[
+   U_{AM} = k \frac{q^2}{\frac{d}{2}} = 2k \frac{q^2}{d}
+   \]
+
+3. **Pair \( (B, M) \)**:
+   - Distance \( BM \) is also half the side length of the triangle:
+   \[
+   BM = \frac{d}{2}
+   \]
+   \[
+   U_{BM} = k \frac{q^2}{\frac{d}{2}} = 2k \frac{q^2}{d}
+   \]
+
+#### Total Energy in New Configuration
+\[
+U_{\text{new}} = U_{AB} + U_{AM} + U_{BM}
+\]
+\[
+U_{\text{new}} = k \frac{q^2}{d} + 2k \frac{q^2}{d} + 2k \frac{q^2}{d}
+\]
+\[
+U_{\text{new}} = k \frac{q^2}{d} + 4k \frac{q^2}{d}
+\]
+\[
+U_{\text{new}} = 5k \frac{q^2}{d}
+\]
+
+Using Equation 1:
+\[
+U_{\text{new}} = 5 \times 5 = 25 \quad \text{Joules}
+\]
+
+### Step 3: Energy Difference
+The initial energy was 15 Joules. The new energy is 25 Joules. The difference in energy is:
+\[
+25 - 15 = 10 \quad \text{Joules}
+\]
+
+Thus, the additional energy stored is:
+\[
+\boxed{10}
+\]

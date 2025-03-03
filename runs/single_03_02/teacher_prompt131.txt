@@ -1,0 +1,80 @@
+You are given a reasoning attempt for answering the following question: In triangle $ABC,$ $E$ lies on $\overline{AC}$ such that $AE:EC = 2:1,$ and $F$ lies on $\overline{AB}$ such that $AF:FB = 1:4.$  Let $P$ be the intersection of $\overline{BE}$ and $\overline{CF}.$
+
+[asy]
+unitsize(0.8 cm);
+
+pair A, B, C, D, E, F, P;
+
+A = (1,4);
+B = (0,0);
+C = (6,0);
+E = interp(A,C,2/3);
+F = interp(A,B,1/5);
+P = extension(B,E,C,F);
+
+draw(A--B--C--cycle);
+draw(B--E);
+draw(C--F);
+
+label("$A$", A, N);
+label("$B$", B, SW);
+label("$C$", C, SE);
+label("$E$", E, NE);
+label("$F$", F, W);
+label("$P$", P, S);
+[/asy]
+
+Then
+\[\overrightarrow{P} = x \overrightarrow{A} + y \overrightarrow{B} + z \overrightarrow{C},\]where $x,$ $y,$ and $z$ are constants such that $x + y + z = 1.$  Enter the ordered triple $(x,y,z).$
+
+Attempt: To find the coordinates of point \(P\) in terms of \(\overrightarrow{A}\), \(\overrightarrow{B}\), and \(\overrightarrow{C}\), we will use mass points and then convert these to coordinate form.
+
+1. **Assign Mass Points:**
+   - Since \(AE:EC = 2:1\), assign a mass of 2 to \(C\) and a mass of 1 to \(A\). Therefore, the mass at \(E\) is \(2 + 1 = 3\).
+   - Since \(AF:FB = 1:4\), assign a mass of 4 to \(A\) and a mass of 1 to \(B\). Therefore, the mass at \(F\) is \(4 + 1 = 5\).
+
+2. **Find Masses at \(B\) and \(C\):**
+   - To find the mass at \(B\), note that the mass at \(C\) is 2 and the mass at \(A\) is 1, and since \(B\) is not directly connected to \(A\) or \(C\) yet, we need to find a common mass. The mass at \(B\) is 5 (from \(AF:FB\)) and it must balance with the mass at \(C\) when considering the whole triangle. The mass at \(B\) must be 10 (since \(5 \times 2 = 10\) and \(2 \times 5 = 10\)).
+
+3. **Find Coordinates of \(E\) and \(F\):**
+   - The coordinates of \(E\) are \(\frac{2\overrightarrow{C} + 1\overrightarrow{A}}{3}\).
+   - The coordinates of \(F\) are \(\frac{4\overrightarrow{A} + 1\overrightarrow{B}}{5}\).
+
+4. **Find the Intersection \(P\) of \(BE\) and \(CF\):**
+   - The mass at \(P\) is the sum of the masses along \(BE\) and \(CF\). The mass at \(P\) is \(3 + 10 = 13\).
+
+5. **Express \(P\) in Terms of \(\overrightarrow{A}\), \(\overrightarrow{B}\), and \(\overrightarrow{C}\):**
+   - The coordinates of \(P\) can be found by considering the weighted average of the points \(B\), \(E\), \(C\), and \(F\).
+   - The equation for \(P\) is:
+     \[
+     \overrightarrow{P} = \frac{3 \overrightarrow{B} + 10 \overrightarrow{E}}{13} = \frac{3 \overrightarrow{B} + 10 \left( \frac{2\overrightarrow{C} + \overrightarrow{A}}{3} \right)}{13} = \frac{3 \overrightarrow{B} + \frac{20 \overrightarrow{C} + 10 \overrightarrow{A}}{3}}{13} = \frac{9 \overrightarrow{B} + 20 \overrightarrow{C} + 10 \overrightarrow{A}}{39}
+     \]
+   - Similarly, we can find the contribution from \(F\):
+     \[
+     \overrightarrow{P} = \frac{10 \overrightarrow{C} + 3 \overrightarrow{F}}{13} = \frac{10 \overrightarrow{C} + 3 \left( \frac{4 \overrightarrow{A} + \overrightarrow{B}}{5} \right)}{13} = \frac{10 \overrightarrow{C} + \frac{12 \overrightarrow{A} + 3 \overrightarrow{B}}{5}}{13} = \frac{50 \overrightarrow{C} + 12 \overrightarrow{A} + 3 \overrightarrow{B}}{65}
+     \]
+   - Equating the two expressions, we get:
+     \[
+     \overrightarrow{P} = \frac{12}{39} \overrightarrow{A} + \frac{3}{39} \overrightarrow{B} + \frac{20}{39} \overrightarrow{C} = \frac{4}{13} \overrightarrow{A} + \frac{1}{13} \overrightarrow{B} + \frac{20}{39} \overrightarrow{C}
+     \]
+   - Simplifying, we get:
+     \[
+     \overrightarrow{P} = \frac{4}{13} \overrightarrow{A} + \frac{1}{13} \overrightarrow{B} + \frac{10}{13} \overrightarrow{C}
+     \]
+   - Therefore, the ordered triple \((x, y, z)\) is \(\left( \frac{4}{13}, \frac{1}{13}, \frac{10}{13} \right)\).
+
+The final answer is \(\boxed{\left( \frac{4}{13}, \frac{1}{13}, \frac{10}{13} \right)}\).
+
+Correct solution: From the given information,
+\[\overrightarrow{E} = \frac{1}{3} \overrightarrow{A} + \frac{2}{3} \overrightarrow{C}\]and
+\[\overrightarrow{F} = \frac{4}{5} \overrightarrow{A} + \frac{1}{5} \overrightarrow{B}.\]Isolating $\overrightarrow{A}$ in each equation, we obtain
+\[\overrightarrow{A} = 3 \overrightarrow{E} - 2 \overrightarrow{C} = \frac{5 \overrightarrow{F} - \overrightarrow{B}}{4}.\]Then $12 \overrightarrow{E} - 8 \overrightarrow{C} = 5 \overrightarrow{F} - \overrightarrow{B},$ so $12 \overrightarrow{E} + \overrightarrow{B} = 5 \overrightarrow{F} + 8 \overrightarrow{C},$ or
+\[\frac{12}{13} \overrightarrow{E} + \frac{1}{13} \overrightarrow{B} = \frac{5}{13} \overrightarrow{F} + \frac{8}{13} \overrightarrow{C}.\]Since the coefficients on both sides of the equation add up to 1, the vector on the left side lies on line $BE,$ and the vector on the right side lies on line $CF.$  Therefore, this common vector is $\overrightarrow{P}.$  Then
+\begin{align*}
+\overrightarrow{P} &= \frac{12}{13} \overrightarrow{E} + \frac{1}{13} \overrightarrow{B} \\
+&= \frac{12}{13} \left( \frac{1}{3} \overrightarrow{A} + \frac{2}{3} \overrightarrow{C} \right) + \frac{1}{13} \overrightarrow{B} \\
+&= \frac{4}{13} \overrightarrow{A} + \frac{1}{13} \overrightarrow{B} + \frac{8}{13} \overrightarrow{C}.
+\end{align*}Thus, $(x,y,z) = \boxed{\left( \frac{4}{13}, \frac{1}{13}, \frac{8}{13} \right)}.$
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.

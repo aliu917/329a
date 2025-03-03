@@ -1,0 +1,48 @@
+To solve the problem, we need to construct a right triangle in the coordinate plane with its legs parallel to the \(x\) and \(y\) axes. Let's denote the vertices of the right triangle as \(A = (a, b)\), \(B = (a + c, b)\), and \(C = (a, b + d)\). The right angle is at \(A\).
+
+The midpoints of the legs are:
+- Midpoint of \(AB\): \(\left(a + \frac{c}{2}, b\right)\)
+- Midpoint of \(AC\): \(\left(a, b + \frac{d}{2}\right)\)
+
+The medians to these midpoints from the opposite vertices are:
+- Median from \(C\) to the midpoint of \(AB\): This median passes through \(C = (a, b + d)\) and \(\left(a + \frac{c}{2}, b\right)\).
+- Median from \(B\) to the midpoint of \(AC\): This median passes through \(B = (a + c, b)\) and \(\left(a, b + \frac{d}{2}\right)\).
+
+The equation of the median from \(C\) to the midpoint of \(AB\) is:
+\[ y - (b + d) = \frac{b - (b + d)}{a + \frac{c}{2} - a} (x - a) = \frac{-d}{\frac{c}{2}} (x - a) = -\frac{2d}{c} (x - a) \]
+\[ y = -\frac{2d}{c}x + \frac{2ad}{c} + b + d \]
+Since this median lies on the line \(y = 3x + 1\), we can equate the slopes and intercepts:
+\[ -\frac{2d}{c} = 3 \]
+\[ \frac{2ad}{c} + b + d = 1 \]
+
+The equation of the median from \(B\) to the midpoint of \(AC\) is:
+\[ y - b = \frac{b + \frac{d}{2} - b}{a - (a + c)} (x - (a + c)) = \frac{\frac{d}{2}}{-c} (x - (a + c)) = -\frac{d}{2c} (x - (a + c)) \]
+\[ y = -\frac{d}{2c}x + \frac{d}{2c}(a + c) + b \]
+Since this median lies on the line \(y = mx + 2\), we can equate the slopes and intercepts:
+\[ -\frac{d}{2c} = m \]
+\[ \frac{d}{2c}(a + c) + b = 2 \]
+
+From the first set of equations, we have:
+\[ -\frac{2d}{c} = 3 \implies d = -\frac{3c}{2} \]
+Substituting \(d = -\frac{3c}{2}\) into the second equation:
+\[ \frac{2a\left(-\frac{3c}{2}\right)}{c} + b + \left(-\frac{3c}{2}\right) = 1 \]
+\[ -3a + b - \frac{3c}{2} = 1 \]
+\[ b = 3a + \frac{3c}{2} + 1 \]
+
+From the second set of equations, we have:
+\[ -\frac{d}{2c} = m \implies m = \frac{3}{4} \]
+\[ \frac{-\frac{3c}{2}}{2c}(a + c) + b = 2 \]
+\[ -\frac{3}{4}(a + c) + b = 2 \]
+Substituting \(b = 3a + \frac{3c}{2} + 1\) into this equation:
+\[ -\frac{3}{4}(a + c) + 3a + \frac{3c}{2} + 1 = 2 \]
+\[ -\frac{3}{4}a - \frac{3}{4}c + 3a + \frac{3c}{2} + 1 = 2 \]
+\[ \left(3 - \frac{3}{4}\right)a + \left(\frac{3}{2} - \frac{3}{4}\right)c + 1 = 2 \]
+\[ \frac{9}{4}a + \frac{3}{4}c + 1 = 2 \]
+\[ \frac{9}{4}a + \frac{3}{4}c = 1 \]
+\[ 9a + 3c = 4 \]
+\[ 3c = 4 - 9a \]
+\[ c = \frac{4 - 9a}{3} \]
+
+Since \(c\) must be a real number, \(a\) can take any value such that \(c\) is real. This means there is only one value for \(m\), which is \(\frac{3}{4}\).
+
+Therefore, the number of different constants \(m\) for which such a triangle exists is \(\boxed{1}\).

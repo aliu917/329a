@@ -1,0 +1,53 @@
+To solve the given problem, we start by identifying the arithmetic sequence and the floor function application in each term.
+
+The arithmetic sequence is:
+\[1, 1.6, 2.2, 2.8, \ldots, 99.4, 100\]
+
+First, we determine the general term of this arithmetic sequence. The first term \(a_1 = 1\) and the common difference \(d = 0.6\). The \(n\)-th term of an arithmetic sequence is given by:
+\[a_n = a_1 + (n-1)d\]
+
+We need to find the number of terms in the sequence. The last term \(a_n = 100\):
+\[100 = 1 + (n-1) \cdot 0.6\]
+\[99 = (n-1) \cdot 0.6\]
+\[n-1 = \frac{99}{0.6} = 165\]
+\[n = 166\]
+
+Thus, there are 166 terms in the sequence.
+
+Next, we apply the floor function to each term:
+\[\lfloor 1 \rfloor = 1\]
+\[\lfloor 1.6 \rfloor = 1\]
+\[\lfloor 2.2 \rfloor = 2\]
+\[\lfloor 2.8 \rfloor = 2\]
+\[\vdots\]
+\[\lfloor 99.4 \rfloor = 99\]
+\[\lfloor 100 \rfloor = 100\]
+
+We observe that for each integer \(k\), the terms \(k, k+0.6, k+1.2, \ldots, k+0.4 + 0.6(n-k-1)\) contribute \(\lfloor k+0.6m \rfloor = k\) for \(m = 0, 1, 2, \ldots, 10\). This is because the fractional part \(0.6m\) is less than 1 for \(m < 10\) and equals 0 when \(m = 10\).
+
+Thus, for each integer \(k\), the terms \(k, k+0.6, k+1.2, \ldots, k+5.4\) contribute \(k\) to the sum. There are 10 terms for each integer \(k\).
+
+We sum the contributions from each integer \(k\) from 1 to 99:
+\[
+\sum_{k=1}^{99} k \cdot 10 = 10 \sum_{k=1}^{99} k
+\]
+
+The sum of the first 99 integers is:
+\[
+\sum_{k=1}^{99} k = \frac{99 \cdot 100}{2} = 4950
+\]
+
+Therefore, the total sum is:
+\[
+10 \cdot 4950 = 49500
+\]
+
+Finally, we add the contribution of the last term \(100\):
+\[
+49500 + 100 = 49600
+\]
+
+Thus, the final answer is:
+\[
+\boxed{49600}
+\]

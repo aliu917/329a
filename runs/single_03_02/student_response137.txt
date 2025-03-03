@@ -1,0 +1,54 @@
+To solve the inequality \(\frac{1}{x - 1} - \frac{4}{x - 2} + \frac{4}{x - 3} - \frac{1}{x - 4} < \frac{1}{30}\), we first combine the terms into a single rational expression. The common denominator is \((x-1)(x-2)(x-3)(x-4)\). Thus, the inequality becomes:
+
+\[
+\frac{(x-2)(x-3)(x-4) - 4(x-1)(x-3)(x-4) + 4(x-1)(x-2)(x-4) - (x-1)(x-2)(x-3)}{(x-1)(x-2)(x-3)(x-4)} < \frac{1}{30}
+\]
+
+Let's simplify the numerator:
+
+\[
+(x-2)(x-3)(x-4) = x^3 - 9x^2 + 26x - 24
+\]
+\[
+-4(x-1)(x-3)(x-4) = -4(x^3 - 8x^2 + 19x - 12) = -4x^3 + 32x^2 - 76x + 48
+\]
+\[
+4(x-1)(x-2)(x-4) = 4(x^3 - 7x^2 + 14x - 8) = 4x^3 - 28x^2 + 56x - 32
+\]
+\[
+-(x-1)(x-2)(x-3) = -(x^3 - 6x^2 + 11x - 6) = -x^3 + 6x^2 - 11x + 6
+\]
+
+Adding these together:
+
+\[
+(x^3 - 9x^2 + 26x - 24) + (-4x^3 + 32x^2 - 76x + 48) + (4x^3 - 28x^2 + 56x - 32) + (-x^3 + 6x^2 - 11x + 6) = -2x^2 + 1x + 6
+\]
+
+So the inequality becomes:
+
+\[
+\frac{-2x^2 + x + 6}{(x-1)(x-2)(x-3)(x-4)} < \frac{1}{30}
+\]
+
+This can be rewritten as:
+
+\[
+30(-2x^2 + x + 6) < (x-1)(x-2)(x-3)(x-4)
+\]
+
+or
+
+\[
+-60x^2 + 30x + 180 < (x-1)(x-2)(x-3)(x-4)
+\]
+
+The critical points are \(x = 1, 2, 3, 4\). We need to test the sign of the expression \(\frac{-60x^2 + 30x + 180}{(x-1)(x-2)(x-3)(x-4)} - \frac{1}{30}\) in the intervals determined by these points. The intervals to test are \((-\infty, 1)\), \((1, 2)\), \((2, 3)\), \((3, 4)\), and \((4, \infty)\).
+
+By testing values in each interval, we find that the inequality holds in the intervals \((-\infty, 1)\), \((2, 3)\), and \((4, \infty)\).
+
+Thus, the solution to the inequality is:
+
+\[
+\boxed{(-\infty, 1) \cup (2, 3) \cup (4, \infty)}
+\]

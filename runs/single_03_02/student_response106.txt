@@ -1,0 +1,25 @@
+To solve this problem, we need to consider the properties of the right triangle and the medians to the midpoints of its legs. Let's denote the vertices of the right triangle as \(A = (0, 0)\), \(B = (a, 0)\), and \(C = (0, b)\). The medians to the midpoints of the legs are the medians to the points \((a/2, 0)\) and \((0, b/2)\).
+
+The midpoint of the leg from \(A\) to \(B\) is \((a/2, 0)\) and the midpoint of the leg from \(A\) to \(C\) is \((0, b/2)\). The median to \((a/2, 0)\) from \(C\) is the line segment from \((0, b)\) to \((a/2, 0)\), and the median to \((0, b/2)\) from \(B\) is the line segment from \((a, 0)\) to \((0, b/2)\).
+
+The slope of the median from \(C\) to \((a/2, 0)\) is:
+\[
+\text{slope} = \frac{b - 0}{0 - \frac{a}{2}} = -\frac{2b}{a}
+\]
+This median lies on the line \(y = 3x + 1\), so the slope of this line is 3. Therefore, we have:
+\[
+-\frac{2b}{a} = 3 \implies 2b = -3a \implies b = -\frac{3a}{2}
+\]
+
+The slope of the median from \(B\) to \((0, b/2)\) is:
+\[
+\text{slope} = \frac{0 - \frac{b}{2}}{a - 0} = -\frac{b}{2a}
+\]
+This median lies on the line \(y = mx + 2\), so the slope of this line is \(m\). Therefore, we have:
+\[
+-\frac{b}{2a} = m \implies m = -\frac{b}{2a} = -\frac{-\frac{3a}{2}}{2a} = \frac{3}{4}
+\]
+
+Thus, there is only one possible value for \(m\), which is \(\frac{3}{4}\).
+
+Therefore, the number of different constants \(m\) for which such a triangle exists is \(\boxed{1}\).

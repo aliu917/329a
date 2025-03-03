@@ -1,0 +1,36 @@
+To solve the given problem, we need to compute the sum of the floor values of the terms in an arithmetic progression. The arithmetic progression is given by \(1, 1.6, 2.2, 2.8, \ldots, 99.4, 100\).
+
+First, let's identify the general term of the arithmetic progression. The first term \(a\) is 1 and the common difference \(d\) is 0.6. The general term of the arithmetic progression can be written as:
+\[a_n = 1 + (n-1) \cdot 0.6 = 0.6n + 0.4\]
+We need to find the number of terms in the sequence. The last term is 100, so we set \(a_n = 100\) and solve for \(n\):
+\[0.6n + 0.4 = 100\]
+\[0.6n = 99.6\]
+\[n = \frac{99.6}{0.6} = 166\]
+So, there are 166 terms in the sequence.
+
+Next, we need to find the floor value of each term in the sequence. The floor function \(\lfloor x \rfloor\) gives the greatest integer less than or equal to \(x\). We can observe the pattern of the floor values:
+- For \(0.6n + 0.4\) where \(n\) ranges from 1 to 166, the floor value will be:
+  - For \(n = 1, 2, 3, \ldots, 1\): \(\lfloor 0.6 \cdot 1 + 0.4 \rfloor = \lfloor 1 \rfloor = 1\)
+  - For \(n = 2, 3, 4, \ldots, 5\): \(\lfloor 0.6 \cdot 2 + 0.4 \rfloor = \lfloor 1.6 \rfloor = 1\)
+  - For \(n = 6, 7, 8, \ldots, 10\): \(\lfloor 0.6 \cdot 6 + 0.4 \rfloor = \lfloor 4 \rfloor = 4\)
+  - And so on...
+
+We can see that the floor value increases by 1 every 5 terms. Specifically, the floor value for \(n = 5k + 1\) to \(n = 5k + 5\) is \(k\). So, we can count the number of terms for each floor value:
+- \(\lfloor 0.6n + 0.4 \rfloor = 1\) for \(n = 1, 2, 3, 4, 5\) (5 terms)
+- \(\lfloor 0.6n + 0.4 \rfloor = 2\) for \(n = 6, 7, 8, 9, 10\) (5 terms)
+- \(\lfloor 0.6n + 0.4 \rfloor = 3\) for \(n = 11, 12, 13, 14, 15\) (5 terms)
+- And so on...
+
+The floor value 16 will be for \(n = 161, 162, 163, 164, 165\) (5 terms), and the floor value 166 for \(n = 166\) (1 term).
+
+So, the sum of the floor values is:
+\[1 \cdot 5 + 2 \cdot 5 + 3 \cdot 5 + \cdots + 16 \cdot 5 + 166 \cdot 1\]
+This can be written as:
+\[5(1 + 2 + 3 + \cdots + 16) + 166\]
+The sum of the first 16 positive integers is:
+\[1 + 2 + 3 + \cdots + 16 = \frac{16 \cdot 17}{2} = 136\]
+So, the sum is:
+\[5 \cdot 136 + 166 = 680 + 166 = 846\]
+
+Therefore, the final answer is:
+\[\boxed{846}\]

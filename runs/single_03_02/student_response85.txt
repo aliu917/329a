@@ -1,0 +1,51 @@
+To solve this problem, we need to calculate the probability that Greg rolls more 1's than 6's when rolling four fair six-sided dice. Let's break down the solution step by step.
+
+First, let's denote the number of 1's by \(X\) and the number of 6's by \(Y\). We need to find the probability that \(X > Y\).
+
+### Step 1: Understand the Symmetry
+Given the symmetry in the problem (each die has an equal chance of landing on any of the six faces), the probability of rolling more 1's than 6's should be the same as the probability of rolling more 6's than 1's. This is because the outcomes where \(X > Y\) are equally likely to the outcomes where \(Y > X\).
+
+### Step 2: Consider the Equal Case
+We need to consider the cases where \(X = Y\). The possible values for \(X\) and \(Y\) are 0, 1, 2, or 3 (since we are rolling four dice, the maximum number of 1's or 6's is 4, but \(X + Y \leq 4\)).
+
+#### Case \(X = Y = 0\):
+- All four dice show neither 1 nor 6.
+- Number of ways: \( \binom{4}{0,4} = 1 \)
+
+#### Case \(X = Y = 1\):
+- One die shows 1, one die shows 6, and the other two dice show neither 1 nor 6.
+- Number of ways: \( \binom{4}{1,1,2} = \frac{4!}{1!1!2!} = 12 \)
+
+#### Case \(X = Y = 2\):
+- Two dice show 1, two dice show 6.
+- Number of ways: \( \binom{4}{2,2} = \frac{4!}{2!2!} = 6 \)
+
+#### Case \(X = Y = 3\):
+- This case is impossible since we only have four dice.
+
+### Step 3: Calculate Total Number of Favorable Outcomes
+The total number of outcomes where \(X = Y\) is the sum of the number of ways for each case:
+\[ 1 + 12 + 6 = 19 \]
+
+### Step 4: Calculate Total Possible Outcomes
+The total number of possible outcomes when rolling four dice is:
+\[ 6^4 = 1296 \]
+
+### Step 5: Use Complementary Counting
+Since the probability of \(X > Y\) should be the same as the probability of \(Y > X\), and the probability of \(X = Y\) is given by the above calculation, we can use the fact that the sum of all probabilities must equal 1:
+\[ P(X > Y) + P(X = Y) + P(Y > X) = 1 \]
+Given the symmetry:
+\[ P(X > Y) = P(Y > X) \]
+Thus:
+\[ 2P(X > Y) + P(X = Y) = 1 \]
+\[ 2P(X > Y) + \frac{19}{1296} = 1 \]
+\[ 2P(X > Y) = 1 - \frac{19}{1296} \]
+\[ 2P(X > Y) = \frac{1296 - 19}{1296} \]
+\[ 2P(X > Y) = \frac{1277}{1296} \]
+\[ P(X > Y) = \frac{1277}{2592} \]
+
+### Final Answer
+The probability that Greg rolls more 1's than 6's is:
+\[
+\boxed{\frac{1277}{2592}}
+\]

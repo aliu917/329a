@@ -1,0 +1,34 @@
+To find the volume of the solid \( S \) defined by the inequalities \( |x| + |y| \le 1 \), \( |x| + |z| \le 1 \), and \( |y| + |z| \le 1 \), we need to understand the shape and symmetry of the solid.
+
+### Step 1: Understanding the Inequalities
+Each inequality represents a region in 3D space bounded by planes. For example, \( |x| + |y| \le 1 \) describes a square-based pyramid (or a diamond shape in the \(xy\)-plane) when \( z = 0 \). Similarly, \( |x| + |z| \le 1 \) and \( |y| + |z| \le 1 \) describe analogous regions in the \(xz\)- and \(yz\)-planes, respectively.
+
+### Step 2: Symmetry and Octants
+The solid is symmetric with respect to all three coordinate planes. Therefore, we can consider the volume in just one octant and then multiply by 8 to get the total volume.
+
+### Step 3: Volume in One Octant
+Consider the first octant where \( x, y, z \ge 0 \). In this octant, the inequalities simplify to:
+\[ x + y \le 1, \quad x + z \le 1, \quad y + z \le 1. \]
+
+### Step 4: Visualizing the Region in One Octant
+The region in the first octant is a tetrahedron with vertices at \((0,0,0)\), \((1,0,0)\), \((0,1,0)\), and \((0,0,1)\).
+
+### Step 5: Calculating the Volume of the Tetrahedron
+The volume \( V \) of a tetrahedron with vertices \((0,0,0)\), \((a,0,0)\), \((0,b,0)\), and \((0,0,c)\) is given by:
+\[ V = \frac{1}{6} \times \text{base area} \times \text{height}. \]
+Here, the base is a right triangle in the \(xy\)-plane with vertices \((0,0)\), \((1,0)\), and \((0,1)\), and the height is 1 (along the \(z\)-axis).
+
+The area of the base triangle is:
+\[ \text{Base area} = \frac{1}{2} \times 1 \times 1 = \frac{1}{2}. \]
+
+Thus, the volume of the tetrahedron is:
+\[ V = \frac{1}{6} \times \frac{1}{2} \times 1 = \frac{1}{6} \times \frac{1}{2} = \frac{1}{6} \times \frac{1}{2} = \frac{1}{6}. \]
+
+### Step 6: Total Volume
+Since the solid is symmetric in all eight octants, the total volume \( V_{\text{total}} \) is:
+\[ V_{\text{total}} = 8 \times \frac{1}{6} = \frac{8}{6} = \frac{4}{3}. \]
+
+Thus, the volume of the solid \( S \) is:
+\[
+\boxed{\frac{4}{3}}
+\]
