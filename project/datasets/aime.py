@@ -1,15 +1,26 @@
+import os
 from torch.utils.data import Dataset
 import pandas as pd
-from pathlib import Path
 
+
+def prepare_data(file_path, max_rows=None, debug_mode=False):
+    """Loads and optionally filters the AIME dataset."""
+    data = pd.read_csv(file_path)
+    
+    if max_rows:
+        data = data.head(max_rows)
+    elif debug_mode:
+        data = data.head(10)
+    
+    return data
 
 class AIMEDataset(Dataset):
-    def __init__(self, file_path):
+    def __init__(self, file_path="aime_dataset_1.csv"):
         """
         Args:
             file_path (str): Path to the AIME dataset CSV file.
         """
-        self.file_path = Path(file_path)
+        self.file_path = os.path.join(os.path.dirname(__file__), file_path)
         self.data = pd.read_csv(self.file_path)
         
         # Convert to list of tuples (problem, solution, answer)
@@ -19,16 +30,14 @@ class AIMEDataset(Dataset):
         return len(self.problems)
 
     def __getitem__(self, idx):
-        return self.problems[idx]
-
+        problem, solution, answer = self.problems[idx]
+        return {"problem": [problem], "solution": [solution]}, str(answer)  # Ensure structure matches expected format
 
 if __name__ == "__main__":
-    dataset = AIMEDataset("aime_dataset_1.csv")
+    dataset = AIMEDataset()
     print(f"Total problems: {len(dataset)}")
     
     # Display first problem
-    problem, solution, answer = dataset[0]
-    print("Problem:", problem)
-    print("Solution:", solution)
-    print("Answer:", answer)
-
+    data, labels = dataset[0]
+    print("Data:", data)
+    print("Labels:", labels)

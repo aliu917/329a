@@ -17,7 +17,7 @@ def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwarg
     output = None
     request_id = random.randint(1000, 9999)  # Generate unique request ID for tracking
 
-    key = os.environ.get("TOGETHER_API_KEY")
+    key = os.getenv("TOGETHER_API_KEY")
 
     logger.info(f"[Together-{request_id}] Starting request for model: {model}")
 
@@ -61,7 +61,7 @@ def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwarg
 
 def generate_openai(model, messages, max_tokens=2048, temperature=0.7, **kwargs):
 
-    key = os.environ.get("OPENAI_API_KEY")
+    key = os.getenv("OPENAI_API_KEY")
 
     client = openai.OpenAI(api_key=key)
 

@@ -1,1 +1,2 @@
-from .math import MathDataset
+from .math_dataset import MathDataset
+from .aime import AIMEDataset

@@ -35,6 +35,9 @@ class StudentLMAgent:
             {"role": "user", "content": prompt}
         ]
         response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
+        if response is None:
+            response = "[ERROR] No response generated."
+
         if self.log_dir:
             with open(f"{self.log_dir}/student_prompt{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
@@ -45,4 +48,6 @@ class StudentLMAgent:
 
     def generate(self, problem, prompt_func=student_default_prompt, feedback=""):
         feedback = feedback_prompt(feedback)
+        if isinstance(problem, tuple):
+            problem = " ".join(problem)  # Convert tuple into a single string
         return self._generate(problem + "\n" + prompt_func(feedback))

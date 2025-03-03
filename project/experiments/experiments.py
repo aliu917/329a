@@ -51,6 +51,7 @@ class Experiment:
 class Base(Experiment):
     def get_results(self):
         results = []
+
         for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
             x = data["problem"][0]
             y = labels[0]
