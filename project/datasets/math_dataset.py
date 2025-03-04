@@ -8,7 +8,6 @@ import os
 from pathlib import Path
 import json
 import re
-from project.utils import *
 
 def prepare_data(max_rows=None, debug_mode=False):
     dataset = load_dataset("hendrycks/competition_math")
@@ -68,7 +67,7 @@ if __name__ == '__main__':
         print("min level: ", i)
         dataset = MathDataset(min_level=i)
         print(len(dataset))
-        print()
+        print(dataset[0])
 
 
 """
