@@ -6,6 +6,16 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from project.models import StudentLMAgent, TeacherLMAgent
 from . import prompts
+from project.utils import extract_text_within_box
+from project.models import verifiers
+verifier = verifiers.MATH500Verifier()
+
+
+def report_and_save_results(results, results_path):
+    print("Accuracy:", np.mean([r["correct"] for r in results]))
+    if results_path:
+        with open(results_path, "w") as f:
+            json.dump(results, f)
 
 def run_single(x, y, student, teacher, input_feedback, prompt_func=None):
     # Student generation and evaluation
@@ -43,10 +53,7 @@ class Experiment:
     def run(self):
         torch.manual_seed(self.seed)
         results = self.get_results()
-        print("Accuracy:", np.mean([r["correct"] for r in results]))
-        if self.results_path:
-            with open(self.results_path, "w") as f:
-                json.dump(results, f)
+        report_and_save_results(results, self.results_path)
 
 class Base(Experiment):
     def get_results(self):
@@ -106,3 +113,46 @@ class IterativeRefine(Experiment):
                 results.append(result)
                 prev_feedback = feedback
             return results
+
+class MultipleIteration(Experiment):
+    """
+    In this experiment, we train the student and teacher over multiple iterations, keeping the
+    entire history of attempts and feedbacks in the prompt for learning/refinement.
+    """
+    def __init__(self, *args, iters=3, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.iters = iters
+
+    def get_results(self):
+        student_multi_iter_examples = ""
+        teacher_multi_iter_examples = ""
+        round_results = []
+        for iter in range(self.iters):
+            torch.manual_seed(self.seed)
+            round_results = []
+            for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
+                log_prompts = (iter + i < 3)
+                x = data["problem"][0]
+                y = labels[0]
+
+                attempt = self.student._generate(prompts.student_prompt_with_examples(x, student_multi_iter_examples), log_prompts)
+                feedback = self.teacher._generate(prompts.teacher_prompt_with_examples(x, attempt, y, teacher_multi_iter_examples), log_prompts)
+
+                student_multi_iter_examples += prompts.build_next_student_example(x, attempt, feedback)
+                teacher_multi_iter_examples += prompts.build_next_teacher_example(x, feedback, attempt)
+
+                result = {
+                    "question": x,
+                    "answer": extract_text_within_box(y),
+                    "pred": extract_text_within_box(attempt),
+                    "pred_steps": attempt,
+                    "answer_steps": y,
+                    "correct": verifier(attempt, y),
+                    "output_feedback": feedback,
+                }
+                round_results.append(result)
+            path_name, file_ext = self.results_path.split(".")
+            report_and_save_results(round_results, f"{path_name}_{iter}.{file_ext}")
+        report_and_save_results(round_results, self.results_path)
+
+        return round_results[-1]

@@ -49,6 +49,7 @@ def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwarg
         except Exception as e:
             response = "failed before response" if res is None else res
             logger.error(f"[Together-{request_id}] {e} on response: {response}")
+            print(response.content)
             # logger.info(f"[Together-{request_id}] Retrying in {sleep_time}s...")
             time.sleep(sleep_time)
 
@@ -126,3 +127,15 @@ def pprint(text):
                 print()
             else:
                 print(x)
+
+
+if __name__ == '__main__':
+    with open('../runs/multi/student_prompt26.txt', 'r') as file:
+        content = file.read()
+    print(len(content))
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
+        {"role": "user", "content": content}
+    ]
+    out = generate_together("Qwen/Qwen2.5-7B-Instruct-Turbo", messages, temperature=0.7)
+    print(out)

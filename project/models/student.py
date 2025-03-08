@@ -29,15 +29,18 @@ class StudentLMAgent:
         self.log_dir = log_dir
         self.log_idx = 0
 
-    def _generate(self, prompt):
+    def _generate(self, prompt, log=False):
         messages = [
             {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
             {"role": "user", "content": prompt}
         ]
-        response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
-        if self.log_dir:
+        if self.log_dir and log:
             with open(f"{self.log_dir}/student_prompt{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
+
+        response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
+
+        if self.log_dir and log:
             with open(f"{self.log_dir}/student_response{str(self.log_idx)}.txt", "w") as f:
                 f.write(response)
             self.log_idx += 1

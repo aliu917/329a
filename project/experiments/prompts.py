@@ -1,4 +1,5 @@
 import json
+from project.models import student, teacher
 
 MATH_COT_PROMPT = """Problem:
 Find the domain of the expression  $\\frac{\\sqrt{x-2}}{\\sqrt{5-x}}$.}
@@ -34,6 +35,10 @@ def math500_prompt(add_prompt=None) -> str:
     if add_prompt is not None:
         prompt += "\n" + add_prompt
     return prompt
+
+
+##### Refinement prompts
+
 
 def teacher_iteration_prompt(question, attempt, solution, history):
     history_str = "\n".join([
@@ -133,7 +138,7 @@ def feedback_from_dataset(dataset_path, max_samples=None):
     all_examples_text = "\n".join(example_sections)
     return all_examples_text
 
-def teacher_best_from_dataset_prompt(dataset_path, question, student, label, history=None): 
+def teacher_best_from_dataset_prompt(dataset_path, question, student, label, history=None):
     all_examples = feedback_from_dataset(dataset_path, max_samples=100)
 
 
@@ -154,3 +159,63 @@ def teacher_best_from_dataset_prompt(dataset_path, question, student, label, his
     The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
 
     Correct: """
+
+
+##### Multi-iteration prompts
+
+def build_next_teacher_example(question, feedback, student_attempt, prev_student_attempt=None):
+    add_attempt=""
+    if prev_student_attempt:
+        add_attempt = f"\n\nStudent attempt before: {prev_student_attempt}"
+    new_example = f"""
+Question: {question}{add_attempt}
+
+Feedback: {feedback}
+
+Student attempt after: {student_attempt}
+"""
+    return "\n" + new_example
+
+
+def build_next_student_example(question, student_attempt, feedback):
+    new_example = f"""
+Question: {question}
+
+Attempt: {student_attempt}
+
+Feedback: {feedback}
+"""
+    return "\n" + new_example
+
+
+def teacher_prompt_with_examples(question, student_attempt, solution_cot, all_examples):
+    if not all_examples:
+        return teacher.teacher_default_prompt(question, student_attempt, solution_cot)
+    return f"""You are given multiple student reasoning attempts along with correct solutions and previously generated teacher feedback. Use these examples to determine the best way to evaluate reasoning steps and improve the feedback.
+
+### Learn from these examples:
+{all_examples}
+
+
+### Now, apply what you have learned:
+Given what you have learned from the examples above, determine the best feedback to provide to help improve the student reasoning attempt on the following question: {question}
+
+Attempt: {student_attempt}
+
+Correct solution: {solution_cot}
+
+Compare the reasoning attempt step process with the correct solution and provide feedback for improving the reasoning steps.
+The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically."""
+
+
+def student_prompt_with_examples(question, all_examples):
+    if not all_examples:
+        return question + "\n" + student.student_default_prompt()
+    return f"""You are given multiple past reasoning attempts to a variety of questions along with their corresponding feedback from an expert. Use these examples to determine the best way to approach, reason, and correctly answer the question.
+
+### Learn from these examples:
+{all_examples}
+
+
+### Now, apply what you have learned:
+Given what you have learned from the examples above, answer the following question: {question}"""
