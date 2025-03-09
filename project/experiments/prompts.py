@@ -154,3 +154,39 @@ def teacher_best_from_dataset_prompt(dataset_path, question, student, label, his
     The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
 
     Correct: """
+
+
+##### Eval time student prompts
+
+def build_next_student_example(result_dict, keys):
+    all_keys = set(["question"] + keys)
+    all_elems = []
+    for k in all_keys:
+        if k not in result_dict:
+            print(f"Error: requested key {k} not in results for question {result_dict['question']}")
+            continue
+        all_elems.append(k.replace('_', ' ').title() + ": " + result_dict[k])
+    return "\n\n".join(all_elems)
+
+
+def get_eval_student_context(result_path, keys, num_samples=10):
+    with open(result_path, "r") as file:
+        train_result_data = json.load(file)[:num_samples]
+
+    all_examples = [build_next_student_example(d, keys) for d in train_result_data]
+    all_examples_str = "\n\n".join(all_examples)
+
+    keys_str = ", ".join(keys[:-1])
+    if len(keys) > 1:
+        keys_str += ", and " + keys[-1]
+    else:
+        keys_str = keys[-1]
+
+    return f"""You are given multiple example questions along with their corresponding {keys_str}. Use these examples to determine the best way to approach, reason, and correctly answer the question.
+
+    ### Learn from these examples:
+    {all_examples_str}
+
+
+    ### Now, apply what you have learned:
+    Given what you have learned from the examples above, answer the following question: """

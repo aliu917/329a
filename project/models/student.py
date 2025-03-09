@@ -1,10 +1,15 @@
 from project.utils import generate_together
 
-def student_default_prompt(add_prompt=""):
-    prompt = """Think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'"""
-    if add_prompt:
-        prompt += "\n" + add_prompt
-    return prompt
+
+def student_default_prompt(problem, feedback="", history=""):
+    prompt = ""
+    if history:
+        prompt += history + "\n"
+    prompt += problem + "\n"
+    if feedback:
+        prompt += feedback + "\n"
+    return prompt + "Think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'"
+
 
 def feedback_prompt(feedback):
     if not feedback:
@@ -23,11 +28,13 @@ class StudentLMAgent:
             model: str = "Qwen/Qwen2.5-7B-Instruct-Turbo",
             generation_temp: float = 0.7,
             log_dir: str = "",
+            max_log: int = 10
     ):
         self.model = model
         self.generation_temp = generation_temp
         self.log_dir = log_dir
         self.log_idx = 0
+        self.max_log = max_log
 
     def _generate(self, prompt):
         messages = [
@@ -35,7 +42,7 @@ class StudentLMAgent:
             {"role": "user", "content": prompt}
         ]
         response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
-        if self.log_dir:
+        if self.log_dir and self.log_idx < self.max_log:
             with open(f"{self.log_dir}/student_prompt{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
             with open(f"{self.log_dir}/student_response{str(self.log_idx)}.txt", "w") as f:
@@ -43,6 +50,6 @@ class StudentLMAgent:
             self.log_idx += 1
         return response
 
-    def generate(self, problem, prompt_func=student_default_prompt, feedback=""):
+    def generate(self, problem, prompt_func=student_default_prompt, feedback="", history=""):
         feedback = feedback_prompt(feedback)
-        return self._generate(problem + "\n" + prompt_func(feedback))
+        return self._generate(prompt_func(problem, feedback, history))

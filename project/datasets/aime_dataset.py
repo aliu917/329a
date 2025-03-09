@@ -3,7 +3,7 @@ from pathlib import Path
 from torch.utils.data import Dataset
 import pandas as pd
 import re
-
+from sklearn.model_selection import train_test_split
 
 def extract_first_solution(solution_text):
     """
@@ -43,7 +43,7 @@ def extract_first_solution(solution_text):
 
 
 class AIMEDataset(Dataset):
-    def __init__(self, dir="AIME", file_path="aime_dataset_1.csv", min_level=0, parse_solutions=True):
+    def __init__(self, dir="AIME", file_path="aime_dataset_1.csv", min_level=0, parse_solutions=True, mode="train"):
         """
         Args:
             dir (str): Directory containing the dataset
@@ -52,7 +52,10 @@ class AIMEDataset(Dataset):
             parse_solutions (bool): Whether to extract only the first solution from multi-solution texts
         """
         self.file_path = Path(f"{dir}/{file_path}")
-        self.data = pd.read_csv(self.file_path)
+        data = pd.read_csv(self.file_path)
+        self.data, val_df = train_test_split(data, test_size=0.2, random_state=42)
+        if mode != "train":
+            self.data = val_df
         self.parse_solutions = parse_solutions
         
         # Convert to the same format as MathDataset
