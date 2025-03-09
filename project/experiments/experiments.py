@@ -43,7 +43,7 @@ class Experiment:
     def run(self):
         torch.manual_seed(self.seed)
         results = self.get_results()
-        print("Accuracy:", np.mean([r["correct"] for r in results]))
+        print("Accuracy:", np.mean([r["correct"] for r in results if r["final"]]))
         if self.results_path:
             with open(self.results_path, "w") as f:
                 json.dump(results, f)
@@ -55,6 +55,25 @@ class Base(Experiment):
             x = data["problem"][0]
             y = labels[0]
             result = run_single(x, y, self.student, self.teacher, "")
+            result["final"] = True
+            results.append(result)
+        return results
+
+class BestOfN(Experiment):
+    def __init__(self, *args, n_rounds=3, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.n_rounds = n_rounds
+    
+    def get_results(self):
+        results = []
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
+            for _ in range(self.n_rounds):
+                x = data["problem"][0]
+                y = labels[0]
+                result = run_single(x, y, self.student, self.teacher, "")
+                if result["correct"]:
+                    break
+            result["final"] = True
             results.append(result)
         return results
 
@@ -67,6 +86,7 @@ class SingleRound(Experiment):
             result = run_single(x, y, self.student, self.teacher, "")
             feedback = result["output_feedback"]
             result = run_single(x, y, self.student, self.teacher, feedback)
+            result["final"] = True
             results.append(result)
         return results
 
@@ -101,9 +121,11 @@ class IterativeRefine(Experiment):
                     "prev_feedback": prev_feedback,
                     "round": refine_round + 1,
                     "feedback_in_answer": str(answer) in prev_feedback,
+                    "final": False,
                 }
                 results.append(result)
                 prev_feedback = feedback
                 if correct:
                     break
+            results[-1]["final"] = True
         return results
