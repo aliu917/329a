@@ -51,7 +51,7 @@ You are refining your feedback to the student over the course of several rounds.
 {history_str}
 Compare the reasoning step process of the most recent attempt with the steps of the correct solution repeated below:
 {solution}
-Based on any errors you notice in the attempt and what feedback worked well in the past, provide some feedback for improving the reasoning steps. The format of the response should be "Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically."""
+Based on any errors you notice in the attempt and what feedback worked well in the past, provide some feedback for improving the reasoning steps. The format of the response should be "Feedback: <how to fix the reasoning>"."""
 
 def feedback_from_baseline(num_samples=100): 
     with open("runs/baseline/base_results.json", "r") as file:
@@ -91,21 +91,21 @@ def teacher_best_feedback_prompt(question, student, label, num_feedback_samples=
 
     return f"""You are given multiple reasoning attempts along with correct solutions and feedback. Use these examples to determine the best way to evaluate reasoning steps.
 
-    ### Learn from these examples:
-    {all_examples}
-    
+### Learn from these examples:
+{all_examples}
 
-    ### Now, apply what you have learned:
-    Given what you have learned from the examples above, evaluate the following reasoning attempt for a new question: {question}
 
-    Attempt: {student}
+### Now, apply what you have learned:
+Given what you have learned from the examples above, evaluate the following reasoning attempt for a new question: {question}
 
-    Correct solution: {label}
+Attempt: {student}
 
-    Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
-    The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
+Correct solution: {label}
 
-    Correct: """
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
+
+Correct: """
 
 def feedback_from_dataset(dataset_path, max_samples=None): 
     with open(dataset_path, "r") as file:
@@ -139,27 +139,27 @@ def teacher_best_from_dataset_prompt(dataset_path, question, student, label, his
 
     return f"""You are given multiple reasoning attempts along with correct solutions and feedback. Use these examples to determine the best way to evaluate reasoning steps.
 
-    ### Learn from these examples:
-    {all_examples}
-    
+### Learn from these examples:
+{all_examples}
 
-    ### Now, apply what you have learned:
-    Given what you have learned from the examples above, evaluate the following reasoning attempt for a new question: {question}
 
-    Attempt: {student}
+### Now, apply what you have learned:
+Given what you have learned from the examples above, evaluate the following reasoning attempt for a new question: {question}
 
-    Correct solution: {label}
+Attempt: {student}
 
-    Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
-    The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
+Correct solution: {label}
 
-    Correct: """
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.
+
+Correct: """
 
 
 ##### Eval time student prompts
 
 def build_next_student_example(result_dict, keys):
-    all_keys = set(["question"] + keys)
+    all_keys = ["question"] + keys
     all_elems = []
     for k in all_keys:
         if k not in result_dict:
@@ -184,9 +184,9 @@ def get_eval_student_context(result_path, keys, num_samples=10):
 
     return f"""You are given multiple example questions along with their corresponding {keys_str}. Use these examples to determine the best way to approach, reason, and correctly answer the question.
 
-    ### Learn from these examples:
-    {all_examples_str}
+### Learn from these examples:
+{all_examples_str}
 
 
-    ### Now, apply what you have learned:
-    Given what you have learned from the examples above, answer the following question: """
+### Now, apply what you have learned:
+Given what you have learned from the examples above, answer the following question: """

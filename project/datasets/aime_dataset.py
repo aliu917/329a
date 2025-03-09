@@ -3,7 +3,7 @@ from pathlib import Path
 from torch.utils.data import Dataset
 import pandas as pd
 import re
-from sklearn.model_selection import train_test_split
+# from sklearn.model_selection import train_test_split
 
 def extract_first_solution(solution_text):
     """
@@ -53,9 +53,14 @@ class AIMEDataset(Dataset):
         """
         self.file_path = Path(f"{dir}/{file_path}")
         data = pd.read_csv(self.file_path)
-        self.data, val_df = train_test_split(data, test_size=0.2, random_state=42)
-        if mode != "train":
-            self.data = val_df
+        # self.data, val_df = train_test_split(data, test_size=0.2, random_state=42)
+        data.sample(frac=1, random_state=42).reset_index(drop=True)
+        split = int(0.8 * len(data))
+        if mode == "train":
+            self.data = data[:split]
+        else:
+            self.data = data[split:]
+
         self.parse_solutions = parse_solutions
         
         # Convert to the same format as MathDataset

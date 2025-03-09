@@ -70,26 +70,25 @@ class SingleRound(Experiment):
             results.append(result)
         return results
 
-# TODO: Finish porting this!
 class IterativeRefine(Experiment):
     def __init__(self, *args, n_rounds=3, **kwargs):
         super().__init__(*args, **kwargs)
         self.n_rounds = n_rounds
 
-    def get_results(self, dataset, student, teacher):
+    def get_results(self):
         results = []
-        for i, (data, labels) in tqdm(zip(range(self.num_examples), dataset)):
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
             x = data["problem"][0]
             y = labels[0]
             prev_feedback = ""
             for refine_round in range(self.n_rounds):
-                response = student.generate(data, feedback=prev_feedback)
-                correct, pred, answer, feedback = teacher.evaluate(
+                response = self.student.generate(x, feedback=prev_feedback)
+                correct, pred, answer, feedback = self.teacher.evaluate(
                     x,
                     response,
                     y,
                     history=results,
-                    prompt_func=prompts.teacher_iteration_prompt,
+                    prompt_func=prompts.teacher_iteration_prompt if results else None,
                 )
                 result = {
                     "question": x,
@@ -105,4 +104,6 @@ class IterativeRefine(Experiment):
                 }
                 results.append(result)
                 prev_feedback = feedback
-            return results
+                if correct:
+                    break
+        return results

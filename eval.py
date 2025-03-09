@@ -13,7 +13,8 @@ verifier = verifiers.MATH500Verifier()
 def eval(dataset, train_result_path, keys, log_dir=None, num_examples=10, num_context_examples=10):
     dataset = vars(datasets)[dataset](mode="test")
     if not log_dir:
-        log_dir = os.path.dirname(train_result_path)
+        log_dir = os.path.dirname(train_result_path) + "/eval"
+    os.makedirs(log_dir, exist_ok=True)
 
     student_context_examples = prompts.get_eval_student_context(train_result_path, keys, num_context_examples)
     student = StudentLMAgent(log_dir=log_dir)
@@ -37,6 +38,9 @@ def eval(dataset, train_result_path, keys, log_dir=None, num_examples=10, num_co
         }
         results.append(result)
 
+    with open(log_dir + "/eval_results.json", "w") as f:
+        json.dump(results, f)
+
     final_acc = acc / num_examples
     print("final acc: ", final_acc)
     return final_acc
@@ -46,8 +50,8 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", "-d", type=str, default=None)
     parser.add_argument("--log_dir", "-l", type=str, default=None)
     parser.add_argument("--train_result_path", "-f", type=str, default=None)
-    parser.add_argument("--keys", "-", type=str, default="solution")
+    parser.add_argument("--keys", "-", type=str, default="answer_steps")
     parser.add_argument("--num_eval_samples", "-n", type=int, default=10)
     parser.add_argument("--num_context_examples", "-c", type=int, default=10)
     args = parser.parse_args()
-    eval(args.dataset, args.train_result_path, args.keys.split(","), log_dir=args.log_dir, num_examples=args.num_examples)
+    eval(args.dataset, args.train_result_path, args.keys.split(","), log_dir=args.log_dir, num_examples=args.num_eval_samples, num_context_examples=args.num_context_examples)
