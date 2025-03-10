@@ -51,7 +51,7 @@ You are refining your feedback to the student over the course of several rounds.
 {history_str}
 Compare the reasoning step process of the most recent attempt with the steps of the correct solution repeated below:
 {solution}
-Based on any errors you notice in the attempt and what feedback worked well in the past, provide some feedback for improving the reasoning steps. The format of the response should be "Feedback: <how to fix the reasoning>"."""
+Based on any errors you notice in the attempt and what feedback worked well in the past, provide some feedback for improving the reasoning steps without giving away the final answer. The format of the response should be "Feedback: <how to fix the reasoning>"."""
 
 def feedback_from_baseline(num_samples=100): 
     with open("runs/baseline/base_results.json", "r") as file:

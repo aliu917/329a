@@ -43,7 +43,7 @@ class Experiment:
     def run(self):
         torch.manual_seed(self.seed)
         results = self.get_results()
-        print("Accuracy:", np.mean([r["correct"] for r in results if r["final"]]))
+        print("Accuracy:", np.mean([r["correct"] for r in results]))
         if self.results_path:
             with open(self.results_path, "w") as f:
                 json.dump(results, f)
@@ -55,12 +55,11 @@ class Base(Experiment):
             x = data["problem"][0]
             y = labels[0]
             result = run_single(x, y, self.student, self.teacher, "")
-            result["final"] = True
             results.append(result)
         return results
 
 class BestOfN(Experiment):
-    def __init__(self, *args, n_rounds=3, **kwargs):
+    def __init__(self, *args, n_rounds=5, **kwargs):
         super().__init__(*args, **kwargs)
         self.n_rounds = n_rounds
     
@@ -73,7 +72,6 @@ class BestOfN(Experiment):
                 result = run_single(x, y, self.student, self.teacher, "")
                 if result["correct"]:
                     break
-            result["final"] = True
             results.append(result)
         return results
 
@@ -86,12 +84,11 @@ class SingleRound(Experiment):
             result = run_single(x, y, self.student, self.teacher, "")
             feedback = result["output_feedback"]
             result = run_single(x, y, self.student, self.teacher, feedback)
-            result["final"] = True
             results.append(result)
         return results
 
 class IterativeRefine(Experiment):
-    def __init__(self, *args, n_rounds=3, **kwargs):
+    def __init__(self, *args, n_rounds=5, **kwargs):
         super().__init__(*args, **kwargs)
         self.n_rounds = n_rounds
 
@@ -101,14 +98,15 @@ class IterativeRefine(Experiment):
             x = data["problem"][0]
             y = labels[0]
             prev_feedback = ""
+            history = []
             for refine_round in range(self.n_rounds):
                 response = self.student.generate(x, feedback=prev_feedback)
                 correct, pred, answer, feedback = self.teacher.evaluate(
                     x,
                     response,
                     y,
-                    history=results,
-                    prompt_func=prompts.teacher_iteration_prompt if results else None,
+                    history=history,
+                    prompt_func=prompts.teacher_iteration_prompt if history else None,
                 )
                 result = {
                     "question": x,
@@ -120,12 +118,11 @@ class IterativeRefine(Experiment):
                     "feedback": feedback,
                     "prev_feedback": prev_feedback,
                     "round": refine_round + 1,
-                    "feedback_in_answer": str(answer) in prev_feedback,
-                    "final": False,
+                    "answer_in_feedback": str(answer) in prev_feedback,
                 }
-                results.append(result)
+                history.append(result)
                 prev_feedback = feedback
                 if correct:
                     break
-            results[-1]["final"] = True
+            results.append(result)
         return results
