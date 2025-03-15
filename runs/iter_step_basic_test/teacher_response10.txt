@@ -1,0 +1,21 @@
+Step 0: Define the sequence such that \( a_1 = a_2 = a_3 = 1 \) and establish the recursive relation \( a_{n+3} = a_{n+2} + a_{n+1} + a_n \) for all positive integers \( n \).
+
+Step 1: Note that the sequence is defined such that each term is the sum of the previous three terms.
+
+Step 2: Recognize that the sum of the sequence up to a certain point can be expressed in terms of the last few terms in the sequence.
+
+Step 3: Assume a linear combination of the last three terms for the sum: \( \sum_{k=1}^{n} a_k = p a_n + q a_{n+1} + r a_{n+2} \) for some constants \( p, q, r \).
+
+Step 4: Calculate the first few terms of the sequence \( a_n \) and their cumulative sums to identify a pattern.
+
+Step 5: From the cumulative sums, determine the coefficients \( p, q, r \) through algebraic manipulation, leading to the realization that \( (p, q, r) = \left(\frac{1}{2}, 0, \frac{1}{2}\right) \).
+
+Step 6: Use the formula derived to calculate \( \sum_{k=1}^{28} a_k \) as \( \sum_{k=1}^{28} a_k = \frac{a_{28} + a_{30}}{2} \).
+
+Step 7: Substituting the known values \( a_{28} = 6090307 \) and \( a_{30} = 20603361 \) into the formula gives \( \sum_{k=1}^{28} a_k = \frac{6090307 + 20603361}{2} \).
+
+Step 8: Simplify the sum: \( 6090307 + 20603361 = 26693668 \), and then calculate \( \frac{26693668}{2} = 13346834 \).
+
+Step 9: Find \( 13346834 \mod 1000 \) to determine the final answer.
+
+Final answer: \( \boxed{834} \)

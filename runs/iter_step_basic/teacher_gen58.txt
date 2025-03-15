@@ -1,0 +1,59 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In triangle \$ABC\$, \$AB=125\$, \$AC=117\$ and \$BC=120\$. The angle bisector of angle \$A\$ intersects \$ \overline{BC} \$ at point \$L\$, and the angle bisector of angle \$B\$ intersects \$ \overline{AC} \$ at point \$K\$. Let \$M\$ and \$N\$ be the feet of the perpendiculars from \$C\$ to \$ \overline{BK}\$ and \$ \overline{AL}\$, respectively. Find \$MN\$.
+
+Solution chain-of-thought reasoning: Extend \${CM}\$ and \${CN}\$ such that they intersect line \${AB}\$ at points \$P\$ and \$Q\$, respectively.
+<asy>
+defaultpen(fontsize(10)+0.8); size(200);
+pen p=fontsize(9)+linewidth(3);
+pair A,B,C,D,K,L,M,N,P,Q;
+A=origin; B=(125,0); C=IP(CR(A,117),CR(B,120)); L=extension(B,C,A,bisectorpoint(B,A,C)); K=extension(A,C,B,bisectorpoint(C,B,A)); M=foot(C,B,K); N=foot(C,A,L);
+draw(A--B--C--A); draw(A--L^^B--K, gray+dashed+0.5); draw(M--C--N^^N--extension(A,B,C,N)^^M--extension(A,B,C,M), gray+0.5);
+dot("$A$",A,dir(200),p); dot("$B$",B,right,p); dot("$C$",C,up,p); dot("$L$",L,2*dir(70),p); dot("$N$",N,2*dir(-90),p); dot("$M$",M,2*dir(-90),p); dot("$P$",extension(A,B,C,M),2*down,p); dot("$Q$",extension(A,B,C,N),2*down,p);
+label("$125$",A--B,down,fontsize(10)); label("$117$",A--C,2*dir(130),fontsize(10)); label("$120$",B--C,1.5*dir(30),fontsize(10));
+</asy>
+Since \${BM}\$ is the angle bisector of angle \$B\$ and \${CM}\$ is perpendicular to \${BM}\$, \$\triangle BCP\$ must be an isoceles triangle, so \$BP=BC=120\$, and \$M\$ is the midpoint of \${CP}\$. For the same reason, \$AQ=AC=117\$, and \$N\$ is the midpoint of \${CQ}\$.
+Hence \$MN=\tfrac 12 PQ\$. Since PQ=BP+AQ-AB=120+117-125=112, so \$MN=\boxed{056}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Given triangle \(ABC\) with sides \(AB=125\), \(AC=117\), and \(BC=120\), identify relevant points \(L\) and \(K\) as the intersections of the angle bisectors with segments \(BC\) and \(AC\) respectively.
+
+Step 1: Extend lines \(CM\) and \(CN\) until they intersect line \(AB\) at points \(P\) and \(Q\), respectively.
+
+Step 2: Since \(BM\) is the angle bisector of angle \(B\) and \(CM\) is perpendicular to \(BM\), triangle \(BCP\) is isosceles, meaning \(BP=BC=120\) and \(M\) is the midpoint of segment \(CP\).
+
+Step 3: Similarly, since \(AQ\) is the angle bisector of angle \(A\) and \(CN\) is perpendicular to \(AQ\), triangle \(ACQ\) is isosceles, so \(AQ=AC=117\) and \(N\) is the midpoint of segment \(CQ\).
+
+Step 4: Calculate the distance \(MN\) as half the distance \(PQ\), where \(PQ = BP + AQ - AB\).
+
+Step 5: Substitute the values: \(PQ = 120 + 117 - 125 = 112\).
+
+Step 6: Since \(MN = \frac{1}{2} PQ\), we find \(MN = \frac{1}{2} \cdot 112 = 56\).
+
+Final answer: \(\boxed{056}\)

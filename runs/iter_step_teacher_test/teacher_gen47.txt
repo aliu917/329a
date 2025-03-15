@@ -1,0 +1,122 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In triangle \$ABC,\$ point \$D\$ is on \$\overline{BC}\$ with \$CD = 2\$ and \$DB = 5,\$ point \$E\$ is on \$\overline{AC}\$ with \$CE = 1\$ and \$EA = 3,\$ \$AB = 8,\$ and \$\overline{AD}\$ and \$\overline{BE}\$ intersect at \$P.\$ Points \$Q\$ and \$R\$ lie on \$\overline{AB}\$ so that \$\overline{PQ}\$ is parallel to \$\overline{CA}\$ and \$\overline{PR}\$ is parallel to \$\overline{CB}.\$ It is given that the ratio of the area of triangle \$PQR\$ to the area of triangle \$ABC\$ is \$m/n,\$ where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m + n\$.
+
+Solution chain-of-thought reasoning: Let \$X\$ be the intersection of \$\overline{CP}\$ and \$\overline{AB}\$.
+<asy>
+size(10cm);
+pair A,B,C,D,E,X,P,Q,R;
+A=(0,0);
+B=(8,0);
+C=(1.9375,3.4994);
+D=(3.6696,2.4996);
+E=(1.4531,2.6246);
+X=(4.3636,0);
+P=(2.9639,2.0189);
+Q=(1.8462,0);
+R=(6.4615,0);
+dot(A);
+dot(B);
+dot(C);
+dot(D);
+dot(E);
+dot(X);
+dot(P);
+dot(Q);
+dot(R);
+label("$A$",A,WSW);
+label("$B$",B,ESE);
+label("$C$",C,NNW);
+label("$D$",D,NE);
+label("$E$",E,WNW);
+label("$X$",X,SSE);
+label("$P$",P,NNE);
+label("$Q$",Q,SSW);
+label("$R$",R,SE);
+draw(A--B--C--cycle);
+draw(P--Q--R--cycle);
+draw(A--D);
+draw(B--E);
+draw(C--X);
+</asy>
+Since \$\overline{PQ} \parallel \overline{CA}\$ and \$\overline{PR} \parallel \overline{CB}\$, \$\angle CAB = \angle PQR\$ and \$\angle CBA = \angle PRQ\$. So \$\Delta ABC \sim \Delta QRP\$, and thus, \$\frac{[\Delta PQR]}{[\Delta ABC]} = \left(\frac{PX}{CX}\right)^2\$.
+Using :
+, let \$W_C=15\$.
+Then:
+\$W_A = \left(\frac{CE}{AE}\right)W_C = \frac{1}{3}\cdot15=5\$.
+\$W_B = \left(\frac{CD}{BD}\right)W_C = \frac{2}{5}\cdot15=6\$.
+\$W_X=W_A+W_B=5+6=11\$.
+\$W_P=W_C+W_X=15+11=26\$.
+Thus, \$\frac{PX}{CX}=\frac{W_C}{W_P}=\frac{15}{26}\$. Therefore, \$\frac{[\Delta PQR]}{[\Delta ABC]} = \left( \frac{15}{26} \right)^2 = \frac{225}{676}\$, and \$m+n=\boxed{901}\$. Note we can just use mass points to get  \$\left( \frac{15}{26} \right)^2= \frac{225}{676}\$ which is \$\boxed{901}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Define the setup by letting \(X\) be the intersection of \(\overline{CP}\) and \(\overline{AB}\).
+
+Step 1: Identify that since \(\overline{PQ} \parallel \overline{CA}\) and \(\overline{PR} \parallel \overline{CB}\), we have \(\angle CAB = \angle PQR\) and \(\angle CBA = \angle PRQ\), indicating that \(\triangle ABC \sim \triangle PQR\).
+
+Step 2: Establish that the ratio of the areas of the triangles can be expressed as \(\frac{[\Delta PQR]}{[\Delta ABC]} = \left(\frac{PX}{CX}\right)^2\).
+
+Step 3: Assign a weight \(W_C = 15\) to point \(C\).
+
+Step 4: Calculate the weight of point \(A\) using the ratio of segments \(CE\) and \(AE\): 
+\[
+W_A = \left(\frac{CE}{AE}\right)W_C = \frac{1}{3} \cdot 15 = 5.
+\]
+
+Step 5: Calculate the weight of point \(B\) using the ratio of segments \(CD\) and \(BD\):
+\[
+W_B = \left(\frac{CD}{BD}\right)W_C = \frac{2}{5} \cdot 15 = 6.
+\]
+
+Step 6: Find the weight at point \(X\) as the sum of weights at \(A\) and \(B\):
+\[
+W_X = W_A + W_B = 5 + 6 = 11.
+\]
+
+Step 7: Determine the weight at point \(P\) as the sum of weights at \(C\) and \(X\):
+\[
+W_P = W_C + W_X = 15 + 11 = 26.
+\]
+
+Step 8: Calculate the ratio \(\frac{PX}{CX}\) using the weights:
+\[
+\frac{PX}{CX} = \frac{W_C}{W_P} = \frac{15}{26}.
+\]
+
+Step 9: Substitute this ratio into the area ratio expression:
+\[
+\frac{[\Delta PQR]}{[\Delta ABC]} = \left( \frac{15}{26} \right)^2 = \frac{225}{676}.
+\]
+
+Step 10: Identify \(m = 225\) and \(n = 676\) as relatively prime integers, and calculate \(m + n\):
+\[
+m + n = 225 + 676 = 901.
+\]
+
+Final answer: \(\boxed{901}\)

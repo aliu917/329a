@@ -1,0 +1,71 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Let \$ABC\$ be , and \$D, E,\$ and \$F\$ be the s of \$\overline{BC}, \overline{CA},\$ and \$\overline{AB},\$ respectively.  There exist s \$P, Q,\$ and \$R\$ on \$\overline{DE}, \overline{EF},\$ and \$\overline{FD},\$ respectively, with the property that \$P\$ is on \$\overline{CQ}, Q\$ is on \$\overline{AR},\$ and \$R\$ is on \$\overline{BP}.\$  The  of the area of triangle \$ABC\$ to the area of triangle \$PQR\$ is \$a + b\sqrt {c},\$ where \$a, b\$ and \$c\$ are integers, and \$c\$ is not divisible by the square of any .  What is \$a^{2} + b^{2} + c^{2}\$?
+
+Solution chain-of-thought reasoning: We let \$x = EP = FQ\$, \$y = EQ\$, \$k = PQ\$. Since \$AE = \frac {1}{2}AB\$ and \$AD = \frac {1}{2}AC\$, \$\triangle AED \sim \triangle ABC\$ and \$ED \parallel BC\$.
+By alternate interior angles, we have \$\angle PEQ = \angle BFQ\$ and \$\angle EPQ = \angle FBQ\$. By vertical angles, \$\angle EQP = \angle FQB\$.
+Thus \$\triangle EQP \sim \triangle FQB\$, so \$\frac {EP}{EQ} = \frac {FB}{FQ}\Longrightarrow\frac {x}{y} = \frac {1}{x}\Longrightarrow x^{2} = y\$.
+Since \$\triangle EDF\$ is equilateral, \$EQ + FQ = EF = BF = 1\Longrightarrow x + y = 1\$. Solving for \$x\$ and \$y\$ using \$x^{2} = y\$ and \$x + y = 1\$ gives \$x = \frac {\sqrt {5} - 1}{2}\$ and \$y = \frac {3 - \sqrt {5}}{2}\$.
+Using the , we get
+<div style="text-align:center;">\$k^{2}  =  x^{2} + y^{2} - 2xy\cos{\frac {\pi}{3}}\$
+:\$ =  \left(\frac {\sqrt {5} - 1}{2}\right)^{2} + \left(\frac {3 - \sqrt {5}}{2}\right)^{2} - 2\left(\frac {\sqrt {5} - 1}{2}\right)\left(\frac {3 - \sqrt {5}}{2}\right)\cos{\frac {\pi}{3}}\$
+:\$ = 7 - 3\sqrt {5}\$</div>
+We want the ratio of the squares of the sides, so \$\frac {(2)^{2}}{k^{2}} = \frac {4}{7 - 3\sqrt {5}} = 7 + 3\sqrt {5}\$ so \$a^{2} + b^{2} + c^{2} = 7^{2} + 3^{2} + 5^{2} = \boxed{083}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Let \( x = EP = FQ \), \( y = EQ \), and \( k = PQ \). 
+
+Step 1: Since \( AE = \frac{1}{2}AB \) and \( AD = \frac{1}{2}AC \), we have \( \triangle AED \sim \triangle ABC \) and \( ED \parallel BC \).
+
+Step 2: By alternate interior angles, \( \angle PEQ = \angle BFQ \) and \( \angle EPQ = \angle FBQ \). 
+
+Step 3: By vertical angles, \( \angle EQP = \angle FQB \).
+
+Step 4: Since \( \triangle EQP \sim \triangle FQB \), we have \( \frac{EP}{EQ} = \frac{FB}{FQ} \Longrightarrow \frac{x}{y} = \frac{1}{x} \Longrightarrow x^2 = y \).
+
+Step 5: Since \( \triangle EDF \) is equilateral, we have \( EQ + FQ = EF = BF = 1 \Longrightarrow x + y = 1 \).
+
+Step 6: Solving for \( x \) and \( y \) using \( x^2 = y \) and \( x + y = 1 \) gives \( x = \frac{\sqrt{5} - 1}{2} \) and \( y = \frac{3 - \sqrt{5}}{2} \).
+
+Step 7: Using the cosine rule, we compute \( k^2 = x^2 + y^2 - 2xy \cos{\frac{\pi}{3}} \).
+
+Step 8: Substitute \( x \) and \( y \) into the equation: 
+\[
+k^2 = \left(\frac{\sqrt{5} - 1}{2}\right)^2 + \left(\frac{3 - \sqrt{5}}{2}\right)^2 - 2\left(\frac{\sqrt{5} - 1}{2}\right)\left(\frac{3 - \sqrt{5}}{2}\right)\cos{\frac{\pi}{3}}.
+\]
+
+Step 9: Simplifying the calculations, we find \( k^2 = 7 - 3\sqrt{5} \).
+
+Step 10: We want the ratio of the squares of the sides, so \( \frac{(2)^2}{k^2} = \frac{4}{7 - 3\sqrt{5}} = 7 + 3\sqrt{5} \).
+
+Step 11: Identify \( a = 7 \), \( b = 3 \), and \( c = 5 \).
+
+Step 12: Finally, compute \( a^2 + b^2 + c^2 = 7^2 + 3^2 + 5^2 = 49 + 9 + 25 = 83 \).
+
+Final answer: \(\boxed{83}\)

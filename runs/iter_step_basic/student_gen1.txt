@@ -1,0 +1,85 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+When formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: Step 0: Define the variables: let \$PQ = 735\$, \$QR = 112\$, and let \$RC\$ be the unknown we need to find.
+Step 1: Recognize that triangles \$\triangle PAQ\sim \triangle PDC\$ imply proportionality, and write the proportion:
+\[
+\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + RC} = \frac{735}{847 + RC}
+\]
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Define the variables as given:
+- Let \(PQ = 735\),
+- Let \(QR = 112\),
+- Let \(RC = x\).
+
+Step 1: Recognize that \(\triangle PAQ \sim \triangle PDC\) by the properties of similar triangles (AA similarity criterion):
+- The proportionality of corresponding sides gives \(\frac{AQ}{CD} = \frac{PQ}{PC}\).
+
+Step 2: Express \(PC\) in terms of the given lengths:
+- \(PC = PQ + QR + RC = 735 + 112 + x = 847 + x\).
+
+Step 3: Write the proportion using the similarity of the triangles:
+\[
+\frac{PQ}{PC} = \frac{735}{847 + x}
+\]
+
+Step 4: Since \(\triangle PAQ \sim \triangle PDC\), the ratio of the sides must be the same:
+- We need to find the ratio of \(AQ\) to \(CD\).
+
+Step 5: Use the fact that \(\triangle PAQ \sim \triangle PDC\) to set up the proportion:
+\[
+\frac{AQ}{CD} = \frac{735}{847 + x}
+\]
+
+Step 6: Since \(AQ\) and \(CD\) are corresponding sides, and by the properties of similar triangles, we know:
+\[
+\frac{AQ}{CD} = \frac{735}{847 + x}
+\]
+
+Step 7: We need to find \(RC\). From the similarity, the ratio of the segments on the line \(PC\) is the same. Therefore, we can use the fact that \(PQ : QR = 735 : 112\) to find \(RC\).
+
+Step 8: Since \(PQ : QR = 735 : 112\), and \(QR = 112\), we can set up the proportion:
+\[
+\frac{PQ}{QR} = \frac{735}{112} = \frac{847 + x - 112}{112}
+\]
+
+Step 9: Simplify the equation:
+\[
+\frac{735}{112} = \frac{735}{112} = \frac{735 + x - 112}{112}
+\]
+
+Step 10: This simplifies to:
+\[
+735 = 735 + x - 112
+\]
+
+Step 11: Solve for \(x\):
+\[
+735 = 623 + x \implies x = 112
+\]
+
+Step 12: Thus, the length of \(RC\) is:
+\[
+\boxed{112}
+\]

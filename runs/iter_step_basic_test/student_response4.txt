@@ -1,0 +1,51 @@
+Step 0: Denote the segments and points in the problem:
+- \( PQ = 735 \)
+- \( QR = 112 \)
+- \( RC = x \)
+
+Step 1: Establish the similarity of triangles \( \triangle PAQ \sim \triangle PDC \).
+Since \( \overline{DA} \) is extended to \( P \) and \( \overline{PC} \) intersects \( \overline{AB} \) at \( Q \) and \( \overline{DB} \) at \( R \), triangles \( \triangle PAQ \) and \( \triangle PDC \) share angle \( \angle APQ \) and \( \angle DPC \) respectively, and the angles at \( A \) and \( C \) are vertical angles, making the triangles similar.
+
+Step 2: Write the ratio from the similar triangles:
+\[
+\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + x} = \frac{735}{847 + x}
+\]
+
+Step 3: Establish the similarity of triangles \( \triangle BRQ \sim \triangle DRC \).
+Since \( \overline{PC} \) intersects \( \overline{DB} \) at \( R \), triangles \( \triangle BRQ \) and \( \triangle DRC \) share angle \( \angle BRQ \) and \( \angle DRC \) respectively, and the angles at \( R \) are the same, making the triangles similar.
+
+Step 4: Write the ratio from the similar triangles:
+\[
+\frac{QR}{RC} = \frac{112}{x} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}
+\]
+
+Step 5: Substitute the ratio from Step 2 into the ratio from Step 4:
+\[
+\frac{112}{x} = 1 - \frac{735}{847 + x}
+\]
+
+Step 6: Solve the equation for \( x \):
+\[
+\frac{112}{x} = 1 - \frac{735}{847 + x}
+\]
+\[
+\frac{112}{x} = \frac{847 + x - 735}{847 + x}
+\]
+\[
+\frac{112}{x} = \frac{112 + x}{847 + x}
+\]
+Cross-multiply to solve for \( x \):
+\[
+112(847 + x) = x(112 + x)
+\]
+\[
+94968 + 112x = 112x + x^2
+\]
+\[
+94968 = x^2
+\]
+\[
+x = \sqrt{94968} = 308
+\]
+
+Final answer: \(\boxed{308}\)

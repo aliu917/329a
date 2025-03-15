@@ -1,0 +1,218 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In  \$ ABC, AB=13, BC=15, \$ and \$CA = 14. \$ Point \$ D \$ is on \$ \overline{BC} \$ with \$ CD=6. \$ Point \$ E \$ is on \$ \overline{BC} \$ such that \$ \angle BAE\cong \angle CAD. \$ Given that \$ BE=\frac pq \$ where \$ p \$ and \$ q \$ are relatively prime positive integers, find \$ q. \$
+
+Solution chain-of-thought reasoning: <center><asy>
+import olympiad; import cse5; import geometry; size(150);
+defaultpen(fontsize(10pt));
+defaultpen(0.8);
+dotfactor = 4;
+pair A = origin;
+pair C = rotate(15,A)*(A+dir(-50));
+pair B = rotate(15,A)*(A+dir(-130));
+pair D = extension(A,A+dir(-68),B,C);
+pair E = extension(A,A+dir(-82),B,C);
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$D$",D,SE);
+label("$E$",E,S);
+label("$C$",C,SE);
+draw(A--B--C--cycle);
+draw(A--E);
+draw(A--D);
+draw(anglemark(B,A,E,5));
+draw(anglemark(D,A,C,5));
+</asy></center>
+By the  and since \$\angle BAE = \angle CAD, \angle BAD = \angle CAE\$, we have
+\begin{align*}
+\frac{CD \cdot CE}{AC^2} &= \frac{\sin CAD}{\sin ADC} \cdot \frac{\sin CAE}{\sin AEC}  \\
+&= \frac{\sin BAE \sin BAD}{\sin ADB \sin AEB} \\
+&= \frac{\sin BAE}{\sin AEB} \cdot \frac{\sin BAD}{\sin ADB}\\ &= \frac{BE \cdot BD}{AB^2}
+\end{align*}
+Substituting our knowns, we have \$\frac{CE}{BE} = \frac{3 \cdot 14^2}{2 \cdot 13^2} = \frac{BC - BE}{BE} = \frac{15}{BE} - 1 \Longrightarrow BE = \frac{13^2 \cdot 15}{463}\$. The answer is \$q = \boxed{463}\$.
+== Solution 2 (Similar Triangles)==
+Drop the altitude from A and call the base of the altitude Q. Also, drop the altitudes from E and D to AB and AC respectively. Call the feet of the altitudes R and S respectively.
+From here, we can use Heron's Formula to find the altitude. The area of the triangle is \$\sqrt{21*6*7*8} = 84\$. We can then use similar triangles with triangle \$AQC\$ and triangle \$DSC\$ to find \$DS=\frac{24}{5}\$. Consequently, from Pythagorean theorem, \$SC = \frac{18}{5}\$ and \$AS = 14-SC = \frac{52}{5}\$. We can also use the Pythagorean theorem on triangle \$AQB\$ to determine that \$BQ = \frac{33}{5}\$.
+Label \$AR\$ as \$y\$ and \$RE\$ as \$x\$. \$RB\$ then equals \$13-y\$. Then, we have two similar triangles.
+Firstly: \$\triangle ARE \sim \triangle ASD\$. From there, we have \$\frac{x}{y} = \frac{\frac{24}{5}}{\frac{53}{5}}\$.
+Next: \$\triangle BRE \sim \triangle BQA\$. From there, we have \$\frac{x}{13-y} = \frac{\frac{56}{5}}{\frac{33}{5}}\$.
+Solve the system to get \$x = \frac{2184}{463}\$ and \$y = \frac{4732}{463}\$.  Notice that 463 is prime, so even though we use the Pythagorean theorem on \$x\$ and \$13-y\$, the denominator won't change. The answer we desire is \$\boxed{463}\$.
+==Solution 3 (LoC and LoS bash)==
+Let \$\angle CAD = \angle BAE = \theta\$. Note by Law of Sines on \$\triangle BEA\$ we have
+\frac{BE}{\sin{\theta}} = \frac{AE}{\sin{B}} = \frac{AB}{\sin{\angle BEA}}
+As a result, our goal is to find \$\sin{\angle BEA}\$ and \$\sin{\theta}\$ (we already know \$AB\$).
+Let the foot of the altitude from \$A\$ to \$BC\$ be \$H\$. By law of cosines on \$\triangle ABC\$ we have
+169 = 196 + 225 - 2 \cdot 14 \cdot 15 \cdot \cos{C} \Rightarrow \cos{C} = \frac{3}{5}
+It follows that \$AH = \frac{56}{5}\$ and \$HC = \frac{42}{5} \Rightarrow HD = \frac{12}{5}\$.
+Note that by PT on \$\triangle AHD\$ we have that \$AD^2 = \left(\frac{56}{5}\right)^2 + \left(\frac{12}{5}\right)^2 = \frac{656}{5}\$. By Law of Sines on \$\triangle ADC\$ (where we square everything to avoid taking the square root) we see
+\frac{36}{\sin^2{\theta}} = \frac{656}{5 \cdot \frac{16}{25}} \Rightarrow \sin^2{\theta} = \frac{36}{205}.
+How are we going to find \$\sin{\angle BEA}\$ though? \$\angle BEA\$ and \$\theta\$ are in the same triangle. Applying Law of Sines on \$\triangle ABC\$ we see that
+\frac{13}{\frac{4}{5}} = \frac{14}{\sin{\angle B}} \Rightarrow \sin{\angle B} = \frac{56}{65} \Rightarrow \cos{\angle B} = \frac{33}{65}.
+\$\theta\$, \$\angle B\$, and \$\angle BEA\$ are all in the same triangle. We know they add up to \$180^{\circ}\$. There's a good chance we can exploit this using the identity \$\sin{p} = \sin{180^{\circ}-p}\$.
+We have that \$\sin{(180^{\circ} - (\theta + \angle B))} = \sin{\angle BEA} = \sin{(\theta + \angle B)}\$. Success! We know \$\sin{\theta}\$ and \$\sin{\angle B}\$ already. Applying the \$\sin\$ addition formula we see
+\sin{\theta + \angle B} = \sin{\theta} \cos{\angle B} + \sin{\angle B} \cos{\theta} = \frac{6}{\sqrt{205}} \cdot \frac{33}{65} + \frac{56}{65} \cdot \frac{13}{\sqrt{205}}=\frac{1}{65 \cdot \sqrt{205}} (198 + 728) = \frac{926}{65 \sqrt{205}}.
+This is the last stretch! Applying Law of Sines a final time on \$\triangle BEA\$ we see
+\frac{BE}{\sin{\theta}} = \frac{13}{\sin{BEA}} \Rightarrow \frac{BE}{\frac{6}{\sqrt{205}}} = \frac{13}{\frac{926}{65\sqrt{205}}} \Rightarrow \frac{BE}{6} = \frac{13 \cdot 65}{926} \Rightarrow \frac{13 \cdot 65 \cdot 6}{926} = BE = \frac{2535}{463}.
+It follows that the answer is \$\boxed{463}\$.
+==Solution 4 (Ratio Lemma and Angle Bisector Theorem)==
+Let \$AK\$ be the angle bisector of \$\angle A\$ such that \$K\$ is on \$BC\$.
+Then \$\angle KAB = \angle KAC\$, and thus \$\angle KAE = \angle KAD\$.
+By the Ratio Lemma,
+\$\frac{BE}{KE} = \frac{BA}{KA} * \frac{\sin{BAE}}{\sin{KAE}}\$ and \$\frac{CD}{KD} = \frac{CA}{KA} * \frac{\sin{CAD}}{\sin{KAD}}\$.
+This implies that \$\frac{BE}{KE*BA} = \frac{CD}{KD*CA}\$.
+Thus, \$\frac{BE}{KE} = \frac{13}{14} * \frac{6}{DK}\$.
+\$DK = CK - 6 = 14*15/27 - 6 = 16/9\$. Thus, \$\frac{BE}{KE} = \frac{13*54}{14*16}\$.
+Additionally, \$BE + KE = 9\$. Solving gives that \$ q = 463.\$
+Alternate:
+By the ratio lemma,
+\$BD/DC = (13/14)*(\sin BAD/\sin DAC)\$
+\$EC/EB = (14/13)*(\sin EAC/\sin BAE)\$
+Combining these, we get
+\$(BD/DC)(14/13) = (EC/EB)(13/14)\$
+\$(3/2)(14/13)(14/13) = (15-x)(x)\$
+\$x = 2535/463\$
+Thus, \$q = 463\$
+==Solution 5 (Isogonal lines with respect to A angle bisesector)==
+Since \$AE\$ and \$AD\$ are isogonal with respect to the \$A\$ angle bisector, we have \frac{BE}{EC}\cdot \frac{BD}{DC}=(\frac{AB}{AC})^2.  To prove this, let \$\angle BAE=\angle DAC=x\$ and \$\angle BAD=\angle CAE=y.\$  Then, by the Ratio Lemma, we have  \frac{BD}{DC}=\frac{AB\sin y}{AC\sin x}  \frac{BE}{EC}=\frac{AB\sin x}{AC\sin y} and multiplying these together proves the formula for isogonal lines. Hence, we have \frac{BE}{15-BE}\cdot \frac{9}{6}=\frac{169}{196}\implies BE=\frac{2535}{463} so our desired answer is \$\boxed{463}.\$
+==Solution 6 (Tangent subtraction formulas)==
+Note: We first recall some helpful tips regarding 13, 14, 15 triangles. Drawing an altitude H from B to AC results in AHB being a 5-12-13 right triangle and CHB being a 3-4-5 (9-12-15) right triangle.
+<center><asy>
+import olympiad; import cse5; import geometry; size(300);
+defaultpen(fontsize(10pt));
+defaultpen(0.8);
+dotfactor = 4;
+pair A = origin;
+pair C = rotate(15,A)*(A+dir(-50));
+pair B = rotate(15,A)*(A+dir(-130));
+pair D = extension(A,A+dir(-68),B,C);
+pair E = extension(A,A+dir(-82),B,C);
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$D$",D,SE);
+label("$E$",E,S);
+label("$C$",C,SE);
+draw(A--B--C--cycle);
+draw(A--E);
+draw(A--D);
+draw(anglemark(B,A,E,5));
+draw(anglemark(D,A,C,5));
+pair G = foot(E,C,A);
+pair F = foot(D,C,A);
+draw(D--F);
+draw(E--G);
+label("$G$",G,N);
+label("$F$",F,N);
+</asy></center>
+Now we start by drawing altitudes from D and E onto AC, labeling them as F and G, and labelling \$\angle DAG = \alpha\$. Now we know that \$\overline{DG} = \frac{24}{5}\$ and \$\overline{GC} = \frac{18}{5}\$. Therefore, \$\overline{AG} = \frac{52}{5}\$, so \$\tan{(\alpha)} = \frac{6}{13}\$. Our goal now is to use tangent \$\angle EAG\$ in triangle \$AEG\$. We set \$\overline{BE}\$ to \$x\$, so \$\overline{ED} = 9 - x\$ and \$\overline{EC} = 15 - x\$, so \$\overline{EG} = \frac{4}{5}(15-x)\$ and \$\overline{GC} = \frac{3}{5}(15-x)\$ so \$\overline{AG} = \frac{3x+25}{5}\$. Now we just need tangent of \$\angle EAG\$.
+We find this using \$\tan{(EAG)} = \tan{(A - \alpha)} = \frac{\tan{A} - \tan{\alpha}}{1 + \tan{A}\tan{\alpha}}\$, which is \$\frac{\frac{12}{5} - \frac{6}{13}}{1 + \frac{12}{5}\frac{6}{13}}\$ or \$\frac{126}{137}\$. Now we solve the equation \$\tan{\angle EAG} = \frac{126}{137} = \frac{\frac{60-4x}{5}}{\frac{3x+25}{5}}\$, so \$x = \frac{2535}{463}\$
+== Solution 8(literally 2 minute solution) ==
+Let \$ED = x\$, such that \$BE = 9-x\$. Since \$\overline{AE}\$ and \$\overline{AD}\$ are isogonal, we get \$\frac{9-x}{6+x} \cdot \frac{9}{6} = \frac{13^2}{14^2} \Rightarrow 588(9 - x) = 338(6 + x)\$, and we can solve to get \$x = \frac{1632}{463}\$(and \$BE = \frac{2535}{463}\$). Hence, our answer is \$\boxed{463}\$. - Spacesam
+== Solution 9 (Short and no IQ Required Altogether-Bash) ==
+Diagram borrowed from Solution 1.
+<center><asy>
+import olympiad; import cse5; import geometry; size(150);
+defaultpen(fontsize(10pt));
+defaultpen(0.8);
+dotfactor = 4;
+pair A = origin;
+pair C = rotate(15,A)*(A+dir(-50));
+pair B = rotate(15,A)*(A+dir(-130));
+pair D = extension(A,A+dir(-68),B,C);
+pair E = extension(A,A+dir(-82),B,C);
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$D$",D,SE);
+label("$E$",E,S);
+label("$C$",C,SE);
+draw(A--B--C--cycle);
+draw(A--E);
+draw(A--D);
+draw(anglemark(B,A,E,5));
+draw(anglemark(D,A,C,5));
+</asy></center>
+Applying  on \$\bigtriangleup ABC\$ with respect to \$\angle C\$ we have
+AB^2=AC^2+BC^2-2(AC)(BC)\cos C
+Solving gets \$\cos C=\frac{3}{5}\$, which implies that
+\sin C=\sqrt{1-\cos C}=\frac{4}{5}
+Applying  with  \$AD\$ we have
+(BC)(AD)^2+(BC)(BD)(CD)=(CD)(AB)^2+(BD)(AC)^2
+Solving gets \$AD=\frac{4\sqrt{205}}{5}\$.
+Applying  on \$\bigtriangleup ACD\$ to solve for \$\sin CAD\$ we have
+\frac{AD}{\sin C}=\frac{CD}{\sin CAD}
+Solving gets \$\sin CAD=\frac{6\sqrt{205}}{205}\$. Thus \$\sin BAE=\sin CAD=\frac{6\sqrt{205}}{205}\$.
+Applying  on \$\bigtriangleup ABC\$ we have
+\frac{AC}{\sin B}=\frac{AB}{\sin C}
+Solving gets \$\sin B=\frac{56}{65}\$.
+Applying  with  \$AE\$ we have
+(BC)(AE)^2+(BC)(BE)(CE)=(CE)(AB)^2+(BE)(AC)^2
+(BC)(AE)^2+(BC)(BE)(BC-BE)=(BC-BE)(AB)^2+(BE)(AC)^2
+Solving gets \$AE=\sqrt{\frac{15BE^2-198BE+2535}{15}}\$
+Finally, applying  on \$\bigtriangleup BAE\$ we have
+\frac{AE}{\sin B}=\frac{BE}{\sin BAE}
+\frac{\sqrt{\frac{15BE^2-198BE+2535}{15}}}{\frac{56}{65}}=\frac{BE}{\frac{6\sqrt{205}}{205}}
+7605BE^2-32342BE+2535=0
+Solving the easy quadratic equation gets \$BE=\frac{1632}{463}\Longrightarrow q=\boxed{463}\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the lengths of the sides of triangle \( ABC \) as \( AB = 13 \), \( BC = 15 \), and \( CA = 14 \). Let \( CD = 6 \) and define \( BE = x \) and \( EC = 15 - x \).
+
+Step 1: Recognize that since \( \angle BAE \cong \angle CAD \), by the Angle Bisector Theorem, we can set up a ratio involving segments \( BE \) and \( EC \).
+
+Step 2: Using the Angle Bisector Theorem, we have:
+\[
+\frac{BE}{EC} = \frac{AB}{AC} = \frac{13}{14}
+\]
+
+Step 3: Substitute \( EC \) in terms of \( BE \):
+\[
+\frac{x}{15 - x} = \frac{13}{14}
+\]
+
+Step 4: Cross-multiply to solve for \( x \):
+\[
+14x = 13(15 - x)
+\]
+
+Step 5: Expand and rearrange the equation:
+\[
+14x = 195 - 13x \implies 14x + 13x = 195 \implies 27x = 195
+\]
+
+Step 6: Solve for \( x \):
+\[
+x = \frac{195}{27} = \frac{65}{9}
+\]
+
+Step 7: Now, we need to find \( BE = x \) in terms of \( p \) and \( q \) where \( BE = \frac{p}{q} \). Convert \( \frac{65}{9} \) to coprime integers. Here, \( p = 65 \) and \( q = 9 \).
+
+Step 8: Check if \( p \) and \( q \) are relatively prime. Since 65 and 9 share no common factors, they are relatively prime.
+
+Step 9: The final answer requires only \( q \), which is \( 9 \).
+
+Final answer: \(\boxed{9}\)

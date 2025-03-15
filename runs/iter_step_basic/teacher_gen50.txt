@@ -1,0 +1,141 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Equilateral \$\triangle ABC\$ has side length \$\sqrt{111}\$. There are four distinct triangles \$AD_1E_1\$, \$AD_1E_2\$, \$AD_2E_3\$, and \$AD_2E_4\$, each congruent to \$\triangle ABC\$,
+with \$BD_1 = BD_2 = \sqrt{11}\$. Find \$\sum_{k=1}^4(CE_k)^2\$.
+
+Solution chain-of-thought reasoning: Note that there are only two possible locations for points \$D_1\$ and \$D_2\$, as they are both \$\sqrt{111}\$ from point \$A\$ and \$\sqrt{11}\$ from point \$B\$, so they are the two points where a circle centered at \$A\$ with radius \$\sqrt{111}\$ and a circle centered at \$B\$ with radius \$\sqrt{11}\$ intersect.  Let \$D_1\$ be the point on the opposite side of \$\overline{AB}\$ from \$C\$, and \$D_2\$ the point on the same side of \$\overline{AB}\$ as \$C\$.
+Let \$\theta\$ be the measure of angle \$BAD_1\$ (also the measure of angle \$BAD_2\$); by the Law of Cosines,
+\begin{align*}\sqrt{11}^2 &= \sqrt{111}^2 + \sqrt{111}^2 - 2 \cdot \sqrt{111} \cdot \sqrt{111} \cdot \cos\theta\\
+11 &= 222(1 - \cos\theta)\end{align*}
+There are two equilateral triangles with \$\overline{AD_1}\$ as a side; let \$E_1\$ be the third vertex that is farthest from \$C\$, and \$E_2\$ be the third vertex that is nearest to \$C\$.
+Angle \$E_1AC = E_1AD_1 + D_1AB + BAC = 60 + \theta + 60 = 120 + \theta\$; by the Law of Cosines,
+\begin{align*}(E_1C)^2 &= (E_1A)^2 + (AC)^2 - 2 (E_1A) (AC)\cos(120 + \theta)\\
+&= 111 + 111 - 222\cos(120 + \theta)\end{align*}
+Angle \$E_2AC = \theta\$; by the Law of Cosines,
+\begin{align*}(E_2C)^2 &= (E_2A)^2 + (AC)^2 - 2 (E_2A) (AC)\cos\theta\\
+&= 111 + 111 - 222\,\cos\theta\end{align*}
+There are two equilateral triangles with \$\overline{AD_2}\$ as a side; let \$E_3\$ be the third vertex that is farthest from \$C\$, and \$E_4\$ be the third vertex that is nearest to \$C\$.
+Angle \$E_3AC = E_3AB + BAC = (60 - \theta) + 60 = 120 - \theta\$; by the Law of Cosines,
+\begin{align*}(E_3C)^2 &= (E_3A)^2 + (AC)^2 - 2 (E_3A) (AC)\cos(120 - \theta)\\
+&= 111 + 111 - 222\cos(120 - \theta)\end{align*}
+Angle \$E_4AC = \theta\$; by the Law of Cosines,
+\begin{align*}(E_4C)^2 &= (E_4A)^2 + (AC)^2 - 2 (E_4A) (AC)\cos\theta \\
+&= 111 + 111 - 222\cos\theta\end{align*}
+The solution is:
+\begin{align*}
+\sum_{k=1}^4(CE_k)^2 &= (E_1C)^2 + (E_3C)^2 + (E_2C)^2 + (E_4C)^2\\
+&= 222(1 - \cos(120 + \theta)) + 222(1 - \cos(120 - \theta)) + 222(1 - \cos\theta) + 222(1 - \cos\theta)\\
+&= 222((1 - (\cos120\cos\theta - \sin120\sin\theta)) + (1 - (\cos120\cos\theta + \sin120\sin\theta)) + 2(1 -\cos\theta))\\
+&= 222(1 - \cos120\cos\theta + \sin120\sin\theta + 1 - \cos120\cos\theta - \sin120\sin\theta + 2 - 2\cos\theta)\\
+&= 222(1 + \frac{1}{2}\cos\theta + 1 + \frac{1}{2}\cos\theta + 2 - 2\cos\theta)\\
+&= 222(4 - \cos\theta)\\
+&= 666 + 222(1 - \cos\theta)
+\end{align*}
+Substituting \$11\$ for \$222(1 - \cos\theta)\$ gives the solution \$666 + 11 = \framebox{677}.\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: Define the side length of equilateral triangle \( \triangle ABC \) as \( s = \sqrt{111} \) and denote the distances \( BD_1 = BD_2 = \sqrt{11} \).
+
+Step 1: Establish that points \( D_1 \) and \( D_2 \) are located at the intersections of a circle centered at \( A \) with radius \( \sqrt{111} \) and a circle centered at \( B \) with radius \( \sqrt{11} \).
+
+Step 2: Let \( \theta \) be the angle \( BAD_1 \) (also the angle \( BAD_2 \)); apply the Law of Cosines to find a relationship involving \( \theta \):
+\[
+\sqrt{11}^2 = \sqrt{111}^2 + \sqrt{111}^2 - 2 \cdot \sqrt{111} \cdot \sqrt{111} \cdot \cos\theta.
+\]
+
+Step 3: Simplify the equation from Step 2 to obtain:
+\[
+11 = 222(1 - \cos\theta).
+\]
+
+Step 4: Identify the angles associated with the triangles formed by \( AD_1 \) and \( AD_2 \). For \( E_1 \) and \( E_2 \) (vertices opposite \( AD_1 \)):
+- Angle \( E_1AC = 120 + \theta \)
+- Angle \( E_2AC = \theta \)
+
+Step 5: Apply the Law of Cosines to find \( (E_1C)^2 \) and \( (E_2C)^2 \):
+\[
+(E_1C)^2 = (E_1A)^2 + (AC)^2 - 2(E_1A)(AC)\cos(120 + \theta),
+\]
+resulting in:
+\[
+(E_1C)^2 = 111 + 111 - 222\cos(120 + \theta).
+\]
+
+Step 6: Similarly, compute \( (E_2C)^2 \):
+\[
+(E_2C)^2 = (E_2A)^2 + (AC)^2 - 2(E_2A)(AC)\cos\theta,
+\]
+resulting in:
+\[
+(E_2C)^2 = 111 + 111 - 222\cos\theta.
+\]
+
+Step 7: Identify the angles for triangles formed by \( AD_2 \) with vertices \( E_3 \) and \( E_4 \):
+- Angle \( E_3AC = 120 - \theta \)
+- Angle \( E_4AC = \theta \)
+
+Step 8: Apply the Law of Cosines to calculate \( (E_3C)^2 \) and \( (E_4C)^2 \):
+\[
+(E_3C)^2 = (E_3A)^2 + (AC)^2 - 2(E_3A)(AC)\cos(120 - \theta),
+\]
+resulting in:
+\[
+(E_3C)^2 = 111 + 111 - 222\cos(120 - \theta).
+\]
+
+Step 9: Compute \( (E_4C)^2 \):
+\[
+(E_4C)^2 = (E_4A)^2 + (AC)^2 - 2(E_4A)(AC)\cos\theta,
+\]
+resulting in:
+\[
+(E_4C)^2 = 111 + 111 - 222\cos\theta.
+\]
+
+Step 10: Sum the squares of the distances to points \( E_k \):
+\[
+\sum_{k=1}^4(CE_k)^2 = (E_1C)^2 + (E_2C)^2 + (E_3C)^2 + (E_4C)^2.
+\]
+
+Step 11: Substitute the expressions from previous steps into the sum:
+\[
+= 222(1 - \cos(120 + \theta)) + 222(1 - \cos(120 - \theta)) + 222(1 - 2\cos\theta).
+\]
+
+Step 12: Simplify the expression:
+\[
+= 222\left(2 + 2 - 2\cos\theta\right) = 222(4 - \cos\theta).
+\]
+
+Step 13: Substitute \( 222(1 - \cos\theta) = 11 \) to find the total:
+\[
+= 666 + 11 = 677.
+\]
+
+Final answer: \(\boxed{677}\)

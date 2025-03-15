@@ -1,0 +1,61 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In order to complete a large job, \$1000\$ workers were hired, just enough to complete the job on schedule. All the workers stayed on the job while the first quarter of the work was done, so the first quarter of the work was completed on schedule. Then \$100\$ workers were laid off, so the second quarter of the work was completed behind schedule. Then an additional \$100\$ workers were laid off, so the third quarter of the work was completed still further behind schedule. Given that all workers work at the same rate, what is the minimum number of additional workers, beyond the \$800\$ workers still on the job at the end of the third quarter, that must be hired after three-quarters of the work has been completed so that the entire project can be completed on schedule or before?
+
+Solution chain-of-thought reasoning: A train is traveling at \$1000\$ miles per hour and has one hour to reach its destination \$1000\$ miles away. After \$15\$ minutes and \$250\$ miles it slows to \$900\$ mph, and thus takes \$\frac{250}{900}(60)=\frac{50}{3}\$ minutes to travel the next \$250\$ miles. Then it slows to \$800\$ mph, so the next quarter takes \$\frac{250}{800}(60)=\frac{150}{8}\$. The train then has \$60-15-\frac{50}{3}-\frac{150}{8}=230/24\$ minutes left to travel 250 miles, and doing the arithmetic shows that during this last stretch it must travel more than \$1565\$ mph to make it on time. Therefore the company needs to add \$1566-800 = \boxed{766}\$ more workers.
+Solution by rocketscience
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the initial number of workers as \$1000\$ and the number of workers remaining after layoffs as \$800\$.
+
+Step 1: Understand that the job is divided into four equal parts and that 1000 workers were enough to complete the job on schedule.
+
+Step 2: Note that the first quarter of the work was completed on schedule with all \$1000\$ workers.
+
+Step 3: After the first quarter, \$100\$ workers are laid off, leaving \$900\$ workers for the second quarter.
+
+Step 4: Determine that with \$900\$ workers, the second quarter of work is completed behind schedule, indicating that \$100\$ fewer workers slowed down progress.
+
+Step 5: After the second quarter, another \$100\$ workers are laid off, leaving \$800\$ workers for the third quarter.
+
+Step 6: Conclude that with \$800\$ workers, the third quarter also is completed behind schedule.
+
+Step 7: Since there are \$800\$ workers left after three quarters, identify how many workers are needed to complete the fourth quarter on schedule.
+
+Step 8: Recognize that to complete the entire job on schedule, the remaining work must be done at the same rate as when there were \$1000\$ workers.
+
+Step 9: Set up a proportion to find out how many additional workers are needed beyond the \$800\$ still on the job.
+
+Step 10: Calculate the rate of work done by \$1000\$ workers compared to \$800\$ workers and determine the deficit in productivity.
+
+Step 11: Determine that to meet the original schedule, the project needs more than 800 workers to cover the shortfall caused by the layoffs.
+
+Step 12: Calculate the exact number of additional workers required to bring the total back to the original \$1000\$.
+
+Final answer: \(\boxed{200}\)

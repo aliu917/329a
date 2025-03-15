@@ -1,0 +1,60 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Let \$x_1<x_2<x_3\$ be the three real roots of the equation \$\sqrt{2014}x^3-4029x^2+2=0\$. Find \$x_2(x_1+x_3)\$.
+
+Solution chain-of-thought reasoning: Substituting \$n\$ for \$2014\$, we get \sqrt{n}x^3 - (1+2n)x^2 + 2 = \sqrt{n}x^3 - x^2 - 2nx^2 + 2 = x^2(\sqrt{n}x - 1) - 2(nx^2 - 1) = 0 Noting that \$nx^2 - 1\$ factors as a difference of squares to (\sqrt{n}x - 1)(\sqrt{n}x+1) we can factor the left side as (\sqrt{n}x - 1)(x^2 - 2(\sqrt{n}x+1)) This means that \$\frac{1}{\sqrt{n}}\$ is a root, and the other two roots are the roots of \$x^2 - 2\sqrt{n}x - 2\$. Note that the constant term of the quadratic is negative, so one of the two roots is positive and the other is negative. In addition, by Vieta's Formulas, the roots sum to \$2\sqrt{n}\$, so the positive root must be greater than \$2\sqrt{n}\$ in order to produce this sum when added to a negative value. Since \$0 < \frac{1}{\sqrt{2014}} < 2\sqrt{2014}\$ is clearly true, \$x_2 = \frac{1}{\sqrt{2014}}\$ and \$x_1 + x_3 = 2\sqrt{2014}\$. Multiplying these values together, we find that \$x_2(x_1+x_3) = \boxed{002}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Substitute \( n \) for \( 2014 \) in the original equation, yielding \( \sqrt{n}x^3 - (1 + 2n)x^2 + 2 = 0 \).
+
+Step 1: Rewrite the equation as \( \sqrt{n}x^3 - x^2 - 2nx^2 + 2 = 0 \).
+
+Step 2: Factor out \( x^2 \) from the first two terms: \( x^2(\sqrt{n}x - 1 - 2n) + 2 = 0 \).
+
+Step 3: Identify that \( nx^2 - 1 \) can be factored as a difference of squares: \( (\sqrt{n}x - 1)(\sqrt{n}x + 1) \).
+
+Step 4: Factor the left side of the equation as \( (\sqrt{n}x - 1)(x^2 - 2(\sqrt{n}x + 1)) = 0 \).
+
+Step 5: Identify that \( \frac{1}{\sqrt{n}} \) is a root from the first factor.
+
+Step 6: Determine the other two roots are the solutions to \( x^2 - 2\sqrt{n}x - 2 = 0 \).
+
+Step 7: Note that since the constant term is negative, one root is positive and the other is negative.
+
+Step 8: Apply Vieta's formulas stating that the sum of the roots equals \( 2\sqrt{n} \).
+
+Step 9: Conclude that the positive root must be greater than \( 2\sqrt{n} \) to produce the sum \( 2\sqrt{n} \) when added to a negative value.
+
+Step 10: Verify that \( 0 < \frac{1}{\sqrt{2014}} < 2\sqrt{2014} \) holds true.
+
+Step 11: Assign \( x_2 = \frac{1}{\sqrt{2014}} \) and calculate \( x_1 + x_3 = 2\sqrt{2014} \).
+
+Step 12: Multiply the values to find \( x_2(x_1 + x_3) = \frac{1}{\sqrt{2014}} \cdot 2\sqrt{2014} = 2 \).
+
+Final answer: \(\boxed{002}\)

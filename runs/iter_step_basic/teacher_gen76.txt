@@ -1,0 +1,79 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Find the sum of all positive integers \$n\$ such that \$\sqrt{n^2+85n+2017}\$ is an integer.
+
+Solution chain-of-thought reasoning: Manipulating the given expression, \$\sqrt{n^2+85n+2017}=\frac{1}{2}\sqrt{4n^2+340n+8068}=\frac{1}{2}\sqrt{(2n+85)^2+843}\$. The expression under the radical must be an square number for the entire expression to be an integer, so \$(2n+85)^2+843=s^2\$. Rearranging, \$s^2-(2n+85)^2=843\$. By difference of squares, \$(s-(2n+85))(s+(2n+85))=1\times843=3\times281\$. It is easy to check that those are all the factor pairs of 843. Considering each factor pair separately, \$2n+85\$ is found to be \$421\$ and \$139\$. The two values of \$n\$ that satisfy one of the equations are \$168\$ and \$27\$. Summing these together gives us the answer ; \$168+27=\boxed{195}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: We need to find positive integers \( n \) such that \( \sqrt{n^2 + 85n + 2017} \) is an integer.
+
+Step 1: Rewrite the expression as \( \sqrt{n^2 + 85n + 2017} = \frac{1}{2} \sqrt{4n^2 + 340n + 8068} \).
+
+Step 2: Simplify the expression under the square root to \( \frac{1}{2} \sqrt{(2n + 85)^2 + 843} \).
+
+Step 3: For \( \sqrt{(2n + 85)^2 + 843} \) to be an integer, the expression \( (2n + 85)^2 + 843 \) must be a perfect square.
+
+Step 4: Set \( (2n + 85)^2 + 843 = s^2 \) for some integer \( s \).
+
+Step 5: Rearranging gives \( s^2 - (2n + 85)^2 = 843 \).
+
+Step 6: Factor this as \( (s - (2n + 85))(s + (2n + 85)) = 843 \).
+
+Step 7: Identify the factor pairs of 843: \( (1, 843), (3, 281), (9, 93), (31, 27) \).
+
+Step 8: For each factor pair \( (a, b) \), set \( s - (2n + 85) = a \) and \( s + (2n + 85) = b \).
+
+Step 9: Solve for \( 2n + 85 \) using \( s = \frac{a + b}{2} \) and \( 2n + 85 = \frac{b - a}{2} \).
+
+Step 10: Calculate \( n \) for each factor pair:
+- For \( (1, 843) \):
+  - \( s = \frac{1 + 843}{2} = 422 \)
+  - \( 2n + 85 = \frac{843 - 1}{2} = 421 \)
+  - \( 2n = 421 - 85 = 336 \) ⇒ \( n = 168 \).
+
+- For \( (3, 281) \):
+  - \( s = \frac{3 + 281}{2} = 142 \)
+  - \( 2n + 85 = \frac{281 - 3}{2} = 139 \)
+  - \( 2n = 139 - 85 = 54 \) ⇒ \( n = 27 \).
+
+- For \( (9, 93) \):
+  - \( s = \frac{9 + 93}{2} = 51 \)
+  - \( 2n + 85 = \frac{93 - 9}{2} = 42 \)
+  - \( 2n = 42 - 85 = -43 \) ⇒ not a positive integer.
+
+- For \( (31, 27) \):
+  - \( s = \frac{31 + 27}{2} = 29 \)
+  - \( 2n + 85 = \frac{27 - 31}{2} = -2 \)
+  - \( 2n = -2 - 85 = -87 \) ⇒ not a positive integer.
+
+Step 11: The valid values of \( n \) are \( 168 \) and \( 27 \).
+
+Step 12: Sum these values: \( 168 + 27 = 195 \).
+
+Final answer: \(\boxed{195}\)

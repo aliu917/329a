@@ -1,0 +1,70 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In  \$ABC\$, \$AB=\sqrt{30}\$, \$AC=\sqrt{6}\$, and \$BC=\sqrt{15}\$. There is a point \$D\$ for which \$\overline{AD}\$ s \$\overline{BC}\$, and \$\angle ADB\$ is a right angle. The ratio \$\frac{[ADB]}{[ABC]}\$ can be written in the form \$\dfrac{m}{n}\$, where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m+n\$.
+
+Solution chain-of-thought reasoning: Because the problem asks for a ratio, we can divide each side length by \$\sqrt{3}\$ to make things simpler. We now have a triangle with sides \$\sqrt{10}\$, \$\sqrt{5}\$, and \$\sqrt{2}\$.
+We use the same graph as above.
+Draw perpendicular from \$C\$ to \$AE\$. Denote this point as \$F\$. We know that \$DE = EF = x\$ and \$BD = CF = z\$ and also let \$AE = y\$.
+Using Pythagorean theorem, we get three equations,
+<center>\$(y+x)^2 + z^2 = 10\$
+\$(y-x)^2 + z^2 = 2\$
+\$x^2 + z^2 = \frac{5}{4}\$</center>
+Adding the first and second, we obtain \$x^2 + y^2 + z^2 = 6\$, and then subtracting the third from this we find that \$y = \frac{\sqrt{19}}{2}\$. (Note, we could have used  to achieve this result).
+Subtracting the first and second, we see that \$xy = 2\$, and then we find that \$x = \frac{4}{\sqrt{19}}\$
+Using base ratios, we then quickly find that the desired ratio is \$\frac{27}{38}\$ so our answer is \$\boxed{065}\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the sides of triangle \(ABC\) as \(AB = \sqrt{30}\), \(AC = \sqrt{6}\), and \(BC = \sqrt{15}\). 
+
+Step 1: Since the problem asks for a ratio, we simplify the side lengths by dividing each by \(\sqrt{3}\) to obtain a triangle with sides \(\sqrt{10}\), \(\sqrt{5}\), and \(\sqrt{2}\).
+
+Step 2: Draw a perpendicular from point \(C\) to line segment \(AE\) and denote the intersection point as \(F\).
+
+Step 3: Denote the lengths \(DE = EF = x\) and \(BD = CF = z\). Let \(AE = y\).
+
+Step 4: Using the Pythagorean theorem, we set up three equations:
+\[
+(y+x)^2 + z^2 = 10,
+\]
+\[
+(y-x)^2 + z^2 = 2,
+\]
+\[
+x^2 + z^2 = \frac{5}{4}.
+\]
+
+Step 5: Adding the first and second equations yields \(x^2 + y^2 + z^2 = 6\). 
+
+Step 6: Subtracting the third equation from this result gives us \(y = \frac{\sqrt{19}}{2}\).
+
+Step 7: From the first and second equations, we subtract them to find \(xy = 2\), and then solve for \(x\) to find \(x = \frac{4}{\sqrt{19}}\).
+
+Step 8: Using the ratios of the bases, we determine the desired ratio \(\frac{[ADB]}{[ABC]} = \frac{27}{38}\).
+
+Final answer: \(m+n = 27+38 = \boxed{065}\).

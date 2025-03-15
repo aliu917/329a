@@ -1,0 +1,36 @@
+Step 0: Let \(O\) be the center of the regular hexagon \(ABCDEF\). The side length of the regular hexagon \(ABCDEF\) is \(s\). Each internal angle of a regular hexagon is \(120^\circ\).
+
+Step 1: The points \(G\), \(H\), \(I\), \(J\), \(K\), and \(L\) are the midpoints of sides \(AB\), \(BC\), \(CD\), \(DE\), \(EF\), and \(AF\), respectively. Therefore, each of these segments is parallel to the next and half the length of the side of the hexagon. 
+
+Step 2: Consider the triangle \(ABH\). Since \(H\) is the midpoint of \(BC\), \(AH\) is a median to the side \(BC\). The coordinates of \(A\), \(B\), and \(H\) can be calculated as follows:
+- \(A = (s, 0)\)
+- \(B = \left(\frac{s}{2}, \frac{s\sqrt{3}}{2}\right)\)
+- \(H = \left(\frac{3s}{4}, \frac{s\sqrt{3}}{4}\right)\)
+
+Step 3: The line \(AH\) can be derived using the slope formula and then the equation of the line. The slope of \(AH\) is:
+\[ m = \frac{\frac{s\sqrt{3}}{4} - 0}{\frac{3s}{4} - s} = \frac{\frac{s\sqrt{3}}{4}}{-\frac{s}{4}} = -\sqrt{3} \]
+The equation of the line \(AH\) is:
+\[ y = -\sqrt{3}(x - s) = -\sqrt{3}x + s\sqrt{3} \]
+
+Step 4: The line \(BI\) can be derived similarly. The coordinates of \(I\) are:
+- \(I = \left(\frac{5s}{4}, \frac{s\sqrt{3}}{4}\right)\)
+The slope of \(BI\) is:
+\[ m = \frac{\frac{s\sqrt{3}}{4} - \frac{s\sqrt{3}}{2}}{\frac{5s}{4} - \frac{s}{2}} = \frac{-\frac{s\sqrt{3}}{4}}{\frac{3s}{4}} = -\frac{\sqrt{3}}{3} \]
+The equation of the line \(BI\) is:
+\[ y - \frac{s\sqrt{3}}{2} = -\frac{\sqrt{3}}{3}\left(x - \frac{s}{2}\right) \]
+\[ y = -\frac{\sqrt{3}}{3}x + \frac{s\sqrt{3}}{3} + \frac{s\sqrt{3}}{2} = -\frac{\sqrt{3}}{3}x + \frac{5s\sqrt{3}}{6} \]
+
+Step 5: The intersection of the lines \(AH\) and \(BI\) can be found by solving the system of equations:
+\[ -\sqrt{3}x + s\sqrt{3} = -\frac{\sqrt{3}}{3}x + \frac{5s\sqrt{3}}{6} \]
+\[ -3x + 3s = -x + \frac{5s}{2} \]
+\[ -2x = -\frac{5s}{2} + 3s \]
+\[ -2x = \frac{s}{2} \]
+\[ x = -\frac{s}{4} \]
+\[ y = -\sqrt{3}\left(-\frac{s}{4}\right) + s\sqrt{3} = \frac{s\sqrt{3}}{4} + s\sqrt{3} = \frac{5s\sqrt{3}}{4} \]
+Thus, the intersection point is \(\left(-\frac{s}{4}, \frac{5s\sqrt{3}}{4}\right)\).
+
+Step 6: The smaller hexagon is similar to the larger hexagon, and the ratio of the side lengths is \(\frac{1}{2}\). Therefore, the ratio of the areas is \(\left(\frac{1}{2}\right)^2 = \frac{1}{4}\).
+
+Step 7: The fraction of the area of the smaller hexagon to the area of \(ABCDEF\) is \(\frac{1}{4}\). Thus, \(m = 1\) and \(n = 4\), and \(m + n = 1 + 4 = 5\).
+
+Final answer: \(\boxed{5}\)

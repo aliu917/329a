@@ -1,0 +1,102 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+To solve the problem, we will use the properties of similar triangles and the fact that the given segments are collinear and proportional.
+
+### Step-by-Step Solution:
+
+1. **Identify Similar Triangles:**
+   - Since \( \overline{PC} \) intersects \( \overline{AB} \) at \( Q \) and \( \overline{DB} \) at \( R \), we can use the properties of similar triangles.
+   - Triangles \( \triangle PQC \) and \( \triangle PDB \) are similar because they share angle \( \angle P \) and both have a right angle at \( Q \) and \( R \) respectively (assuming \( \angle DAB = 90^\circ \) by the properties of a cyclic quadrilateral).
+
+2. **Set Up the Ratios:**
+   - From the similarity of \( \triangle PQC \) and \( \triangle PDB \), we have:
+     \[
+     \frac{PQ}{QR} = \frac{PC}{PD}
+     \]
+   - Given \( PQ = 735 \) and \( QR = 112 \), we can write:
+     \[
+     \frac{735}{112} = \frac{PC}{PD}
+     \]
+   - Simplify the ratio:
+     \[
+     \frac{735}{112} = \frac{105}{16}
+     \]
+   - Therefore:
+     \[
+     \frac{PC}{PD} = \frac{105}{16}
+     \]
+
+3. **Determine \( RC \):**
+   - Since \( R \) lies on \( \overline{DB} \), we can use the fact that \( R \) divides \( \overline{DB} \) in the same ratio as \( Q \) divides \( \overline{PC} \).
+   - Let \( RC = x \) and \( RD = y \). Then:
+     \[
+     \frac{RC}{RD} = \frac{105}{16}
+     \]
+   - Since \( R \) is on \( \overline{DB} \), \( RC + RD = DB \). Let \( DB = k \). Then:
+     \[
+     x + y = k
+     \]
+   - Using the ratio:
+     \[
+     \frac{x}{y} = \frac{105}{16}
+     \]
+     \[
+     x = \frac{105}{16}y
+     \]
+   - Substitute \( x = \frac{105}{16}y \) into \( x + y = k \):
+     \[
+     \frac{105}{16}y + y = k
+     \]
+     \[
+     \frac{121}{16}y = k
+     \]
+     \[
+     y = \frac{16k}{121}
+     \]
+     \[
+     x = \frac{105}{16} \cdot \frac{16k}{121} = \frac{105k}{121}
+     \]
+
+4. **Find \( RC \):**
+   - We need to find \( RC \), which is \( x \):
+     \[
+     RC = \frac{105k}{121}
+     \]
+   - Since \( k = DB \) and we do not have the exact value of \( DB \), we use the given segments \( PQ \) and \( QR \) to find \( RC \):
+     \[
+     RC = \frac{105 \cdot 112}{121}
+     \]
+     \[
+     RC = \frac{11760}{121}
+     \]
+     \[
+     RC \approx 97.18
+     \]
+
+Given the problem’s context and the need for an exact integer solution, we simplify and conclude:
+
+\[
+\boxed{98}
+\]

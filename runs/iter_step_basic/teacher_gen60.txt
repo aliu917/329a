@@ -1,0 +1,92 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In \$\triangle ABC\$ let \$I\$ be the center of the inscribed circle, and let the bisector of \$\angle ACB\$ intersect \$AB\$ at \$L\$. The line through \$C\$ and \$L\$ intersects the circumscribed circle of \$\triangle ABC\$ at the two points \$C\$ and \$D\$. If \$LI=2\$ and \$LD=3\$, then \$IC=\tfrac{m}{n}\$, where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m+n\$.
+
+Solution chain-of-thought reasoning: Suppose we label the angles as shown below.
+<asy>
+size(150);
+import olympiad;
+real c=8.1,a=5*(c+sqrt(c^2-64))/6,b=5*(c-sqrt(c^2-64))/6;
+pair A=(0,0),B=(c,0),D=(c/2,-sqrt(25-(c/2)^2));
+pair C=intersectionpoints(circle(A,b),circle(B,a))[0];
+pair I=incenter(A,B,C);
+pair L=extension(C,D,A,B);
+dot(I^^A^^B^^C^^D);
+draw(C--D);
+path midangle(pair d,pair e,pair f) {return e--e+((f-e)/length(f-e)+(d-e)/length(d-e))/2;}
+draw(A--B--D--cycle);
+draw(circumcircle(A,B,D));
+draw(A--C--B);
+draw(A--I--B^^C--I);
+draw(incircle(A,B,C));
+label("$A$",A,SW,fontsize(8));
+label("$B$",B,SE,fontsize(8));
+label("$C$",C,N,fontsize(8));
+label("$D$",D,S,fontsize(8));
+label("$I$",I,NE,fontsize(8));
+label("$L$",L,SW,fontsize(8));
+label("$\alpha$",A,5*dir(midangle(C,A,I)),fontsize(8));
+label("$\alpha$",A,5*dir(midangle(I,A,B)),fontsize(8));
+label("$\beta$",B,12*dir(midangle(A,B,I)),fontsize(8));
+label("$\beta$",B,12*dir(midangle(I,B,C)),fontsize(8));
+label("$\gamma$",C,5*dir(midangle(A,C,I)),fontsize(8));
+label("$\gamma$",C,5*dir(midangle(I,C,B)),fontsize(8));
+</asy>
+As \$\angle BCD\$ and \$\angle BAD\$ intercept the same arc, we know that \$\angle BAD=\gamma\$. Similarly, \$\angle ABD=\gamma\$. Also, using \$\triangle ICA\$, we find \$\angle CIA=180-\alpha-\gamma\$. Therefore, \$\angle AID=\alpha+\gamma\$. Therefore, \$\angle DAI=\angle AID=\alpha+\gamma\$, so \$\triangle AID\$ must be isosceles with \$AD=ID=5\$. Similarly, \$BD=ID=5\$. Then \$\triangle DLB \sim \triangle ALC\$, hence \$\frac{AL}{AC} = \frac{3}{5}\$. Also, \$AI\$ bisects \$\angle LAC\$, so by the Angle Bisector Theorem \$\frac{CI}{IL} =\frac{AC}{AL}= \frac{5}{3}\$. Thus \$CI = \frac{10}{3}\$, and the answer is \$\boxed{013}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the angles in triangle \( \triangle ABC \) as \( \alpha = \angle CAB \), \( \beta = \angle ABC \), and \( \gamma = \angle ACB \). Note that \( I \) is the incenter, \( L \) is the intersection of the angle bisector of \( \angle ACB \) with line \( AB \), and \( D \) is a point on the circumcircle.
+
+Step 1: Recognize that \( LI = 2 \) and \( LD = 3 \).
+
+Step 2: Since \( \angle BCD \) and \( \angle BAD \) intercept the same arc, we conclude that \( \angle BAD = \gamma \).
+
+Step 3: By the properties of angles in triangle \( \triangle AIC \), we have \( \angle CIA = 180 - \alpha - \gamma \).
+
+Step 4: Consequently, we find \( \angle AID = \alpha + \gamma \).
+
+Step 5: Since \( \angle DAI = \angle AID = \alpha + \gamma \), triangle \( \triangle AID \) is isosceles, thus \( AD = ID = 5 \) (since \( LD + LI = 3 + 2 = 5 \)).
+
+Step 6: By the same reasoning, we find that \( BD = ID = 5 \).
+
+Step 7: Apply the similarity of triangles \( \triangle DLB \sim \triangle ALC \). This gives us the proportion \( \frac{AL}{AC} = \frac{3}{5} \).
+
+Step 8: Using the Angle Bisector Theorem on triangle \( AIL \), we find that \( \frac{CI}{IL} = \frac{AC}{AL} = \frac{5}{3} \).
+
+Step 9: Set \( CI = x \) and \( IL = 2 \), leading to \( \frac{x}{2} = \frac{5}{3} \).
+
+Step 10: Solve for \( x \) to find \( CI = \frac{10}{3} \).
+
+Step 11: Since \( IC = CI \), we have \( IC = \frac{10}{3} \).
+
+Step 12: Determine \( m \) and \( n \) in the fraction \( \frac{m}{n} = \frac{10}{3} \) as \( m = 10 \) and \( n = 3 \).
+
+Step 13: Verify that 10 and 3 are relatively prime.
+
+Final answer: \( m + n = 10 + 3 = \boxed{13} \).

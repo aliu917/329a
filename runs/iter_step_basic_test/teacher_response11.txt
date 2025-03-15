@@ -1,0 +1,21 @@
+Step 0: Let \( a = z^{120} \). This simplifies the problem constraint to \( a^6 - a \in \mathbb{R} \).
+
+Step 1: The condition \( a^6 - a \in \mathbb{R} \) is satisfied if \( \text{Im}(a^6) = \text{Im}(a) \).
+
+Step 2: Let \( \theta \) be the angle \( a \) makes with the positive x-axis. Since \( |z| = 1 \), \( a \) is also on the unit circle.
+
+Step 3: From the equation \( \sin \theta = \sin(6\theta) \), we can derive solutions using properties of sine.
+
+Step 4: The first case is \( \sin \theta = \sin((2m+1)\pi - \theta) \), which leads to the equation \( (2m+1)\pi - \theta = 6\theta \), simplifying to \( \frac{(2m + 1)\pi}{7} = \theta \). There are 7 solutions for \( m = 0, 1, \ldots, 6 \).
+
+Step 5: The second case is \( \sin \theta = \sin(2n\pi + \theta) \), which leads to \( 2n\pi + \theta = 6\theta \), simplifying to \( \frac{2n\pi}{5} = \theta \). There are 5 solutions for \( n = 0, 1, 2, 3, 4 \).
+
+Step 6: Totaling the solutions gives \( 7 + 5 = 12 \) values for \( a \).
+
+Step 7: For each of these 12 values of \( a \), there are necessarily \( 120 \) solutions for \( z \) (since \( z^{120} = a \) leads to 120 distinct roots).
+
+Step 8: Thus, the total number of solutions for \( z \) is \( 12 \cdot 120 = 1440 \).
+
+Step 9: Finally, we find the remainder when \( 1440 \) is divided by \( 1000 \), which is \( 440 \).
+
+Final answer: \(\boxed{440}\)

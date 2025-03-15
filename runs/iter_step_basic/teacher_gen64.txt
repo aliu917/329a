@@ -1,0 +1,152 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In \$\triangle ABC\$ with side lengths \$AB = 13,\$ \$BC = 14,\$ and \$CA = 15,\$ let \$M\$ be the midpoint of \$\overline{BC}.\$ Let \$P\$ be the point on the circumcircle of \$\triangle ABC\$ such that \$M\$ is on \$\overline{AP}.\$ There exists a unique point \$Q\$ on segment \$\overline{AM}\$ such that \$\angle PBQ = \angle PCQ.\$ Then \$AQ\$ can be written as \$\frac{m}{\sqrt{n}},\$ where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m+n.\$
+
+Solution chain-of-thought reasoning: Because \$M\$ is the midpoint of \$BC\$, following from the Stewart's theorem, \$AM = 2 \sqrt{37}\$.
+Because \$A\$, \$B\$, \$C\$, and \$P\$ are concyclic, \$\angle BPA = \angle C\$, \$\angle CPA = \angle B\$.
+Denote \$\theta = \angle PBQ\$.
+In \$\triangle BPQ\$, following from the law of sines,
+\[
+\frac{BQ}{\sin \angle BPA} = \frac{PQ}{\angle PBQ}
+\]
+Thus,
+\[
+\frac{BQ}{\sin C} = \frac{PQ}{\sin \theta} . \hspace{1cm} (1)
+\]
+In \$\triangle CPQ\$, following from the law of sines,
+\[
+\frac{CQ}{\sin \angle CPA} = \frac{PQ}{\angle PCQ}
+\]
+Thus,
+\[
+\frac{CQ}{\sin B} = \frac{PQ}{\sin \theta} . \hspace{1cm} (2)
+\]
+Taking \$\frac{(1)}{(2)}\$, we get
+\[
+\frac{BQ}{\sin C} = \frac{CQ}{\sin B}
+\]
+In \$\triangle ABC\$, following from the law of sines,
+\[
+\frac{AB}{\sin C} = \frac{AC}{\sin B} . \hspace{1cm} (3)
+\]
+Thus, Equations (2) and (3) imply
+\begin{align*}
+\frac{BQ}{CQ} & = \frac{AB}{AC} \\
+& = \frac{13}{15} . \hspace{1cm} (4)
+\end{align*}
+Next, we compute \$BQ\$ and \$CQ\$.
+We have
+\begin{align*}
+BQ^2 & = AB^2 + AQ^2 - 2 AB\cdot AQ \cos \angle BAQ \\
+& = AB^2 + AQ^2 - 2 AB\cdot AQ \cos \angle BAM \\
+& = AB^2 + AQ^2 - 2 AB\cdot AQ \cdot \frac{AB^2 + AM^2 - BM^2}{2 AB \cdot AM} \\
+& = AB^2 + AQ^2 -  AQ \cdot \frac{AB^2 + AM^2 - BM^2}{AM} \\
+& = 169 + AQ^2 - \frac{268}{2 \sqrt{37}} AQ .  \hspace{1cm} (5)
+\end{align*}
+We have
+\begin{align*}
+CQ^2 & = AC^2 + AQ^2 - 2 AC\cdot AQ \cos \angle CAQ \\
+& = AC^2 + AQ^2 - 2 AC\cdot AQ \cos \angle CAM \\
+& = AC^2 + AQ^2 - 2 AC\cdot AQ \cdot \frac{AC^2 + AM^2 - CM^2}{2 AC \cdot AM} \\
+& = AC^2 + AQ^2 -  AQ \cdot \frac{AC^2 + AM^2 - CM^2}{AM} \\
+& = 225 + AQ^2 - \frac{324}{2 \sqrt{37}} AQ .  \hspace{1cm} (6)
+\end{align*}
+Taking (5) and (6) into (4), we get \$AQ = \frac{99}{\sqrt{148}}\$
+Therefore, the answer is \$99 + 148 = \boxed{\textbf{(247) }}\$
+Chen (Professor Chen Education Palace, www.professorchenedu.com)
+
+Solution steps:
+--------------------------------------------------
+Step 0: Define the side lengths of triangle ABC: \(AB = 13\), \(BC = 14\), and \(CA = 15\). Let \(M\) be the midpoint of \(\overline{BC}\).
+
+Step 1: Use Stewart's theorem to find \(AM\): Since \(M\) is the midpoint of \(BC\), we calculate \(AM = 2 \sqrt{37}\).
+
+Step 2: Recognize that points \(A\), \(B\), \(C\), and \(P\) are concyclic, thus \(\angle BPA = \angle C\) and \(\angle CPA = \angle B\).
+
+Step 3: Denote \(\theta = \angle PBQ\).
+
+Step 4: Apply the law of sines in \(\triangle BPQ\) to obtain the equation:
+\[
+\frac{BQ}{\sin \angle BPA} = \frac{PQ}{\sin \theta} \Rightarrow \frac{BQ}{\sin C} = \frac{PQ}{\sin \theta} \quad (1)
+\]
+
+Step 5: Apply the law of sines in \(\triangle CPQ\) to get:
+\[
+\frac{CQ}{\sin \angle CPA} = \frac{PQ}{\sin \theta} \Rightarrow \frac{CQ}{\sin B} = \frac{PQ}{\sin \theta} \quad (2)
+\]
+
+Step 6: Take the ratio of equations (1) and (2) to derive:
+\[
+\frac{BQ}{\sin C} = \frac{CQ}{\sin B}
+\]
+
+Step 7: Use the law of sines in triangle \(ABC\):
+\[
+\frac{AB}{\sin C} = \frac{AC}{\sin B} \quad (3)
+\]
+
+Step 8: Combine equations (2) and (3) to obtain:
+\[
+\frac{BQ}{CQ} = \frac{AB}{AC} = \frac{13}{15} \quad (4)
+\]
+
+Step 9: Set \(BQ = k \cdot 13\) and \(CQ = k \cdot 15\) for some \(k\). Then, \(BQ + CQ = 14\) implies \(k(13 + 15) = 14\), leading to \(k = \frac{14}{28} = \frac{1}{2}\).
+
+Step 10: Thus, \(BQ = \frac{13}{2}\) and \(CQ = \frac{15}{2}\).
+
+Step 11: Calculate \(BQ^2\) using the law of cosines:
+\[
+BQ^2 = AB^2 + AQ^2 - 2 \cdot AB \cdot AQ \cdot \cos \angle BAM 
+\]
+Substituting values gives:
+\[
+BQ^2 = 169 + AQ^2 - \frac{268}{2\sqrt{37}} AQ \quad (5)
+\]
+
+Step 12: Similarly, calculate \(CQ^2\):
+\[
+CQ^2 = AC^2 + AQ^2 - 2 \cdot AC \cdot AQ \cdot \cos \angle CAM 
+\]
+Substituting values gives:
+\[
+CQ^2 = 225 + AQ^2 - \frac{324}{2\sqrt{37}} AQ \quad (6)
+\]
+
+Step 13: Substitute equations (5) and (6) into equation (4):
+Set equations equal to each other using \(BQ\) and \(CQ\) values.
+
+Step 14: Solve for \(AQ\) to find:
+\[
+AQ = \frac{99}{\sqrt{148}}
+\]
+
+Step 15: Identify \(m\) and \(n\) as \(m = 99\) and \(n = 148\). 
+
+Step 16: Calculate \(m+n = 99 + 148 = 247\).
+
+Final answer: \(\boxed{247}\)
