@@ -4,8 +4,11 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from project.models import StudentLMAgent, TeacherLMAgent
+from project.models import StudentLMAgent, TeacherLMAgent, verifiers
 from . import prompts
+from ..utils import extract_text_within_box, extract_steps
+verifier = verifiers.MATH500Verifier()
+import re
 
 def run_single(x, y, student, teacher, input_feedback, prompt_func=None):
     # Student generation and evaluation
@@ -28,11 +31,13 @@ def run_single(x, y, student, teacher, input_feedback, prompt_func=None):
 class Experiment:
     def __init__(self, dataset, log_dir=None, num_examples=10, seed=2809):
         self.dataset = dataset
+        torch.manual_seed(seed)
         self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
         self.student = StudentLMAgent(log_dir=log_dir)
         self.teacher = TeacherLMAgent(log_dir=log_dir)
         self.num_examples = num_examples
         self.seed = seed
+        self.log_dir = log_dir
 
         if log_dir:
             os.makedirs(log_dir, exist_ok=True)
@@ -126,3 +131,134 @@ class IterativeRefine(Experiment):
                     break
             results.append(result)
         return results
+
+
+class IterativeStepBasedRefine(Experiment):
+    def __init__(self, *args, n_rounds=5, limit=0.8, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.n_rounds = n_rounds
+        self.limit = limit
+
+    def label_steps_generator(self, q, label_cot):
+        label_approaches = label_cot.split("=== Solution")
+        clean_label_cots = [label.split("===")[-1].strip() for label in label_approaches]
+        for label_cot in clean_label_cots:
+            yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot))
+
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1
+
+    def get_results(self):
+        base_results = []
+        results = []
+        iter_results_list = []
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
+            x = data["problem"][0]
+            all_y = labels[0]
+            is_correct = False
+            first = True
+            base_result = {"question": x}
+            result = base_result
+
+            iter_results = []
+            # Iterator is only for AIME case of multiple label approaches
+            for label_round, y_steps in enumerate(self.label_steps_generator(x, all_y)):
+                answer = extract_text_within_box(all_y)
+                label_steps_list, extract_answer = extract_steps(y_steps, r"[Aa]nswer")
+                if not answer:
+                    answer = extract_text_within_box(extract_answer)
+                prev_responses = []
+                prev_feedbacks = []
+                prev_feedback = ""
+                prev_feedback_step = 1
+
+                for refine_round in range(len(label_steps_list)):
+                    result = base_result
+
+                    response = self.student.generate(x, prompt_func=prompts.student_step_func, feedback=prev_feedback)
+                    is_correct = verifier(response, all_y)
+                    feedback, prev_feedback_step = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
+
+                    pred = extract_text_within_box(response)
+                    result.update({
+                        "answer": answer,
+                        "pred": pred,
+                        "label_round": label_round + 1,
+                        "round": refine_round + 1,
+                        "correct": is_correct,
+                        "prev_feedback": prev_feedback,
+                        "feedback": feedback,
+                        "pred_steps": response,
+                        "answer_steps": y_steps,
+                        "answer_in_feedback": str(answer) in prev_feedback,
+                    })
+                    prev_feedback = feedback
+                    prev_feedbacks.append(prev_feedback)
+                    prev_responses.append(response)
+
+                    print(f"Round {refine_round + 1}: pred {pred} answer {answer} feedback step {prev_feedback_step}/{str(len(label_steps_list)-1)}")
+
+                    if first:
+                        first = False
+                        base_results.append(result.copy())
+
+                    iter_results.append(result.copy())
+                    if self.results_path:
+                        with open(f"{self.log_dir}/refine_results_{i}.json", "w") as f:
+                            json.dump(iter_results, f)
+
+                    # Early return because correct
+                    if is_correct:
+                        print(f"Early stopped from correct feedback at iteration {refine_round + 1}/{str(len(label_steps_list)-1)}!")
+                        # print("Feedback: ", prev_feedback)
+                        break
+
+                    # Early return because cannot give more feedback without giving away answer
+                    if prev_feedback_step >= len(label_steps_list)*self.limit - 1:
+                        break
+
+                if is_correct:
+                    break
+
+            if not is_correct:
+                print("Correct answer never reached.")
+
+            results.append(result)
+            iter_results_list.append(iter_results)
+            if self.results_path:
+                with open(f"{self.log_dir}/iterative_results.json", "w") as f:
+                    json.dump(iter_results_list, f)
+                with open(f"{self.log_dir}/base_results.json", "w") as f:
+                    json.dump(base_results, f)
+        return results
+
+
+class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
+    """
+    Iterative step refinement but we use teacher to provide specific step feedback.
+    Teacher goes through solution and checks if each step is addressed by the student. If there is a mistake,
+    then the teacher identifies the incorrect step and provides a hint of what the appropriate step should be.
+    """
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        response_steps_list, _ = extract_steps(response)
+
+        if is_correct:
+            return "Student was correct", 1
+        if len(prev_feedbacks) + 1 == len(y_steps_list):
+            return "Last feedback round unneeded", 1
+
+        # Find first teacher step concept missing from the student
+        _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list), prompt_func=prompts.teacher_step_prompt)
+        feedback = ""
+        step = 1
+        try:
+            steps_list, feedback = extract_steps(response, r"[Ff]eedback")
+            try:
+                step = re.findall(r"Step (\d+):", steps_list[-1])[0]
+            except Exception as e:
+                print("Could not extract step number")
+                step = len(steps_list)
+        except Exception as e:
+            print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
+            print("Error: ", e)
+        return feedback, int(step)

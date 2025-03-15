@@ -190,3 +190,135 @@ def get_eval_student_context(result_path, keys, num_samples=10):
 
 ### Now, apply what you have learned:
 Given what you have learned from the examples above, answer the following question: """
+
+def cot_to_steps_prompt(question, sol_cot):
+    return """You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \\frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\\frac 54x + \\frac{2003}4\right)\$.
+this to get a quadratic, \$-\\frac 54x^2 + 502x - \\frac\{2003}4\$. Use \$\\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \\frac{-502}{-2 \cdot \\frac 54} = \\frac{1004}5 \approx 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \\frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\\frac 54x + \\frac{2003}4\\right)\$.
+Step 4: To get a quadratic, \$-\\frac 54x^2 + 502x - \\frac{2003}4\$.
+Step 5: Use \$\\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \\frac{-502}{-2 \cdot \\frac 54} = \\frac{1004}5 \approx 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: """ + f"""{question}
+
+Solution chain-of-thought reasoning: {sol_cot}
+
+Solution steps:
+"""
+
+
+def student_step_func(problem, feedback, history):
+    prompt = """You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \\frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\\frac 54x + \\frac{2003}4\\right)\$.
+Step 4: To get a quadratic, \$-\\frac 54x^2 + 502x - \\frac{2003}4\$.
+Step 5: Use \$\\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \\frac{-502}{-2 \cdot \\frac 54} = \\frac{1004}5 \approx 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\\boxed{448}\)"""
+
+    if history:
+        prompt += "\n\n### Learn from these additional context examples:" + history
+    if feedback:
+        prompt += "\n\nWhen formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: " + feedback
+    prompt += "\nRemember to think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'."
+    prompt += "\n\nQuestion: " + problem + "\n\nResponse:"
+    return prompt
+
+
+def teacher_step_prompt(question, student, label, history=None):
+    return """You are given a reasoning attempt for answering a complex math question. Given the question and a step-by-step reference of the correct solutions, evaluate each step of the solution response against the student attempt and determine if the student was able to understand the reasoning step. Start from step 1 of the teacher solution.
+For the first teacher step that is not present in the student attempt or cannot be correctly inferred from the student's reasoning, explain what is unique about that step's reasoning that is missing in the student approach.
+
+Here is an example of some inputs and the appropriate response:
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Student attempt: 
+Step 0: Define the variables as given:
+- Let \(PQ = 735\),
+- Let \(QR = 112\),
+- Let \(RC = x\).
+Step 1: Recognize that \(\triangle PAQ \sim \triangle PDC\) by the properties of similar triangles (AA similarity criterion).
+Step 2: The proportionality of corresponding sides gives \(\frac{AQ}{CD} = \frac{PQ}{PC}\).
+Step 3: Express \(PC\) in terms of the given lengths:
+- \(PC = PQ + QR + RC = 735 + 112 + x = 847 + x\).
+Step 4: Write the proportion using the similarity of the triangles:\[\frac{PQ}{PC} = \frac{735}{847 + x}\]
+Step 5: Since \(\triangle PAQ \sim \triangle PDC\), the ratio of the sides must be the same:
+- We need to find the ratio of \(AQ\) to \(CD\).
+Step 6: Use the fact that \(\triangle PAQ \sim \triangle PDC\) to set up the proportion:\[\frac{AQ}{CD} = \frac{735}{847 + x}\]
+Step 7: Since \(AQ\) and \(CD\) are corresponding sides, and by the properties of similar triangles, we know:\[\frac{AQ}{CD} = \frac{735}{847 + x}\]
+Step 8: We need to find \(RC\). From the similarity, the ratio of the segments on the line \(PC\) is the same. Therefore, we can use the fact that \(PQ : QR = 735 : 112\) to find \(RC\).
+Step 9: Since \(PQ : QR = 735 : 112\), and \(QR = 112\), we can set up the proportion:\[\frac{PQ}{QR} = \frac{735}{112} = \frac{847 + x - 112}{112}\]
+Step 10: Simplify the equation:\[\frac{735}{112} = \frac{735}{112} = \frac{735 + x - 112}{112}\]
+Step 11: This simplifies to:\[735 = 735 + x - 112\]
+Step 12: Solve for \(x\):\[735 = 623 + x \implies x = 112\]
+Step 13: Thus, the length of \(RC\) is:\[\boxed{112}\]
+
+Correct Solution:
+Step 0: Define the variables: let \$PQ = 735\$, \$QR = 112\$, and let \$RC\$ be the unknown we need to find.
+Step 1: Recognize that triangles \$\triangle PAQ\sim \triangle PDC\$ imply proportionality, and write the proportion:\[\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + RC} = \frac{735}{847 + RC}\]
+Step 2: Similarly, recognize that triangles \$\triangle BRQ\sim DRC\$ also imply proportionality, and write the proportion:\[\frac{QR}{RC} = \frac{112}{RC} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}\]
+Step 3: Express \$\frac{AQ}{CD}\$ in terms of \$RC\$:\[\frac{AQ}{CD} = 1 - \frac{112}{RC} = \frac{RC - 112}{RC}\]
+Step 4: Substitute the expression from Step 3 into the proportion from Step 1:\[\frac{735}{847 + RC} = \frac{RC - 112}{RC}\]
+Step 5: Cross-multiply to eliminate the fractions:\[735RC = (RC + 847)(RC - 112)\]
+Step 6: Expand the right-hand side:\[735RC = RC^2 - 112RC + 847RC - 847 \cdot 112\]
+This simplifies to:\[735RC = RC^2 + 735RC - 847 \cdot 112\]
+Step 7: Rearranging gives:\[0 = RC^2 - 847 \cdot 112\]
+Step 8: Solve for \$RC\$:\[RC = \sqrt{112 \cdot 847}\]
+Step 9: Calculate the value:\[RC = \sqrt{112 \cdot 847} = 308\]
+Final answer: \(\boxed{308}\)
+
+Response:
+Step 1: The student corrrectly identifies the proportionality of similar triangles PAQ and PDC in the student attempt steps 1 and 2.
+Step 2: The student does not identify that triangles \$\triangle BRQ\sim DRC\$ also imply proportionality, and write the proportion:\[\frac{QR}{RC} = \frac{112}{RC} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}\]
+
+Feedback: Similar to PAQ \sim PAC, similarity of triangles \$\triangle BRQ\sim DRC\$ imply proportionality, so we can write the proportion:\[\frac{QR}{RC} = \frac{112}{RC}
+
+### Now, apply what you have learned:
+
+Question: """ + f"""{question}
+
+Student attempt: {student}
+
+Correct solution: {label}
+
+Make sure to evaluate each step of the correct solution individually against the sequence of student attempt steps to see if the student is able to reach that reasoning step at any step in their attempt.
+Ignore the teacher step 0, and start from step 1. Once a solution step that doesn't match the student's reasoning is found, we can stop considering all later solution steps and output feedback based on the solution step content to help the student attempt reach that step.
+It is useful in the feedback to specifically provide expressions and values directly from the correct intermediate solution step that are missing from the student's response.
+Specifically in the feedback, keep all the existing content in the missing solution step but provide some additional detail about how it can be reasoned toward from the previous step, and why this step is important for future steps.
+Do not mention in the feedback what the student did wrong, only mention correct expressions for solving the problem and their reasoning.
+
+Response:
+"""

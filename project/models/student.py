@@ -7,7 +7,7 @@ def student_default_prompt(problem, feedback="", history=""):
         prompt += history + "\n"
     prompt += problem + "\n"
     if feedback:
-        prompt += feedback + "\n"
+        prompt += feedback_prompt(feedback) + "\n"
     return prompt + "Think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'"
 
 
@@ -41,15 +41,15 @@ class StudentLMAgent:
             {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
             {"role": "user", "content": prompt}
         ]
+        if self.log_dir and self.log_idx < self.max_log:
+            with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "w") as f:
+                f.write(prompt)
         response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
         if self.log_dir and self.log_idx < self.max_log:
-            with open(f"{self.log_dir}/student_prompt{str(self.log_idx)}.txt", "w") as f:
-                f.write(prompt)
-            with open(f"{self.log_dir}/student_response{str(self.log_idx)}.txt", "w") as f:
-                f.write(response)
+            with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "a") as f:
+                f.write("-"*50 + "\n" + response)
             self.log_idx += 1
         return response
 
     def generate(self, problem, prompt_func=student_default_prompt, feedback="", history=""):
-        feedback = feedback_prompt(feedback)
         return self._generate(prompt_func(problem, feedback, history))

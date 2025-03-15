@@ -12,6 +12,7 @@ from litellm import completion
 from openai import OpenAI
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
+import re
 
 
 from dotenv import load_dotenv
@@ -122,6 +123,14 @@ def extract_text_within_box(text):
                 return clean_text(''.join(result))
 
         result.append(char)
+
+def extract_steps(text, final_response=""):
+    all_steps_list = [x.strip().strip("#").strip() for x in re.findall(r"(Step \d+:.*?)(?=Step \d+:|$)", text, re.DOTALL)]
+    combined_answer = ""
+    if final_response:
+        answer = re.findall(r"(" + final_response + r":.*?)(?=Step \d+:|$)", text, re.DOTALL)
+        combined_answer = "\n".join(answer)
+    return all_steps_list, combined_answer
 
 def pprint(text):
     if isinstance(text, list):

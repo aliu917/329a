@@ -29,30 +29,31 @@ class TeacherLMAgent():
             {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
             {"role": "user", "content": prompt}
         ]
+        if self.log_dir:
+            with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "w") as f:
+                f.write(prompt)
         response = generate_openai(messages=messages, model=self.model, temperature=self.generation_temp)
         if self.log_dir:
-            with open(f"{self.log_dir}/teacher_prompt{str(self.log_idx)}.txt", "w") as f:
-                f.write(prompt)
-            with open(f"{self.log_dir}/teacher_response{str(self.log_idx)}.txt", "w") as f:
-                f.write(response)
+            with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "a") as f:
+                f.write("-"*50 + "\n" + response)
             self.log_idx += 1
         return response
 
     def generate(self, question, student_steps, answer_steps, history=None, prompt_func=teacher_default_prompt):
         # TODO: remove predicting correct, we don't use it now
         correct = False
-        feedback = ""
+        result = ""
         if prompt_func is None:
             prompt_func = teacher_default_prompt
-        while not correct and not feedback:
+        while not correct and not result:
             prompt = prompt_func(question, student_steps, answer_steps, history)
             result = self._generate(prompt)
-            correct, feedback = result.split("Feedback:")
-            correct = "yes" in correct.lower()
-            feedback = feedback.strip()
+            # correct, feedback = result.split("Feedback:")
+            # correct = "yes" in correct.lower()
+            # feedback = feedback.strip()
             # TODO: confirm that feedback does not give away the solution, else empty.
 
-        return correct, feedback
+        return correct, result
     
     def evaluate(self, x, pred, label, history=None, prompt_func=None):
         is_correct = verifier(pred, label)
