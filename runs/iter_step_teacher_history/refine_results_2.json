@@ -1,0 +1,15 @@
+[
+  {
+    "question": "Each of the \\$100\\$ students in a certain summer camp can either sing, dance, or act. Some students have more than one talent, but no student has all three talents. There are \\$42\\$ students who cannot sing, \\$65\\$ students who cannot dance, and \\$29\\$ students who cannot act. How many students have two of these talents?\n\\$\\textbf{(A)}\\ 16\\qquad\\textbf{(B)}\\ 25\\qquad\\textbf{(C)}\\ 36\\qquad\\textbf{(D)}\\ 49\\qquad\\textbf{(E)}\\ 64\\$",
+    "answer": "\\textbf{(e)}64",
+    "pred": "64",
+    "label_round": 1,
+    "round": 1,
+    "correct": 1,
+    "prev_feedback": "",
+    "feedback": "Student was correct",
+    "pred_steps": "Step 0: Define the variables. Let \\(S\\), \\(D\\), and \\(A\\) be the number of students who can sing, dance, and act, respectively. We are asked to find the number of students who have exactly two of these talents.\n\nStep 1: Calculate the number of students who can sing, dance, and act. Since there are 100 students in total:\n- \\(42\\) students cannot sing, so \\(S = 100 - 42 = 58\\).\n- \\(65\\) students cannot dance, so \\(D = 100 - 65 = 35\\).\n- \\(29\\) students cannot act, so \\(A = 100 - 29 = 71\\).\n\nStep 2: Use the principle of inclusion-exclusion to find the total number of students who have at least one of the talents:\n\\[S + D + A - (SD + SA + DA) + N = 100\\]\nHere, \\(N\\) is the number of students who have all three talents. Since no student has all three talents, \\(N = 0\\). Therefore, the equation simplifies to:\n\\[S + D + A - (SD + SA + DA) = 100\\]\n\nStep 3: Substitute the values of \\(S\\), \\(D\\), and \\(A\\):\n\\[58 + 35 + 71 - (SD + SA + DA) = 100\\]\n\\[164 - (SD + SA + DA) = 100\\]\n\\[SD + SA + DA = 64\\]\n\nThe number of students who have exactly two of these talents is \\(SD + SA + DA\\), which is \\(64\\).\n\nFinal answer: \\(\\boxed{64}\\)",
+    "answer_steps": "Step 0: Define the total number of students as \\$100\\$. Denote the number of students who cannot sing as \\$42\\$, those who cannot dance as \\$65\\$, and those who cannot act as \\$29\\$.\n\nStep 1: Calculate the number of students who can sing: \\$100 - 42 = 58\\$ students.\n\nStep 2: Calculate the number of students who can dance: \\$100 - 65 = 35\\$ students.\n\nStep 3: Calculate the number of students who can act: \\$100 - 29 = 71\\$ students.\n\nStep 4: Add the number of students who can sing, dance, or act: \\$58 + 35 + 71 = 164\\$ students. This sum counts students with multiple talents more than once.\n\nStep 5: Recognize that there are no students with all three talents or none at all, which means we are only considering students with either one or two talents.\n\nStep 6: Since there are \\$100\\$ students in total, subtract the total from the previous step to find the number of students with two talents: \\$164 - 100 = 64\\$ students.\n\nFinal answer: \\(\\boxed{64}\\)",
+    "answer_in_feedback": false
+  }
+]
