@@ -23,6 +23,7 @@ class TeacherLMAgent():
         self.generation_temp = generation_temp
         self.log_dir = log_dir
         self.log_idx = 0
+        self.successful_results = []
 
     def _generate(self, prompt):
         messages = [
@@ -79,3 +80,6 @@ class TeacherLMAgent():
         label_answer = extract_text_within_box(label)
         teacher_eval_correct, feedback = self.generate(x, pred, label)
         return pred_answer == label_answer or teacher_eval_correct, pred_answer, label_answer, feedback
+
+    def save_successful_result(self, feedback):
+        self.successful_results.append(feedback)

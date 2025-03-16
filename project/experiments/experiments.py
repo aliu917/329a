@@ -143,7 +143,7 @@ class IterativeStepBasedRefine(Experiment):
             yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot))
 
     def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
-        return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1
+        return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1, ""
 
     def get_results(self):
         base_results = []
@@ -157,6 +157,8 @@ class IterativeStepBasedRefine(Experiment):
             base_result = {"question": x}
             result = base_result
             numerical_answer = str(data["answer"].item())
+            prev_pred_steps = ""
+            prev_teacher_response = ""
 
             iter_results = []
             # Iterator is only for AIME case of multiple label approaches
@@ -165,6 +167,8 @@ class IterativeStepBasedRefine(Experiment):
                 label_steps_list, extract_answer = extract_steps(y_steps, r"[Aa]nswer")
                 if not answer:
                     answer = extract_text_within_box(extract_answer)
+                    if not answer:
+                        answer = extract_answer.strip()
                 prev_responses = []
                 prev_feedbacks = []
                 prev_feedback = ""
@@ -178,7 +182,7 @@ class IterativeStepBasedRefine(Experiment):
                         is_correct = verifier(response, all_y) or verifier(response, numerical_answer)
                         if is_correct:
                             break
-                    feedback, prev_feedback_step = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
+                    feedback, prev_feedback_step, teacher_response = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
 
                     pred = extract_text_within_box(response)
                     result.update({
@@ -210,9 +214,22 @@ class IterativeStepBasedRefine(Experiment):
 
                     # Early return because correct
                     if is_correct:
+
+                        # Teacher logging for history-based teacher prompt. See TeacherIterativeStepBasedRefineWithHistory
+                        if prev_pred_steps and prev_teacher_response:
+                            teacher_result = result.copy()
+                            teacher_result.update({
+                                "teacher_response": prev_teacher_response,
+                                "prev_pred_steps" : prev_pred_steps,
+                            })
+                            self.teacher.save_successful_result(teacher_result)
+
                         print(f"Early stopped from correct feedback at iteration {refine_round + 1}/{str(len(label_steps_list)-1)}!")
                         # print("Feedback: ", prev_feedback)
                         break
+
+                    prev_pred_steps = response
+                    prev_teacher_response = teacher_response
 
                     # Early return because cannot give more feedback without giving away answer
                     # if prev_feedback_step >= len(label_steps_list)*self.limit - 1 and str(answer) in feedback:
@@ -245,9 +262,9 @@ class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
         response_steps_list, _ = extract_steps(response)
 
         if is_correct:
-            return "Student was correct", 1
+            return "Student was correct", 1, ""
         if len(prev_feedbacks) + 1 == len(y_steps_list):
-            return "Last feedback round unneeded", 1
+            return "Last feedback round unneeded", 1, ""
 
         # Find first teacher step concept missing from the student
         _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list), prompt_func=prompts.teacher_step_prompt)
@@ -263,4 +280,35 @@ class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
         except Exception as e:
             print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
             print("Error: ", e)
-        return feedback, int(step)
+        return feedback, int(step), response
+
+
+class TeacherIterativeStepBasedRefineWithHistory(IterativeStepBasedRefine):
+    """
+    Adds two additional changes on top of teacher iterative step:
+        1. provides the entire history of student and teacher attempts for the same problem to help the teacher learn/refine
+        2. adds all previously successful teacher results in the example prompt
+    """
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        response_steps_list, _ = extract_steps(response)
+
+        if is_correct:
+            return "Student was correct", 1, ""
+        if len(prev_feedbacks) + 1 == len(y_steps_list):
+            return "Last feedback round unneeded", 1, ""
+
+        # Find first solution step concept missing from the student
+        _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list), history=(prev_feedbacks, prev_responses, self.teacher.successful_results), prompt_func=prompts.refine_teacher_step_prompt)
+        feedback = ""
+        step = 1
+        try:
+            steps_list, feedback = extract_steps(response, r"[Ff]eedback")
+            try:
+                step = re.findall(r"Step (\d+):", steps_list[-1])[0]
+            except Exception as e:
+                print("Could not extract step number")
+                step = 1
+        except Exception as e:
+            print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
+            print("Error: ", e)
+        return feedback, int(step), response
