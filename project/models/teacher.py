@@ -59,17 +59,18 @@ class TeacherLMAgent():
         is_correct = verifier(pred, label)
         pred_answer = extract_text_within_box(pred)
         label_answer = extract_text_within_box(label)
-        if history:
-            current_round = {
-                "round": history[-1]["round"] + 1,
-                "prev_feedback": history[-1]["feedback"],
-                "pred_steps": pred,
-                "correct": is_correct,
-            }
-            history = history + [current_round]
-            _, feedback = self.generate(x, pred, label, history, prompt_func=prompt_func)
-        else:
-            _, feedback = self.generate(x, pred, label, prompt_func=prompt_func)
+        feedback = ""
+        # if history:
+        #     current_round = {
+        #         "round": history[-1]["round"] + 1,
+        #         "prev_feedback": history[-1]["feedback"],
+        #         "pred_steps": pred,
+        #         "correct": is_correct,
+        #     }
+        #     history = history + [current_round]
+        #     _, feedback = self.generate(x, pred, label, history, prompt_func=prompt_func)
+        # else:
+        #     _, feedback = self.generate(x, pred, label, prompt_func=prompt_func)
         return is_correct, pred_answer, label_answer, feedback
     
     def evaluate_old(self, x, pred, label):

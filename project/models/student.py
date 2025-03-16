@@ -1,4 +1,4 @@
-from project.utils import generate_together
+from project.utils import generate_together, generate_openai
 
 
 def student_default_prompt(problem, feedback="", history=""):
@@ -44,7 +44,10 @@ class StudentLMAgent:
         if self.log_dir and self.log_idx < self.max_log:
             with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
-        response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
+        if "gpt" in self.model:
+            response = generate_openai(messages=messages, model=self.model, temperature=self.generation_temp)
+        else:
+            response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
         if self.log_dir and self.log_idx < self.max_log:
             with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "a") as f:
                 f.write("-"*50 + "\n" + response)

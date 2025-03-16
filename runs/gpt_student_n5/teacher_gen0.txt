@@ -1,0 +1,99 @@
+You are given a reasoning attempt for answering the following question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Attempt: To solve the problem, we will apply the concept of similar triangles that arise from the configuration described.
+
+Given a quadrilateral \(ABCD\) with the extensions and intersections as described, we know:
+
+- \(PQ = 735\)
+- \(QR = 112\)
+
+We need to find the length \(RC\).
+
+Let's denote the lengths as follows:
+- \(RC = x\)
+
+From the points where the lines intersect, we can see that triangles \(PQR\) and \(RBC\) are similar. This similarity arises from the fact that they share angle \(R\) and have corresponding angles at \(Q\) and \(C\) since lines \(PQ\) and \(RC\) are extended.
+
+Using the property of similar triangles, we have the following proportion based on the sides of the triangles:
+
+\[
+\frac{PQ}{QR} = \frac{QR}{RC}
+\]
+
+Substituting the known values, we have:
+
+\[
+\frac{735}{112} = \frac{112}{x}
+\]
+
+Cross-multiplying gives:
+
+\[
+735 \cdot x = 112 \cdot 112
+\]
+
+Calculating \(112^2\):
+
+\[
+112^2 = 12544
+\]
+
+Now we have:
+
+\[
+735x = 12544
+\]
+
+To find \(x\), we divide both sides by 735:
+
+\[
+x = \frac{12544}{735}
+\]
+
+Now, we will simplify the fraction. First, we can calculate \(12544 \div 735\). Performing the division, we find:
+
+\[
+x = 17.1
+\]
+
+However, since we need to express \(RC\) in the simplest form, we will simplify it:
+
+Calculating the greatest common divisor (GCD) using the Euclidean algorithm:
+
+1. \(12544\) and \(735\) do not have any common factors, thus we can conclude that \(RC\) is already in simplest form.
+
+Finally, we find:
+
+\[
+RC \approx 17
+\]
+
+Thus, the length \(RC\) is:
+
+\[
+\boxed{17}
+\]
+
+Correct solution: =
+There are several . \$\triangle PAQ\sim \triangle PDC\$, so we can write the :
+<div style="text-align:center;">
+\$\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + RC} = \frac{735}{847 + RC}\$
+</div>
+Also, \$\triangle BRQ\sim DRC\$, so:
+<div style="text-align:center;">
+\$\frac{QR}{RC} = \frac{QB}{CD} = \frac{112}{RC} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}\$<br />
+\$\frac{AQ}{CD} = 1 - \frac{112}{RC} = \frac{RC - 112}{RC}\$
+</div>
+Substituting,
+<div style="text-align:center;">
+\$\frac{AQ}{CD} = \frac{735}{847 + RC} = \frac{RC - 112}{RC}\$<br />
+\$735RC = (RC + 847)(RC - 112)\$<br />
+\$0 = RC^2 - 112\cdot847\$
+</div>
+Thus, \$ RC = \sqrt{112*847} = 308\$.
+=
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.--------------------------------------------------
+Correct: no  
+Feedback: When solving problems involving similar triangles, it's crucial to clearly establish the ratios of corresponding sides and ensure that all necessary relationships are accounted for. In this case, the reasoning should incorporate all relevant ratios derived from the triangles formed and ensure that the correct expressions for the sides are used. Additionally, careful attention should be given to algebraic manipulations and simplifications to avoid mistakes in determining the final values.
