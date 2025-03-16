@@ -1,0 +1,61 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Triangle \$ABC\$ has \$AB=27\$, \$AC=26\$, and \$BC=25\$.  Let \$I\$ be the intersection of the internal angle bisectors of \$\triangle ABC\$.  What is \$BI\$?
+\$ \textbf{(A)}\ 15\qquad\textbf{(B)}\ 5+\sqrt{26}+3\sqrt{3}\qquad\textbf{(C)}\ 3\sqrt{26}\qquad\textbf{(D)}\ \frac{2}{3}\sqrt{546}\qquad\textbf{(E)}\ 9\sqrt{3} \$
+
+Solution chain-of-thought reasoning: Inscribe circle \$C\$ of radius \$r\$ inside triangle \$ABC\$ so that it meets \$AB\$ at \$Q\$, \$BC\$ at \$R\$, and \$AC\$ at \$S\$. Note that angle bisectors of triangle \$ABC\$ are concurrent at the center \$O\$(also \$I\$) of circle \$C\$. Let \$x=QB\$, \$y=RC\$ and \$z=AS\$. Note that \$BR=x\$, \$SC=y\$ and \$AQ=z\$. Hence \$x+z=27\$, \$x+y=25\$, and \$z+y=26\$. Subtracting the last 2 equations we have \$x-z=-1\$ and adding this to the first equation we have \$x=13\$.
+By Heron's formula for the area of a triangle we have that the area of triangle \$ABC\$ is \$\sqrt{39(14)(13)(12)}\$. On the other hand the area is given by \$(1/2)25r+(1/2)26r+(1/2)27r\$.  Then \$39r=\sqrt{39(14)(13)(12)}\$ so that \$r^2=56\$.
+Since the radius of circle \$O\$ is perpendicular to \$BC\$ at \$R\$, we have by the pythagorean theorem \$BO^2=BI^2=r^2+x^2=56+169=225\$ so that \$BI=\boxed{\textbf{(A) } 15}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Inscribe circle \$C\$ of radius \$r\$ inside triangle \$ABC\$ so that it meets \$AB\$ at \$Q\$, \$BC\$ at \$R\$, and \$AC\$ at \$S\$.
+
+Step 1: The angle bisectors of triangle \$ABC\$ are concurrent at the center \$O\$ (also \$I\$) of circle \$C\$.
+
+Step 2: Let \$x=QB\$, \$y=RC\$, and \$z=AS\$.
+
+Step 3: Establish relationships based on the lengths of the sides: \$x + z = 27\$, \$x + y = 25\$, and \$z + y = 26\$.
+
+Step 4: Subtract the last two equations: \$x - z = -1\$.
+
+Step 5: Add this result to the first equation: \$x = 13\$.
+
+Step 6: Use Heron's formula to find the area of triangle \$ABC\$: \$\text{Area} = \sqrt{39(14)(13)(12)}\$.
+
+Step 7: The area can also be expressed as \$(1/2) \cdot 25r + (1/2) \cdot 26r + (1/2) \cdot 27r = 39r\$.
+
+Step 8: Set the two area expressions equal: \$39r = \sqrt{39(14)(13)(12)}\$.
+
+Step 9: Solve for \$r^2\$ to find that \$r^2 = 56\$.
+
+Step 10: Since the radius of circle \$O\$ is perpendicular to \$BC\$ at \$R\$, apply the Pythagorean theorem: \$BO^2 = BI^2 = r^2 + x^2 = 56 + 169 = 225\$.
+
+Step 11: Find \$BI\$ by taking the square root of \$225$: \$BI = 15\$.
+
+Final answer: \(\boxed{15}\)
