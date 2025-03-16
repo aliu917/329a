@@ -10,11 +10,12 @@ from ..utils import extract_text_within_box, extract_steps
 verifier = verifiers.MATH500Verifier()
 import re
 
-def run_single(x, y, student, teacher, input_feedback, prompt_func=None):
+def run_single(question_data, y, student, teacher, input_feedback, prompt_func=None):
     # Student generation and evaluation
+    x = question_data["problem"][0]
     response = student.generate(x, feedback=input_feedback)
     correct, pred, answer, output_feedback = teacher.evaluate(
-        x, response, y, prompt_func=prompt_func
+        question_data, response, y, prompt_func=prompt_func
     )
     result = {
         "input_feedback": input_feedback,
@@ -46,7 +47,6 @@ class Experiment:
             self.results_path = None
     
     def run(self):
-        torch.manual_seed(self.seed)
         results = self.get_results()
         print("Accuracy:", np.mean([r["correct"] for r in results]))
         if self.results_path:
@@ -57,9 +57,8 @@ class Base(Experiment):
     def get_results(self):
         results = []
         for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
-            x = data["problem"][0]
             y = labels[0]
-            result = run_single(x, y, self.student, self.teacher, "")
+            result = run_single(data, y, self.student, self.teacher, "")
             results.append(result)
         return results
 
@@ -72,9 +71,8 @@ class BestOfN(Experiment):
         results = []
         for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
             for _ in range(self.n_rounds):
-                x = data["problem"][0]
                 y = labels[0]
-                result = run_single(x, y, self.student, self.teacher, "")
+                result = run_single(data, y, self.student, self.teacher, "")
                 if result["correct"]:
                     break
             results.append(result)
@@ -84,11 +82,10 @@ class SingleRound(Experiment):
     def get_results(self):
         results = []
         for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
-            x = data["problem"][0]
             y = labels[0]
-            result = run_single(x, y, self.student, self.teacher, "")
+            result = run_single(data, y, self.student, self.teacher, "")
             feedback = result["output_feedback"]
-            result = run_single(x, y, self.student, self.teacher, feedback)
+            result = run_single(data, y, self.student, self.teacher, feedback)
             results.append(result)
         return results
 
@@ -107,7 +104,7 @@ class IterativeRefine(Experiment):
             for refine_round in range(self.n_rounds):
                 response = self.student.generate(x, feedback=prev_feedback)
                 correct, pred, answer, feedback = self.teacher.evaluate(
-                    x,
+                    data,
                     response,
                     y,
                     history=history,
@@ -134,10 +131,10 @@ class IterativeRefine(Experiment):
 
 
 class IterativeStepBasedRefine(Experiment):
-    def __init__(self, *args, n_rounds=5, limit=0.8, **kwargs):
+    def __init__(self, *args, trials=3, limit=0.8, **kwargs):
         super().__init__(*args, **kwargs)
-        self.n_rounds = n_rounds
         self.limit = limit
+        self.trials = trials
 
     def label_steps_generator(self, q, label_cot):
         label_approaches = label_cot.split("=== Solution")
@@ -159,6 +156,7 @@ class IterativeStepBasedRefine(Experiment):
             first = True
             base_result = {"question": x}
             result = base_result
+            numerical_answer = str(data["answer"].item())
 
             iter_results = []
             # Iterator is only for AIME case of multiple label approaches
@@ -174,9 +172,12 @@ class IterativeStepBasedRefine(Experiment):
 
                 for refine_round in range(len(label_steps_list)):
                     result = base_result
-
-                    response = self.student.generate(x, prompt_func=prompts.student_step_func, feedback=prev_feedback)
-                    is_correct = verifier(response, all_y)
+                    for _ in range(self.trials):
+                        response = self.student.generate(x, prompt_func=prompts.student_step_func, feedback=prev_feedback)
+                        # Compare to numerical answer for AMC questions
+                        is_correct = verifier(response, all_y) or verifier(response, numerical_answer)
+                        if is_correct:
+                            break
                     feedback, prev_feedback_step = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
 
                     pred = extract_text_within_box(response)
@@ -214,6 +215,7 @@ class IterativeStepBasedRefine(Experiment):
                         break
 
                     # Early return because cannot give more feedback without giving away answer
+                    # if prev_feedback_step >= len(label_steps_list)*self.limit - 1 and str(answer) in feedback:
                     if prev_feedback_step >= len(label_steps_list)*self.limit - 1:
                         break
 

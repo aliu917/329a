@@ -57,8 +57,9 @@ class TeacherLMAgent():
 
         return correct, result
     
-    def evaluate(self, x, pred, label, history=None, prompt_func=None):
-        is_correct = verifier(pred, label)
+    def evaluate(self, question_data, pred, label, history=None, prompt_func=None):
+        x = question_data["problem"][0]
+        is_correct = verifier(pred, label) or verifier(pred, str(question_data["answer"].item()))
         pred_answer = extract_text_within_box(pred)
         label_answer = extract_text_within_box(label)
         feedback = ""
