@@ -60,7 +60,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", "-d", type=str, default=None)
     parser.add_argument("--log_dir", "-l", type=str, default=None)
     parser.add_argument("--train_result_path", "-f", type=str, default=None)
-    parser.add_argument("--keys", "-k", type=str, default="answer_steps")
+    parser.add_argument("--keys", "-k", type=str, default="")
     parser.add_argument("--mode", "-m", type=str, default="test")
     parser.add_argument("--num_eval_samples", "-n", type=int, default=10)
     parser.add_argument("--num_context_examples", "-c", type=int, default=10)
