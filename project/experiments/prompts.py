@@ -169,9 +169,8 @@ def build_next_student_example(result_dict, keys):
     return "\n\n".join(all_elems)
 
 
-def get_eval_student_context(result_path, keys, num_samples=10):
-    with open(result_path, "r") as file:
-        train_result_data = json.load(file)[:num_samples]
+def get_eval_student_context(result_data, keys, num_samples=10):
+    train_result_data = result_data[:num_samples]
 
     all_examples = [build_next_student_example(d, keys) for d in train_result_data]
     all_examples_str = "\n\n".join(all_examples)

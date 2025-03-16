@@ -54,7 +54,7 @@ class AIMEDataset(Dataset):
         self.file_path = Path(f"{dir}/{file_path}")
         data = pd.read_csv(self.file_path)
         # self.data, val_df = train_test_split(data, test_size=0.2, random_state=42)
-        data.sample(frac=1, random_state=42).reset_index(drop=True)
+        data = data.sample(frac=1, random_state=42).reset_index(drop=True)
         split = int(0.8 * len(data))
         if mode == "train":
             self.data = data[:split]
