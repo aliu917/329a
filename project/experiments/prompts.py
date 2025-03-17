@@ -322,3 +322,323 @@ Do not mention in the feedback what the student did wrong, only mention correct 
 
 Response:
 """
+
+
+
+def targeted_step_feedback_prompt(question, student_attempt, reference_solution, history=None):
+    """
+    Prompt designed to elicit more targeted and specific feedback from the teacher.
+    Focuses on identifying the precise error and providing a specific hint.
+    
+    Args:
+        question: The math problem
+        student_attempt: The student's current solution attempt
+        reference_solution: The correct step-by-step solution
+        history: Optional history of previous attempts and feedback
+        
+    Returns:
+        A prompt string
+    """
+    history_str = ""
+    if history:
+        history_entries = []
+        for i, entry in enumerate(history):
+            if "pred_steps" in entry and "prev_feedback" in entry:
+                history_entries.append(f"""
+Attempt {i+1}:
+{entry['pred_steps']}
+
+Feedback provided:
+{entry['prev_feedback']}
+""")
+        if history_entries:
+            history_str = "\n\nPrevious attempts and feedback:\n" + "\n".join(history_entries)
+    
+    return f"""Analyze this student's math solution attempt and provide specific targeted feedback:
+
+QUESTION:
+{question}
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+{student_attempt}
+
+REFERENCE SOLUTION:
+{reference_solution}
+{history_str}
+
+Your task is to identify PRECISELY where the student's reasoning first goes wrong and provide targeted feedback.
+
+1. Identify which specific step or concept in the reference solution is missing or incorrect in the student's work.
+2. Determine the exact nature of the error (conceptual misunderstanding, procedural mistake, or calculation error).
+3. Provide targeted feedback that guides the student toward the correct approach WITHOUT revealing the solution.
+
+Your feedback should:
+- Point to the specific error without giving away the answer
+- Explain the underlying concept/principle the student is missing
+- Provide a hint that guides them in the right direction
+- Be specific enough to be actionable
+- Never reveal the final answer or complete solution
+
+Format your response as:
+"Step X: [Identify the specific step number where intervention is needed]
+Error: [Brief description of what went wrong]
+Feedback: [Your targeted guidance to help the student correct their approach]"
+"""
+
+def concept_focused_feedback_prompt(question, student_attempt, reference_solution, history=None):
+    """
+    Prompt designed to focus feedback on conceptual understanding rather than calculations.
+    Emphasizes core mathematical principles and problem-solving strategies.
+    
+    Args:
+        question: The math problem
+        student_attempt: The student's current solution attempt
+        reference_solution: The correct step-by-step solution
+        history: Optional history of previous attempts and feedback
+        
+    Returns:
+        A prompt string
+    """
+    return f"""Analyze this student's math solution attempt with a focus on conceptual understanding:
+
+QUESTION:
+{question}
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+{student_attempt}
+
+REFERENCE SOLUTION:
+{reference_solution}
+
+Your task is to identify any conceptual misunderstandings in the student's work and provide feedback that strengthens their understanding of the core mathematical principles involved.
+
+Focus on:
+1. Key mathematical concepts needed to solve this problem
+2. Fundamental principles the student may have misunderstood
+3. Problem-solving strategies that would lead to a correct solution
+
+Your feedback should:
+- Emphasize conceptual understanding over calculation details
+- Connect this problem to relevant mathematical principles
+- Provide an insight or perspective that helps the student see the problem differently
+- Guide the student to approach the problem more effectively
+- Never reveal the complete solution or final answer
+
+Format your response as:
+"Key Concept: [Identify the core mathematical concept needed]
+Conceptual Feedback: [Your guidance on understanding and applying this concept]
+Next Step: [Specific suggestion for how to proceed]"
+"""
+
+def step_validation_feedback_prompt(question, student_attempt, reference_solution, history=None):
+    """
+    Prompt designed to validate each step of the student's work and identify the first error.
+    Provides targeted feedback on that specific error while acknowledging correct work.
+    
+    Args:
+        question: The math problem
+        student_attempt: The student's current solution attempt
+        reference_solution: The correct step-by-step solution
+        history: Optional history of previous attempts and feedback
+        
+    Returns:
+        A prompt string
+    """
+    return f"""Analyze this student's math solution by validating each step:
+
+QUESTION:
+{question}
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+{student_attempt}
+
+REFERENCE SOLUTION:
+{reference_solution}
+
+Your task is to:
+1. Validate each step of the student's solution one by one
+2. Identify the FIRST point where their reasoning diverges from the correct path
+3. Provide specific feedback on that error while acknowledging what they did correctly
+
+Your feedback should:
+- First acknowledge what steps the student performed correctly
+- Identify precisely where their solution first went wrong
+- Explain why that specific step is problematic
+- Suggest a better approach for that particular step
+- Never reveal the complete solution or final answer
+
+Format your response as:
+"Correct Steps: [List the steps or reasoning that are correct]
+First Error at Step X: [Identify where the solution first goes wrong]
+Feedback: [Your targeted guidance to help correct this specific error]"
+"""
+
+def progressive_hint_prompt(question, student_attempt, reference_solution, prev_feedback_step):
+    """
+    Prompt designed to provide progressive hints based on the current step.
+    Reveals slightly more information with each iteration but never the full solution.
+    
+    Args:
+        question: The math problem
+        student_attempt: The student's current solution attempt
+        reference_solution: The correct step-by-step solution
+        prev_feedback_step: The step number reached in previous feedback
+        
+    Returns:
+        A prompt string
+    """
+    return f"""Provide a progressive hint for this student's math solution attempt:
+
+QUESTION:
+{question}
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+{student_attempt}
+
+REFERENCE SOLUTION:
+{reference_solution}
+
+The student has received feedback up through step {prev_feedback_step}. Your task is to provide a progressive hint for the next step without giving away the complete solution.
+
+Your progressive hint should:
+- Build upon what the student already knows
+- Reveal slightly more information than previous hints
+- Guide them toward the next logical step in the solution process
+- Be specific enough to be helpful, but not so specific that it solves the problem for them
+- Never reveal the final answer
+
+Format your response as:
+"Step {prev_feedback_step + 1}: [A hint for this specific step in the solution process]"
+"""
+
+def self_critique_prompt(question, student_attempt, reference_solution, prev_attempts, prev_feedbacks):
+    """
+    Prompt designed for self-critique of previous feedback effectiveness.
+    Analyzes what worked and what didn't, then generates improved feedback.
+    
+    Args:
+        question: The math problem
+        student_attempt: The student's current solution attempt
+        reference_solution: The correct step-by-step solution
+        prev_attempts: List of previous student attempts
+        prev_feedbacks: List of previous feedback provided
+        
+    Returns:
+        A prompt string
+    """
+    history = ""
+    for i, (attempt, feedback) in enumerate(zip(prev_attempts, prev_feedbacks)):
+        history += f"""
+ROUND {i+1}:
+Student Attempt: 
+{attempt}
+
+Feedback Provided:
+{feedback}
+"""
+    
+    return f"""Review and improve your feedback approach for this math problem:
+
+QUESTION:
+{question}
+
+HISTORY OF FEEDBACK AND ATTEMPTS:
+{history}
+
+CURRENT STUDENT ATTEMPT:
+{student_attempt}
+
+REFERENCE SOLUTION:
+{reference_solution}
+
+First, critique your previous feedback:
+1. What aspects of your feedback were effective?
+2. What aspects were ineffective or misunderstood by the student?
+3. How has the student's understanding evolved across attempts?
+4. What feedback approach would be more effective now?
+
+Then, generate improved feedback that:
+- Addresses specific errors in the current attempt
+- Takes a different approach for concepts they're still struggling with
+- Focuses on the earliest point where reasoning diverges from the correct solution
+- Never reveals the complete solution or final answer
+
+Format your response as:
+"Self-Critique: [Your analysis of previous feedback effectiveness]
+Improved Feedback: [Your refined guidance based on this analysis]"
+"""
+
+
+def enhanced_teacher_step_prompt(question, student, label, history=None):
+    """
+    An enhanced version of the teacher_step_prompt that provides more targeted and specific feedback.
+    This prompt is designed to:
+    
+    1. Identify the exact step where the student went wrong
+    2. Determine the type of error (conceptual, procedural, calculation)
+    3. Provide specific feedback that addresses that error
+    4. Guide without revealing the solution
+    
+    Args:
+        question: The math problem
+        student: The student's solution attempt
+        label: The correct step-by-step solution
+        history: Optional history of previous attempts
+        
+    Returns:
+        A prompt string for the teacher
+    """
+    history_context = ""
+    if history:
+        # Format history into a readable context
+        history_text = []
+        for i, entry in enumerate(history):
+            if isinstance(entry, dict) and 'pred_steps' in entry and 'prev_feedback' in entry:
+                history_text.append(f"""
+Previous Attempt {i+1}:
+{entry['pred_steps']}
+
+Feedback Given:
+{entry['prev_feedback']}
+""")
+        if history_text:
+            history_context = "\n\nPrevious interaction history:\n" + "\n".join(history_text)
+    
+    return f"""You are an expert math tutor analyzing a student's solution attempt. Your goal is to provide precise, targeted feedback that helps them correct their reasoning without giving away the answer.
+
+QUESTION:
+{question}
+
+STUDENT'S SOLUTION ATTEMPT:
+{student}
+
+CORRECT SOLUTION:
+{label}
+{history_context}
+
+Your task:
+1. Carefully analyze both the student's solution and the correct solution step-by-step.
+2. Identify the FIRST specific step where the student's reasoning deviates from the correct approach.
+3. Determine the type of error:
+   - Conceptual error: Misunderstanding of a mathematical concept
+   - Procedural error: Using the right concept but wrong procedure/approach
+   - Calculation error: Simple arithmetic or algebraic manipulation mistake
+
+4. Provide targeted feedback that:
+   - Identifies the exact location of the error in their work
+   - Explains why their approach is problematic
+   - Guides them toward the correct approach WITHOUT revealing the answer
+   - Includes a specific hint or question that leads them to discover the correct step
+   - NEVER gives away the complete solution or final answer
+
+FORMAT YOUR RESPONSE AS:
+Step X: [The specific step number where the error occurs]
+Error Type: [conceptual/procedural/calculation]
+Feedback: [Your detailed guidance on fixing the error]
+
+Remember:
+- Focus on the EARLIEST error in their solution
+- Be precise and specific about what went wrong
+- Provide actionable guidance that promotes understanding
+- Guide but don't solve it for them
+"""

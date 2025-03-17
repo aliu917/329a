@@ -262,3 +262,439 @@ class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
             print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
             print("Error: ", e)
         return feedback, int(step)
+
+
+
+class EnhancedTeacherRefine(TeacherIterativeStepBasedRefine):
+    """
+    Enhanced teacher that focuses on specifically identifying error points in student reasoning
+    and provides targeted feedback to correct misconceptions without revealing the solution.
+    
+    Key improvements:
+    1. More precise error identification
+    2. Error categorization (conceptual, procedural, or calculation)
+    3. Targeted hint generation
+    4. Progress tracking across multiple attempts
+    """
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.error_categories = ["conceptual", "procedural", "calculation"]
+        
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        response_steps_list, _ = extract_steps(response)
+        
+        if is_correct:
+            return "Student was correct", 1
+        if len(prev_feedbacks) + 1 == len(y_steps_list):
+            return "Last feedback round unneeded", 1
+            
+        # Current student attempt history to track progress
+        attempt_history = ""
+        if prev_responses:
+            attempt_history = "\n\nPrevious attempts and feedback:\n" + "\n".join([
+                f"Attempt {i+1}:\n{resp}\n\nFeedback provided:\n{fb}"
+                for i, (resp, fb) in enumerate(zip(prev_responses, prev_feedbacks))
+            ])
+        
+        y_steps_list = {"\n".join(y_steps_list)}
+        # Enhanced prompt for targeted feedback
+        enhanced_prompt = f"""Analyze this student's math solution attempt:
+
+QUESTION:
+{x}
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+{response}
+
+REFERENCE SOLUTION STEPS:
+{y_steps_list}
+{attempt_history}
+
+Your task is to identify PRECISELY where the student's reasoning first deviates from the correct solution path.
+
+1. First, identify which step of the REFERENCE SOLUTION is first missing or incorrect in the student's work.
+2. Determine the specific error type:
+   - Conceptual error: Fundamental misunderstanding of a concept
+   - Procedural error: Correct concept but wrong procedure/approach
+   - Calculation error: Arithmetic mistake or algebraic manipulation error
+
+3. Provide targeted feedback that:
+   - Points to the specific error without revealing the complete correct step
+   - Explains the underlying concept/principle the student is missing
+   - Guides them toward the correct approach with a hint
+   - NEVER reveals the final answer
+
+FORMAT YOUR RESPONSE EXACTLY LIKE THIS:
+Step X: [Step number where error first occurs]
+Error Type: [conceptual/procedural/calculation]
+Feedback: [Your detailed guidance on fixing the error]
+"""
+        
+        # Generate enhanced feedback
+        _, response = self.teacher.generate(
+            x,
+            feedback=enhanced_prompt,
+            history=None,
+            prompt_func=None
+        )
+        
+        # Extract the step number and feedback
+        feedback = response
+        step = prev_feedback_step
+        
+        try:
+            # Extract step number
+            step_match = re.search(r"Step (\d+):", response)
+            if step_match:
+                step = int(step_match.group(1))
+            
+            # If unable to extract step properly, use the next step from previous feedback
+            if not step_match:
+                step = prev_feedback_step + 1
+                
+        except Exception as e:
+            print(f"Error extracting step information: {e}")
+            print(f"Using fallback step: {prev_feedback_step + 1}")
+            step = prev_feedback_step + 1
+        
+        return feedback, step
+
+
+
+class SelfRefiningTeacher(TeacherIterativeStepBasedRefine):
+    """
+    A teacher that learns from its own previous feedback attempts and refines its approach.
+    
+    This implementation follows your idea of incorporating self-refinement by:
+    1. Analyzing previous feedback effectiveness
+    2. Self-critiquing what worked and what didn't
+    3. Generating improved feedback based on this meta-analysis
+    """
+    
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        response_steps_list, _ = extract_steps(response)
+        
+        if is_correct:
+            return "Student was correct", 1
+        if len(prev_feedbacks) + 1 == len(y_steps_list):
+            return "Last feedback round unneeded", 1
+        
+        # For first attempt, use standard approach
+        if not prev_responses or not prev_feedbacks:
+            return super().step_feedback(x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
+        
+        # Create a timeline of student progress
+        progress_timeline = []
+        for i, (prev_resp, prev_fb) in enumerate(zip(prev_responses, prev_feedbacks)):
+            progress_timeline.append(f'''
+ROUND {i+1}:
+Student Attempt:
+{prev_resp}
+
+Feedback Provided:
+{prev_fb}
+''')
+        
+        progress_history = "\n".join(progress_timeline)
+        y_steps_list = "\n".join(y_steps_list)
+
+        
+        # Self-refinement prompt that includes meta-analysis
+        refine_prompt = f'''Review this interaction between a teacher and student on a math problem:
+
+ORIGINAL QUESTION:
+{x}
+
+CORRECT SOLUTION STEPS:
+{y_steps_list}
+
+HISTORY OF FEEDBACK AND ATTEMPTS:
+{progress_history}
+
+CURRENT STUDENT ATTEMPT:
+{response}
+
+First, analyze the effectiveness of your previous feedback:
+1. What aspects of your feedback worked well?
+2. What aspects didn't lead to improvement?
+3. Which concepts is the student still struggling with?
+4. What feedback strategy would work better now?
+
+Then, generate new refined feedback that:
+- Addresses specific errors in the current attempt
+- Builds on concepts the student has already mastered
+- Takes a different approach for concepts they're still struggling with
+- Focuses on the earliest point where reasoning diverges from the correct solution
+- Never reveals the complete solution or final answer
+
+FORMAT YOUR RESPONSE:
+Self-Analysis: [A brief analysis of previous feedback effectiveness]
+Step X: [The specific step number where intervention is needed]
+Refined Feedback: [Your improved feedback goes here]
+'''
+
+        # Generate self-refined feedback
+        _, response = self.teacher.generate(
+            x,
+            feedback=refine_prompt,
+            history=None,
+            prompt_func=None
+        )
+        
+        # Extract the step number and the refined feedback portion
+        feedback = response
+        step = prev_feedback_step
+        
+        try:
+            # Extract step number
+            step_match = re.search(r"Step (\d+):", response)
+            if step_match:
+                step = int(step_match.group(1))
+            
+            # If we can identify the "Refined Feedback:" section, extract just that part
+            refined_section = re.search(r"Refined Feedback:(.*?)(?:$|Step \d+:)", response, re.DOTALL)
+            if refined_section:
+                feedback = "Feedback: " + refined_section.group(1).strip()
+            
+            # If unable to extract properly, use the fallback
+            if not step_match:
+                step = prev_feedback_step + 1
+                
+        except Exception as e:
+            print(f"Error extracting refined feedback: {e}")
+            print(f"Using fallback step: {prev_feedback_step + 1}")
+            step = prev_feedback_step + 1
+        
+        return feedback, step
+
+
+
+class SpecializedTeacherRefine(TeacherIterativeStepBasedRefine):
+    """
+    A specialized teacher refinement experiment that implements both targeted feedback
+    and self-critique capabilities.
+    
+    This experiment enhances the teacher feedback by:
+    1. Precisely identifying the specific point where student reasoning deviates
+    2. Categorizing the error type (conceptual, procedural, calculation)
+    3. Providing targeted feedback specifically for that error
+    4. Learning from previous feedback attempts with self-critique
+    5. Progressively revealing more guidance without giving away the answer
+    
+    Can be used as a drop-in replacement for TeacherIterativeStepBasedRefine.
+    """
+    
+    def __init__(self, *args, use_self_critique=True, **kwargs):
+        """
+        Initialize the specialized teacher experiment.
+        
+        Args:
+            *args: Arguments to pass to TeacherIterativeStepBasedRefine
+            use_self_critique: Whether to use self-critique (for rounds after the first)
+            **kwargs: Keyword arguments to pass to TeacherIterativeStepBasedRefine
+        """
+        super().__init__(*args, **kwargs)
+        self.use_self_critique = use_self_critique
+    
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        """
+        Generate specialized step-based feedback using enhanced teacher strategies.
+        
+        Args:
+            x: The question
+            response: The student's current response
+            y_steps_list: List of correct solution steps
+            prev_responses: List of previous student responses
+            prev_feedbacks: List of previous feedback messages
+            prev_feedback_step: The step number reached in previous feedback
+            is_correct: Whether the current response is correct
+            
+        Returns:
+            Tuple of (feedback, step_number)
+        """
+        # No need for feedback if the student is correct
+        if is_correct:
+            return "Student was correct", 1
+            
+        # Check if we've reached the limit of feedback steps
+        if len(prev_feedbacks) + 1 == len(y_steps_list):
+            return "Last feedback round unneeded", 1
+        
+        # First attempt - use targeted feedback approach
+        if not prev_responses:
+            return self._generate_targeted_feedback(x, response, y_steps_list, prev_feedback_step)
+        
+        # Subsequent attempts - incorporate self-critique if enabled
+        if self.use_self_critique and prev_responses and prev_feedbacks:
+            return self._generate_self_critique_feedback(x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step)
+        else:
+            return self._generate_targeted_feedback(x, response, y_steps_list, prev_feedback_step)
+    
+    def _generate_targeted_feedback(self, x, response, y_steps_list, prev_feedback_step):
+        """
+        Generate targeted feedback focused on specific error identification.
+        
+        Args:
+            x: The question
+            response: The student's current response
+            y_steps_list: List of correct solution steps
+            prev_feedback_step: The step number reached in previous feedback
+            
+        Returns:
+            Tuple of (feedback, step_number)
+        """
+        # Use a custom prompt function for targeted feedback
+        def targeted_feedback_prompt(question, student, label, history=None):
+            return f"""Analyze this student's math solution attempt with precision:
+
+QUESTION:
+{question}
+
+STUDENT'S SOLUTION ATTEMPT:
+{student}
+
+CORRECT SOLUTION STEPS:
+{label}
+
+Your task is to identify PRECISELY where the student's reasoning first deviates from the correct solution path.
+
+1. First, identify which step of the correct solution is first missing or incorrect in the student's work.
+2. Determine the specific error type:
+   - Conceptual error: Fundamental misunderstanding of a concept
+   - Procedural error: Correct concept but wrong procedure/approach
+   - Calculation error: Arithmetic mistake or algebraic manipulation error
+
+3. Provide targeted feedback that:
+   - Points to the specific error without revealing the complete correct step
+   - Explains the underlying concept/principle the student is missing
+   - Guides them toward the correct approach with a hint
+   - NEVER reveals the final answer
+
+FORMAT YOUR RESPONSE EXACTLY LIKE THIS:
+Step X: [Step number where error first occurs]
+Error Type: [conceptual/procedural/calculation]
+Feedback: [Your detailed guidance on fixing the error]
+"""
+        
+        # Use the teacher's generate method with correct signature
+        # Note: We're passing y_steps_list as a string here to match the interface
+        solution_steps = "\n".join(y_steps_list)
+        _, feedback = self.teacher.generate(
+            question=x,
+            student_steps=response,
+            answer_steps=solution_steps,
+            prompt_func=targeted_feedback_prompt
+        )
+        
+        # Extract the step number from the feedback
+        step = prev_feedback_step
+        try:
+            # Extract step number
+            step_match = re.search(r"Step (\d+):", feedback)
+            if step_match:
+                step = int(step_match.group(1))
+            else:
+                # If unable to extract step properly, use the next step from previous feedback
+                step = prev_feedback_step + 1
+                
+        except Exception as e:
+            print(f"Error extracting step information: {e}")
+            print(f"Using fallback step: {prev_feedback_step + 1}")
+            step = prev_feedback_step + 1
+        
+        return feedback, step
+    
+    def _generate_self_critique_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step):
+        """
+        Generate feedback that incorporates self-critique of previous feedback effectiveness.
+        
+        Args:
+            x: The question
+            response: The student's current response
+            y_steps_list: List of correct solution steps
+            prev_responses: List of previous student responses
+            prev_feedbacks: List of previous feedback messages
+            prev_feedback_step: The step number reached in previous feedback
+            
+        Returns:
+            Tuple of (feedback, step_number)
+        """
+        # Create a timeline of previous interactions for the prompt
+        interaction_history = ""
+        for i, (prev_resp, prev_fb) in enumerate(zip(prev_responses, prev_feedbacks)):
+            interaction_history += f"""
+ROUND {i+1}:
+Student Attempt:
+{prev_resp}
+
+Feedback Provided:
+{prev_fb}
+"""
+        
+        # Custom prompt function for self-critique feedback
+        def self_critique_prompt(question, student, label, history=None):
+            return f"""Review this interaction between teacher and student on a math problem:
+
+QUESTION:
+{question}
+
+CORRECT SOLUTION STEPS:
+{label}
+
+HISTORY OF FEEDBACK AND ATTEMPTS:
+{interaction_history}
+
+CURRENT STUDENT ATTEMPT:
+{student}
+
+First, analyze the effectiveness of previous feedback:
+1. What aspects of your feedback were helpful to the student?
+2. What aspects didn't lead to improvement?
+3. Which concepts is the student still struggling with?
+4. What feedback strategy would work better now?
+
+Then, generate new refined feedback that:
+- Addresses specific errors in the current attempt
+- Takes a different approach for concepts they're still struggling with
+- Focuses on the earliest point where reasoning diverges from the correct solution
+- Never reveals the complete solution or final answer
+
+FORMAT YOUR RESPONSE:
+Self-Analysis: [A brief analysis of previous feedback effectiveness]
+Step X: [The specific step number where intervention is needed]
+Refined Feedback: [Your improved feedback goes here]
+"""
+
+        # Use the teacher's generate method with correct signature
+        solution_steps = "\n".join(y_steps_list)
+        _, feedback = self.teacher.generate(
+            question=x,
+            student_steps=response,
+            answer_steps=solution_steps,
+            prompt_func=self_critique_prompt
+        )
+        
+        # Extract the step number and refined feedback
+        step = prev_feedback_step
+        try:
+            # Extract step number
+            step_match = re.search(r"Step (\d+):", feedback)
+            if step_match:
+                step = int(step_match.group(1))
+            
+            # Extract just the refined feedback if possible
+            refined_section = re.search(r"Refined Feedback:(.*?)(?:$|Step \d+:)", feedback, re.DOTALL)
+            if refined_section:
+                feedback = "Feedback: " + refined_section.group(1).strip()
+            
+            # If unable to extract step properly, use the next step from previous feedback
+            if not step_match:
+                step = prev_feedback_step + 1
+                
+        except Exception as e:
+            print(f"Error extracting self-critique information: {e}")
+            print(f"Using fallback step: {prev_feedback_step + 1}")
+            step = prev_feedback_step + 1
+        
+        return feedback, step
