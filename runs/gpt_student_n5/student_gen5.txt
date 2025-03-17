@@ -1,0 +1,61 @@
+Let \$ABCDEF\$ be a  . Let \$G\$, \$H\$, \$I\$, \$J\$, \$K\$, and \$L\$ be the s of sides \$AB\$, \$BC\$, \$CD\$, \$DE\$, \$EF\$, and \$AF\$, respectively. The s \$\overline{AH}\$, \$\overline{BI}\$, \$\overline{CJ}\$, \$\overline{DK}\$, \$\overline{EL}\$, and \$\overline{FG}\$ bound a smaller regular hexagon. Let the  of the area of the smaller hexagon to the area of \$ABCDEF\$ be expressed as a fraction \$\frac {m}{n}\$ where \$m\$ and \$n\$ are  positive integers. Find \$m + n\$.
+Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
+To solve the problem, we start by establishing the vertices of the regular hexagon \(ABCDEF\) and the midpoints \(G\), \(H\), \(I\), \(J\), \(K\), and \(L\) of its sides.
+
+1. **Vertices of the Hexagon**: Let’s place the vertices of the regular hexagon \(ABCDEF\) in a coordinate system for easier calculation:
+
+   - \( A = (1, 0) \)
+   - \( B = \left(\frac{1}{2}, \frac{\sqrt{3}}{2}\right) \)
+   - \( C = \left(-\frac{1}{2}, \frac{\sqrt{3}}{2}\right) \)
+   - \( D = (-1, 0) \)
+   - \( E = \left(-\frac{1}{2}, -\frac{\sqrt{3}}{2}\right) \)
+   - \( F = \left(\frac{1}{2}, -\frac{\sqrt{3}}{2}\right) \)
+
+2. **Finding Midpoints**:
+   - \( G = \frac{A + B}{2} = \left(\frac{3}{4}, \frac{\sqrt{3}}{4}\right) \)
+   - \( H = \frac{B + C}{2} = \left(0, \frac{\sqrt{3}}{2}\right) \)
+   - \( I = \frac{C + D}{2} = \left(-\frac{3}{4}, \frac{\sqrt{3}}{4}\right) \)
+   - \( J = \frac{D + E}{2} = \left(-\frac{3}{4}, -\frac{\sqrt{3}}{4}\right) \)
+   - \( K = \frac{E + F}{2} = \left(0, -\frac{\sqrt{3}}{2}\right) \)
+   - \( L = \frac{F + A}{2} = \left(\frac{3}{4}, -\frac{\sqrt{3}}{4}\right) \)
+
+3. **Area of the Larger Hexagon**: The area \(A_{large}\) of a regular hexagon with side length \(s\) is given by the formula:
+   \[
+   A_{large} = \frac{3\sqrt{3}}{2} s^2
+   \]
+   For our hexagon \(ABCDEF\), the side length is 1 (the distance between any two adjacent vertices), so:
+   \[
+   A_{large} = \frac{3\sqrt{3}}{2} (1^2) = \frac{3\sqrt{3}}{2}
+   \]
+
+4. **Area of the Smaller Hexagon**: The vertices of the smaller hexagon \(GHJKLM\) can be found by connecting the midpoints. The side length of the smaller hexagon can be calculated as the distance between any two adjacent midpoints:
+
+   - For example, the distance between \(G\) and \(H\):
+   \[
+   GH = \sqrt{\left(\frac{3}{4} - 0\right)^2 + \left(\frac{\sqrt{3}}{4} - \frac{\sqrt{3}}{2}\right)^2}
+   \]
+   \[
+   = \sqrt{\left(\frac{3}{4}\right)^2 + \left(-\frac{\sqrt{3}}{4}\right)^2} = \sqrt{\frac{9}{16} + \frac{3}{16}} = \sqrt{\frac{12}{16}} = \sqrt{\frac{3}{4}} = \frac{\sqrt{3}}{2}
+   \]
+
+5. **Area of the Smaller Hexagon**: Now, using the side length of the smaller hexagon \(s = \frac{\sqrt{3}}{2}\):
+   \[
+   A_{small} = \frac{3\sqrt{3}}{2} \left(\frac{\sqrt{3}}{2}\right)^2 = \frac{3\sqrt{3}}{2} \cdot \frac{3}{4} = \frac{9\sqrt{3}}{8}
+   \]
+
+6. **Ratio of Areas**: Now we find the ratio of the areas:
+   \[
+   \text{Ratio} = \frac{A_{small}}{A_{large}} = \frac{\frac{9\sqrt{3}}{8}}{\frac{3\sqrt{3}}{2}} = \frac{9\sqrt{3}}{8} \cdot \frac{2}{3\sqrt{3}} = \frac{9 \cdot 2}{8 \cdot 3} = \frac{18}{24} = \frac{3}{4}
+   \]
+
+This ratio can be expressed as \(\frac{m}{n} = \frac{3}{4}\), where \(m = 3\) and \(n = 4\).
+
+Finally, we sum \(m\) and \(n\):
+\[
+m + n = 3 + 4 = 7
+\]
+
+Thus, the final answer is:
+\[
+\boxed{7}
+\]
