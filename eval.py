@@ -18,9 +18,12 @@ def eval(dataset, train_result_path, keys, log_dir=None, mode="test", num_exampl
     os.makedirs(log_dir, exist_ok=True)
 
     torch.manual_seed(seed)
-    with open(train_result_path, "r") as file:
-        train_result_data = json.load(file)
-    student_context_examples = prompts.get_eval_student_context(train_result_data, keys, num_context_examples)
+    if train_result_path:
+        with open(train_result_path, "r") as file:
+            train_result_data = json.load(file)
+        student_context_examples = prompts.get_eval_student_context(train_result_data, keys, num_context_examples)
+    else:
+        student_context_examples = ""
     student = StudentLMAgent(log_dir=log_dir)
     dataloader = DataLoader(dataset, batch_size=1, shuffle=True)
 
@@ -64,6 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("--mode", "-m", type=str, default="test")
     parser.add_argument("--num_eval_samples", "-n", type=int, default=10)
     parser.add_argument("--num_context_examples", "-c", type=int, default=10)
+    parser.add_argument("--student_temp", default=0.7)
     parser.add_argument("--trials", "-t", type=int, default=1)
     args = parser.parse_args()
     eval(

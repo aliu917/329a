@@ -30,11 +30,11 @@ def run_single(question_data, y, student, teacher, input_feedback, prompt_func=N
     return result
 
 class Experiment:
-    def __init__(self, dataset_cls, log_dir=None, num_examples=10, seed=2809):
+    def __init__(self, dataset_cls, student_temp=0.7, log_dir=None, num_examples=10, seed=2809):
         self.dataset = dataset_cls(mode="train")
         torch.manual_seed(seed)
         self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
-        self.student = StudentLMAgent(log_dir=log_dir)
+        self.student = StudentLMAgent(log_dir=log_dir, generation_temp=student_temp)
         self.teacher = TeacherLMAgent(log_dir=log_dir)
         self.num_examples = num_examples
         self.seed = seed
@@ -379,7 +379,7 @@ class TeacherSearch(Experiment):
             
                 val_correct = 0
                 new_context_examples = context_examples + [context_result]
-                for _, (val_data, val_labels) in zip(range(10), self.val_dataloader):
+                for _, (val_data, val_labels) in zip(range(20), self.val_dataloader):
                     val_x = val_data["problem"][0]
                     val_all_y = val_labels[0]
                     val_numerical_answer = str(val_data["answer"].item())
