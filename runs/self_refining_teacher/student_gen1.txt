@@ -1,0 +1,76 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+When formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: Feedback: In this step, it is essential to recognize that the triangles \( \triangle PAQ \) and \( \triangle PDC \) are similar due to their angles being equal. This similarity allows us to set up a proportionality relation between the corresponding segments. Since you have already established that \(PQ\) and \(PC\) are segments of line \(PC\), by recognizing this relationship, you can express the unknown segment \(RC\) in terms of known lengths. This step is crucial as it lays the foundation for subsequent calculations, particularly in setting up necessary proportions that will help you solve for \(RC\) later on.
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Identify that \(\triangle PAQ \sim \triangle PDC\) since \(\angle PAQ = \angle PDC\) and \(\angle AQP = \angle DCP\).
+
+Step 1: Recognize that \(\overline{PQ}\) and \(\overline{QR}\) are segments on \(\overline{PC}\), and thus, by the properties of similar triangles, we can set up the proportionality between these segments and the corresponding sides of \(\triangle PDC\).
+
+Step 2: Use the similarity of triangles to set up the proportion \(\frac{PQ}{QR} = \frac{PC}{DC}\).
+
+Step 3: Given \(PQ = 735\) and \(QR = 112\), we can substitute these values into the proportion:
+\[
+\frac{735}{112} = \frac{PC}{DC}
+\]
+
+Step 4: Simplify the ratio \(\frac{735}{112}\):
+\[
+\frac{735}{112} = \frac{105}{16}
+\]
+
+Step 5: Since \(\triangle PAQ \sim \triangle PDC\), the ratio of corresponding sides is consistent:
+\[
+\frac{PQ}{QR} = \frac{PC}{RC} = \frac{105}{16}
+\]
+
+Step 6: We know \(PQ + QR = PC\), so:
+\[
+PC = 735 + 112 = 847
+\]
+
+Step 7: Using the proportion \(\frac{105}{16} = \frac{PC}{RC}\) and substituting \(PC = 847\):
+\[
+\frac{105}{16} = \frac{847}{RC}
+\]
+
+Step 8: Solve for \(RC\) by cross-multiplying:
+\[
+105 \cdot RC = 847 \cdot 16
+\]
+
+Step 9: Calculate \(847 \cdot 16\):
+\[
+847 \cdot 16 = 13552
+\]
+
+Step 10: Substitute and solve for \(RC\):
+\[
+105 \cdot RC = 13552 \implies RC = \frac{13552}{105} = 129.0666\ldots \approx 128
+\]
+
+Final answer:
+\[
+\boxed{128}
+\]

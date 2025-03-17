@@ -1,0 +1,107 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+When formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: Feedback: When working with similar triangles, it's crucial to identify the corresponding sides accurately and express the relationships between segments in a clear manner. Ensure that the ratios you set up reflect the correct relationships. In this case, you should focus on how \(PQ\) and \(QR\) relate to \(PR\) and \(RC\) through their similarities. Look closely at the ratios and ensure you are consistently applying the properties of similarity to derive the correct equations. Additionally, avoid introducing unnecessary components or segments that might confuse the relationships you need to analyze.
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Identify the given information.
+- \(ABCD\) is a quadrilateral.
+- \(P\) is an extension of \(DA\) through \(A\).
+- \(PC\) intersects \(AB\) at \(Q\) and \(DB\) at \(R\).
+- \(PQ = 735\) and \(QR = 112\).
+
+Step 1: Use the properties of similar triangles. Since \(P, Q, R\) are collinear and intersect \(AB, DB, PC\) respectively, we can use the properties of similar triangles. Specifically, \(\triangle PQC \sim \triangle QRB\) and \(\triangle PQA \sim \triangle QRA\).
+
+Step 2: From the similarity \(\triangle PQC \sim \triangle QRB\), we have the ratio of corresponding sides:
+\[
+\frac{PQ}{QR} = \frac{PC}{RB}
+\]
+Substituting the given values:
+\[
+\frac{735}{112} = \frac{PC}{RB}
+\]
+Simplify the ratio:
+\[
+\frac{735}{112} = \frac{105}{16}
+\]
+Thus,
+\[
+\frac{PC}{RB} = \frac{105}{16}
+\]
+
+Step 3: From the similarity \(\triangle PQA \sim \triangle QRA\), we have the ratio of corresponding sides:
+\[
+\frac{PQ}{QR} = \frac{PA}{RA}
+\]
+Substituting the given values:
+\[
+\frac{735}{112} = \frac{PA}{RA}
+\]
+Simplify the ratio:
+\[
+\frac{735}{112} = \frac{105}{16}
+\]
+Thus,
+\[
+\frac{PA}{RA} = \frac{105}{16}
+\]
+
+Step 4: Since \(R\) is a point on \(DB\), and \(P, Q, R\) are collinear, we can use the fact that \(RC = RB + BC\). We already have the ratio \(\frac{PC}{RB} = \frac{105}{16}\). Let \(RB = 16x\) and \(PC = 105x\).
+
+Step 5: Since \(PQ = 735\) and \(QR = 112\), we can use the segments to find \(RC\). From the ratio, we know:
+\[
+PC = 105x \quad \text{and} \quad RB = 16x
+\]
+Thus,
+\[
+RC = RB + BC = 16x + BC
+\]
+
+Step 6: Using the fact that \(PQ = 735\) and \(QR = 112\), and knowing the ratio, we can find \(RC\):
+\[
+RC = RB + BC = 16x + BC = 16x + 112
+\]
+Since \(PQ = 735\) and \(QR = 112\), we can use the ratio to find \(x\):
+\[
+\frac{105x}{16x} = \frac{735}{112}
+\]
+Solving for \(x\):
+\[
+\frac{105}{16} = \frac{735}{112}
+\]
+\[
+105 \cdot 112 = 735 \cdot 16
+\]
+\[
+11760 = 11760
+\]
+Thus, \(x = 1\).
+
+Step 7: Substitute \(x = 1\) into the equation for \(RC\):
+\[
+RC = 16x + 112 = 16 \cdot 1 + 112 = 128
+\]
+Final answer:
+\[
+\boxed{128}
+\]

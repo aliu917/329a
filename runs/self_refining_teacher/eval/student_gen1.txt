@@ -1,0 +1,93 @@
+You are given multiple example questions along with their corresponding prev_feedback. Use these examples to determine the best way to approach, reason, and correctly answer the question.
+
+### Learn from these examples:
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Prev Feedback: Feedback: When establishing the ratios derived from similar triangles, ensure that you correctly identify the corresponding sides. In this case, the ratios should reflect the relationship of the segments along line \(PC\) and how they relate to segments in other triangles formed by the intersections. Remember to express \(RC\) in terms of the full segment \(PC\) and the segments \(PQ\) and \(QR\) accurately. You should also consider the complete segment \(PR\) when forming your ratios, rather than trying to relate segments in isolation.
+
+Correct: no Feedback: Ensure the ratios you set up accurately reflect the relationships between corresponding segments in similar triangles, particularly when applying properties of parallel lines and triangle similarity. It's essential to express these relationships correctly to derive the unknown lengths accurately.
+
+Question: Let \$ABCDEF\$ be a  . Let \$G\$, \$H\$, \$I\$, \$J\$, \$K\$, and \$L\$ be the s of sides \$AB\$, \$BC\$, \$CD\$, \$DE\$, \$EF\$, and \$AF\$, respectively. The s \$\overline{AH}\$, \$\overline{BI}\$, \$\overline{CJ}\$, \$\overline{DK}\$, \$\overline{EL}\$, and \$\overline{FG}\$ bound a smaller regular hexagon. Let the  of the area of the smaller hexagon to the area of \$ABCDEF\$ be expressed as a fraction \$\frac {m}{n}\$ where \$m\$ and \$n\$ are  positive integers. Find \$m + n\$.
+
+Prev Feedback: Feedback: It’s crucial to understand that the smaller hexagon is formed by the intersection points of the lines drawn from each vertex of the larger hexagon to the midpoints of the opposite sides. This results in a smaller hexagon whose sides are actually half the length of the larger hexagon's sides, not one-third. Since the area of similar figures is proportional to the square of the ratio of their corresponding side lengths, this will significantly affect your area calculations. Consider reviewing the geometric properties of the hexagon and how the sides of the smaller hexagon relate to the sides of the larger hexagon.
+
+Correct: no Feedback: The reasoning contains an incorrect interpretation of the relationship between the side lengths of the two hexagons, leading to an inaccurate area ratio. It is essential to derive the side length and area ratios from the geometric properties and arrangements of the hexagons correctly.
+
+Question: Call a three-term strictly increasing arithmetic sequence of integers special if the sum of the squares of the three terms equals the product of the middle term and the square of the common difference. Find the sum of the third terms of all special sequences.
+
+Prev Feedback: Feedback: Ensure that when you create and solve a quadratic equation, you clearly state any constraints on the variables. Since \(d\) must be a positive integer and the resulting expressions for \(a\) must be integers, always check that the discriminant of the quadratic is non-negative and that the resulting solutions for \(a\) lead to integer values. Additionally, explore all possible integer values for both \(a\) and \(d\) throughout your solution to ensure no potential sequences are overlooked.
+
+Correct: no 
+Feedback: When solving quadratic equations, always check the discriminant to ensure it is a perfect square, as this determines whether the solutions are integers. Additionally, remember to explore all possible integer values for your variables systematically.
+
+Question: A disk with radius \$1\$ is externally tangent to a disk with radius \$5\$. Let \$A\$ be the point where the disks are tangent, \$C\$ be the center of the smaller disk, and \$E\$ be the center of the larger disk. While the larger disk remains fixed, the smaller disk is allowed to roll along the outside of the larger disk until the smaller disk has turned through an angle of \$360^\circ\$. That is, if the center of the smaller disk has moved to the point \$D\$, and the point on the smaller disk that began at \$A\$ has now moved to point \$B\$, then \$\overline{AC}\$ is parallel to \$\overline{BD}\$. Then \$\sin^2(\angle BEA)=\tfrac{m}{n}\$, where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m+n\$.
+
+Prev Feedback: Feedback: When calculating \(\angle BEA\), it's important to clearly understand how the movements of both disks affect this angle. The angle \(\angle BEA\) is not simply derived from the angle subtended by the larger disk. Instead, consider how the full rotation of the smaller disk influences the angles at point \(E\) and the position of point \(B\). Visualize or draw a diagram to better see how the points \(B\), \(E\), and \(A\) are related, especially after the smaller disk has rolled. This will help clarify how the angles should be calculated based on the positions of these points at the end of the rolling process.
+
+Correct: no 
+Feedback: To solve problems involving rolling disks, one must carefully analyze the relationships between the distances traveled and the angles at the centers of the disks. Establishing these relationships accurately is crucial for determining the correct angles and applying trigonometric identities effectively.
+
+Question: A basketball player has a constant probability of \$.4\$ of making any given shot, independent of previous shots. Let \$a_n\$ be the ratio of shots made to shots attempted after \$n\$ shots. The probability that \$a_{10} = .4\$ and \$a_n\le.4\$ for all \$n\$ such that \$1\le n\le9\$ is given to be \$p^aq^br/\left(s^c\right)\$ where \$p\$, \$q\$, \$r\$, and \$s\$ are primes, and \$a\$, \$b\$, and \$c\$ are positive integers. Find \$\left(p+q+r+s\right)\left(a+b+c\right)\$.
+
+Prev Feedback: Feedback: When counting valid sequences, ensure you are accurately applying the Ballot Theorem. The theorem is applicable when one type of outcome (successful shots) must never exceed the other (missed shots) at any point in the process. Visualizing the sequences as paths on a grid can help clarify how to properly count valid arrangements while ensuring that the constraints on the ratio of successful to unsuccessful shots are respected throughout the entire sequence.
+
+Correct: no Feedback: To effectively solve combinatorial probability problems with constraints, focus on maintaining clarity about how constraints affect the counting of valid sequences. Ensure that the application of theorems like the Ballot Theorem considers the implications of the conditions throughout the entire reasoning process, rather than just at the conclusion.
+
+Question: In the adjoining figure, two circles with radii \$8\$ and \$6\$ are drawn with their centers \$12\$ units apart. At \$P\$, one of the points of intersection, a line is drawn in such a way that the chords \$QP\$ and \$PR\$ have equal length. Find the square of the length of \$QP\$.
+<asy>size(160); defaultpen(linewidth(.8pt)+fontsize(11pt)); dotfactor=3; pair O1=(0,0), O2=(12,0); path C1=Circle(O1,8), C2=Circle(O2,6); pair P=intersectionpoints(C1,C2)[0]; path C3=Circle(P,sqrt(130)); pair Q=intersectionpoints(C3,C1)[0]; pair R=intersectionpoints(C3,C2)[1]; draw(C1); draw(C2); draw(O2--O1); dot(O1); dot(O2); draw(Q--R); label("$Q$",Q,NW); label("$P$",P,1.5*dir(80)); label("$R$",R,NE); label("12",waypoint(O1--O2,0.4),S);</asy>
+
+Prev Feedback: Feedback: Understanding the reflection of point \(R\) over point \(P\) is crucial for establishing the relationship between the points on the two circles. This reflection implies that point \(P\) serves as a midpoint for segment \(RQ\), leading to important geometric properties. This insight connects the two circles and sets the foundation for relating their respective distances and properties in subsequent steps. Recognizing this relationship will help you formulate the next steps in solving for the lengths related to the chords \(QP\) and \(PR\).
+
+Question: In triangle \$ABC,\$ point \$D\$ is on \$\overline{BC}\$ with \$CD = 2\$ and \$DB = 5,\$ point \$E\$ is on \$\overline{AC}\$ with \$CE = 1\$ and \$EA = 3,\$ \$AB = 8,\$ and \$\overline{AD}\$ and \$\overline{BE}\$ intersect at \$P.\$ Points \$Q\$ and \$R\$ lie on \$\overline{AB}\$ so that \$\overline{PQ}\$ is parallel to \$\overline{CA}\$ and \$\overline{PR}\$ is parallel to \$\overline{CB}.\$ It is given that the ratio of the area of triangle \$PQR\$ to the area of triangle \$ABC\$ is \$m/n,\$ where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m + n\$.
+
+Prev Feedback: Feedback: When assigning masses to points, remember that the mass at each point should reflect the ratios of the segments they create. For point \(P\), ensure that you correctly calculate the masses of \(A\), \(B\), \(C\), \(D\), and \(E\) based on their respective segment divisions. The mass of point \(P\) is not simply a sum of the masses of \(B\) and \(D\), but it should reflect the contributions from both segments \(AD\) and \(BE\). Additionally, ensure that the ratios for \(AP:PD\) and \(BP:PE\) are derived from the inverse relationship of the masses assigned to their endpoints.
+
+Correct: no  
+Feedback: The area ratios of similar triangles are determined by the square of the ratio of their corresponding side lengths, which must be derived from the segments created by the intersection of lines. Ensure that the segment ratios are calculated accurately based on the masses assigned to the points.
+
+Question: Let \$x,y,\$ and \$z\$ be real numbers satisfying the system of equations
+\begin{align*}
+xy + 4z &= 60 \\
+yz + 4x &= 60 \\
+zx + 4y &= 60.
+\end{align*}
+Let \$S\$ be the set of possible values of \$x.\$ Find the sum of the squares of the elements of \$S.\$
+
+Prev Feedback: Feedback: In analyzing Case 1 where \(y = 4\), you should substitute \(y = 4\) into the first equation to get \(x + z = 15\), and use \(z\) in terms of \(x\) from this equation to substitute into the second equation \(xz = 44\). This will lead to a system of equations that you can solve for \(x\) and \(z\), which is crucial for determining all the possible values for \(x\). This reasoning will guide you to find additional values for \(x\) that contribute to the final solution.
+
+Question: A  is defined as follows \$ a_1=a_2=a_3=1, \$ and, for all positive integers \$ n, a_{n+3}=a_{n+2}+a_{n+1}+a_n. \$ Given that \$ a_{28}=6090307, a_{29}=11201821, \$ and \$ a_{30}=20603361, \$ find the  when \$\sum^{28}_{k=1} a_k \$ is divided by 1000.
+
+Prev Feedback: Feedback: When working with recurrence relations, ensure that you carefully check the arithmetic when solving for individual terms. Remember that each term is defined as the sum of the previous three terms, and use the known values directly to find missing terms accurately. It’s also beneficial to express sums in terms of the last few known terms instead of calculating each term step-by-step. This approach can simplify your calculations significantly.
+
+Correct: no 
+Feedback: To improve reasoning, focus on deriving the relationships between the sums and how they relate to the terms defined by the recurrence. This will help clarify calculations and ensure accuracy in the final result.
+
+Question: Let \$N\$ be the number of complex numbers \$z\$ with the properties that \$|z|=1\$ and \$z^{6!}-z^{5!}\$ is a real number. Find the remainder when \$N\$ is divided by \$1000\$.
+
+Prev Feedback: Feedback: When determining when two sine functions are equal, consider all possible angles that satisfy the equality, not just the straightforward case. This includes analyzing both the direct equality and the periodic nature of sine, which leads to multiple potential solutions. Also, remember to account for the distinct nature of these solutions in terms of \( z \) when constructing your final count.
+
+
+### Now, apply what you have learned:
+Given what you have learned from the examples above, answer the following question: 
+A set of teams held a round-robin tournament in which every team played every other team exactly once. Every team won \$10\$ games and lost \$10\$ games; there were no ties. How many sets of three teams \$\{A, B, C\}\$ were there in which \$A\$ beat \$B\$, \$B\$ beat \$C\$, and \$C\$ beat \$A?\$
+<math>\textbf{(A)}\ 385 \qquad
+\textbf{(B)}\ 665 \qquad
+\textbf{(C)}\ 945 \qquad
+\textbf{(D)}\ 1140 \qquad
+\textbf{(E)}\ 1330</math>
+Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
+To solve the problem, we need to understand the structure of the tournament and the conditions given. We know that there are \(21\) teams (since each team plays \(20\) games and every team wins \(10\) and loses \(10\) games). The total number of games played in a round-robin tournament with \(21\) teams is \(\binom{21}{2} = 210\).
+
+Given that each team wins and loses exactly \(10\) games, we can infer that the wins and losses form a directed graph where each vertex (team) has an in-degree and out-degree of \(10\). This means the graph is a directed 10-regular graph.
+
+We are asked to find the number of sets of three teams \(\{A, B, C\}\) such that \(A\) beat \(B\), \(B\) beat \(C\), and \(C\) beat \(A\). These sets of three teams form a directed cycle of length 3 in the graph.
+
+To find the number of such cycles, we need to count the number of directed triangles in the graph. The total number of directed triangles can be calculated using the fact that each game contributes to the count of directed triangles in a specific way.
+
+First, we calculate the total number of directed triangles. Each team has \(10\) wins and \(10\) losses, and each win or loss can potentially be part of a directed triangle. The total number of directed triangles can be found using the formula for the number of directed triangles in a regular directed graph. For a \(k\)-regular directed graph with \(n\) vertices, the number of directed triangles is given by \(\frac{k(k-1)}{2} \binom{n}{2}\).
+
+However, a simpler combinatorial approach is to use the fact that each team contributes to the count of directed triangles in a specific way. Since each team has \(10\) wins and \(10\) losses, the number of directed triangles can be calculated as follows:
+
+The total number of directed triangles is given by the sum of the number of ways to choose two wins and one loss for each team. This is equivalent to \(\binom{20}{2} \cdot 10 / 3 = 190 \cdot 10 / 3 = 6300 / 3 = 2100 / 3 = 700 / 1 = 385\).
+
+Thus, the number of sets of three teams \(\{A, B, C\}\) such that \(A\) beat \(B\), \(B\) beat \(C\), and \(C\) beat \(A\) is \(\boxed{385}\).

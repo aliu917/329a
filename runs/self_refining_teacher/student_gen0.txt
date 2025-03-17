@@ -1,0 +1,65 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Identify the given information and what is asked.
+- We have a parallelogram \(ABCD\).
+- \(P\) is a point on the extension of \(\overline{DA}\) through \(A\).
+- \(PC\) intersects \(\overline{AB}\) at \(Q\) and \(\overline{DB}\) at \(R\).
+- Given \(PQ = 735\) and \(QR = 112\).
+- We need to find \(RC\).
+
+Step 1: Use the properties of the parallelogram and similar triangles.
+Since \(ABCD\) is a parallelogram, \(AB \parallel CD\) and \(AD \parallel BC\).
+
+Step 2: Analyze the similar triangles formed.
+Triangles \(\triangle PQC\) and \(\triangle PRA\) are similar by AA similarity (since \(\angle PQC = \angle PRA\) and \(\angle QCP = \angle RAP\)).
+
+Step 3: Use the given lengths to find the ratio of similarity.
+The segments \(PQ\) and \(QR\) are parts of the line segment \(PC\). The total length \(PR = PQ + QR = 735 + 112 = 847\).
+
+Step 4: Apply the similarity ratio.
+The ratio of the segments on \(\overline{PC}\) is the same as the ratio of the segments on \(\overline{DB}\). Since \(PQ\) and \(QR\) are segments of \(PC\), the ratio of \(PQ\) to \(QR\) is the same as the ratio of \(RQ\) to \(RC\).
+
+Step 5: Set up the proportion.
+\[
+\frac{PQ}{QR} = \frac{QR}{RC}
+\]
+Substitute the known values:
+\[
+\frac{735}{112} = \frac{112}{RC}
+\]
+
+Step 6: Solve for \(RC\).
+Cross-multiply to solve for \(RC\):
+\[
+735 \cdot RC = 112^2
+\]
+\[
+735 \cdot RC = 12544
+\]
+\[
+RC = \frac{12544}{735} = 17
+\]
+
+Final answer: \(\boxed{17}\)

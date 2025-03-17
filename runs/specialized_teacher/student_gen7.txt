@@ -1,0 +1,89 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+When formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: Feedback: ** While you correctly identified the relationship between the segments and set up the proportion \( \frac{PQ}{PR} = \frac{QR}{RC} \), let's ensure that we are clear on how to express each part of the ratio accurately. 
+
+You have:
+\[
+\frac{735}{847} = \frac{112}{RC}
+\]
+
+Now, cross-multiplying gives you:
+\[
+735 \cdot RC = 112 \cdot 847.
+\]
+
+Before moving forward, double-check your multiplication for \(112 \cdot 847\). Ensure you perform this calculation carefully, as it is crucial for finding \(RC\). 
+
+After calculating \(112 \cdot 847\), take your time with the division by \(735\). Ensure you simplify the fraction if possible, and check your arithmetic for any errors. This will help you arrive at the correct integer value for \(RC\). 
+
+Make sure to clarify each step in your arithmetic to avoid mistakes, as they can lead to incorrect results. Focus on the multiplication and division carefully, as this is where minor errors often creep in.
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Understand the problem and the given information. We have a parallelogram \(ABCD\) with point \(P\) on the extension of \(\overline{DA}\) such that \(\overline{PC}\) intersects \(\overline{AB}\) at \(Q\) and \(\overline{DB}\) at \(R\). We are given \(PQ = 735\) and \(QR = 112\), and we need to find \(RC\).
+
+Step 1: Use the properties of similar triangles. Since \(ABCD\) is a parallelogram, \(\overline{AB} \parallel \overline{DC}\). Therefore, \(\triangle PQR \sim \triangle PCR\) by the AA similarity criterion (both triangles share \(\angle PRQ\) and have corresponding parallel sides).
+
+Step 2: Write the ratio of the corresponding sides of the similar triangles \(\triangle PQR\) and \(\triangle PCR\). From the similarity, we have:
+\[
+\frac{PQ}{PR} = \frac{QR}{RC}
+\]
+Substituting the given values:
+\[
+\frac{735}{PR} = \frac{112}{RC}
+\]
+
+Step 3: Cross-multiply to solve for \(RC\):
+\[
+735 \cdot RC = 112 \cdot PR
+\]
+\[
+RC = \frac{112 \cdot PR}{735}
+\]
+
+Step 4: Simplify the fraction:
+\[
+RC = \frac{112 \cdot PR}{735} = \frac{112}{735} \cdot PR = \frac{16}{105} \cdot PR
+\]
+
+Step 5: Determine the length of \(PR\). Note that \(PR = PQ + QR = 735 + 112 = 847\).
+
+Step 6: Substitute \(PR = 847\) into the equation for \(RC\):
+\[
+RC = \frac{16}{105} \cdot 847
+\]
+
+Step 7: Perform the multiplication:
+\[
+RC = \frac{16 \cdot 847}{105}
+\]
+
+Step 8: Simplify the fraction:
+\[
+16 \cdot 847 = 13552
+\]
+\[
+RC = \frac{13552}{105} = 129
+\]
+
+Final answer: \(\boxed{129}\)

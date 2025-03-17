@@ -297,7 +297,8 @@ class EnhancedTeacherRefine(TeacherIterativeStepBasedRefine):
                 for i, (resp, fb) in enumerate(zip(prev_responses, prev_feedbacks))
             ])
         
-        y_steps_list = {"\n".join(y_steps_list)}
+        y_steps_str = "\n".join(y_steps_list)
+        
         # Enhanced prompt for targeted feedback
         enhanced_prompt = f"""Analyze this student's math solution attempt:
 
@@ -308,7 +309,7 @@ STUDENT'S CURRENT SOLUTION ATTEMPT:
 {response}
 
 REFERENCE SOLUTION STEPS:
-{y_steps_list}
+{y_steps_str}
 {attempt_history}
 
 Your task is to identify PRECISELY where the student's reasoning first deviates from the correct solution path.
@@ -331,10 +332,11 @@ Error Type: [conceptual/procedural/calculation]
 Feedback: [Your detailed guidance on fixing the error]
 """
         
-        # Generate enhanced feedback
+        # Generate enhanced feedback - MODIFIED TO MATCH YOUR API
         _, response = self.teacher.generate(
-            x,
-            feedback=enhanced_prompt,
+            question=x,
+            student_steps=response,
+            answer_steps=enhanced_prompt,
             history=None,
             prompt_func=None
         )
@@ -359,7 +361,6 @@ Feedback: [Your detailed guidance on fixing the error]
             step = prev_feedback_step + 1
         
         return feedback, step
-
 
 
 class SelfRefiningTeacher(TeacherIterativeStepBasedRefine):
@@ -397,8 +398,7 @@ Feedback Provided:
 ''')
         
         progress_history = "\n".join(progress_timeline)
-        y_steps_list = "\n".join(y_steps_list)
-
+        y_steps_str = "\n".join(y_steps_list)
         
         # Self-refinement prompt that includes meta-analysis
         refine_prompt = f'''Review this interaction between a teacher and student on a math problem:
@@ -407,7 +407,7 @@ ORIGINAL QUESTION:
 {x}
 
 CORRECT SOLUTION STEPS:
-{y_steps_list}
+{y_steps_str}
 
 HISTORY OF FEEDBACK AND ATTEMPTS:
 {progress_history}
@@ -434,12 +434,13 @@ Step X: [The specific step number where intervention is needed]
 Refined Feedback: [Your improved feedback goes here]
 '''
 
-        # Generate self-refined feedback
+        # Generate self-refined feedback - MODIFIED TO MATCH YOUR API
         _, response = self.teacher.generate(
-            x,
-            feedback=refine_prompt,
+            question=x,
+            student_steps=response,
+            answer_steps=refine_prompt,
             history=None,
-            prompt_func=None
+            prompt_func=None  # Use default prompt function
         )
         
         # Extract the step number and the refined feedback portion

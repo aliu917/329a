@@ -1,0 +1,103 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+When formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: Step 2: 
+Error Type: Conceptual error
+Feedback: The student incorrectly assumes that the triangles \( \triangle APQ \) and \( \triangle PRC \) can be directly compared through a simple ratio of \( PQ \) and \( QR \) without considering the full relationships established by all segments involved. To resolve this, focus on identifying the similarities among all relevant triangles, particularly how the segments relate to each other, and set up the proportions carefully based on those relationships. Consider all triangle properties, including the impact of \( RC \) in the similarity ratios. 
+
+Correct: no 
+Feedback: When analyzing similar triangles, ensure that all relevant segments and their relationships are fully understood. Take time to set up the proportions based on the complete geometric configuration rather than simplifying to a single ratio.
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+Step 0: Identify the given information and the goal.
+- We have a parallelogram \(ABCD\).
+- \(P\) is an extension of \(DA\) through \(A\).
+- \(PC\) intersects \(AB\) at \(Q\) and \(DB\) at \(R\).
+- Given: \(PQ = 735\) and \(QR = 112\).
+- We need to find \(RC\).
+
+Step 1: Identify and use the properties of the parallelogram.
+Since \(ABCD\) is a parallelogram, opposite sides are equal and parallel. Thus, \(AB \parallel CD\) and \(AD \parallel BC\).
+
+Step 2: Use the properties of similar triangles.
+Since \(AB \parallel CD\), triangles \(PQC\) and \(PAB\) are similar (Angle-Angle similarity criterion). Similarly, triangles \(PQC\) and \(PDR\) are similar.
+
+Step 3: Write the ratios of corresponding sides of the similar triangles.
+For triangles \(PQC\) and \(PAB\):
+\[
+\frac{PQ}{PA} = \frac{QC}{AB}
+\]
+For triangles \(PQC\) and \(PDR\):
+\[
+\frac{PQ}{PR} = \frac{QC}{DR}
+\]
+
+Step 4: Express \(PR\) in terms of \(PQ\) and \(QR\).
+\[
+PR = PQ + QR = 735 + 112 = 847
+\]
+
+Step 5: Use the similarity ratio to find \(RC\).
+Since \(PQC \sim PDR\):
+\[
+\frac{PQ}{PR} = \frac{QC}{RC} \implies \frac{735}{847} = \frac{QC}{RC}
+\]
+
+Step 6: Express \(QC\) in terms of \(PQ\) and \(PR\).
+\[
+\frac{QC}{AB} = \frac{735}{847}
+\]
+Since \(AB = CD\), we can say:
+\[
+\frac{QC}{CD} = \frac{735}{847}
+\]
+
+Step 7: Use the fact that \(QC + CR = CD\).
+Let \(CD = x\). Then:
+\[
+QC + CR = x
+\]
+From the ratio:
+\[
+\frac{QC}{x} = \frac{735}{847} \implies QC = \frac{735x}{847}
+\]
+
+Step 8: Substitute \(QC\) into the equation \(QC + CR = x\).
+\[
+\frac{735x}{847} + CR = x
+\]
+Solve for \(CR\):
+\[
+CR = x - \frac{735x}{847} = \frac{847x - 735x}{847} = \frac{112x}{847}
+\]
+
+Step 9: Use the given \(QR = 112\).
+Since \(QR = CR\):
+\[
+CR = 112
+\]
+
+Final answer:
+\[
+\boxed{112}
+\]

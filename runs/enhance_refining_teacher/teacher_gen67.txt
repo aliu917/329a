@@ -1,0 +1,680 @@
+You are given a reasoning attempt for answering the following question: Let \$x,y,\$ and \$z\$ be real numbers satisfying the system of equations
+\begin{align*}
+xy + 4z &= 60 \\
+yz + 4x &= 60 \\
+zx + 4y &= 60.
+\end{align*}
+Let \$S\$ be the set of possible values of \$x.\$ Find the sum of the squares of the elements of \$S.\$
+
+Attempt: To solve the given system of equations, we start by analyzing the equations:
+\[
+xy + 4z = 60,
+\]
+\[
+yz + 4x = 60,
+\]
+\[
+zx + 4y = 60.
+\]
+
+First, we add all three equations:
+\[
+(xy + 4z) + (yz + 4x) + (zx + 4y) = 60 + 60 + 60.
+\]
+This simplifies to:
+\[
+xy + yz + zx + 4x + 4y + 4z = 180.
+\]
+We can factor out the 4 from the linear terms:
+\[
+xy + yz + zx + 4(x + y + z) = 180.
+\]
+
+Next, we subtract each of the original equations from this sum to isolate the terms involving \(x\), \(y\), and \(z\).
+
+1. Subtract \(yz + 4x = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (yz + 4x) = 180 - 60.
+\]
+This simplifies to:
+\[
+xy + zx + 4y + 4z = 120.
+\]
+
+2. Subtract \(zx + 4y = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (zx + 4y) = 180 - 60.
+\]
+This simplifies to:
+\[
+xy + yz + 4x + 4z = 120.
+\]
+
+3. Subtract \(xy + 4z = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (xy + 4z) = 180 - 60.
+\]
+This simplifies to:
+\[
+yz + zx + 4x + 4y = 120.
+\]
+
+We now have three new equations:
+\[
+xy + zx + 4y + 4z = 120,
+\]
+\[
+xy + yz + 4x + 4z = 120,
+\]
+\[
+yz + zx + 4x + 4y = 120.
+\]
+
+Next, we subtract the second equation from the first:
+\[
+(xy + zx + 4y + 4z) - (xy + yz + 4x + 4z) = 120 - 120.
+\]
+This simplifies to:
+\[
+zx - yz + 4y - 4x = 0.
+\]
+Factoring out common terms:
+\[
+(z - y)(x + 4) = 0.
+\]
+This implies:
+\[
+z = y \quad \text{or} \quad x = -4.
+\]
+
+Similarly, subtract the third equation from the second:
+\[
+(xy + yz + 4x + 4z) - (yz + zx + 4x + 4y) = 120 - 120.
+\]
+This simplifies to:
+\[
+xy - zx + 4x - 4y = 0.
+\]
+Factoring out common terms:
+\[
+(x - z)(y + 4) = 0.
+\]
+This implies:
+\[
+x = z \quad \text{or} \quad y = -4.
+\]
+
+Finally, subtract the first equation from the third:
+\[
+(yz + zx + 4x + 4y) - (xy + zx + 4y + 4z) = 120 - 120.
+\]
+This simplifies to:
+\[
+yz - xy + 4x - 4z = 0.
+\]
+Factoring out common terms:
+\[
+(y - x)(z + 4) = 0.
+\]
+This implies:
+\[
+y = x \quad \text{or} \quad z = -4.
+\]
+
+From these results, we have the following cases:
+1. \(x = y = z\)
+2. \(x = -4\)
+3. \(y = -4\)
+4. \(z = -4\)
+
+**Case 1: \(x = y = z\)**
+
+Substitute \(x = y = z\) into the original equation:
+\[
+x^2 + 4x = 60.
+\]
+This simplifies to:
+\[
+x^2 + 4x - 60 = 0.
+\]
+Solving this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\):
+\[
+x = \frac{-4 \pm \sqrt{16 + 240}}{2} = \frac{-4 \pm \sqrt{256}}{2} = \frac{-4 \pm 16}{2}.
+\]
+Thus, the solutions are:
+\[
+x = 6 \quad \text{or} \quad x = -10.
+\]
+
+**Case 2: \(x = -4\)**
+
+Substitute \(x = -4\) into the original equations:
+\[
+-4y + 4z = 60 \implies -y + z = 15 \implies z = y + 15,
+\]
+\[
+-4z + 4y = 60 \implies -z + y = 15 \implies y = z + 15.
+\]
+These are consistent, so \(z = y + 15\).
+
+**Case 3: \(y = -4\)**
+
+Substitute \(y = -4\) into the original equations:
+\[
+x(-4) + 4z = 60 \implies -4x + 4z = 60 \implies -x + z = 15 \implies z = x + 15,
+\]
+\[
+z(-4) + 4x = 60 \implies -4z + 4x = 60 \implies -z + x = 15 \implies x = z + 15.
+\]
+These are consistent, so \(x = z + 15\).
+
+**Case 4: \(z = -4\)**
+
+Substitute \(z = -4\) into the original equations:
+\[
+xy + 4(-4) = 60 \implies xy - 16 = 60 \implies xy = 76,
+\]
+\[
+-4y + 4x = 60 \implies -y + x = 15 \implies x = y + 15.
+\]
+These are consistent, so \(x = y + 15\).
+
+The possible values of \(x\) are \(6\), \(-10\), and the solutions from the consistent cases where \(x = y + 15\) or \(x = z + 15\).
+
+To find the sum of the squares of the elements of \(S\):
+\[
+6^2 + (-10)^2 + 15^2 + 225 = 36 + 100 + 225 + 225 = 586.
+\]
+
+Thus, the sum of the squares of the elements of \(S\) is:
+\[
+\boxed{586}.
+\]
+
+Correct solution: Analyze this student's math solution attempt:
+
+QUESTION:
+Let \$x,y,\$ and \$z\$ be real numbers satisfying the system of equations
+\begin{align*}
+xy + 4z &= 60 \\
+yz + 4x &= 60 \\
+zx + 4y &= 60.
+\end{align*}
+Let \$S\$ be the set of possible values of \$x.\$ Find the sum of the squares of the elements of \$S.\$
+
+STUDENT'S CURRENT SOLUTION ATTEMPT:
+To solve the given system of equations, we start by analyzing the equations:
+\[
+xy + 4z = 60,
+\]
+\[
+yz + 4x = 60,
+\]
+\[
+zx + 4y = 60.
+\]
+
+First, we add all three equations:
+\[
+(xy + 4z) + (yz + 4x) + (zx + 4y) = 60 + 60 + 60.
+\]
+This simplifies to:
+\[
+xy + yz + zx + 4x + 4y + 4z = 180.
+\]
+We can factor out the 4 from the linear terms:
+\[
+xy + yz + zx + 4(x + y + z) = 180.
+\]
+
+Next, we subtract each of the original equations from this sum to isolate the terms involving \(x\), \(y\), and \(z\).
+
+1. Subtract \(yz + 4x = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (yz + 4x) = 180 - 60.
+\]
+This simplifies to:
+\[
+xy + zx + 4y + 4z = 120.
+\]
+
+2. Subtract \(zx + 4y = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (zx + 4y) = 180 - 60.
+\]
+This simplifies to:
+\[
+xy + yz + 4x + 4z = 120.
+\]
+
+3. Subtract \(xy + 4z = 60\) from \(xy + yz + zx + 4(x + y + z) = 180\):
+\[
+(xy + yz + zx + 4(x + y + z)) - (xy + 4z) = 180 - 60.
+\]
+This simplifies to:
+\[
+yz + zx + 4x + 4y = 120.
+\]
+
+We now have three new equations:
+\[
+xy + zx + 4y + 4z = 120,
+\]
+\[
+xy + yz + 4x + 4z = 120,
+\]
+\[
+yz + zx + 4x + 4y = 120.
+\]
+
+Next, we subtract the second equation from the first:
+\[
+(xy + zx + 4y + 4z) - (xy + yz + 4x + 4z) = 120 - 120.
+\]
+This simplifies to:
+\[
+zx - yz + 4y - 4x = 0.
+\]
+Factoring out common terms:
+\[
+(z - y)(x + 4) = 0.
+\]
+This implies:
+\[
+z = y \quad \text{or} \quad x = -4.
+\]
+
+Similarly, subtract the third equation from the second:
+\[
+(xy + yz + 4x + 4z) - (yz + zx + 4x + 4y) = 120 - 120.
+\]
+This simplifies to:
+\[
+xy - zx + 4x - 4y = 0.
+\]
+Factoring out common terms:
+\[
+(x - z)(y + 4) = 0.
+\]
+This implies:
+\[
+x = z \quad \text{or} \quad y = -4.
+\]
+
+Finally, subtract the first equation from the third:
+\[
+(yz + zx + 4x + 4y) - (xy + zx + 4y + 4z) = 120 - 120.
+\]
+This simplifies to:
+\[
+yz - xy + 4x - 4z = 0.
+\]
+Factoring out common terms:
+\[
+(y - x)(z + 4) = 0.
+\]
+This implies:
+\[
+y = x \quad \text{or} \quad z = -4.
+\]
+
+From these results, we have the following cases:
+1. \(x = y = z\)
+2. \(x = -4\)
+3. \(y = -4\)
+4. \(z = -4\)
+
+**Case 1: \(x = y = z\)**
+
+Substitute \(x = y = z\) into the original equation:
+\[
+x^2 + 4x = 60.
+\]
+This simplifies to:
+\[
+x^2 + 4x - 60 = 0.
+\]
+Solving this quadratic equation using the quadratic formula \(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\):
+\[
+x = \frac{-4 \pm \sqrt{16 + 240}}{2} = \frac{-4 \pm \sqrt{256}}{2} = \frac{-4 \pm 16}{2}.
+\]
+Thus, the solutions are:
+\[
+x = 6 \quad \text{or} \quad x = -10.
+\]
+
+**Case 2: \(x = -4\)**
+
+Substitute \(x = -4\) into the original equations:
+\[
+-4y + 4z = 60 \implies -y + z = 15 \implies z = y + 15,
+\]
+\[
+-4z + 4y = 60 \implies -z + y = 15 \implies y = z + 15.
+\]
+These are consistent, so \(z = y + 15\).
+
+**Case 3: \(y = -4\)**
+
+Substitute \(y = -4\) into the original equations:
+\[
+x(-4) + 4z = 60 \implies -4x + 4z = 60 \implies -x + z = 15 \implies z = x + 15,
+\]
+\[
+z(-4) + 4x = 60 \implies -4z + 4x = 60 \implies -z + x = 15 \implies x = z + 15.
+\]
+These are consistent, so \(x = z + 15\).
+
+**Case 4: \(z = -4\)**
+
+Substitute \(z = -4\) into the original equations:
+\[
+xy + 4(-4) = 60 \implies xy - 16 = 60 \implies xy = 76,
+\]
+\[
+-4y + 4x = 60 \implies -y + x = 15 \implies x = y + 15.
+\]
+These are consistent, so \(x = y + 15\).
+
+The possible values of \(x\) are \(6\), \(-10\), and the solutions from the consistent cases where \(x = y + 15\) or \(x = z + 15\).
+
+To find the sum of the squares of the elements of \(S\):
+\[
+6^2 + (-10)^2 + 15^2 + 225 = 36 + 100 + 225 + 225 = 586.
+\]
+
+Thus, the sum of the squares of the elements of \(S\) is:
+\[
+\boxed{586}.
+\]
+
+REFERENCE SOLUTION STEPS:
+Step 0: Define the variables \(x\), \(y\), and \(z\) as real numbers satisfying the given system of equations.
+Step 1: Subtract the second equation from the first:
+\[
+xy + 4z - (yz + 4x) = 0
+\]
+Step 2: Rearrange the equation:
+\[
+xy + 4z - yz - 4x = 0 \implies 4(z - x) - y(z - x) = 0
+\]
+Step 3: Factor the equation:
+\[
+(z - x)(4 - y) = 0
+\]
+Step 4: Case 1: Assume \(y = 4\). Substitute \(y = 4\) into the first and third equations:
+\[
+xy + 4z = 60 \implies 4x + 4z = 60 \implies x + z = 15
+\]
+\[
+zx + 4y = 60 \implies zx + 16 = 60 \implies zx = 44
+\]
+Step 5: From the equations \(x + z = 15\) and \(xz = 44\), express \(z\) in terms of \(x\) and substitute:
+\[
+z = 15 - x \implies x(15 - x) = 44
+\]
+Step 6: Expand and rearrange to form a quadratic equation:
+\[
+15x - x^2 = 44 \implies x^2 - 15x + 44 = 0
+\]
+Step 7: Solve the quadratic equation using the quadratic formula:
+\[
+x = \frac{15 \pm \sqrt{15^2 - 4 \cdot 44}}{2} = \frac{15 \pm \sqrt{225 - 176}}{2} = \frac{15 \pm \sqrt{49}}{2}
+\]
+\[
+x = \frac{15 \pm 7}{2} = \{11, 4\}
+\]
+Step 8: Case 2: Assume \(x = z\). Substitute \(x = z\) into the first and third equations:
+\[
+xy + 4x = 60 \quad \text{and} \quad x^2 + 4y = 60
+\]
+Step 9: Rearranging gives:
+\[
+y = \frac{60 - 4x}{x} \quad \text{and} \quad 4y = 60 - x^2
+\]
+Step 10: Substitute for \(y\) from the first equation into the second:
+\[
+4\left(\frac{60 - 4x}{x}\right) = 60 - x^2
+\]
+Step 11: Multiply through by \(x\) to eliminate the fraction:
+\[
+240 - 16x = 60x - x^3
+\]
+Step 12: Rearrange to form a cubic equation:
+\[
+x^3 - 76x + 240 = 0
+\]
+Step 13: Check for rational roots using the Rational Root Theorem. Testing \(x = 6\):
+\[
+6^3 - 76 \cdot 6 + 240 = 216 - 456 + 240 = 0
+\]
+Thus, \(x = 6\) is a root.
+Step 14: Factor the cubic polynomial:
+\[
+(x - 6)(x^2 + 6x - 40) = 0
+\]
+Step 15: Solve the quadratic \(x^2 + 6x - 40 = 0\) using the quadratic formula:
+\[
+x = \frac{-6 \pm \sqrt{6^2 - 4 \cdot 1 \cdot (-40)}}{2 \cdot 1} = \frac{-6 \pm \sqrt{36 + 160}}{2} = \frac{-6 \pm \sqrt{196}}{2}
+\]
+\[
+x = \frac{-6 \pm 14}{2} \implies x = 4 \quad \text{or} \quad x = -10
+\]
+Step 16: Gather all unique solutions for \(x\): \(4\), \(11\), \(6\), and \(-10\).
+Step 17: Calculate the sum of the squares of the unique solutions:
+\[
+4^2 + 11^2 + 6^2 + (-10)^2 = 16 + 121 + 36 + 100 = 273
+\]
+
+Final answer: \(\boxed{273}\)
+
+
+Previous attempts and feedback:
+Attempt 1:
+Step 0: Consider the given system of equations:
+\[
+\begin{align*}
+xy + 4z &= 60, \\
+yz + 4x &= 60, \\
+zx + 4y &= 60.
+\end{align*}
+\]
+
+Step 1: Subtract the second equation from the first:
+\[
+xy + 4z - (yz + 4x) = 60 - 60 \Rightarrow xy - yz + 4z - 4x = 0 \Rightarrow y(x - z) - 4(x - z) = 0 \Rightarrow (y - 4)(x - z) = 0.
+\]
+This implies that either \(y = 4\) or \(x = z\).
+
+Step 2: Subtract the third equation from the first:
+\[
+xy + 4z - (zx + 4y) = 60 - 60 \Rightarrow xy - zx + 4z - 4y = 0 \Rightarrow x(y - z) + 4(z - y) = 0 \Rightarrow (x - 4)(y - z) = 0.
+\]
+This implies that either \(y = z\) or \(x = 4\).
+
+Step 3: Subtract the third equation from the second:
+\[
+yz + 4x - (zx + 4y) = 60 - 60 \Rightarrow yz - zx + 4x - 4y = 0 \Rightarrow z(y - x) + 4(x - y) = 0 \Rightarrow (z - 4)(y - x) = 0.
+\]
+This implies that either \(z = 4\) or \(y = x\).
+
+Step 4: Analyze the cases:
+
+**Case 1: \(x = z\).**
+
+Substitute \(z = x\) into the first equation:
+\[
+xy + 4x = 60 \Rightarrow x(y + 4) = 60 \Rightarrow x = \frac{60}{y + 4}.
+\]
+Substitute \(z = x\) into the second equation:
+\[
+y \cdot x + 4x = 60 \Rightarrow x(y + 4) = 60 \Rightarrow x = \frac{60}{y + 4}.
+\]
+Substitute \(z = x\) into the third equation:
+\[
+x \cdot y + 4y = 60 \Rightarrow y(x + 4) = 60 \Rightarrow y = \frac{60}{x + 4}.
+\]
+Thus, \(x = \frac{60}{y + 4}\) and \(y = \frac{60}{x + 4}\). Substitute \(y = \frac{60}{x + 4}\) into \(x = \frac{60}{y + 4}\):
+\[
+x = \frac{60}{\frac{60}{x + 4} + 4} = \frac{60(x + 4)}{60 + 4(x + 4)} = \frac{60x + 240}{60 + 4x + 16} = \frac{60x + 240}{4x + 76}.
+\]
+Cross-multiplying, we get:
+\[
+x(4x + 76) = 60x + 240 \Rightarrow 4x^2 + 76x = 60x + 240 \Rightarrow 4x^2 + 16x - 240 = 0 \Rightarrow x^2 + 4x - 60 = 0.
+\]
+Solving the quadratic equation:
+\[
+x = \frac{-4 \pm \sqrt{16 + 240}}{2} = \frac{-4 \pm \sqrt{256}}{2} = \frac{-4 \pm 16}{2} \Rightarrow x = 6 \text{ or } x = -10.
+\]
+
+**Case 2: \(y = x\) and \(y = z\).**
+
+Substitute \(y = x\) and \(z = x\) into the first equation:
+\[
+x^2 + 4x = 60 \Rightarrow x^2 + 4x - 60 = 0.
+\]
+Solving the quadratic equation:
+\[
+x = \frac{-4 \pm \sqrt{16 + 240}}{2} = \frac{-4 \pm 16}{2} \Rightarrow x = 6 \text{ or } x = -10.
+\]
+
+**Case 3: \(y = 4\).**
+
+Substitute \(y = 4\) into the first equation:
+\[
+4x + 4z = 60 \Rightarrow x + z = 15.
+\]
+Substitute \(y = 4\) into the second equation:
+\[
+4z + 4x = 60 \Rightarrow x + z = 15.
+\]
+Substitute \(y = 4\) into the third equation:
+\[
+4x + 16 = 60 \Rightarrow 4x = 44 \Rightarrow x = 11.
+\]
+Then, \(z = 4\).
+
+Step 5: Sum the squares of the elements of \(S\):
+\[
+6^2 + (-10)^2 + 11^2 = 36 + 100 + 121 = 257.
+\]
+
+Final answer: \(\boxed{257}\).
+
+Feedback provided:
+Step 4: 
+Error Type: Procedural
+Feedback: The student correctly identifies that multiple cases can arise from the implications of the equations, but fails to fully explore the implications of the case where \(y = 4\) and does not link it effectively back to the other cases to derive all possible values for \(x\). It's important to consider how the condition \(y = 4\) affects the other equations and what values can be derived from it, as well as ensuring all cases are systematically handled to avoid missing potential solutions. 
+
+Correct: no 
+Feedback: When analyzing cases in a system of equations, ensure that all implications of each case are fully explored and linked back to other equations to derive all possible solutions.
+Attempt 2:
+Step 0: We start with the given system of equations:
+\[
+\begin{cases}
+xy + 4z = 60 \\
+yz + 4x = 60 \\
+zx + 4y = 60
+\end{cases}
+\]
+
+Step 1: Subtract the second equation from the third:
+\[
+zx + 4y - (yz + 4x) = 0 \implies zx + 4y - yz - 4x = 0 \implies z(x - y) - 4(x - y) = 0 \implies (z - 4)(x - y) = 0.
+\]
+This implies either \(z = 4\) or \(x = y\).
+
+Step 2: Similarly, subtract the first equation from the second:
+\[
+yz + 4x - (xy + 4z) = 0 \implies yz + 4x - xy - 4z = 0 \implies y(z - x) - 4(z - x) = 0 \implies (y - 4)(z - x) = 0.
+\]
+This implies either \(y = 4\) or \(z = x\).
+
+Step 3: Subtract the third equation from the first:
+\[
+xy + 4z - (zx + 4y) = 0 \implies xy + 4z - zx - 4y = 0 \implies x(y - z) - 4(y - z) = 0 \implies (x - 4)(y - z) = 0.
+\]
+This implies either \(x = 4\) or \(y = z\).
+
+Step 4: Consider the case \(x = y = z\). Substituting \(x = y = z\) into any of the original equations, we get:
+\[
+x^2 + 4x = 60 \implies x^2 + 4x - 60 = 0.
+\]
+Solving this quadratic equation:
+\[
+x = \frac{-4 \pm \sqrt{16 + 240}}{2} = \frac{-4 \pm 16}{2} \implies x = 6 \text{ or } x = -10.
+\]
+So, \(x\) can be 6 or -10.
+
+Step 5: Consider the case \(x = 4\). Substituting \(x = 4\) into the first equation:
+\[
+4y + 4z = 60 \implies y + z = 15.
+\]
+Substituting \(x = 4\) into the second equation:
+\[
+4z + 16 = 60 \implies 4z = 44 \implies z = 11.
+\]
+Then \(y = 15 - 11 = 4\). So, \(x = 4\), \(y = 4\), and \(z = 11\).
+
+Step 6: Consider the case \(y = 4\). Substituting \(y = 4\) into the second equation:
+\[
+4z + 4x = 60 \implies z + x = 15.
+\]
+Substituting \(y = 4\) into the third equation:
+\[
+4x + 16 = 60 \implies 4x = 44 \implies x = 11.
+\]
+Then \(z = 15 - 11 = 4\). So, \(x = 11\), \(y = 4\), and \(z = 4\).
+
+Step 7: Consider the case \(z = 4\). Substituting \(z = 4\) into the third equation:
+\[
+4x + 4y = 60 \implies x + y = 15.
+\]
+Substituting \(z = 4\) into the first equation:
+\[
+4y + 16 = 60 \implies 4y = 44 \implies y = 11.
+\]
+Then \(x = 15 - 11 = 4\). So, \(x = 4\), \(y = 11\), and \(z = 4\).
+
+Step 8: The set of possible values of \(x\) is \(\{4, 6, -10\}\). The sum of the squares of the elements of \(S\) is:
+\[
+4^2 + 6^2 + (-10)^2 = 16 + 36 + 100 = 152.
+\]
+Thus, the sum of the squares of the elements of \(S\) is \(\boxed{152}\).
+
+Feedback provided:
+Step 4: 
+Error Type: Procedural
+Feedback: The student correctly identifies the case where \(x = y = z\) and derives a quadratic equation, but does not fully explore the implications of the additional cases where \(y = 4\) and \(z = 4\). Each case should be analyzed thoroughly, ensuring the relationships between the variables are maintained and all potential values for \(x\) are determined. Consider how setting \(y\) or \(z\) to a specific value affects the other equations and systematically derive the consequences for all variables involved.
+
+Correct: no 
+Feedback: When solving a system of equations with multiple variables, it is essential to explore all cases and implications fully. Each specific assumption can lead to different relationships among the variables, and all potential solutions must be considered to ensure completeness in the analysis.
+
+Your task is to identify PRECISELY where the student's reasoning first deviates from the correct solution path.
+
+1. First, identify which step of the REFERENCE SOLUTION is first missing or incorrect in the student's work.
+2. Determine the specific error type:
+   - Conceptual error: Fundamental misunderstanding of a concept
+   - Procedural error: Correct concept but wrong procedure/approach
+   - Calculation error: Arithmetic mistake or algebraic manipulation error
+
+3. Provide targeted feedback that:
+   - Points to the specific error without revealing the complete correct step
+   - Explains the underlying concept/principle the student is missing
+   - Guides them toward the correct approach with a hint
+   - NEVER reveals the final answer
+
+FORMAT YOUR RESPONSE EXACTLY LIKE THIS:
+Step X: [Step number where error first occurs]
+Error Type: [conceptual/procedural/calculation]
+Feedback: [Your detailed guidance on fixing the error]
+
+
+Compare the reasoning attempt step process with the correct solution and determine if the solution is correct; if not, provide some feedback for improving the reasoning steps.
+The format of the response should be "Correct: <yes/no> Feedback: <how to fix the reasoning>". The feedback should be a general axiom or statement, and should not reference a person, the reasoning attempt, or the correct solution specifically.--------------------------------------------------
+Step 4: Case 2: \(y = 4\).
+Error Type: Procedural
+Feedback: The student identifies the case where \(y = 4\), but does not fully explore the implications of this assumption on the other equations in the system. When a specific variable is set to a constant value, it is essential to substitute this value into all relevant equations to determine the relationships between the remaining variables and derive all possible solutions. Ensure to analyze how fixing one variable affects the others and leads to other potential cases.
+
+Correct: no 
+Feedback: When solving a system of equations, it's crucial to systematically analyze each case and fully explore how fixing one variable impacts the relationships among the others. This thorough examination can help uncover all potential solutions and ensure completeness in the analysis.

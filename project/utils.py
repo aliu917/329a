@@ -121,7 +121,7 @@ def generate_openai(model, messages, max_tokens=2048, temperature=0.7, **kwargs)
 def clean_text(text):
     return text.strip().replace(' ', '').lower()
 
-
+'''
 def extract_text_within_box(text):
     text = text.split("boxed{")[-1]
     stack = []  # To handle nested curly braces
@@ -137,7 +137,60 @@ def extract_text_within_box(text):
             else:
                 return clean_text(''.join(result))
 
-        result.append(char)
+        result.append(char)'
+'''
+
+
+def extract_text_within_box(text):
+    if not text:
+        return None
+        
+    # Match different variations of boxed notation
+    patterns = [
+        r'\\boxed{([^{}]*(?:{[^{}]*}[^{}]*)*)}',  # LaTeX style with escape
+        r'\\boxed\s*{([^{}]*(?:{[^{}]*}[^{}]*)*)}',  # With possible space
+        r'boxed{([^{}]*(?:{[^{}]*}[^{}]*)*)}',  # Without escape
+        r'\\boxed\[(.*?)\]',  # Alternative bracket style
+        r'boxed\[(.*?)\]',    # Alternative without escape
+        r'Answer:\s*([0-9]+)',  # Plain "Answer: X" format
+        r'The\s+(?:final\s+)?answer\s+is\s+([0-9]+|[0-9]+/[0-9]+)',  # "The answer is X" format
+        r'The\s+(?:final\s+)?answer\s+is\s+([^\.\n]+)'  # More general "The answer is X" format
+    ]
+    
+    for pattern in patterns:
+        matches = re.search(pattern, text, re.DOTALL)
+        if matches:
+            return clean_text(matches.group(1))
+    
+    # If no matches with above patterns, try to extract from the final part of the text
+    # Often answers appear at the end after "therefore" or similar
+    final_sentences = text.split('.')[-3:]  # Look at last few sentences
+    for sentence in final_sentences:
+        # Look for numbers or fractions in the final sentences
+        number_match = re.search(r'([0-9]+|[0-9]+/[0-9]+)$', sentence.strip())
+        if number_match:
+            return clean_text(number_match.group(1))
+    
+    # If still not found, check if there's any boxed-like content
+    if 'box' in text.lower() and '{' in text and '}' in text:
+        try:
+            # Find the position of "box" and then extract content between next { and matching }
+            box_pos = text.lower().find('box')
+            open_brace = text.find('{', box_pos)
+            if open_brace != -1:
+                # Simple brace matching
+                level = 1
+                for i in range(open_brace + 1, len(text)):
+                    if text[i] == '{':
+                        level += 1
+                    elif text[i] == '}':
+                        level -= 1
+                        if level == 0:
+                            return clean_text(text[open_brace + 1:i])
+        except:
+            pass
+    
+    return None
 
 def extract_steps(text, final_response=""):
     all_steps_list = [x.strip().strip("#").strip() for x in re.findall(r"(Step \d+:.*?)(?=Step \d+:|$)", text, re.DOTALL)]

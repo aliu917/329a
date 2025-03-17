@@ -1,0 +1,68 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In the adjoining figure, two circles with radii \$8\$ and \$6\$ are drawn with their centers \$12\$ units apart. At \$P\$, one of the points of intersection, a line is drawn in such a way that the chords \$QP\$ and \$PR\$ have equal length. Find the square of the length of \$QP\$.
+<asy>size(160); defaultpen(linewidth(.8pt)+fontsize(11pt)); dotfactor=3; pair O1=(0,0), O2=(12,0); path C1=Circle(O1,8), C2=Circle(O2,6); pair P=intersectionpoints(C1,C2)[0]; path C3=Circle(P,sqrt(130)); pair Q=intersectionpoints(C3,C1)[0]; pair R=intersectionpoints(C3,C2)[1]; draw(C1); draw(C2); draw(O2--O1); dot(O1); dot(O2); draw(Q--R); label("$Q$",Q,NW); label("$P$",P,1.5*dir(80)); label("$R$",R,NE); label("12",waypoint(O1--O2,0.4),S);</asy>
+
+Solution chain-of-thought reasoning: =
+Firstly, notice that if we reflect \$R\$ over \$P\$, we get \$Q\$. Since we know that \$R\$ is on circle \$B\$ and \$Q\$ is on circle \$A\$, we can reflect circle \$B\$ over \$P\$ to get another circle (centered at a new point \$C\$, and with radius \$6\$) that intersects circle \$A\$ at \$Q\$. The rest is just finding lengths, as follows.
+Since \$P\$ is the midpoint of segment \$BC\$, \$AP\$ is a median of \$\triangle ABC\$. Because we know \$AB=12\$, \$BP=PC=6\$, and \$AP=8\$, we can find the third side of the triangle using  or similar approaches. We get \$AC = \sqrt{56}\$. Now we have a kite \$AQCP\$ with \$AQ=AP=8\$, \$CQ=CP=6\$, and \$AC=\sqrt{56}\$, and all we need is the length of the other diagonal \$PQ\$. The easiest way it can be found is with the Pythagorean Theorem. Let \$2x\$ be the length of \$PQ\$. Then
+<center>\$\sqrt{36-x^2} + \sqrt{64-x^2} = \sqrt{56}.\$</center>
+Solving this equation, we find that \$x^2=\frac{65}{2}\$, so \$PQ^2 = 4x^2 = \boxed{130}.\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the radius of the first circle as \$r_1 = 8\$, the radius of the second circle as \$r_2 = 6\$, and the distance between the centers of the circles as \$d = 12\$.
+
+Step 1: Recognize that if point \$R\$ is reflected over point \$P\$, we get point \$Q\$.
+
+Step 2: Since point \$R\$ is on circle \$B\$ and point \$Q\$ is on circle \$A\$, the reflection of circle \$B\$ over point \$P\$ creates a new circle centered at point \$C\$ with radius \$6\$ that intersects circle \$A\$ at point \$Q\$.
+
+Step 3: Note that point \$P\$ is the midpoint of segment \$BC\$. 
+
+Step 4: Use the properties of triangle \$ABC\$ where \$AB = d = 12\$, \$BP = PC = 6\$, and \$AP = 8\$.
+
+Step 5: Apply the formula for finding the length of the third side of triangle \$ABC\$ using the Pythagorean theorem or other geometric relations to find \$AC\$.
+
+Step 6: Calculate \$AC = \sqrt{56}\$.
+
+Step 7: Recognize that there is a kite \$AQCP\$ where \$AQ = AP = 8\$, \$CQ = CP = 6\$, and \$AC = \sqrt{56}\$.
+
+Step 8: To find the length of diagonal \$PQ\$, let \$2x\$ be the length of \$PQ\$.
+
+Step 9: Set up the equation using the Pythagorean theorem: 
+\[
+\sqrt{36 - x^2} + \sqrt{64 - x^2} = \sqrt{56}.
+\]
+
+Step 10: Solve the equation for \$x^2\$. 
+
+Step 11: Find that \$x^2 = \frac{65}{2}\$.
+
+Step 12: Calculate \$PQ^2 = 4x^2 = 4 \cdot \frac{65}{2} = 130\$.
+
+Final answer: \(\boxed{130}\)
