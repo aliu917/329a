@@ -255,7 +255,14 @@ Final answer: \(\\boxed{448}\)"""
         prompt += "\n\n### Learn from these additional context examples:" + history
     if feedback:
         prompt += "\n\nWhen formulating the response, consider this feedback or hint provided by an expert to help guide the reasoning process for this question: " + feedback
-    prompt += "\nRemember to think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'."
+    prompt += """\n\nRemember to think step by step and then provide the final answer boxed in the format: '\\boxed{final answer}'.
+
+Output the final response with all steps numbered, starting from "Step 0: <text>", which contains any background or variable definitions. Then, "Step 1: <text>", "Step 2: <text>", etc. should contain the step-by-step process from getting from the initial starting point of the question to the final solution. Finally, list the final answer boxed in the format: 'Final answer: \\boxed{final answer}'. Altogether, the final format should look like:
+Step 0: <setup and definitions>
+Step 1: <text>
+Step 2: <text>
+...
+Final answer: <answer>"""
     prompt += "\n\nQuestion: " + problem + "\n\nResponse:"
     return prompt
 
