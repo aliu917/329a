@@ -1,4 +1,4 @@
-from project.utils import generate_openai, generate_together, extract_text_within_box
+from project.utils import generate, extract_text_within_box
 from . import verifiers
 verifier = verifiers.MATH500Verifier()
 
@@ -23,6 +23,8 @@ class TeacherLMAgent():
         self.generation_temp = generation_temp
         self.log_dir = log_dir
         self.log_idx = 0
+        self.successful_results = []
+        print("teacher model: ", model)
 
     def _generate(self, prompt):
         messages = [
@@ -32,7 +34,7 @@ class TeacherLMAgent():
         if self.log_dir:
             with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
-        response = generate_openai(messages=messages, model=self.model, temperature=self.generation_temp)
+        response = generate(messages=messages, model=self.model, temperature=self.generation_temp)
         if self.log_dir:
             with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "a") as f:
                 f.write("-"*50 + "\n" + response)

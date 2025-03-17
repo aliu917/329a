@@ -17,4 +17,4 @@ if __name__ == "__main__":
     parser.add_argument("--student_model", "-s", type=str, default="Qwen/Qwen2.5-7B-Instruct-Turbo")
     parser.add_argument("--teacher_model", "-t", type=str, default="gpt-4o-mini")
     args = parser.parse_args()
-    train(args.dataset, args.method, args.log_dir, args.teacher_model, args.teacher_model, num_examples=args.num_examples)
+    train(args.dataset, args.method, args.log_dir, args.student_model, args.teacher_model, num_examples=args.num_examples)
