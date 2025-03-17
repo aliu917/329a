@@ -42,10 +42,12 @@ def eval(dataset, train_result_path, keys, student_model, log_dir=None, mode="te
             if is_correct:
                 break
         acc += is_correct
+        final_pred = extract_text_within_box(student_pred)
+        print(f"Pred: {final_pred}; Sol: {answer}; running acc: {acc}/{i+1}")
         result = {
             "question": x,
             "answer": answer,
-            "pred": extract_text_within_box(student_pred),
+            "pred": final_pred,
             "pred_steps": student_pred,
             "answer_steps": y,
             "correct": is_correct,
