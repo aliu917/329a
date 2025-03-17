@@ -18,6 +18,21 @@ import re
 from dotenv import load_dotenv
 load_dotenv()
 
+
+def generate(model, messages, max_tokens=2048, temperature=0.7, **kwargs):
+    if "/" in model:
+        if "R1" in model:
+            response = generate_together(messages=messages, model=model, temperature=temperature,
+                                         max_tokens=50000)
+            response = re.sub(r'<think>.*?</think>', '', response, flags=re.DOTALL)
+            response = re.sub(r'<thinking>.*?</thinking>', '', response, flags=re.DOTALL)
+        else:
+            response = generate_together(messages=messages, model=model, max_tokens=max_tokens, temperature=temperature)
+    else:
+        response = generate_openai(messages=messages, model=model, temperature=temperature)
+    return response
+
+
 def generate_together(model, messages, max_tokens=2048, temperature=0.7, **kwargs):
     output = None
     request_id = random.randint(1000, 9999)  # Generate unique request ID for tracking

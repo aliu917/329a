@@ -1,4 +1,5 @@
-from project.utils import generate_together
+from project.utils import generate
+import re
 
 
 def student_default_prompt(problem, feedback="", history=""):
@@ -35,6 +36,13 @@ class StudentLMAgent:
         self.log_dir = log_dir
         self.log_idx = 0
         self.max_log = max_log
+        print("student model: ", model)
+
+    def log_response(self, response):
+        if self.log_dir and self.log_idx < self.max_log:
+            with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "a") as f:
+                f.write("-"*50 + "\n" + response)
+            self.log_idx += 1
 
     def _generate(self, prompt):
         messages = [
@@ -44,11 +52,9 @@ class StudentLMAgent:
         if self.log_dir and self.log_idx < self.max_log:
             with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
-        response = generate_together(messages=messages, model=self.model, temperature=self.generation_temp)
-        if self.log_dir and self.log_idx < self.max_log:
-            with open(f"{self.log_dir}/student_gen{str(self.log_idx)}.txt", "a") as f:
-                f.write("-"*50 + "\n" + response)
-            self.log_idx += 1
+        response = generate(messages=messages, model=self.model, temperature=self.generation_temp)
+        self.log_response(response)
+
         return response
 
     def generate(self, problem, prompt_func=student_default_prompt, feedback="", history=""):

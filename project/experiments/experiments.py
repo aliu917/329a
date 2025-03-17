@@ -30,12 +30,12 @@ def run_single(question_data, y, student, teacher, input_feedback, prompt_func=N
     return result
 
 class Experiment:
-    def __init__(self, dataset_cls, student_temp=0.7, log_dir=None, num_examples=10, seed=2809):
+    def __init__(self, dataset_cls, student_model, teacher_model, log_dir=None, num_examples=10, seed=2809):
         self.dataset = dataset_cls(mode="train")
         torch.manual_seed(seed)
         self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
-        self.student = StudentLMAgent(log_dir=log_dir, generation_temp=student_temp)
-        self.teacher = TeacherLMAgent(log_dir=log_dir)
+        self.student = StudentLMAgent(model=student_model, log_dir=log_dir)
+        self.teacher = TeacherLMAgent(model=teacher_model, log_dir=log_dir)
         self.num_examples = num_examples
         self.seed = seed
         self.log_dir = log_dir
