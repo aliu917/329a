@@ -26,30 +26,34 @@ class TeacherLMAgent():
         self.successful_results = []
         print("teacher model: ", model)
 
-    def _generate(self, prompt):
+    def _generate(self, prompt, model=None):
         messages = [
             {"role": "system", "content": "You are a helpful assistant that generates responses to user queries."},
             {"role": "user", "content": prompt}
         ]
+        if not model:
+            model = self.model
         if self.log_dir:
             with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "w") as f:
                 f.write(prompt)
-        response = generate(messages=messages, model=self.model, temperature=self.generation_temp)
+        response = generate(messages=messages, model=model, temperature=self.generation_temp)
         if self.log_dir:
             with open(f"{self.log_dir}/teacher_gen{str(self.log_idx)}.txt", "a") as f:
                 f.write("-"*50 + "\n" + response)
             self.log_idx += 1
         return response
 
-    def generate(self, question, student_steps, answer_steps, history=None, prompt_func=teacher_default_prompt):
+    def generate(self, question, student_steps, answer_steps, history=None, prompt_func=teacher_default_prompt, model=None):
         # TODO: remove predicting correct, we don't use it now
+        if not model:
+            model = self.model
         correct = False
         result = ""
         if prompt_func is None:
             prompt_func = teacher_default_prompt
         while not correct and not result:
             prompt = prompt_func(question, student_steps, answer_steps, history)
-            result = self._generate(prompt)
+            result = self._generate(prompt, model=model)
             # correct, feedback = result.split("Feedback:")
             # correct = "yes" in correct.lower()
             # feedback = feedback.strip()

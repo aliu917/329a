@@ -140,7 +140,7 @@ class IterativeStepBasedRefine(Experiment):
         label_approaches = label_cot.split("=== Solution")
         clean_label_cots = [label.split("===")[-1].strip() for label in label_approaches]
         for label_cot in clean_label_cots:
-            yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot))
+            yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot), model="gpt-4o-mini")
 
     def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
         return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1, ""
@@ -183,6 +183,9 @@ class IterativeStepBasedRefine(Experiment):
                         if is_correct:
                             break
                     feedback, prev_feedback_step, teacher_response = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
+                    answer_in_feedback = str(answer) in prev_feedback
+                    if "R1" in self.teacher.model:
+                        feedback = feedback.replace(answer, "") # Answer occurs in feedback too often, need to manually remove
 
                     pred = extract_text_within_box(response)
                     result.update({
@@ -195,7 +198,7 @@ class IterativeStepBasedRefine(Experiment):
                         "feedback": feedback,
                         "pred_steps": response,
                         "answer_steps": y_steps,
-                        "answer_in_feedback": str(answer) in prev_feedback,
+                        "answer_in_feedback": answer_in_feedback,
                     })
                     prev_feedback = feedback
                     prev_feedbacks.append(prev_feedback)
@@ -298,7 +301,22 @@ class TeacherIterativeStepBasedRefineWithHistory(IterativeStepBasedRefine):
             return "Last feedback round unneeded", 1, ""
 
         # Find first solution step concept missing from the student
-        _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list), history=(prev_feedbacks, prev_responses, self.teacher.successful_results), prompt_func=prompts.refine_teacher_step_prompt)
+        if "R1" in self.teacher.model:
+            # Use gpt-4o-mini for first feedback bc reasoning does not do well
+            if not prev_feedbacks:
+                _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list),
+                                                    history=(
+                                                    prev_feedbacks, prev_responses, self.teacher.successful_results),
+                                                    prompt_func=prompts.refine_teacher_step_prompt,
+                                                    model="gpt-4o-mini")
+            else:
+                _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list),
+                                                    history=(
+                                                        prev_feedbacks, prev_responses,
+                                                        self.teacher.successful_results),
+                                                    prompt_func=prompts.refine_r1_teacher_step_prompt)
+        else:
+            _, response = self.teacher.generate(x, "\n".join(response_steps_list), "\n".join(y_steps_list), history=(prev_feedbacks, prev_responses, self.teacher.successful_results), prompt_func=prompts.refine_teacher_step_prompt)
         feedback = ""
         step = 1
         try:
@@ -311,4 +329,6 @@ class TeacherIterativeStepBasedRefineWithHistory(IterativeStepBasedRefine):
         except Exception as e:
             print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
             print("Error: ", e)
-        return feedback, int(step), response
+
+        final_step = min(int(step), 0.6*len(y_steps_list)) # if step > 60%, most likely a mistake
+        return feedback, final_step, response

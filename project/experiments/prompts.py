@@ -443,3 +443,121 @@ Mark all feedback with "Feedback: <feedback description>"
 
 Response:
 """
+
+
+def refine_r1_teacher_step_prompt(question, student, label, history=None):
+    feedback, responses, prev_results = history
+
+    previous_attempts = ""
+    if feedback:
+        response0 = "Initial student attempt: " + responses[0] + "\n\n"
+        feedback_responses = []
+        for i, (f, r) in enumerate(zip(feedback, responses[1:] + [student])):
+            f_str = f"Feedback at iteration {i}: " + f
+            r_str = f"Response after feedback at iteration {i}: " + r
+            feedback_responses.append(f_str + "\n\n" + r_str)
+        past_feedback_response_str = response0 + "\n\n".join(feedback_responses) + "\n\n"
+
+        previous_attempts = f"""### Use information from previous attempts
+
+Previous iterations of unsuccessful feedback and corresponding student attempts for this question are provided below. Use what you can learn from the feedback and associated student progress to refine the feedback result for the latest attempt.
+Note that the student does not get access to all history of feedback, so the new feedback response should encapsulate all learnings up until the latest student attempt.
+
+{past_feedback_response_str}
+"""
+
+    dummy_example = """Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Student attempt: 
+Step 0: Define the variables as given:
+- Let \(PQ = 735\),
+- Let \(QR = 112\),
+- Let \(RC = x\).
+Step 1: Recognize that \(\triangle PAQ \sim \triangle PDC\) by the properties of similar triangles (AA similarity criterion).
+Step 2: The proportionality of corresponding sides gives \(\frac{AQ}{CD} = \frac{PQ}{PC}\).
+Step 3: Express \(PC\) in terms of the given lengths:
+- \(PC = PQ + QR + RC = 735 + 112 + x = 847 + x\).
+Step 4: Write the proportion using the similarity of the triangles:\[\frac{PQ}{PC} = \frac{735}{847 + x}\]
+Step 5: Since \(\triangle PAQ \sim \triangle PDC\), the ratio of the sides must be the same:
+- We need to find the ratio of \(AQ\) to \(CD\).
+Step 6: Use the fact that \(\triangle PAQ \sim \triangle PDC\) to set up the proportion:\[\frac{AQ}{CD} = \frac{735}{847 + x}\]
+Step 7: Since \(AQ\) and \(CD\) are corresponding sides, and by the properties of similar triangles, we know:\[\frac{AQ}{CD} = \frac{735}{847 + x}\]
+Step 8: We need to find \(RC\). From the similarity, the ratio of the segments on the line \(PC\) is the same. Therefore, we can use the fact that \(PQ : QR = 735 : 112\) to find \(RC\).
+Step 9: Since \(PQ : QR = 735 : 112\), and \(QR = 112\), we can set up the proportion:\[\frac{PQ}{QR} = \frac{735}{112} = \frac{847 + x - 112}{112}\]
+Step 10: Simplify the equation:\[\frac{735}{112} = \frac{735}{112} = \frac{735 + x - 112}{112}\]
+Step 11: This simplifies to:\[735 = 735 + x - 112\]
+Step 12: Solve for \(x\):\[735 = 623 + x \implies x = 112\]
+Step 13: Thus, the length of \(RC\) is:\[\boxed{112}\]
+
+Correct Solution:
+Step 0: Define the variables: let \$PQ = 735\$, \$QR = 112\$, and let \$RC\$ be the unknown we need to find.
+Step 1: Recognize that triangles \$\triangle PAQ\sim \triangle PDC\$ imply proportionality, and write the proportion:\[\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + RC} = \frac{735}{847 + RC}\]
+Step 2: Similarly, recognize that triangles \$\triangle BRQ\sim DRC\$ also imply proportionality, and write the proportion:\[\frac{QR}{RC} = \frac{112}{RC} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}\]
+Step 3: Express \$\frac{AQ}{CD}\$ in terms of \$RC\$:\[\frac{AQ}{CD} = 1 - \frac{112}{RC} = \frac{RC - 112}{RC}\]
+Step 4: Substitute the expression from Step 3 into the proportion from Step 1:\[\frac{735}{847 + RC} = \frac{RC - 112}{RC}\]
+Step 5: Cross-multiply to eliminate the fractions:\[735RC = (RC + 847)(RC - 112)\]
+Step 6: Expand the right-hand side:\[735RC = RC^2 - 112RC + 847RC - 847 \cdot 112\]
+This simplifies to:\[735RC = RC^2 + 735RC - 847 \cdot 112\]
+Step 7: Rearranging gives:\[0 = RC^2 - 847 \cdot 112\]
+Step 8: Solve for \$RC\$:\[RC = \sqrt{112 \cdot 847}\]
+Step 9: Calculate the value:\[RC = \sqrt{112 \cdot 847} = 308\]
+Final answer: \(\boxed{308}\)
+
+Response:
+Step 1: The student corrrectly identifies the proportionality of similar triangles PAQ and PDC in the student attempt steps 1 and 2.
+Step 2: The student does not identify that triangles \$\triangle BRQ\sim DRC\$ also imply proportionality, and write the proportion:\[\frac{QR}{RC} = \frac{112}{RC} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}\]
+
+Feedback: Similar to PAQ \sim PAC, similarity of triangles \$\triangle BRQ\sim DRC\$ imply proportionality, so we can write the proportion:\[\frac{QR}{RC} = \frac{112}{RC}"""
+
+    previous_examples = "Here is an example of some inputs and the appropriate response:\n\n" + dummy_example
+    if prev_results:
+        past_results = []
+        for result in prev_results:
+            result_format = f"""Question: {result["question"]}
+
+Student attempt:
+{result["prev_pred_steps"]}
+
+Correct Solution:
+{result["answer_steps"]}
+
+Response:
+{result["teacher_response"]}"""
+            past_results.append(result_format)
+        past_results_str = "\n\n".join(past_results)
+
+        previous_examples = f"""### Learn from these examples
+
+{dummy_example}
+
+{past_results_str}
+        """
+
+    return f"""You are given a reasoning attempt for answering a complex math question. Given the question and a step-by-step reference of the correct solutions, evaluate each step of the solution response against the student attempt and determine if the student was able to understand the reasoning step. Start from step 1 of the teacher solution.
+For the first teacher step that is not present in the student attempt or cannot be correctly inferred from the student's reasoning, explain what is unique about that step's reasoning that is missing in the student approach.
+
+{previous_examples}
+
+{previous_attempts}### Now, apply what you have learned:
+
+Evaluate each step of the correct solution beginning from step 1 individually against the sequence of student attempt steps to see at what reasoning step the student diverges from the solution. Ignore the teacher step 0, and start from step 1.
+Then, given the previous feedback history and the most recent student response below, think about why the student was not able to progress toward the final solution using the previous feedback.
+Finally, propose a better feedback to help the student reach the next solution step.
+It is useful in the feedback to specifically provide expressions and values directly from the correct intermediate solution step that are missing from the student's response.
+Specifically in the feedback, keep all the existing content in the missing solution step but provide some additional detail about how it can be reasoned toward from the previous step, and why this step is important for future steps.
+Do not mention in the feedback what the student did wrong, only mention correct expressions for solving the problem and their reasoning. Do not provide the final solution in the feedback. The feedback should be phrased as something you are telling the student directly, so it should not refer to the student in third person or to the correct solution.
+
+Output the final response with all teacher steps that are correctly reflected in the student response in a numbered format, starting from "Step 1: <text>", "Step 2: <text>", etc, where the <text> mentions where and how in the student response they correctly addressed this solution step concept. Finally, provide the improved feedback to help the student reason toward the first missing step using 'Feedback: <text>'. Altogether, the final format should look like:
+Step 1: <text>
+Step 2: <text>
+...
+Feedback: <final better feedback>
+
+Question: {question}
+
+Student attempt: {student}
+
+Correct solution: {label}
+
+Response:
+"""
