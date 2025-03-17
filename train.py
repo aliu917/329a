@@ -3,9 +3,9 @@ import project
 
 def train(dataset, method, log_dir, num_examples=10):
     # test_dataset = MathDataset(dir="MATH_debug", mode="debug")
-    dataset = vars(project.datasets)[dataset]()
+    dataset_cls = vars(project.datasets)[dataset]
     experiment_cls = vars(project.experiments)[method]
-    experiment = experiment_cls(dataset, log_dir, num_examples=num_examples)
+    experiment = experiment_cls(dataset_cls, log_dir, num_examples=num_examples)
     experiment.run()
 
 if __name__ == "__main__":

@@ -321,3 +321,35 @@ Do not mention in the feedback what the student did wrong, only mention correct 
 
 Response:
 """
+
+def teacher_search_prompt(question, student, label, history):
+    assert question is None
+    assert student is None
+    assert label is None
+    question = history[-1]["question"]
+    solution = history[-1]["answer_steps"]
+    initial_student = history[0]["pred_steps"]
+    initial_correct = "correct" if history[0]["correct"] else "incorrect"
+    final_feedback = history[-1]["prev_feedback"]
+    final_student = history[-1]["pred_steps"]
+    final_correct = "correct" if history[-1]["correct"] else "incorrect"
+    return f"""You are trying to provide hints that will help students solve the following math question:
+{question}
+
+The correct solution to the question with the answer boxed is:
+{solution}
+
+A student initially made the following attempt:
+{initial_student}
+
+This attempt is {initial_correct}.
+
+You gave a student the exact initial steps of the solution, listed below, as a hint:
+{final_feedback}
+
+The student then came up with the following attempt:
+{final_student}
+
+This attempt is {final_correct}.
+
+You want to give feedback in a more general way if possible so that it may help the students with other problems. Please try to give a hint that still enables students to solve the problem but that they can also apply to other problems."""

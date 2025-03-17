@@ -30,8 +30,8 @@ def run_single(question_data, y, student, teacher, input_feedback, prompt_func=N
     return result
 
 class Experiment:
-    def __init__(self, dataset, log_dir=None, num_examples=10, seed=2809):
-        self.dataset = dataset
+    def __init__(self, dataset_cls, log_dir=None, num_examples=10, seed=2809):
+        self.dataset = dataset_cls(mode="train")
         torch.manual_seed(seed)
         self.dataloader = DataLoader(self.dataset, batch_size=1, shuffle=True)
         self.student = StudentLMAgent(log_dir=log_dir)
@@ -131,7 +131,7 @@ class IterativeRefine(Experiment):
 
 
 class IterativeStepBasedRefine(Experiment):
-    def __init__(self, *args, trials=3, limit=0.8, **kwargs):
+    def __init__(self, *args, trials=1, limit=0.8, **kwargs):
         super().__init__(*args, **kwargs)
         self.limit = limit
         self.trials = trials
@@ -141,7 +141,7 @@ class IterativeStepBasedRefine(Experiment):
         clean_label_cots = [label.split("===")[-1].strip() for label in label_approaches]
         for label_cot in clean_label_cots:
             yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot))
-
+    
     def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
         return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1
 
@@ -234,7 +234,6 @@ class IterativeStepBasedRefine(Experiment):
                     json.dump(base_results, f)
         return results
 
-
 class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
     """
     Iterative step refinement but we use teacher to provide specific step feedback.
@@ -264,3 +263,141 @@ class TeacherIterativeStepBasedRefine(IterativeStepBasedRefine):
             print(f"Count not extract teacher feedback steps. See output: teacher_gen{str(self.teacher.log_idx-1)}.txt")
             print("Error: ", e)
         return feedback, int(step)
+
+class TeacherSearch(Experiment):
+    def __init__(self, dataset_cls, *args, limit=0.8, **kwargs):
+        super().__init__(dataset_cls, *args, **kwargs)
+        val_dataset = dataset_cls(mode="val")
+        self.val_dataloader = DataLoader(val_dataset, batch_size=1, shuffle=True)
+        self.limit = limit
+        # TODO: remove this!
+        self.limit = 1.0
+        print("LIMIT 1.0")
+
+    def label_steps_generator(self, q, label_cot):
+        label_approaches = label_cot.split("=== Solution")
+        clean_label_cots = [label.split("===")[-1].strip() for label in label_approaches]
+        for label_cot in clean_label_cots:
+            yield self.teacher._generate(prompts.cot_to_steps_prompt(q, label_cot))
+    
+    def step_feedback(self, x, response, y_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct):
+        return "\n".join(y_steps_list[:prev_feedback_step + 1]), prev_feedback_step + 1
+
+    def get_results(self):
+        base_results = []
+        results = []
+        iter_results_list = []
+        context_examples = []
+        prev_val_correct = 0
+        for i, (data, labels) in tqdm(zip(range(self.num_examples), self.dataloader)):
+            x = data["problem"][0]
+            all_y = labels[0]
+            is_correct = False
+            first = True
+            base_result = {"question": x}
+            result = base_result
+            numerical_answer = str(data["answer"].item())
+
+            iter_results = []
+            # Iterator is only for AIME case of multiple label approaches
+            for label_round, y_steps in enumerate(self.label_steps_generator(x, all_y)):
+                answer = extract_text_within_box(all_y)
+                label_steps_list, extract_answer = extract_steps(y_steps, r"[Aa]nswer")
+                if not answer:
+                    answer = extract_text_within_box(extract_answer)
+                prev_responses = []
+                prev_feedbacks = []
+                prev_feedback = ""
+                prev_feedback_step = 1
+
+                for refine_round in range(len(label_steps_list)):
+                    result = base_result
+                    response = self.student.generate(x, prompt_func=prompts.student_step_func, feedback=prev_feedback)
+                    # Compare to numerical answer for AMC questions
+                    is_correct = verifier(response, all_y) or verifier(response, numerical_answer)
+                    feedback, prev_feedback_step = self.step_feedback(x, response, label_steps_list, prev_responses, prev_feedbacks, prev_feedback_step, is_correct)
+
+                    pred = extract_text_within_box(response)
+                    result.update({
+                        "answer": answer,
+                        "numerical_answer": numerical_answer,
+                        "pred": pred,
+                        "label_round": label_round + 1,
+                        "round": refine_round + 1,
+                        "correct": is_correct,
+                        "prev_feedback": prev_feedback,
+                        "feedback": feedback,
+                        "pred_steps": response,
+                        "answer_steps": y_steps,
+                        "answer_in_feedback": str(numerical_answer) in prev_feedback,
+                    })
+                    prev_feedback = feedback
+                    prev_feedbacks.append(prev_feedback)
+                    prev_responses.append(response)
+
+                    print(f"Round {refine_round + 1}: pred {pred} answer {answer} feedback step {prev_feedback_step}/{str(len(label_steps_list)-1)}")
+
+                    if first:
+                        first = False
+                        base_results.append(result.copy())
+
+                    iter_results.append(result.copy())
+                    if self.results_path:
+                        with open(f"{self.log_dir}/refine_results_{i}.json", "w") as f:
+                            json.dump(iter_results, f)
+
+                    # Early return because correct
+                    if is_correct:
+                        print(f"Early stopped from correct feedback at iteration {refine_round + 1}/{str(len(label_steps_list)-1)}!")
+                        # print("Feedback: ", prev_feedback)
+                        break
+
+                    # Early return because cannot give more feedback without giving away answer
+                    # if prev_feedback_step >= len(label_steps_list)*self.limit - 1 and str(answer) in feedback:
+                    if prev_feedback_step >= len(label_steps_list)*self.limit - 1:
+                        break
+
+                if is_correct:
+                    break
+
+            if not is_correct:
+                print("Correct answer never reached.")
+            
+            # Optimize feedback
+            if is_correct:
+                for _ in range(10):
+                    _, feedback = self.teacher.generate(None, None, None, iter_results, prompt_func=prompts.teacher_search_prompt)
+                    optimized_response = self.student.generate(x, prompt_func=prompts.student_step_func, feedback=feedback)
+                    optimized_correct = verifier(optimized_response, all_y) or verifier(optimized_response, numerical_answer)
+                    if optimized_correct:
+                        break
+                context_result = result.copy()
+                if optimized_correct:
+                    context_result["prev_feedback"] = feedback
+                    context_result["pred_steps"] = optimized_response
+                    context_result["answer_in_feedback"] = str(numerical_answer) in feedback
+            
+                val_correct = 0
+                new_context_examples = context_examples + [context_result]
+                for _, (val_data, val_labels) in zip(range(10), self.val_dataloader):
+                    val_x = val_data["problem"][0]
+                    val_all_y = val_labels[0]
+                    val_numerical_answer = str(val_data["answer"].item())
+                    val_context = prompts.get_eval_student_context(new_context_examples, ["prev_feedback"], self.num_examples)
+                    val_response = self.student.generate(val_x, history=val_context)
+                    val_correct += verifier(val_response, val_all_y) or verifier(val_response, val_numerical_answer)
+                print(prev_val_correct, val_correct)
+                if val_correct >= prev_val_correct:
+                    context_examples = new_context_examples
+                    prev_val_correct = val_correct
+                
+            results.append(result)
+            iter_results_list.append(iter_results)
+            if self.results_path:
+                with open(f"{self.log_dir}/iterative_results.json", "w") as f:
+                    json.dump(iter_results_list, f)
+                with open(f"{self.log_dir}/optimized_results.json", "w") as f:
+                    json.dump(context_examples, f)
+                with open(f"{self.log_dir}/base_results.json", "w") as f:
+                    json.dump(base_results, f)
+        return results

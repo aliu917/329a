@@ -55,11 +55,13 @@ class AIMEDataset(Dataset):
         data = pd.read_csv(self.file_path)
         # self.data, val_df = train_test_split(data, test_size=0.2, random_state=42)
         data = data.sample(frac=1, random_state=42).reset_index(drop=True)
-        split = int(0.8 * len(data))
+        split_1, split_2 = int(0.8 * len(data)), int(0.85 * len(data))
         if mode == "train":
-            self.data = data[:split]
+            self.data = data[:split_1]
+        elif mode == "val":
+            self.data = data[split_1: split_2]
         else:
-            self.data = data[split:]
+            self.data = data[split_2:]
 
         self.parse_solutions = parse_solutions
         
