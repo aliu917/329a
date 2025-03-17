@@ -1,0 +1,55 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Each of the \$100\$ students in a certain summer camp can either sing, dance, or act. Some students have more than one talent, but no student has all three talents. There are \$42\$ students who cannot sing, \$65\$ students who cannot dance, and \$29\$ students who cannot act. How many students have two of these talents?
+\$\textbf{(A)}\ 16\qquad\textbf{(B)}\ 25\qquad\textbf{(C)}\ 36\qquad\textbf{(D)}\ 49\qquad\textbf{(E)}\ 64\$
+
+Solution chain-of-thought reasoning: An easier way to solve the problem:
+Since \$42\$ students cannot sing, there are \$100-42=58\$ students who can.
+Similarly \$65\$ students cannot dance, there are \$100-65=35\$ students who can.
+And \$29\$ students cannot act, there are \$100-29=71\$ students who can.
+Therefore, there are \$58+35+71=164\$ students in all ignoring the overlaps between \$2\$ of \$3\$ talent categories.
+There are no students who have all \$3\$ talents, nor those who have none \$(0)\$, so only \$1\$ or \$2\$ talents are viable.
+Thus, there are \$164-100=\boxed{\textbf{(E) }64}\$ students who have \$2\$ of \$3\$ talents.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Define the total number of students as \$100\$. Denote the number of students who cannot sing as \$42\$, those who cannot dance as \$65\$, and those who cannot act as \$29\$.
+
+Step 1: Calculate the number of students who can sing: \$100 - 42 = 58\$ students.
+
+Step 2: Calculate the number of students who can dance: \$100 - 65 = 35\$ students.
+
+Step 3: Calculate the number of students who can act: \$100 - 29 = 71\$ students.
+
+Step 4: Add the number of students who can sing, dance, or act: \$58 + 35 + 71 = 164\$ students. This sum counts students with multiple talents more than once.
+
+Step 5: Recognize that there are no students with all three talents or none at all, which means we are only considering students with either one or two talents.
+
+Step 6: Since there are \$100\$ students in total, subtract the total from the previous step to find the number of students with two talents: \$164 - 100 = 64\$ students.
+
+Final answer: \(\boxed{64}\)

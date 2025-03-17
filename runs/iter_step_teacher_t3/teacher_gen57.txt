@@ -1,0 +1,82 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In 1991 the population of a town was a perfect square. Ten years later, after an increase of 150 people, the population was 9 more than a perfect square. Now, in 2011, with an increase of another 150 people, the population is once again a perfect square. Which of the following is closest to the percent growth of the town's population during this twenty-year period?
+\$ \textbf{(A)}\ 42 \qquad\textbf{(B)}\ 47 \qquad\textbf{(C)}\ 52\qquad\textbf{(D)}\ 57\qquad\textbf{(E)}\ 62 \$
+
+Solution chain-of-thought reasoning: Proceed through the difference of squares for \$p\$ and \$q\$:
+\$141=q^2-p^2=(q-p)(q+p)\$
+However, instead of testing both pairs of factors we take a more certain approach. Here \$r^2\$ is the population of the town in 2011.
+\$r^2-p^2=300\$
+\$(r-p)(r+p)=300\$
+Test through pairs of \$r\$ and \$p\$ that makes sure \$p=22\$ or \$p=70\$.
+Then go through the same routine as demonstrated above to finish this problem.
+Note that this approach might take more testing if one is not familiar with finding factors.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Let \( p \) be the population of the town in 1991, which is a perfect square. Let \( r \) be the population in 2011, which is also a perfect square.
+
+Step 1: In 2001, after an increase of 150 people, the population is \( p + 150 \) and is described as being 9 more than a perfect square: \( p + 150 = k^2 + 9 \) for some integer \( k \).
+
+Step 2: Rearranging this gives \( p = k^2 + 9 - 150 = k^2 - 141 \).
+
+Step 3: Therefore, the population in 2011 is \( r = p + 300 = k^2 - 141 + 300 = k^2 + 159 \).
+
+Step 4: Since \( r \) is also a perfect square, we can denote \( r = m^2 \) for some integer \( m \).
+
+Step 5: This gives us the equation \( m^2 = k^2 + 159 \).
+
+Step 6: Rearranging gives us \( m^2 - k^2 = 159 \), which we can factor as \( (m - k)(m + k) = 159 \).
+
+Step 7: We need to find pairs of factors of 159. The pairs are \( (1, 159), (3, 53) \).
+
+Step 8: For the pair \( (3, 53) \):
+- Set \( m - k = 3 \) and \( m + k = 53 \).
+- Solving these gives \( 2m = 56 \) so \( m = 28 \) and \( 2k = 50 \) so \( k = 25 \).
+
+Step 9: Substitute \( k \) back into the equation for \( p \):
+- \( p = k^2 - 141 = 25^2 - 141 = 625 - 141 = 484 \).
+
+Step 10: Now calculate the population in 2011:
+- \( r = p + 300 = 484 + 300 = 784 \).
+
+Step 11: The percentage growth over the 20-year period is calculated as:
+\[
+\text{Percent Growth} = \frac{\text{Final Population} - \text{Initial Population}}{\text{Initial Population}} \times 100 = \frac{784 - 484}{484} \times 100.
+\]
+
+Step 12: Calculate the change: \( 784 - 484 = 300 \).
+
+Step 13: Then calculate the percentage: 
+\[
+\text{Percent Growth} = \frac{300}{484} \times 100 \approx 61.88.
+\]
+
+Step 14: The closest answer choice to 61.88 is 62.
+
+Final answer: \(\boxed{62}\)
