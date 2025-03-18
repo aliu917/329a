@@ -493,9 +493,9 @@ class EnhancedTeacherRefine(TeacherIterativeStepBasedRefine):
         response_steps_list, _ = extract_steps(response)
         
         if is_correct:
-            return "Student was correct", 1
+            return "Student was correct", 1, ""
         if len(prev_feedbacks) + 1 == len(y_steps_list):
-            return "Last feedback round unneeded", 1
+            return "Last feedback round unneeded", 1, ""
             
         # Current student attempt history to track progress
         attempt_history = ""
@@ -541,34 +541,28 @@ Feedback: [Your detailed guidance on fixing the error]
 """
         
         # Generate enhanced feedback - MODIFIED TO MATCH YOUR API
-        _, response = self.teacher.generate(
+        _, teacher_response = self.teacher.generate(
             question=x,
             student_steps=response,
             answer_steps=enhanced_prompt,
             history=None,
             prompt_func=None
         )
-        
-        # Extract the step number and feedback
-        feedback = response
+
+        feedback = teacher_response.strip()
         step = prev_feedback_step
-        
+
         try:
-            # Extract step number
-            step_match = re.search(r"Step (\d+):", response)
+            step_match = re.search(r"Step (\d+):", teacher_response)
             if step_match:
                 step = int(step_match.group(1))
-            
-            # If unable to extract step properly, use the next step from previous feedback
-            if not step_match:
+            else:
                 step = prev_feedback_step + 1
-                
         except Exception as e:
             print(f"Error extracting step information: {e}")
-            print(f"Using fallback step: {prev_feedback_step + 1}")
             step = prev_feedback_step + 1
-        
-        return feedback, step, response
+
+        return feedback, step, teacher_response
 
 
 class SpecializedTeacherRefine(TeacherIterativeStepBasedRefine):
@@ -616,11 +610,11 @@ class SpecializedTeacherRefine(TeacherIterativeStepBasedRefine):
         """
         # No need for feedback if the student is correct
         if is_correct:
-            return "Student was correct", 1
+            return "Student was correct", 1, ""
             
         # Check if we've reached the limit of feedback steps
         if len(prev_feedbacks) + 1 == len(y_steps_list):
-            return "Last feedback round unneeded", 1
+            return "Last feedback round unneeded", 1, ""
         
         # First attempt - use targeted feedback approach
         if not prev_responses:
