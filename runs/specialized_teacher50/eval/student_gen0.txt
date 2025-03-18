@@ -894,30 +894,23 @@ Final answer: \(\boxed{16}\)
 Given what you have learned from the examples above, answer the following question: 
 In \$\triangle ABC\$ let \$I\$ be the center of the inscribed circle, and let the bisector of \$\angle ACB\$ intersect \$AB\$ at \$L\$. The line through \$C\$ and \$L\$ intersects the circumscribed circle of \$\triangle ABC\$ at the two points \$C\$ and \$D\$. If \$LI=2\$ and \$LD=3\$, then \$IC=\tfrac{m}{n}\$, where \$m\$ and \$n\$ are relatively prime positive integers. Find \$m+n\$.
 Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
-To solve the problem, we start by noting the given information and the properties of the triangle and its elements. We are given that \(LI = 2\) and \(LD = 3\), and we need to find \(IC\).
+To solve the problem, we start by noting that \(D\) is the intersection of the angle bisector of \(\angle ACB\) with the circumcircle of \(\triangle ABC\) again. This makes \(D\) the midpoint of the arc \(AB\) that does not contain \(C\). Therefore, \(D\) is the point where the angle bisector of \(\angle ACB\) meets the circumcircle again.
 
-First, we use the fact that \(D\) lies on the circumcircle of \(\triangle ABC\) and the line \(CL\) is the angle bisector of \(\angle ACB\). By the power of a point theorem applied at point \(L\) with respect to the circumcircle of \(\triangle ABC\), we have:
-\[LI \cdot LD = LA \cdot LB.\]
-Let \(LA = x\) and \(LB = y\). Then, we have:
-\[2 \cdot 3 = x \cdot y \implies xy = 6.\]
+Since \(D\) is the midpoint of the arc \(AB\) not containing \(C\), \(CD\) is the angle bisector of \(\angle ACB\) and \(D\) is directly opposite \(L\) on the circumcircle. This implies that \(L\) is the midpoint of the arc \(CD\) not containing \(A\) or \(B\).
 
-Next, we use the Angle Bisector Theorem which states that the angle bisector divides the opposite side in the ratio of the other two sides. Therefore, we have:
-\[\frac{AL}{LB} = \frac{AC}{BC}.\]
-Let \(AC = b\) and \(BC = a\). Then, we have:
-\[\frac{x}{y} = \frac{b}{a}.\]
-Since \(x + y = AB = c\), we can express \(x\) and \(y\) in terms of \(a\), \(b\), and \(c\):
-\[x = \frac{ac}{a+b} \quad \text{and} \quad y = \frac{bc}{a+b}.\]
-Substituting these into the equation \(xy = 6\), we get:
-\[\left(\frac{ac}{a+b}\right) \left(\frac{bc}{a+b}\right) = 6 \implies \frac{abc^2}{(a+b)^2} = 6 \implies abc^2 = 6(a+b)^2.\]
+Given that \(LI = 2\) and \(LD = 3\), we can use the Power of a Point theorem at point \(L\) with respect to the circumcircle. The power of point \(L\) with respect to the circumcircle is the same along any chord through \(L\). Specifically, we have:
+\[ LI \cdot LD = LA \cdot LB. \]
+However, since \(L\) is on the angle bisector of \(\angle ACB\), we can use the fact that \(L\) is the midpoint of the arc \(CD\) not containing \(A\) or \(B\) to infer that \(L\) is equidistant from \(C\) and \(D\). Therefore, \(LC = LD - LI = 3 - 2 = 1\).
 
-Now, we use the fact that \(I\) is the incenter of \(\triangle ABC\). The length \(IC\) can be found using the formula for the length of the segment from the incenter to a vertex of a triangle:
-\[IC = \frac{r}{\sin \frac{C}{2}},\]
-where \(r\) is the inradius of \(\triangle ABC\). However, we can use a simpler geometric property involving the power of a point and the segments created by the angle bisector.
+Now, we need to find \(IC\). Since \(I\) is the incenter of \(\triangle ABC\), we use the fact that \(I\) lies on the angle bisector of \(\angle ACB\) and the power of point theorem at \(I\). The power of point \(I\) with respect to the circumcircle is:
+\[ IC \cdot ID = IA \cdot IB. \]
+However, since \(I\) is the incenter, we can use the fact that \(IC\) is the inradius and the relationship involving the segments from \(I\) to the points of tangency. Given that \(LC = 1\) and \(LD = 3\), we can use the fact that \(I\) is the incenter and the power of point theorem to find \(IC\).
 
-Since \(D\) is the intersection of the angle bisector and the circumcircle, and \(L\) is on the angle bisector, we can use the fact that \(IC\) is related to the segments \(LI\) and \(LD\) by the power of a point and the properties of the incenter. Specifically, we use the fact that \(IC\) is the geometric mean of \(IL\) and \(ID\):
-\[IC = \sqrt{IL \cdot ID} = \sqrt{2 \cdot 3} = \sqrt{6}.\]
-
-However, we need to express \(IC\) in the form \(\frac{m}{n}\) where \(m\) and \(n\) are relatively prime. Since \(\sqrt{6}\) is not in the form \(\frac{m}{n}\), we need to re-evaluate the problem in terms of the given segments and the properties of the triangle. Given the problem constraints and the fact that \(IC\) must be a rational number, we can use the fact that the length \(IC\) is a rational number when expressed in the form \(\frac{m}{n}\).
-
-By re-evaluating the problem, we find that the correct expression for \(IC\) is \(\frac{6}{5}\), where \(m = 6\) and \(n = 5\). Therefore, the sum \(m + n\) is:
-\[\boxed{11}.\]
+Using the fact that \(I\) is the incenter, we can use the relationship:
+\[ IC = \frac{LD \cdot LC}{LI} = \frac{3 \cdot 1}{2} = \frac{3}{2}. \]
+Thus, \(IC = \frac{3}{2}\), and the sum of the numerator and the denominator is:
+\[ m + n = 3 + 2 = 5. \]
+Therefore, the final answer is:
+\[
+\boxed{5}
+\]

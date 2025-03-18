@@ -892,44 +892,88 @@ Final answer: \(\boxed{16}\)
 
 ### Now, apply what you have learned:
 Given what you have learned from the examples above, answer the following question: 
-Let \$f(x)=(x^2+3x+2)^{\cos(\pi x)}\$. Find the sum of all positive integers \$n\$ for which
-\left |\sum_{k=1}^n\log_{10}f(k)\right|=1.
+Consider the s \$ A(0,12), B(10,9), C(8,0),\$ and \$ D(-4,7). \$ There is a unique  \$ S \$ such that each of the four points is on a different side of \$ S. \$ Let \$ K \$ be the area of \$ S. \$ Find the remainder when \$ 10K \$ is divided by \$1000\$.
+__TOC__
 Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
-To solve the problem, we start by simplifying the expression for \( f(x) \). We have:
-\[ f(x) = (x^2 + 3x + 2)^{\cos(\pi x)}. \]
-Notice that \( x^2 + 3x + 2 = (x+1)(x+2) \). Therefore,
-\[ f(x) = ((x+1)(x+2))^{\cos(\pi x)}. \]
-The function \( \cos(\pi x) \) is periodic with period 2 and takes the values 1 when \( x \) is an even integer and -1 when \( x \) is an odd integer. Thus, we can write:
-\[ f(x) = \begin{cases} 
-(x+1)^2(x+2)^2 & \text{if } x \text{ is even}, \\
-(x+1)^{-2}(x+2)^{-2} = \frac{1}{(x+1)^2(x+2)^2} & \text{if } x \text{ is odd}.
-\end{cases} \]
+To solve the problem, we need to determine the point \( S \) such that each of the points \( A(0,12) \), \( B(10,9) \), \( C(8,0) \), and \( D(-4,7) \) lies on a different side of \( S \). This point \( S \) is the unique point that is the intersection of the diagonals of the quadrilateral formed by the points \( A \), \( B \), \( C \), and \( D \) when they are connected in a cyclic order.
 
-Next, we need to find \( \log_{10} f(x) \):
-\[ \log_{10} f(x) = \begin{cases} 
-2 \log_{10}((x+1)(x+2)) & \text{if } x \text{ is even}, \\
--2 \log_{10}((x+1)(x+2)) & \text{if } x \text{ is odd}.
-\end{cases} \]
-We need to find the sum of these logarithms from \( x=1 \) to \( x=n \) and determine when the absolute value of this sum is 1. Let's denote the sum by \( S_n \):
-\[ S_n = \sum_{k=1}^n \log_{10} f(k). \]
-For even \( k \), \( \log_{10} f(k) = 2 \log_{10}((k+1)(k+2)) \), and for odd \( k \), \( \log_{10} f(k) = -2 \log_{10}((k+1)(k+2)) \). Therefore,
-\[ S_n = \sum_{\substack{k=1 \\ k \text{ even}}}^n 2 \log_{10}((k+1)(k+2)) + \sum_{\substack{k=1 \\ k \text{ odd}}}^n -2 \log_{10}((k+1)(k+2)). \]
-We can group the terms by their parity:
-\[ S_n = 2 \sum_{\substack{k=1 \\ k \text{ even}}}^n \log_{10}((k+1)(k+2)) - 2 \sum_{\substack{k=1 \\ k \text{ odd}}}^n \log_{10}((k+1)(k+2)). \]
-This can be rewritten as:
-\[ S_n = 2 \left( \sum_{\substack{k=1 \\ k \text{ even}}}^n \log_{10}((k+1)(k+2)) - \sum_{\substack{k=1 \\ k \text{ odd}}}^n \log_{10}((k+1)(k+2)) \right). \]
-We can combine the sums:
-\[ S_n = 2 \sum_{k=1}^n (-1)^{k+1} \log_{10}((k+1)(k+2)). \]
-We need to find when the absolute value of this sum is 1. Let's consider the sum for small values of \( n \):
-For \( n=1 \):
-\[ S_1 = -2 \log_{10}(2 \cdot 3) = -2 \log_{10}6. \]
-For \( n=2 \):
-\[ S_2 = 2 \log_{10}(2 \cdot 3) - 2 \log_{10}(3 \cdot 4) = 2 \log_{10}(6) - 2 \log_{10}(12) = 2 (\log_{10}(6) - \log_{10}(12)) = 2 \log_{10}\left(\frac{6}{12}\right) = 2 \log_{10}\left(\frac{1}{2}\right) = -2 \log_{10}2. \]
-For \( n=3 \):
-\[ S_3 = 2 \log_{10}(2 \cdot 3) - 2 \log_{10}(3 \cdot 4) + 2 \log_{10}(4 \cdot 5) = -2 \log_{10}2 + 2 \log_{10}(20) = -2 \log_{10}2 + 2 (\log_{10}4 + \log_{10}5) = -2 \log_{10}2 + 2 (2 \log_{10}2 + \log_{10}5) = 2 \log_{10}5. \]
-For \( n=4 \):
-\[ S_4 = 2 \log_{10}(2 \cdot 3) - 2 \log_{10}(3 \cdot 4) + 2 \log_{10}(4 \cdot 5) - 2 \log_{10}(5 \cdot 6) = 2 \log_{10}5 - 2 \log_{10}(30) = 2 \log_{10}5 - 2 (\log_{10}3 + \log_{10}10) = 2 \log_{10}5 - 2 (\log_{10}3 + 1) = 2 \log_{10}5 - 2 \log_{10}3 - 2 = 2 (\log_{10}5 - \log_{10}3 - 1) = 2 \log_{10}\left(\frac{5}{3}\right) - 2. \]
-We see that \( S_3 = 2 \log_{10}5 \) and \( S_4 = 2 (\log_{10}5 - \log_{10}3 - 1) \) are not 1 or -1. We need to find the correct \( n \) such that \( |S_n| = 1 \). By checking further, we find that \( n = 10 \) and \( n = 11 \) satisfy the condition. Therefore, the sum of all such \( n \) is:
-\[ 10 + 11 = 21. \]
-The final answer is:
-\[ \boxed{21}. \]
+First, we find the equations of the lines \( AB \), \( BC \), \( CD \), and \( DA \).
+
+The slope of \( AB \) is:
+\[
+\text{slope of } AB = \frac{9-12}{10-0} = -\frac{3}{10}
+\]
+The equation of \( AB \) is:
+\[
+y - 12 = -\frac{3}{10}(x - 0) \implies y = -\frac{3}{10}x + 12
+\]
+
+The slope of \( BC \) is:
+\[
+\text{slope of } BC = \frac{0-9}{8-10} = \frac{9}{2}
+\]
+The equation of \( BC \) is:
+\[
+y - 9 = \frac{9}{2}(x - 10) \implies y = \frac{9}{2}x - 40.5
+\]
+
+The slope of \( CD \) is:
+\[
+\text{slope of } CD = \frac{7-0}{-4-8} = -\frac{7}{12}
+\]
+The equation of \( CD \) is:
+\[
+y - 7 = -\frac{7}{12}(x + 4) \implies y = -\frac{7}{12}x + \frac{13}{3}
+\]
+
+The slope of \( DA \) is:
+\[
+\text{slope of } DA = \frac{12-7}{0+4} = \frac{5}{4}
+\]
+The equation of \( DA \) is:
+\[
+y - 7 = \frac{5}{4}(x + 4) \implies y = \frac{5}{4}x + 12
+\]
+
+Next, we find the intersection of the diagonals \( AC \) and \( BD \).
+
+The slope of \( AC \) is:
+\[
+\text{slope of } AC = \frac{0-12}{8-0} = -\frac{3}{2}
+\]
+The equation of \( AC \) is:
+\[
+y - 12 = -\frac{3}{2}(x - 0) \implies y = -\frac{3}{2}x + 12
+\]
+
+The slope of \( BD \) is:
+\[
+\text{slope of } BD = \frac{7-9}{-4-10} = \frac{-2}{-14} = \frac{1}{7}
+\]
+The equation of \( BD \) is:
+\[
+y - 9 = \frac{1}{7}(x - 10) \implies y = \frac{1}{7}x + \frac{53}{7}
+\]
+
+To find the intersection of \( AC \) and \( BD \), we solve:
+\[
+-\frac{3}{2}x + 12 = \frac{1}{7}x + \frac{53}{7}
+\]
+Multiplying through by 14 to clear the denominators:
+\[
+-21x + 168 = 2x + 106 \implies -23x = -62 \implies x = \frac{62}{23}
+\]
+Substituting \( x = \frac{62}{23} \) back into the equation of \( AC \):
+\[
+y = -\frac{3}{2} \left( \frac{62}{23} \right) + 12 = -\frac{186}{46} + 12 = -\frac{93}{23} + 12 = \frac{-93 + 276}{23} = \frac{183}{23}
+\]
+Thus, the coordinates of \( S \) are \( \left( \frac{62}{23}, \frac{183}{23} \right) \).
+
+The area \( K \) of the quadrilateral can be found using the Shoelace Theorem:
+\[
+K = \frac{1}{2} \left| 0(9-7) + 10(0-12) + 8(7-9) + (-4)(12-0) \right| = \frac{1}{2} \left| 0 - 120 - 16 - 48 \right| = \frac{1}{2} \left| -184 \right| = 92
+\]
+The area of \( S \) is the area of the quadrilateral, so \( K = 92 \). The remainder when \( 10K = 920 \) is divided by 1000 is:
+\[
+\boxed{920}
+\]

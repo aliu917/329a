@@ -892,32 +892,37 @@ Final answer: \(\boxed{16}\)
 
 ### Now, apply what you have learned:
 Given what you have learned from the examples above, answer the following question: 
-Suppose that \$ n \$ is the product of three consecutive integers and that \$ n \$ is divisible by \$ 7 \$. Which of the following is not necessarily a divisor of \$ n \$?
-\$ \textbf{(A)}\ 6 \qquad \textbf{(B)}\ 14 \qquad \textbf{(C)}\ 21 \qquad \textbf{(D)}\ 28 \qquad \textbf{(E)}\ 42 \$
+A majority of the \$30\$ students in Ms. Demeanor's class bought pencils at the school bookstore. Each of these students bought the same number of pencils, and this number was greater than \$1\$. The cost of a pencil in cents was greater than the number of pencils each student bought, and the total cost of all the pencils was \$\$17.71\$. What was the cost of a pencil in cents?
+<math>
+\textbf{(A)}\ 7 \qquad
+\textbf{(B)}\ 11 \qquad
+\textbf{(C)}\ 17 \qquad
+\textbf{(D)}\ 23 \qquad
+\textbf{(E)}\ 77 </math>
 Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
-To determine which of the given options is not necessarily a divisor of \( n \), where \( n \) is the product of three consecutive integers and \( n \) is divisible by \( 7 \), we need to analyze the properties of the product of three consecutive integers.
+To solve the problem, we need to determine the cost of a pencil in cents, given the conditions of the problem. Let's break it down step by step.
 
-1. **Divisibility by 2 and 3:**
-   - Among any three consecutive integers, there is always at least one even number (divisible by 2).
-   - Among any three consecutive integers, there is always one number divisible by 3.
-   - Therefore, the product of three consecutive integers is always divisible by \( 2 \times 3 = 6 \).
+1. **Identify the variables and conditions:**
+   - Let \( n \) be the number of students who bought pencils.
+   - Let \( p \) be the number of pencils each student bought.
+   - Let \( c \) be the cost of each pencil in cents.
+   - The total number of pencils bought is \( n \times p \).
+   - The total cost of the pencils is \( n \times p \times c = 1771 \) cents (since \$17.71 = 1771 cents).
+   - The conditions given are: \( n > 15 \) (since a majority of the 30 students bought pencils), \( p > 1 \), and \( c > p \).
 
-2. **Divisibility by 7:**
-   - We are given that \( n \) is divisible by 7. This means one of the three consecutive integers must be divisible by 7.
+2. **Determine the possible values for \( n \times p \):**
+   - Since \( n \times p \times c = 1771 \) and \( c > p \), \( n \times p \) must be a divisor of 1771.
+   - The prime factorization of 1771 is \( 1771 = 7 \times 11 \times 23 \).
+   - The divisors of 1771 are 1, 7, 11, 17, 23, 77, 161, 253, 1771.
+   - Since \( n > 15 \) and \( n \times p \) must be one of these divisors, the possible values for \( n \times p \) are 23, 77, 161, and 1771.
 
-3. **Divisibility by 14:**
-   - Since \( n \) is divisible by both 2 and 7, it must be divisible by \( 2 \times 7 = 14 \).
+3. **Check each possible value for \( n \times p \):**
+   - If \( n \times p = 23 \), then \( c = \frac{1771}{23} = 77 \). Here, \( n \) must be 1 or 23, and since \( n > 15 \), \( n = 23 \) and \( p = 1 \), but \( p > 1 \), so this is not valid.
+   - If \( n \times p = 77 \), then \( c = \frac{1771}{77} = 23 \). Here, \( n \) can be 7 or 11, and \( p \) can be 11 or 7 respectively. Since \( p > 1 \), \( n = 7 \) and \( p = 11 \) is valid.
+   - If \( n \times p = 161 \), then \( c = \frac{1771}{161} = 11 \). Here, \( n \) can be 7 or 23, and \( p \) can be 23 or 7 respectively. Since \( p > 1 \), \( n = 7 \) and \( p = 23 \) is not valid because \( c < p \).
+   - If \( n \times p = 1771 \), then \( c = \frac{1771}{1771} = 1 \). Here, \( n \) can be 30 and \( p \) can be 59, but \( c < p \), so this is not valid.
 
-4. **Divisibility by 21:**
-   - Since \( n \) is divisible by both 3 and 7, it must be divisible by \( 3 \times 7 = 21 \).
+4. **Conclusion:**
+   - The only valid solution is when \( n \times p = 77 \), \( n = 7 \), and \( p = 11 \), with \( c = 23 \).
 
-5. **Divisibility by 28:**
-   - For \( n \) to be divisible by 28, it must be divisible by \( 4 \times 7 \). We need to check if the product of three consecutive integers can always be divisible by 4.
-   - Among any three consecutive integers, there is at most one number divisible by 4. Therefore, the product of three consecutive integers is not always divisible by 4.
-
-6. **Divisibility by 42:**
-   - Since \( n \) is divisible by both 6 and 7, it must be divisible by \( 6 \times 7 = 42 \).
-
-From the above analysis, we see that the product of three consecutive integers and divisible by 7 is always divisible by 6, 14, 21, and 42, but not necessarily by 28.
-
-Therefore, the correct option is \(\boxed{D}\).
+Therefore, the cost of a pencil in cents is \(\boxed{23}\).

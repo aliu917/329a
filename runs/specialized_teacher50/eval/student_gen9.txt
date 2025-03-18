@@ -892,40 +892,58 @@ Final answer: \(\boxed{16}\)
 
 ### Now, apply what you have learned:
 Given what you have learned from the examples above, answer the following question: 
-Let \$p\$ be the least prime number for which there exists a positive integer \$n\$ such that \$n^{4}+1\$ is divisible by \$p^{2}\$. Find the least positive integer \$m\$ such that \$m^{4}+1\$ is divisible by \$p^{2}\$.
+Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
 Think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'--------------------------------------------------
-To solve the problem, we need to find the smallest prime \( p \) such that there exists a positive integer \( n \) for which \( n^4 + 1 \) is divisible by \( p^2 \). We will then determine the smallest positive integer \( m \) such that \( m^4 + 1 \) is divisible by \( p^2 \).
+To solve the problem, we need to use the properties of similar triangles. Specifically, we will use the fact that the line \(PC\) intersects \(AB\) and \(DB\) in such a way that the segments created are proportional.
 
-First, we need to find the smallest prime \( p \) for which \( n^4 + 1 \equiv 0 \pmod{p^2} \) has a solution. This is equivalent to finding \( n^4 \equiv -1 \pmod{p^2} \).
+First, observe that since \(P\) is on the extension of \(DA\) and \(PC\) intersects \(AB\) at \(Q\) and \(DB\) at \(R\), we can use the concept of similar triangles. Specifically, \(\triangle PQC \sim \triangle PRA\) and \(\triangle PRC \sim \triangle PQA\).
 
-We start by checking the smallest primes:
+From the similarity \(\triangle PQC \sim \triangle PRA\), we know that the ratios of corresponding sides are equal:
+\[
+\frac{PQ}{PR} = \frac{QC}{RA}
+\]
+Since \(PR = PQ + QR = 735 + 112 = 847\), we can substitute the known values:
+\[
+\frac{735}{847} = \frac{QC}{RC}
+\]
+This can be rearranged to find \(QC\):
+\[
+QC = 735 \cdot \frac{RC}{847}
+\]
 
-1. **For \( p = 2 \):**
-   \[
-   n^4 + 1 \equiv 0 \pmod{4}
-   \]
-   We need \( n^4 \equiv -1 \pmod{4} \). However, \( n^4 \equiv 0 \) or \( 1 \pmod{4} \) for any integer \( n \), so \( n^4 + 1 \equiv 1 \) or \( 2 \pmod{4} \). Therefore, \( p = 2 \) does not work.
-
-2. **For \( p = 3 \):**
-   \[
-   n^4 + 1 \equiv 0 \pmod{9}
-   \]
-   We need \( n^4 \equiv -1 \pmod{9} \). We check the fourth powers modulo 9:
-   \[
-   0^4 \equiv 0 \pmod{9}, \quad 1^4 \equiv 1 \pmod{9}, \quad 2^4 \equiv 16 \equiv 7 \pmod{9}, \quad 3^4 \equiv 81 \equiv 0 \pmod{9}, \quad 4^4 \equiv 256 \equiv 4 \pmod{9}, \quad 5^4 \equiv 625 \equiv 4 \pmod{9}, \quad 6^4 \equiv 1296 \equiv 0 \pmod{9}, \quad 7^4 \equiv 2401 \equiv 7 \pmod{9}, \quad 8^4 \equiv 4096 \equiv 1 \pmod{9}
-   \]
-   None of these are congruent to \(-1 \pmod{9}\), so \( p = 3 \) does not work.
-
-3. **For \( p = 5 \):**
-   \[
-   n^4 + 1 \equiv 0 \pmod{25}
-   \]
-   We need \( n^4 \equiv -1 \pmod{25} \). We check the fourth powers modulo 25:
-   \[
-   0^4 \equiv 0 \pmod{25}, \quad 1^4 \equiv 1 \pmod{25}, \quad 2^4 \equiv 16 \pmod{25}, \quad 3^4 \equiv 81 \equiv 6 \pmod{25}, \quad 4^4 \equiv 256 \equiv 6 \pmod{25}, \quad 5^4 \equiv 625 \equiv 0 \pmod{25}, \quad 6^4 \equiv 1296 \equiv 21 \pmod{25}, \quad 7^4 \equiv 2401 \equiv 11 \pmod{25}, \quad 8^4 \equiv 4096 \equiv 21 \pmod{25}, \quad 9^4 \equiv 6561 \equiv 6 \pmod{25}, \quad 10^4 \equiv 10000 \equiv 0 \pmod{25}, \quad 11^4 \equiv 14641 \equiv 11 \pmod{25}, \quad 12^4 \equiv 20736 \equiv 21 \pmod{25}, \quad 13^4 \equiv 28561 \equiv 6 \pmod{25}, \quad 14^4 \equiv 38416 \equiv 6 \pmod{25}, \quad 15^4 \equiv 50625 \equiv 0 \pmod{25}, \quad 16^4 \equiv 65536 \equiv 16 \pmod{25}, \quad 17^4 \equiv 83521 \equiv 21 \pmod{25}, \quad 18^4 \equiv 104976 \equiv 11 \pmod{25}, \quad 19^4 \equiv 130321 \equiv 6 \pmod{25}, \quad 20^4 \equiv 160000 \equiv 0 \pmod{25}, \quad 21^4 \equiv 194481 \equiv 11 \pmod{25}, \quad 22^4 \equiv 234256 \equiv 21 \pmod{25}, \quad 23^4 \equiv 279841 \equiv 6 \pmod{25}, \quad 24^4 \equiv 331776 \equiv 6 \pmod{25}
-   \]
-   We see that \( 2^4 \equiv 16 \pmod{25} \) and \( 3^4 \equiv 6 \pmod{25} \), and none of these are congruent to \(-1 \pmod{25}\). However, we need to check if there is a solution. By checking, we find that \( n = 7 \) works because \( 7^4 = 2401 \equiv -1 \pmod{25} \). Therefore, \( p = 5 \) works.
-
-Now, we need to find the smallest positive integer \( m \) such that \( m^4 + 1 \) is divisible by \( 5^2 = 25 \). We already know that \( m = 7 \) works because \( 7^4 + 1 = 2401 + 1 = 2402 \equiv 0 \pmod{25} \).
-
-Thus, the smallest positive integer \( m \) is \(\boxed{7}\).
+Next, from the similarity \(\triangle PRC \sim \triangle PQA\), we know another ratio:
+\[
+\frac{PR}{PQ} = \frac{RC}{QC}
+\]
+Substituting the known values:
+\[
+\frac{847}{735} = \frac{RC}{QC}
+\]
+Since we already have \(QC = 735 \cdot \frac{RC}{847}\), we substitute this into the equation:
+\[
+\frac{847}{735} = \frac{RC}{735 \cdot \frac{RC}{847}}
+\]
+Simplifying the right side:
+\[
+\frac{847}{735} = \frac{847RC}{735RC} = \frac{847}{735}
+\]
+This confirms the consistency of our ratios. To find \(RC\), we can use the fact that the total length of \(PR\) is the sum of \(PQ\) and \(QR\):
+\[
+PR = PQ + QR = 847
+\]
+Since \(QC = 735 \cdot \frac{RC}{847}\), we can solve for \(RC\) by recognizing that the ratio \(\frac{847}{735}\) is the same as \(\frac{PR}{PQ}\), and thus:
+\[
+RC = 112 \cdot \frac{847}{735}
+\]
+Simplifying the fraction:
+\[
+RC = 112 \cdot \frac{847}{735} = 112 \cdot \frac{121}{105} = 112 \cdot \frac{121}{105} = 112 \cdot \frac{11}{9} = 137.3333 \approx 137.3333 \cdot 9 = 137 \cdot 9 = 137 \cdot 9 = 137 \cdot 9 = 137 \cdot 9 = 137 \cdot 9
+\]
+Thus, the exact value is:
+\[
+RC = 137
+\]
+So the final answer is:
+\[
+\boxed{137}
+\]
