@@ -1,0 +1,82 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: For some integer \$m\$, the polynomial \$x^3 - 2011x + m\$ has the three integer roots \$a\$, \$b\$, and \$c\$.  Find \$|a| + |b| + |c|\$.
+
+Solution chain-of-thought reasoning: From Vieta's formulas, we know that \$a+b+c = 0\$, and \$ab+bc+ac = -2011\$. Thus \$a = -(b+c)\$. All three of \$a\$, \$b\$, and \$c\$ are non-zero: say, if \$a=0\$, then \$b=-c=\pm\sqrt{2011}\$ (which is not an integer). \$\textsc{wlog}\$, let \$|a| \ge |b| \ge |c|\$. If \$a > 0\$, then \$b,c < 0\$ and if \$a < 0\$, then \$b,c > 0\$. We have -2011=ab+bc+ac = a(b+c)+bc = -a^2+bc
+Thus \$a^2 = 2011 + bc\$. We know that \$b\$, \$c\$ have the same sign. So \$|a| \ge 45 = \lceil \sqrt{2011} \rceil\$.
+Also, if we fix \$a\$, \$b+c\$ is fixed, so \$bc\$ is maximized when \$b = c\$ . Hence, 2011 = a^2 - bc > \tfrac{3}{4}a^2 \qquad \Longrightarrow \qquad a ^2 < \tfrac{4}{3}\cdot 2011 = 2681+\tfrac{1}{3}
+So \$|a| \le 51\$. Thus we have bounded \$a\$ as \$45\le |a| \le 51\$, i.e. \$45\le |b+c| \le 51\$ since \$a=-(b+c)\$. Let's analyze \$bc=(b+c)^2-2011\$. Here is a table:
+<table border = 1 cellspacing = 0 cellpadding = 5 style = "text-align:center;">
+<tr><th>\$|a|\$</th><th>\$bc=a^2-2011\$</th></tr>
+<tr><td>\$45\$</td><td>\$14\$</td></tr>
+<tr><td>\$46\$</td><td>\$105\$</td></tr>
+<tr><td>\$47\$</td><td>\$198\$</td></tr>
+<tr><td>\$48\$</td><td>\$293\$</td></tr>
+<tr><td>\$49\$</td><td>\$390\$</td></tr>
+</table>
+<br />
+We can tell we don't need to bother with \$45\$,
+\$105 = (3)(5)(7)\$, So \$46\$ won't work. \$198/47 > 4\$,
+\$198\$ is not divisible by \$5\$, \$198/6 = 33\$, which is too small to get \$47\$.
+\$293/48 > 6\$, \$293\$ is not divisible by \$7\$ or \$8\$ or \$9\$, we can clearly tell that \$10\$ is too much.
+Hence, \$|a| = 49\$, \$a^2 -2011 = 390\$. \$b = 39\$, \$c = 10\$.
+Answer: \$\boxed{098}\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: Denote the integer roots of the polynomial as \$a\$, \$b\$, and \$c\$. From Vieta's formulas, we establish that \$a + b + c = 0\$ and \$ab + ac + bc = -2011\$.
+
+Step 1: Since \$a + b + c = 0\$, we can express \$a\$ in terms of \$b\$ and \$c\$: \$a = -(b + c)\$.
+
+Step 2: We substitute \$a\$ into the equation \$ab + ac + bc = -2011\$ to get \$-(b + c)b - (b + c)c + bc = -2011\$.
+
+Step 3: Simplifying gives us: \$-b^2 - bc - c^2 + bc = -2011\$, which simplifies to \$-b^2 - c^2 = -2011\$, or \$b^2 + c^2 = 2011\$.
+
+Step 4: All three roots \$a\$, \$b\$, and \$c\$ are non-zero integers. We assume without loss of generality that \$|a| \ge |b| \ge |c|\$.
+
+Step 5: Since \$b + c = -a\$, if \$a > 0\$, then \$b, c < 0\$; if \$a < 0\$, then \$b, c > 0\$.
+
+Step 6: From the equation \$b^2 + c^2 = 2011\$, we derive that \$|a| = |b + c|\$ and since \$a^2 = b^2 + c^2 + 2bc = 2011 + 2bc\$, we can express \$bc\$ in relation to \$a\$.
+
+Step 7: We also note that for maximization of the product \$bc\$, \$b\$ and \$c\$ should be close to each other, which leads us to consider the distribution of \$2011\$ among \$b\$ and \$c\$.
+
+Step 8: We calculate the possible values for \$a\$ by testing integer values from \$45\$ to \$51\$ based on the derived inequalities.
+
+Step 9: We construct a table of values for \$|a|\$, calculating \$bc = a^2 - 2011\$ for each \$|a|\$.
+
+Step 10: We find that at \$|a| = 46\$, \$bc = 105\$, which does not yield valid integer pairs. We continue testing other values.
+
+Step 11: At \$|a| = 49\$, we find that \$bc = 390\$, which can yield integer solutions.
+
+Step 12: We solve for \$b\$ and \$c\$ using the quadratic formed from \$x^2 - (b+c)x + bc = 0\$.
+
+Step 13: We find integers \$b = 39\$ and \$c = 10\$, verifying that they satisfy all original equations.
+
+Step 14: Finally, we compute \$|a| + |b| + |c| = 49 + 39 + 10\$.
+
+Final answer: \(\boxed{098}\)

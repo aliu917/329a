@@ -1,0 +1,95 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: \$PQRS^{}_{}\$ is d in  \$ABCD^{}_{}\$ so that  \$P^{}_{}\$, \$Q^{}_{}\$, \$R^{}_{}\$, and \$S^{}_{}\$ are interior points on sides \$\overline{AB}\$, \$\overline{BC}\$, \$\overline{CD}\$, and \$\overline{DA}\$, respectively. It is given that \$PB^{}_{}=15\$, \$BQ^{}_{}=20\$, \$PR^{}_{}=30\$, and \$QS^{}_{}=40\$. Let \$\frac{m}{n}\$, in lowest terms, denote the  of \$ABCD^{}_{}\$. Find \$m+n^{}_{}\$.
+__TOC__
+
+Solution chain-of-thought reasoning: =
+Let \$O\$ be the center of the rhombus. Via  sides and alternate interior angles, we see that the opposite s are  (\$\triangle BPQ \cong \triangle DRS\$, \$\triangle APS \cong \triangle CRQ\$). Quickly we realize that \$O\$ is also the center of the rectangle.
+By the , we can solve for a side of the rhombus; \$PQ = \sqrt{15^2 + 20^2} = 25\$. Since the s of a rhombus are s, we have that \$OP = 15, OQ = 20\$. Also, \$\angle POQ = 90^{\circ}\$, so quadrilateral \$BPOQ\$ is . By , \$25 \cdot OB = 20 \cdot 15 + 15 \cdot 20 = 600\$.
+By similar logic, we have \$APOS\$ is a cyclic quadrilateral. Let \$AP = x\$, \$AS = y\$. The Pythagorean Theorem gives us \$x^2 + y^2 = 625\quad \mathrm{(1)}\$. Ptolemy’s Theorem gives us \$25 \cdot OA = 20x + 15y\$. Since the diagonals of a rectangle are equal, \$OA = \frac{1}{2}d = OB\$, and \$20x + 15y = 600\quad \mathrm{(2)}\$. Solving for \$y\$, we get \$y = 40 - \frac 43x\$. Substituting into \$\mathrm{(1)}\$,
+\begin{eqnarray*}x^2 + \left(40-\frac 43x\right)^2 &=& 625\\
+5x^2 - 192x + 1755 &=& 0\\
+x = \frac{192 \pm \sqrt{192^2 - 4 \cdot 5 \cdot 1755}}{10} &=& 15, \frac{117}{5}\end{eqnarray*}
+We reject \$15\$ because then everything degenerates into squares, but the condition that \$PR \neq QS\$ gives us a . Thus \$x = \frac{117}{5}\$, and backwards solving gives \$y = \frac{44}5\$. The perimeter of \$ABCD\$ is \$2\left(20 + 15 + \frac{117}{5} + \frac{44}5\right) = \frac{672}{5}\$, and \$m + n = \boxed{677}\$.
+=
+
+Solution steps:
+--------------------------------------------------
+Step 0: Let \( O \) be the center of the rhombus formed by points \( P, Q, R, S \). 
+
+Step 1: Identify that the opposite triangles \( \triangle BPQ \cong \triangle DRS \) and \( \triangle APS \cong \triangle CRQ \) due to sides and alternate interior angles.
+
+Step 2: Calculate the length of diagonal \( PQ \) using the Pythagorean theorem: \( PQ = \sqrt{15^2 + 20^2} = 25 \).
+
+Step 3: Recognize that in a rhombus, the diagonals bisect each other at right angles. Thus, \( OP = 15 \) and \( OQ = 20 \).
+
+Step 4: Since \( \angle POQ = 90^{\circ} \), quadrilateral \( BPOQ \) is a cyclic quadrilateral.
+
+Step 5: Apply Ptolemy's Theorem to quadrilateral \( BPOQ \) to get \( 25 \cdot OB = 20 \cdot 15 + 15 \cdot 20 = 600 \).
+
+Step 6: Now analyze quadrilateral \( APOS \) also as a cyclic quadrilateral. Let \( AP = x \) and \( AS = y \).
+
+Step 7: Use the Pythagorean Theorem on \( APOS \) to form the equation \( x^2 + y^2 = 625 \quad \mathrm{(1)} \).
+
+Step 8: Apply Ptolemy's Theorem on \( APOS \) to get the equation \( 25 \cdot OA = 20x + 15y \).
+
+Step 9: Since the diagonals of a rectangle are equal, establish that \( OA = \frac{1}{2}d = OB \), leading to the equation \( 20x + 15y = 600 \quad \mathrm{(2)} \).
+
+Step 10: Solve equation \( \mathrm{(2)} \) for \( y \) to get \( y = 40 - \frac{4}{3}x \).
+
+Step 11: Substitute \( y \) into equation \( \mathrm{(1)} \):
+\[
+x^2 + \left(40 - \frac{4}{3}x\right)^2 = 625
+\]
+
+Step 12: Expand and simplify to obtain: 
+\[
+5x^2 - 192x + 1755 = 0
+\]
+
+Step 13: Use the quadratic formula to solve for \( x \):
+\[
+x = \frac{192 \pm \sqrt{192^2 - 4 \cdot 5 \cdot 1755}}{10}
+\]
+
+Step 14: Calculate the discriminant and find the roots, leading to \( x = 15 \) or \( x = \frac{117}{5} \).
+
+Step 15: Reject \( x = 15 \) because it results in degeneracy. Accept \( x = \frac{117}{5} \).
+
+Step 16: Back substitute to find \( y = \frac{44}{5} \).
+
+Step 17: Calculate the perimeter of rectangle \( ABCD \): 
+\[
+2\left(20 + 15 + \frac{117}{5} + \frac{44}{5}\right) = \frac{672}{5}
+\]
+
+Step 18: Express the perimeter as a fraction \( \frac{m}{n} \) where \( m = 672 \) and \( n = 5 \).
+
+Step 19: Finally, compute \( m + n \) to find \( 672 + 5 = 677 \).
+
+Final answer: \(\boxed{677}\)

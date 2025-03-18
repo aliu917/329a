@@ -1,0 +1,46 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process and make sure to box the answer in the format: 'Final answer: \boxed{final answer}'.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: Tom, Dorothy, and Sammy went on a vacation and agreed to split the costs evenly.  During their trip Tom paid \$105, Dorothy paid \$125, and Sammy paid \$175.  In order to share costs equally, Tom gave Sammy \$t\$ dollars, and Dorothy gave Sammy \$d\$ dollars.  What is \$t-d\$?
+\$ \textbf{(A)}\ 15\qquad\textbf{(B)}\ 20\qquad\textbf{(C)}\ 25\qquad\textbf{(D)}\ 30\qquad\textbf{(E)}\ 35 \$
+
+Solution chain-of-thought reasoning: The total amount paid is \$105 + 125 + 175 = 405\$.  To get how much each should have paid, we do \$405/3 = 135\$.
+Thus, we know that Tom needs to give Sammy 30 dollars, and Dorothy 10 dollars.  This means that \$t-d = 30 - 10 = \boxed{\textbf{(B) }20}\$.
+
+Solution steps:
+--------------------------------------------------
+Step 0: Calculate the total amount paid by Tom, Dorothy, and Sammy, which is \$105 + 125 + 175\$.
+
+Step 1: Determine how much each person should have paid by dividing the total amount by 3: \$405 / 3 = 135\$.
+
+Step 2: Calculate how much Tom needs to give to Sammy: \$135 - 105 = 30\$.
+
+Step 3: Calculate how much Dorothy needs to give to Sammy: \$135 - 125 = 10\$.
+
+Step 4: Now, find the difference \$t - d\$, where \$t\$ is the amount Tom gives to Sammy and \$d\$ is the amount Dorothy gives to Sammy: \$t - d = 30 - 10\$.
+
+Final answer: \(\boxed{20}\)
