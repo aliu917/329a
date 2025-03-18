@@ -67,7 +67,7 @@ if __name__ == "__main__":
         "--student_model", "-s", type=str, default="Qwen/Qwen2.5-7B-Instruct-Turbo"
     )
     parser.add_argument("--keys", "-k", type=str, default="prev_feedback,pred_steps")
-    parser.add_argument("--num_val_samples", "-n", type=int, default=30)
+    parser.add_argument("--num_val_samples", "-n", type=int, default=20)
     args = parser.parse_args()
     val_filter(
         args.dataset,
