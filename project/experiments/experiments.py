@@ -452,7 +452,7 @@ class TeacherSearch(Experiment):
                     val_x = val_data["problem"][0]
                     val_all_y = val_labels[0]
                     val_numerical_answer = str(val_data["answer"].item())
-                    val_context = prompts.get_eval_student_context(new_context_examples, ["prev_feedback"], self.num_examples)
+                    val_context = prompts.get_eval_student_context(new_context_examples, ["prev_feedback", "pred_steps"], self.num_examples)
                     val_response = self.student.generate(val_x, history=val_context)
                     val_correct += verifier(val_response, val_all_y) or verifier(val_response, val_numerical_answer)
                 print(prev_val_correct, val_correct)
