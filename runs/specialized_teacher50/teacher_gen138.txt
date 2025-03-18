@@ -1,0 +1,153 @@
+You are given a solution chain of thought reasoning process for a question. Break down the reasoning process into individual discrete steps. Use step 0 to refer to any setup steps for defining variables that are unrelated to the solution reasoning progress. Finally, use "Final answer" to denote the final answer of the given solution process.
+
+### Learn from these examples:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Solution chain-of-thought reasoning: =
+Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$. The number of basic rectangles is \$(x - 1)(y - 1)\$. \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$. Substituting, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4ight)\$.
+this to get a quadratic, \$-\frac 54x^2 + 502x - \frac\{2003}4\$. Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$. However, this gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$. The solution is \$\boxed{896}\$.
+
+Solution steps: 
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: his gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+
+### Now, apply what you have learned:
+
+Question: In \$\triangle ABC, AB = AC = 10\$ and \$BC = 12\$. Point \$D\$ lies strictly between \$A\$ and \$B\$ on \$\overline{AB}\$ and point \$E\$ lies strictly between \$A\$ and \$C\$ on \$\overline{AC}\$ so that \$AD = DE = EC\$. Then \$AD\$ can be expressed in the form \$\dfrac{p}{q}\$, where \$p\$ and \$q\$ are relatively prime positive integers. Find \$p+q\$.
+
+Solution chain-of-thought reasoning: By the Law of Cosines on \$\triangle ABC\$, we have: \cos(A) = \frac{10^2+10^2-12^2}{2*10*10}  = \frac{7}{25} By the Law of Cosines on \$\triangle ADE\$, then \frac{7}{25} = \frac{10-x}{2x} \iff x =\frac{250}{39} So, our answer is \$250+39=\boxed{289}\$.
+==Solution 1 (No Trig)==
+<center>
+<asy>
+import olympiad;
+import cse5;
+unitsize(10mm);
+pathpen=black;
+dotfactor=3;
+pair B = (0,0), A = (6,8), C = (12,0), D = intersectionpoints(circle(A,250/39),A--B)[0], E = intersectionpoints(circle(D,250/39),A--C)[0], F=intersectionpoints(circle(B,9.6),A--C)[0], G=A/2+E/2;
+pair[] dotted = {A,B,C,D,E,F,G};
+D(A--B);
+D(C--B);
+D(A--C);
+D(D--E);
+pathpen=dashed;
+D(B--F);
+D(D--G);
+dot(dotted);
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$C$",C,SE);
+label("$D$",D,NW);
+label("$E$",E,NE);
+label("$F$",F,NE);
+label("$G$",G,NE);
+label("$x$",A--D,NW);
+label("$x$",D--E,NW);
+label("$x$",E--C,NE);
+draw(rightanglemark(D,G,E));
+draw(rightanglemark(B,F,E));
+</asy>
+</center>
+We draw the altitude from \$B\$ to \$\overline{AC}\$ to get point \$F\$. We notice that the triangle's height from \$A\$ to \$\overline{BC}\$ is 8 because it is a \$3-4-5\$ Right Triangle. To find the length of \$\overline{BF}\$, we let \$h\$ represent \$\overline{BF}\$ and set up an equation by finding two ways to express the area. The equation is \$(8)(12)=(10)(h)\$, which leaves us with \$h=9.6\$. We then solve for the length \$\overline{AF}\$, which is done through pythagorean theorm and get \$\overline{AF}\$ = \$2.8\$. We can now see that \$\triangle AFB\$ is a \$7-24-25\$ Right Triangle. Thus, we set \$\overline{AG}\$ as \$5-\$\$\tfrac{x}{2}\$, and yield that \$\overline{AD}\$ \$=\$ \$(\$ \$5-\$ \$\tfrac{x}{2}\$ \$)\$ \$(\$ \$\tfrac{25}{7}\$ \$)\$. Now, we can see \$x\$ = \$(\$ \$5-\$ \$\tfrac{x}{2}\$ \$)\$ \$(\$ \$\tfrac{25}{7}\$ \$)\$. Solving this equation, we yield \$39x=250\$, or \$x=\$ \$\tfrac{250}{39}\$. Thus, our final answer is \$250+39=\boxed{289}\$.
+Diagram edited by Afly
+==Solution 2 (Easy Similar Triangles)==
+We start by adding a few points to the diagram. Call \$F\$ the midpoint of \$AE\$, and \$G\$ the midpoint of \$BC\$. (Note that \$DF\$ and \$AG\$ are altitudes of their respective triangles). We also call \$\angle BAC = \theta\$. Since triangle \$ADE\$ is isosceles, \$\angle AED = \theta\$, and \$\angle ADF = \angle EDF = 90 - \theta\$. Since \$\angle DEA = \theta\$, \$\angle DEC = 180 - \theta\$ and \$\angle EDC = \angle ECD = \frac{\theta}{2}\$. Since \$FDC\$ is a right triangle, \$\angle FDC = 180 - 90 - \frac{\theta}{2} = \frac{180-m}{2}\$.
+Since \$\angle BAG = \frac{\theta}{2}\$ and \$\angle ABG = \frac{180-m}{2}\$, triangles \$ABG\$ and \$CDF\$ are similar by Angle-Angle similarity. Using similar triangle ratios, we have \$\frac{AG}{BG} = \frac{CF}{DF}\$. \$AG = 8\$ and \$BG = 6\$ because there are \$2\$ \$6-8-10\$ triangles in the problem. Call \$AD = x\$. Then \$CE = x\$, \$AE = 10-x\$, and \$EF = \frac{10-x}{2}\$. Thus \$CF = x + \frac{10-x}{2}\$. Our ratio now becomes \$\frac{8}{6} = \frac{x+ \frac{10-x}{2}}{DF}\$. Solving for \$DF\$ gives us \$DF = \frac{30+3x}{8}\$. Since \$DF\$ is a height of the triangle \$ADE\$, \$FE^2 + DF^2 = x^2\$, or \$DF = \sqrt{x^2 - (\frac{10-x}{2})^2}\$. Solving the equation \$\frac{30+3x}{8} = \sqrt{x^2 - (\frac{10-x}{2})^2}\$ gives us \$x = \frac{250}{39}\$, so our answer is \$250+39 = \boxed{289}\$.
+==Solution 3 (Algebra w/ Law of Cosines)==
+As in the diagram, let \$DE = x\$. Consider point \$G\$ on the diagram shown above. Our goal is to be able to perform Pythagorean Theorem on \$DG, GC\$, and \$DC\$. Let \$GE = \frac{10-x}{2}\$. Therefore, it is trivial to see that \$GC^2 = \Big(x + \frac{10-x}{2}\Big)^2\$ (leave everything squared so that it cancels nicely at the end). By Pythagorean Theorem on Triangle \$DGE\$, we know that \$DG^2 = x^2 - \Big(\frac{10-x}{2}\Big)^2\$. Finally, we apply Law of Cosines on Triangle \$DBC\$. We know that \$\cos(\angle DBC) = \frac{3}{5}\$. Therefore, we get that \$DC^2 = (10-x)^2 + 12^2 - 2(12)(10-x)\frac{3}{5}\$. We can now do our final calculation:
+DG^2 + GC^2 = DC^2 \implies x^2 - \Big(\frac{10-x}{2}\Big)^2 + \Big(x + \frac{10-x}{2}\Big)^2 = (10-x)^2 + 12^2 - 2(12)(10-x)\frac{3}{5}
+After some quick cleaning up, we get
+30x = \frac{72}{5} + 100 \implies x = \frac{250}{39}
+Therefore, our answer is \$250+39=\boxed{289}\$.
+==Solution 4 (Coordinates)==
+Let \$B = (0, 0)\$, \$C = (12, 0)\$, and \$A = (6, 8)\$. Then, let \$x\$ be in the interval \$0<x<2\$ and parametrically define \$D\$ and \$E\$ as \$(6-3x, 8-4x)\$ and \$(12-3x, 4x)\$ respectively. Note that \$AD = 5x\$, so \$DE = 5x\$. This means that
+\begin{align*}
+\sqrt{36+(8x-8)^2} &= 5x\\
+36+(8x-8)^2 &= 25x^2\\
+64x^2-128x+100 &= 25x^2\\
+39x^2-128x+100 &= 0\\
+x &= \dfrac{128\pm\sqrt{16384-15600}}{78}\\
+x &= \dfrac{100}{78}, 2\\
+\end{align*}
+However, since \$2\$ is extraneous by definition, \$x=\dfrac{50}{39}\implies AD = \dfrac{250}{39}\implies\boxed{289}\$ ==Solution 5 (Law of Cosines)==
+As shown in the diagram, let \$x\$ denote \$\overline{AD}\$. Let us denote the foot of the altitude of \$A\$ to \$\overline{BC}\$ as \$F\$. Note that \$\overline{AE}\$ can be expressed as \$10-x\$ and \$\triangle{ABF}\$ is a \$6-8-10\$ triangle . Therefore, \$\sin(\angle{BAF})=\frac{3}{5}\$ and \$\cos(\angle{BAF})=\frac{4}{5}\$. Before we can proceed with the Law of Cosines, we must determine \$\cos(\angle{BAC})=\cos(2\cdot \angle{BAF})=\cos^2(\angle{BAF})-\sin^2(\angle{BAF})=\frac{7}{25}\$. Using LOC, we can write the following statement:
+(\overline{DE})^2=(\overline{AD})^2+\overline{AE}^2-2(\overline{AD})(\overline{AE})\cos(\angle{BAC})\implies
+x^2=x^2+(10-x)^2-2(x)(10-x)\left(\frac{7}{25}\right)\implies
+0=(10-x)^2-\frac{14x}{25}(10-x)\implies
+0=10-x-\frac{14x}{25}\implies
+10=\frac{39x}{25}\implies x=\frac{250}{39}
+Thus, the desired answer is \$\boxed{289}\$
+
+Solution steps:
+--------------------------------------------------
+Step 0: In triangle \( \triangle ABC \), denote the lengths as \( AB = AC = 10 \) and \( BC = 12 \). Let \( AD = DE = EC = x \).
+
+Step 1: By the Law of Cosines in triangle \( ABC \), we calculate \( \cos(A) \):
+\[
+\cos(A) = \frac{10^2 + 10^2 - 12^2}{2 \cdot 10 \cdot 10} = \frac{100 + 100 - 144}{200} = \frac{56}{200} = \frac{7}{25}.
+\]
+
+Step 2: In triangle \( ADE \), apply the Law of Cosines:
+\[
+DE^2 = AD^2 + AE^2 - 2(AD)(AE)\cos(A) \implies x^2 = x^2 + (10 - x)^2 - 2x(10 - x) \cdot \frac{7}{25}.
+\]
+
+Step 3: Simplifying the equation from Step 2:
+\[
+0 = (10 - x)^2 - \frac{14x(10 - x)}{25}.
+\]
+
+Step 4: Expanding \( (10 - x)^2 \):
+\[
+0 = 100 - 20x + x^2 - \frac{14x(10 - x)}{25}.
+\]
+
+Step 5: Combine the terms:
+\[
+0 = 100 - 20x + x^2 - \frac{140x - 14x^2}{25}.
+\]
+
+Step 6: Clear the fraction by multiplying through by 25:
+\[
+0 = 2500 - 500x + 25x^2 - (140x - 14x^2).
+\]
+
+Step 7: Combine like terms:
+\[
+0 = 2500 - 500x + 25x^2 - 140x + 14x^2 \implies 0 = 39x^2 - 640x + 2500.
+\]
+
+Step 8: Solve the quadratic equation \( 39x^2 - 640x + 2500 = 0 \) using the quadratic formula:
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} = \frac{640 \pm \sqrt{(-640)^2 - 4 \cdot 39 \cdot 2500}}{2 \cdot 39}.
+\]
+
+Step 9: Calculate the discriminant:
+\[
+640^2 = 409600, \quad 4 \cdot 39 \cdot 2500 = 390000 \implies 409600 - 390000 = 19600.
+\]
+
+Step 10: Continue solving for \( x \):
+\[
+x = \frac{640 \pm 140}{78} \implies x = \frac{780}{78} = 10 \quad \text{or} \quad x = \frac{500}{78} = \frac{250}{39}.
+\]
+
+Step 11: Since \( AD \) must be less than \( 10 \), take the solution \( x = \frac{250}{39} \).
+
+Step 12: Express \( AD \) in the form \( \frac{p}{q} \) where \( p = 250 \) and \( q = 39 \).
+
+Step 13: Finally, calculate \( p + q = 250 + 39 = 289 \).
+
+Final answer: \( \boxed{289} \)
