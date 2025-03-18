@@ -1,0 +1,89 @@
+Analyze this student's math solution attempt with precision:
+
+QUESTION:
+Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+STUDENT'S SOLUTION ATTEMPT:
+To solve the problem, we will use the properties of similar triangles and the given lengths to find the required length \( RC \).
+
+Step 1: Identify the similar triangles.
+Since \( P \) is on the extension of \( \overline{DA} \) and \( \overline{PC} \) intersects \( \overline{AB} \) at \( Q \) and \( \overline{DB} \) at \( R \), we can use the properties of similar triangles. Specifically, triangles \( \triangle PQC \) and \( \triangle PDA \) are similar because they share angle \( \angle P \) and both have a right angle (since \( \overline{PC} \) and \( \overline{DA} \) are lines extended through a point and intersecting at right angles in the context of the problem).
+
+Step 2: Use the similarity ratio.
+Since \( \triangle PQC \sim \triangle PDA \), the ratio of corresponding sides is the same. Let \( RC = x \). Then, the length \( PR = PQ + QR = 735 + 112 = 847 \). The similarity ratio is given by the ratio of the segments on \( \overline{PC} \):
+\[ \frac{PQ}{PD} = \frac{RC}{PA} \]
+However, since \( PA \) is not directly given, we use the fact that the ratio of the segments on \( \overline{DB} \) is the same:
+\[ \frac{PQ}{PD} = \frac{RC}{RB} \]
+Since \( RB = RQ + QB \) and \( QB = QP = 735 \), we have \( RB = 112 + 735 = 847 \). Therefore:
+\[ \frac{735}{PD} = \frac{x}{847} \]
+Since \( PD = PA + AD \) and \( PA \) is not directly needed, we can use the fact that the ratio of the segments is consistent:
+\[ \frac{735}{847} = \frac{x}{847} \]
+Thus, \( x = 735 \).
+
+Final answer: \(\boxed{735}\)
+
+CORRECT SOLUTION STEPS:
+Step 0: Let \( RC = x \). Given values are \( PQ = 735 \) and \( QR = 112 \).
+Step 1: From triangle similarity \( \triangle PAQ \sim \triangle PDC \), we write the ratio:
+\[
+\frac{AQ}{CD} = \frac{PQ}{PC} = \frac{735}{112 + 735 + RC} = \frac{735}{847 + x}
+\]
+Step 2: From triangle similarity \( \triangle BRQ \sim \triangle DRC \), we write the ratio:
+\[
+\frac{QR}{RC} = \frac{112}{x} = \frac{CD - AQ}{CD} = 1 - \frac{AQ}{CD}
+\]
+Step 3: Rearranging the equation gives:
+\[
+\frac{AQ}{CD} = 1 - \frac{112}{x} = \frac{x - 112}{x}
+\]
+Step 4: Substitute the expression for \(\frac{AQ}{CD}\) from Step 1 and
+Step 3:
+\[
+\frac{735}{847 + x} = \frac{x - 112}{x}
+\]
+Step 5: Cross-multiplying gives:
+\[
+735x = (847 + x)(x - 112)
+\]
+Step 6: Expanding the right-hand side:
+\[
+735x = 847x - 112 \cdot 847 + x^2 - 112x
+\]
+Step 7: Rearranging yields:
+\[
+0 = x^2 - (847 - 735 + 112)x - 112 \cdot 847
+\]
+\[
+0 = x^2 - 224x - 112 \cdot 847
+\]
+Step 8: Solving the quadratic equation using the quadratic formula \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \):
+\[
+0 = x^2 - 224x + 112 \cdot 847
+\]
+Step 9: Calculate \( 112 \cdot 847 \) and solve for \( x \).
+Step 10: Simplifying gives \( RC = \sqrt{112 \cdot 847} = 308 \).
+
+Final answer: \( \boxed{308} \)
+
+Your task is to identify PRECISELY where the student's reasoning first deviates from the correct solution path.
+
+1. First, identify which step of the correct solution is first missing or incorrect in the student's work.
+2. Determine the specific error type:
+   - Conceptual error: Fundamental misunderstanding of a concept
+   - Procedural error: Correct concept but wrong procedure/approach
+   - Calculation error: Arithmetic mistake or algebraic manipulation error
+
+3. Provide targeted feedback that:
+   - Points to the specific error without revealing the complete correct step
+   - Explains the underlying concept/principle the student is missing
+   - Guides them toward the correct approach with a hint
+   - NEVER reveals the final answer
+
+FORMAT YOUR RESPONSE EXACTLY LIKE THIS:
+Step X: [Step number where error first occurs]
+Error Type: [conceptual/procedural/calculation]
+Feedback: [Your detailed guidance on fixing the error]
+--------------------------------------------------
+Step 1: 
+Error Type: Conceptual error 
+Feedback: The student incorrectly assumes that triangles \( \triangle PQC \) and \( \triangle PDA \) are similar based on angle relationships without properly identifying the correct triangles that share the relevant relationships. It is important to recognize that the similarity should be established between triangles formed by the segments created by the intersections of lines and points specified in the problem. Re-evaluate which triangles are truly similar and how their corresponding sides relate to each other, particularly focusing on the relationships involving \( RC \) and the segments \( PQ \) and \( QR \). Consider looking for triangles that involve point \( R \) and segment \( RC \) in relation to the entire configuration.

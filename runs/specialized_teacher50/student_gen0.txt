@@ -1,0 +1,41 @@
+You are given a question. Reason about the best solution using a step by step process and output the steps as well as the final solution in a boxed format: '\boxed{final answer}'
+    
+### Here is an example of a question and the appropriate response:
+
+Question: A  piece of paper measures 4 units by 5 units. Several s are drawn  to the edges of the paper. A rectangle determined by the s of some of these lines is called ''basic'' if
+:(i) all four sides of the rectangle are segments of drawn line segments, and
+:(ii) no s of drawn lines lie inside the rectangle.
+Given that the total length of all lines drawn is exactly 2007 units, let \$N\$ be the maximum possible number of basic rectangles determined. Find the  when \$N\$ is divided by 1000.
+
+Response:
+Step 0: Denote the number of horizontal lines drawn as \$x\$, and the number of vertical lines drawn as \$y\$.
+Step 1: The number of basic rectangles is \$(x - 1)(y - 1)\$.
+Step 2: \$5x + 4y = 2007 \Longrightarrow y = \frac{2007 - 5x}{4}\$.
+Step 3: Substituting y, we find that \$(x - 1)\left(-\frac 54x + \frac{2003}4\right)\$.
+Step 4: To get a quadratic, \$-\frac 54x^2 + 502x - \frac{2003}4\$.
+Step 5: Use \$\frac{-b}{2a}\$ to find the maximum possible value of the quadratic: \$x = \frac{-502}{-2 \cdot \frac 54} = \frac{1004}5 pprox 201\$.
+Step 6: This gives a non-integral answer for \$y\$. The closest two values that work are \$(199,253)\$ and \$(203,248)\$.
+Step 7: We see that \$252 \cdot 198 = 49896 > 202 \cdot 247 = 49894\$.
+Final answer: \(\boxed{448}\)
+Remember to think step by step and then provide the final answer boxed in the format: '\boxed{final answer}'.
+
+Question: Let \$ABCD\$ be a .  Extend \$\overline{DA}\$ through \$A\$ to a point \$P,\$ and let \$\overline{PC}\$ meet \$\overline{AB}\$ at \$Q\$ and \$\overline{DB}\$ at \$R.\$  Given that \$PQ = 735\$ and \$QR = 112,\$ find \$RC.\$
+
+Response:--------------------------------------------------
+To solve the problem, we will use the properties of similar triangles and the given lengths to find the required length \( RC \).
+
+Step 1: Identify the similar triangles.
+Since \( P \) is on the extension of \( \overline{DA} \) and \( \overline{PC} \) intersects \( \overline{AB} \) at \( Q \) and \( \overline{DB} \) at \( R \), we can use the properties of similar triangles. Specifically, triangles \( \triangle PQC \) and \( \triangle PDA \) are similar because they share angle \( \angle P \) and both have a right angle (since \( \overline{PC} \) and \( \overline{DA} \) are lines extended through a point and intersecting at right angles in the context of the problem).
+
+Step 2: Use the similarity ratio.
+Since \( \triangle PQC \sim \triangle PDA \), the ratio of corresponding sides is the same. Let \( RC = x \). Then, the length \( PR = PQ + QR = 735 + 112 = 847 \). The similarity ratio is given by the ratio of the segments on \( \overline{PC} \):
+\[ \frac{PQ}{PD} = \frac{RC}{PA} \]
+However, since \( PA \) is not directly given, we use the fact that the ratio of the segments on \( \overline{DB} \) is the same:
+\[ \frac{PQ}{PD} = \frac{RC}{RB} \]
+Since \( RB = RQ + QB \) and \( QB = QP = 735 \), we have \( RB = 112 + 735 = 847 \). Therefore:
+\[ \frac{735}{PD} = \frac{x}{847} \]
+Since \( PD = PA + AD \) and \( PA \) is not directly needed, we can use the fact that the ratio of the segments is consistent:
+\[ \frac{735}{847} = \frac{x}{847} \]
+Thus, \( x = 735 \).
+
+Final answer: \(\boxed{735}\)
